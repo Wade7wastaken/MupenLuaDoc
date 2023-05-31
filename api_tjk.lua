@@ -32,7 +32,12 @@ end
 
 --#endregion
 
+
+-- emu functions
+--#region
+
 ---Displays the text message in the console.
+---Similar to `print`, but only accepts strings
 ---@param message string
 ---@return nil
 function emu.console(message) end
@@ -41,60 +46,72 @@ function emu.console(message) end
 ---@return nil
 function emu.debugview() end
 
----Displays the text message in the status bar
+---Displays the text `message` in the status bar
 ---on the bottom while replacing any other text.
 ---The message will only display until the next frame.
 ---@param message string
 ---@return nil
 function emu.statusbar(message) end
 
----Calls the function f every vi frame. For example,
+---Calls the function `f` every vi frame. For example,
 ---in Super Mario 64, the function will be called twice
 ---when you advance by one frame whereas it will be called
----once in Ocarina of Time. If unregister is set to true,
----the function f will no longer be called when this event occurs,
+---once in Ocarina of Time. If `unregister` is set to true,
+---the function `f` will no longer be called when this event occurs,
 ---but it will error if you never registered the function.
 ---@param f fun(nil)
----@param unregister boolean
+---@param unregister boolean?
 ---@return nil
 function emu.atvi(f, unregister) end
 
----Seems similar to emu.atvi, except that it is called after.
----If unregister is set to true, the function f will no longer
+---Seems similar to `emu.atvi`, except that it is called after.
+---If `unregister` is set to true, the function `f` will no longer
 ---be called when this event occurs, but it will error if you
 ---never registered the function.
 ---@param f fun(nil)
----@param unregister boolean
+---@param unregister boolean?
 ---@return nil
 function emu.atupdatescreen(f, unregister) end
 
----Calls the function f every input frame. The function f receives
----the argument a that seems to always be 0. If unregister is set
----to true, the function f will no longer be called when this event
+---Calls the function `f` every input frame. The function `f` receives
+---the argument `a` that seems to always be `0`. If `unregister` is set
+---to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
----@param f fun(a: integer)
----@param unregister boolean
+---@param f fun(a: integer?)
+---@param unregister boolean?
 ---@return nil
 function emu.atinput(f, unregister) end
 
----Calls the function f when the script is stopped. If unregister is
----set to true, the function f will no longer be called when this event
+---Calls the function `f` when the script is stopped. If `unregister` is
+---set to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
 ---@param f fun(nil)
----@param unregister boolean
+---@param unregister boolean?
 ---@return nil
 function emu.atstop(f, unregister) end
 
 ---Defines a handler function that is called when a window receives a
----message. If unregister is set to true, the function f will no longer
+---message. If `unregister` is set to true, the function `f` will no longer
 ---be called when this event occurs, but it will error if you never
 ---registered the function.
 ---@param f fun(a: 0) takes the following parameters:
 function emu.atwindowmessage(f, unregister) end
 
--- function emu.atinterval() end
+---Calls the function `f` constantly, even when the emulator is paused
+---If `unregister` is set to true, the function `f` will no longer
+---be called when this event occurs, but it will error if you never
+---registered the function.
+---@param f fun(nil)
+---@param unregister boolean?
+function emu.atinterval(f, unregister) end
 
--- function emu.atplaymovie() end
+---Calls the function `f` when a movie is played. If `unregister`
+---is set to true, the function `f` will no longer
+---be called when this event occurs, but it will error if you never
+---registered the function.
+---@param f any
+---@param unregister any
+function emu.atplaymovie(f, unregister) end
 
 -- function emu.atstopmovie() end
 
