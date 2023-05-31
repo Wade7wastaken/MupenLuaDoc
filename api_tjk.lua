@@ -1,5 +1,11 @@
 ---@meta
 
+-- This file has meta definitions for the functions implemented in mupen64.
+-- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
+
+-- Additional documentation can be found here:
+-- https://docs.google.com/document/d/1SWd-oAFBKsGmwUs0qGiOrk3zfX9wYHhi3x5aKPQS_o0
+
 emu = {}
 memory = {}
 gui = {}
@@ -10,6 +16,21 @@ movie = {}
 savestate = {}
 ioHelper = {}
 avi = {}
+
+
+-- Global Functions
+--#region
+
+---Prints a value to the lua console
+---@param data any
+function print(data)
+end
+
+---Stops script execution
+function stop()
+end
+
+--#endregion
 
 ---Displays the text message in the console.
 ---@param message string
