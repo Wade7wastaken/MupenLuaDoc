@@ -5,7 +5,7 @@
 Registers a function to be run every input frame
 
 
-```lua
+```
 function emu.atinput(func: function, unregister?: boolean)
 ```
 
@@ -16,7 +16,7 @@ function emu.atinput(func: function, unregister?: boolean)
 Registers a function to be run constantly
 
 
-```lua
+```
 function emu.atinterval(func: function, unregister?: boolean)
 ```
 
@@ -27,7 +27,7 @@ function emu.atinterval(func: function, unregister?: boolean)
 Registers a function to be run when a savestate is loaded
 
 
-```lua
+```
 function emu.atloadstate(func: function, unregister?: boolean)
 ```
 
@@ -38,7 +38,7 @@ function emu.atloadstate(func: function, unregister?: boolean)
 Registers a function to be run when the emulator is reset
 
 
-```lua
+```
 function emu.atreset(func: function, unregister?: boolean)
 ```
 
@@ -49,7 +49,7 @@ function emu.atreset(func: function, unregister?: boolean)
 Registers a function to be run when a savestate is saved
 
 
-```lua
+```
 function emu.atsavestate(func: function, unregister?: boolean)
 ```
 
@@ -60,7 +60,7 @@ function emu.atsavestate(func: function, unregister?: boolean)
 Registers a function to be run when the lua script is stopped
 
 
-```lua
+```
 function emu.atstop(func: function, unregister?: boolean)
 ```
 
@@ -71,7 +71,7 @@ function emu.atstop(func: function, unregister?: boolean)
 Registers a function to be run when the screen updates
 
 
-```lua
+```
 function emu.atupdatescreen(func: function, unregister?: boolean)
 ```
 
@@ -82,7 +82,7 @@ function emu.atupdatescreen(func: function, unregister?: boolean)
 Registers a function to be run every VI
 
 
-```lua
+```
 function emu.atvi(func: function, unregister?: boolean)
 ```
 
@@ -93,7 +93,7 @@ function emu.atvi(func: function, unregister?: boolean)
 Similar to print, but only accepts strings
 
 
-```lua
+```
 function emu.console(str: string)
 ```
 
@@ -104,7 +104,7 @@ function emu.console(str: string)
 Returns the number of VIs since the last movie was played. This should match the statusbar (assuming you have `0-index statusbar` off). If no movie has been played, it returns the number of VIs since the emulator was started, not reset
 
 
-```lua
+```
 function emu.framecount()
   -> framecount: integer
 ```
@@ -116,7 +116,7 @@ function emu.framecount()
 ?
 
 
-```lua
+```
 function emu.getaddress(address: string)
 ```
 
@@ -127,7 +127,7 @@ function emu.getaddress(address: string)
 Returns `1` if the emulator is paused and `0` if it is not
 
 
-```lua
+```
 function emu.getpause()
   -> emu_paused: boolean
 ```
@@ -139,7 +139,7 @@ function emu.getpause()
 Returns the current speed limit of the emulator
 
 
-```lua
+```
 function emu.getspeed()
   -> speed_limit: integer
 ```
@@ -151,7 +151,7 @@ function emu.getspeed()
 Gets a system metric using the windows [GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics) function
 
 
-```lua
+```
 function emu.getsystemmetrics(param: integer)
   -> metric: integer
 ```
@@ -171,7 +171,7 @@ type:
 ```
 
 
-```lua
+```
 function emu.getversion(type: 1|2)
   -> version: string
 ```
@@ -183,7 +183,7 @@ function emu.getversion(type: 1|2)
 Returns the number of input frames that have happened since the emulator was started. It does not reset when a movie is started
 
 
-```lua
+```
 function emu.inputcount()
   -> inputcount: integer
 ```
@@ -195,7 +195,7 @@ function emu.inputcount()
 Returns true if the currently playing movie is read only
 
 
-```lua
+```
 function emu.isreadonly()
   -> read_only: boolean
 ```
@@ -209,7 +209,7 @@ Pauses or unpauses the emulator
 @*param* `pause` — True pauses the emulator and false resumes the emulator
 
 
-```lua
+```
 function emu.pause(pause: boolean)
 ```
 
@@ -220,7 +220,7 @@ function emu.pause(pause: boolean)
 Returns the number of input frames since the last movie was played. This should match the statusbar (assuming you have `0-index statusbar` off). If no movie is playing, it will return the last value when a movie was playing. If no movie has been played yet, it will return -1
 
 
-```lua
+```
 function emu.samplecount()
   -> samplecount: integer
 ```
@@ -232,7 +232,7 @@ function emu.samplecount()
 Sets the speed limit of the emulator
 
 
-```lua
+```
 function emu.speed(speed_limit: integer)
 ```
 
@@ -249,7 +249,7 @@ mode:
 ```
 
 
-```lua
+```
 function emu.speedmode(mode: "maximum"|"normal")
 ```
 
@@ -260,7 +260,7 @@ function emu.speedmode(mode: "maximum"|"normal")
 Sets the statusbar text to `str`
 
 
-```lua
+```
 function emu.statusbar(str: string)
 ```
 
@@ -271,7 +271,7 @@ function emu.statusbar(str: string)
 Gets the difference in two input tables
 
 
-```lua
+```
 function input.diff(t1: table, t2: table)
   -> table
 ```
@@ -283,7 +283,7 @@ function input.diff(t1: table, t2: table)
 Returns a table of booleans corresponding to which keys are pressed
 
 
-```lua
+```
 function input.get()
   -> table
 ```
@@ -295,7 +295,7 @@ function input.get()
 Unknown
 
 
-```lua
+```
 function input.prompt()
 ```
 
@@ -310,7 +310,7 @@ Loads a signed byte from rdram and returns it. Alias for `memory.readbytesigned`
 @*return* `value` — The signed byte at `address`
 
 
-```lua
+```
 function memory.LB(address: integer)
   -> value: integer
 ```
@@ -326,7 +326,7 @@ Loads an unsigned byte from rdram and returns it. Alias for `memory.readbyte`
 @*return* `value` — The unsigned byte at `address`
 
 
-```lua
+```
 function memory.LBU(address: integer)
   -> value: integer
 ```
@@ -342,7 +342,7 @@ Loads a signed long long (8 bytes) from rdram and returns it in a table of 2 int
 @*return* `value` — A table containing the the upper and lower 4 bytes of the signed long at `address`
 
 
-```lua
+```
 function memory.LD(address: integer)
   -> value: table
 ```
@@ -358,7 +358,7 @@ Loads a double (8 bytes) from rdram and returns it. Alias for `memory.readdouble
 @*return* `value` — The double at `address`
 
 
-```lua
+```
 function memory.LDC1(address: integer)
   -> value: number
 ```
@@ -374,7 +374,7 @@ Loads a unsigned long long (8 bytes) from rdram and returns it in a table of 2 i
 @*return* `value` — A table containing the the upper and lower 4 bytes of the unsigned long long at `address`
 
 
-```lua
+```
 function memory.LDU(address: integer)
   -> value: table
 ```
@@ -390,7 +390,7 @@ Loads a signed short (2 bytes) from rdram and returns it. Alias for `memory.read
 @*return* `value` — The signed short at `address`
 
 
-```lua
+```
 function memory.LH(address: integer)
   -> value: integer
 ```
@@ -406,7 +406,7 @@ Loads an unsigned short (2 bytes) from rdram and returns it. Alias for `memory.r
 @*return* `value` — The unsigned short at `address`
 
 
-```lua
+```
 function memory.LHU(address: integer)
   -> value: integer
 ```
@@ -422,7 +422,7 @@ Loads a signed long (4 bytes) from rdram and returns it. Alias for `memory.readd
 @*return* `value` — The signed long at `address`
 
 
-```lua
+```
 function memory.LW(address: integer)
   -> value: integer
 ```
@@ -438,7 +438,7 @@ Loads a float (4 bytes) from rdram and returns it. Alias for `memory.readfloat`
 @*return* `value` — The float at `address`
 
 
-```lua
+```
 function memory.LWC1(address: integer)
   -> value: number
 ```
@@ -454,7 +454,7 @@ Loads an unsigned long (4 bytes) from rdram and returns it. Alias for `memory.re
 @*return* `value` — The unsigned long at `address`
 
 
-```lua
+```
 function memory.LWU(address: integer)
   -> value: integer
 ```
@@ -472,7 +472,7 @@ Loads `size` bytes at `address` from rdram and returns it. Alias for `memory.rea
 @*return* `value` — `size` bytes at `address`
 
 
-```lua
+```
 function memory.loadsize(address: integer, size: integer)
   -> value: number
 ```
@@ -484,7 +484,7 @@ function memory.loadsize(address: integer, size: integer)
 Prints a value to the lua console
 
 
-```lua
+```
 function print(data: any)
 ```
 
@@ -495,7 +495,7 @@ function print(data: any)
 Stops script execution
 
 
-```lua
+```
 function stop()
 ```
 
@@ -508,7 +508,7 @@ Clears one of all images
 @*param* `idx` — The identifier of the image to clear. If it is 0, clear all iamges
 
 
-```lua
+```
 function wgui.deleteimage(idx: integer)
 ```
 
@@ -519,7 +519,7 @@ function wgui.deleteimage(idx: integer)
 Draws the image at index `idx` at the specified coordinates
 
 
-```lua
+```
 function wgui.drawimage(idx: integer, x: integer, y: integer)
 ```
 
@@ -530,7 +530,7 @@ function wgui.drawimage(idx: integer, x: integer, y: integer)
 Draws the image at index `idx` at the specified coordinates and scale
 
 
-```lua
+```
 function wgui.drawimage(idx: integer, x: integer, y: integer, s: number)
 ```
 
@@ -541,7 +541,7 @@ function wgui.drawimage(idx: integer, x: integer, y: integer, s: number)
 Draws the image at index `idx` at the specified coordinates and size
 
 
-```lua
+```
 function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer)
 ```
 
@@ -552,7 +552,7 @@ function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: int
 Draws the image at index `idx` at the specified coordinates, size, and rotation, using a part of the source image given by the `src` parameters
 
 
-```lua
+```
 function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer, srcx: integer, srcy: integer, srcw: integer, srch: integer, rotate: number)
 ```
 
@@ -563,7 +563,7 @@ function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: int
 GDI: Draws text in a rectangle (more documentation soon)
 
 
-```lua
+```
 function wgui.drawtext(text: string, rect: table, format?: string)
 ```
 
@@ -574,7 +574,7 @@ function wgui.drawtext(text: string, rect: table, format?: string)
 Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
 
 
-```lua
+```
 function wgui.ellipse(left: integer, top: integer, right: integer, bottom: integer)
 ```
 
@@ -605,7 +605,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.fillellipsea(x: integer, y: integer, w: integer, h: integer, color: color)
 ```
 
@@ -638,7 +638,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.fillpolygona(points: table, color: color)
 ```
 
@@ -649,7 +649,7 @@ function wgui.fillpolygona(points: table, color: color)
 Draws a rectangle at the specified coordinates with the specified color
 
 
-```lua
+```
 function wgui.fillrect(left: integer, top: integer, right: integer, bottom: integer, red: integer, green: integer, blue: integer)
 ```
 
@@ -680,7 +680,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.fillrecta(x: integer, y: integer, w: integer, h: integer, color: color)
 ```
 
@@ -691,7 +691,7 @@ function wgui.fillrecta(x: integer, y: integer, w: integer, h: integer, color: c
 Returns the width and height of the image at `idx`
 
 
-```lua
+```
 function wgui.getimageinfo(idx: integer)
   -> { width: integer, height: integer }
 ```
@@ -703,7 +703,7 @@ function wgui.getimageinfo(idx: integer)
 Returns the current width and height of the mupen window in a table
 
 
-```lua
+```
 function wgui.info()
   -> { width: integer, height: integer }
 ```
@@ -715,7 +715,7 @@ function wgui.info()
 Draws a line from `(x1, y1)` to `(x2, y2)`
 
 
-```lua
+```
 function wgui.line(x1: integer, y1: integer, x2: integer, y2: integer)
 ```
 
@@ -726,7 +726,7 @@ function wgui.line(x1: integer, y1: integer, x2: integer, y2: integer)
 Loads an image file from `path` and returns the identifier of that image
 
 
-```lua
+```
 function wgui.loadimage(path: string)
   -> integer
 ```
@@ -740,7 +740,7 @@ Captures the current screen and saves it as an image
 @*return* `The` — identifier of the saved image
 
 
-```lua
+```
 function wgui.loadscreen()
   -> The: integer
 ```
@@ -752,7 +752,7 @@ function wgui.loadscreen()
 Re-initializes loadscreen
 
 
-```lua
+```
 function wgui.loadscreenreset()
 ```
 
@@ -763,7 +763,7 @@ function wgui.loadscreenreset()
 Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
 
 
-```lua
+```
 function wgui.polygon(points: table)
 ```
 
@@ -778,7 +778,7 @@ GDI: Draws a rectangle at the specified coordinates with the current GDI backgro
 @*param* `rounded_height` — The height of the ellipse used to draw the rounded corners.
 
 
-```lua
+```
 function wgui.rect(left: integer, top: integer, right: integer, bottom: integer, rounded_width?: integer, rounded_height?: integer)
 ```
 
@@ -789,7 +789,7 @@ function wgui.rect(left: integer, top: integer, right: integer, bottom: integer,
 Resizes the mupen window to `w` x `h`
 
 
-```lua
+```
 function wgui.resize(w: integer, h: integer)
 ```
 
@@ -818,7 +818,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.setbk(color: color)
 ```
 
@@ -847,7 +847,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.setbrush(color: color)
 ```
 
@@ -876,7 +876,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.setcolor(color: color)
 ```
 
@@ -893,7 +893,7 @@ Sets the font, font size, and font style
 @*param* `style` — Each character in this string sets one style of the font, applied in chronological order. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiased. Defaults to "" if not given
 
 
-```lua
+```
 function wgui.setfont(size?: integer, font?: string, style?: string)
 ```
 
@@ -922,7 +922,7 @@ color:
 ```
 
 
-```lua
+```
 function wgui.setpen(color: color)
 ```
 
@@ -933,7 +933,7 @@ function wgui.setpen(color: color)
 GDI: Displays text in one line with the current GDI background color and GDI text color
 
 
-```lua
+```
 function wgui.text(x: integer, y: integer, text: string)
 ```
 
