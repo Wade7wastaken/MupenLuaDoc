@@ -28,7 +28,7 @@ with open("index.md", "wt") as f:
                         definition["extends"]["desc"],
                         "",
                         "",
-                        "```",
+                        "```lua",
                         definition['extends']['view'],
                         "```"
                         "",
