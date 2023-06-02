@@ -22,7 +22,7 @@ avi = {}
 --#region
 
 ---Prints a value to the lua console
----@param data any
+---@param data any The data to print to the console
 function print(data)
 end
 
@@ -38,18 +38,21 @@ end
 
 ---Displays the text message in the console.
 ---Similar to `print`, but only accepts strings
----@param message string
+---@param message string The string to print to the console
 ---@return nil
 function emu.console(message) end
 
----Seems to do nothing.
+---Prints `message` to the debug console. If you are not debugging
+---mupen with Visual Studio, this function will do nothing
+---@deprecated
+---@param message string The string to print to the debug console
 ---@return nil
-function emu.debugview() end
+function emu.debugview(message) end
 
 ---Displays the text `message` in the status bar
 ---on the bottom while replacing any other text.
 ---The message will only display until the next frame.
----@param message string
+---@param message string The string to display on the status bar
 ---@return nil
 function emu.statusbar(message) end
 
@@ -59,7 +62,7 @@ function emu.statusbar(message) end
 ---once in Ocarina of Time. If `unregister` is set to true,
 ---the function `f` will no longer be called when this event occurs,
 ---but it will error if you never registered the function.
----@param f fun(nil)
+---@param f fun(): nil
 ---@param unregister boolean?
 ---@return nil
 function emu.atvi(f, unregister) end
@@ -68,16 +71,16 @@ function emu.atvi(f, unregister) end
 ---If `unregister` is set to true, the function `f` will no longer
 ---be called when this event occurs, but it will error if you
 ---never registered the function.
----@param f fun(nil)
+---@param f fun(): nil
 ---@param unregister boolean?
 ---@return nil
 function emu.atupdatescreen(f, unregister) end
 
 ---Calls the function `f` every input frame. The function `f` receives
----the argument `a` that seems to always be `0`. If `unregister` is set
+---an argument that seems to always be `0`. If `unregister` is set
 ---to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
----@param f fun(a: integer?)
+---@param f fun(a: integer?): nil
 ---@param unregister boolean?
 ---@return nil
 function emu.atinput(f, unregister) end
@@ -85,93 +88,247 @@ function emu.atinput(f, unregister) end
 ---Calls the function `f` when the script is stopped. If `unregister` is
 ---set to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
----@param f fun(nil)
+---@param f fun(): nil
 ---@param unregister boolean?
 ---@return nil
 function emu.atstop(f, unregister) end
 
 ---Defines a handler function that is called when a window receives a
----message. If `unregister` is set to true, the function `f` will no longer
+---message. The message data is given to the function in 4 parameters.
+---If `unregister` is set to true, the function `f` will no longer
 ---be called when this event occurs, but it will error if you never
 ---registered the function.
----@param f fun(a: 0) takes the following parameters:
+---@param f fun(a, b, c, d): nil
+---@param unregister boolean?
+---@return nil
 function emu.atwindowmessage(f, unregister) end
 
 ---Calls the function `f` constantly, even when the emulator is paused
 ---If `unregister` is set to true, the function `f` will no longer
 ---be called when this event occurs, but it will error if you never
 ---registered the function.
----@param f fun(nil)
+---@param f fun(): nil
 ---@param unregister boolean?
+---@return nil
 function emu.atinterval(f, unregister) end
 
 ---Calls the function `f` when a movie is played. If `unregister`
----is set to true, the function `f` will no longer
----be called when this event occurs, but it will error if you never
----registered the function.
----@param f any
----@param unregister any
+---is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the
+---function.
+---@param f fun(): nil
+---@param unregister boolean?
+---@return nil
 function emu.atplaymovie(f, unregister) end
 
--- function emu.atstopmovie() end
+---Calls the function `f` when a movie is stopped. If `unregister`
+---is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the
+---function
+---@param f fun(): nil
+---@param unregister boolean?
+---@return nil
+function emu.atstopmovie(f, unregister) end
 
--- function emu.atloadstate() end
+---Calls the function `f` when a savestate is loaded. If `unregister`
+---is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the
+---function
+---@param f fun(): nil
+---@param unregister boolean?
+---@return nil
+function emu.atloadstate(f, unregister) end
 
--- function emu.atsavestate() end
+---Calls the function `f` when a savestate is saved. If `unregister`
+---is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the
+---function
+---@param f fun(): nil
+---@param unregister boolean?
+---@return nil
+function emu.atsavestate(f, unregister) end
 
--- function emu.atreset() end
+---Calls the function `f` when the emulator is reset. If `unregister`
+---is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the
+---function
+---@param f fun(): nil
+---@param unregister boolean?
+---@return nil
+function emu.atreset(f, unregister) end
 
--- function emu.framecount() end
+---Returns the number of VIs since the last movie was played.
+---This should match the statusbar (assuming you have `0-index
+---statusbar` off). If no movie has been played, it returns the
+---number of VIs since the emulator was started, not reset
+---@nodiscard
+---@return integer framecount
+function emu.framecount() end
 
--- function emu.samplecount() end
+---Returns the number of input frames since the last movie was
+---played. This should match the statusbar (assuming you have
+---`0-index statusbar` off). If no movie is playing, it will return
+---the last value when a movie was playing. If no movie has been
+---played yet, it will return `-1`
+---@nodiscard
+---@return integer samplecount
+function emu.samplecount() end
 
--- function emu.inputcount() end
+---Returns the number of input frames that have happened since
+---the emulator was started. It does not reset when a movie is
+---started
+---@nodiscard
+---@return integer inputcount
+function emu.inputcount() end
 
--- function emu.getversion() end
+---Returns the current mupen version. If `type` is 0 or less, it
+---will return the full version name (Mupen 64 0.0.0). If `type`
+---is 1 or more, it will return the version number (0.0.0)
+---@nodiscard
+---@param type 0|1
+---@return string version
+function emu.getversion(type) end
 
--- function emu.pause() end
+---Pauses or unpauses the emulator
+---@param pause boolean True pauses the emulator and false resumes
+---it
+function emu.pause(pause) end
 
--- function emu.getpause() end
+---Returns `true` if the emulator is paused and `false` if it is not
+---@nodiscard
+---@return boolean emu_paused
+function emu.getpause() end
 
--- function emu.getspeed() end
+---Returns the current speed limit (not the current speed) of the
+---emulator
+---@nodiscard
+---@return integer speed_limit
+function emu.getspeed() end
 
--- function emu.speed() end
+---Sets the speed limit of the emulator
+---@param speed_limit integer
+---@return nil
+function emu.speed(speed_limit) end
 
--- function emu.speedmode() end
+---Sets the speed mode of the emulator
+---@param mode "normal"|"maximum"
+---@return nil
+function emu.speedmode(mode) end
 
--- function emu.setgfx() end
+---?
+---@param mode 0|1
+---@return nil
+function emu.setgfx(mode) end
 
--- function emu.getaddress() end
+---?
+---@nodiscard
+---@param address string
+---@return integer
+function emu.getaddress(address) end
 
--- function emu.isreadonly() end
+---Returnss true if the currently playing movie is read only and
+---false if it is not
+---@nodiscard
+---@return boolean read_only
+function emu.isreadonly() end
 
--- function emu.getsystemmetrics() end
+---Gets a system metric using the windows
+---[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
+---function
+---@nodiscard
+---@param param integer
+---@return integer metric
+function emu.getsystemmetrics(param) end
 
--- function emu.ismainwindowinforeground() end
+---Returns `true` if the main mupen window is focused and false if
+---it is not
+---@nodiscard
+---@return boolean focused
+function emu.ismainwindowinforeground() end
 
--- function emu.screenshot() end
+---Takes a screenshot and saves it to the directory `dir`
+---@param dir string The directory to save the screenshot to
+---@return nil
+function emu.screenshot(dir) end
 
--- function memory.LBU() end
+---Loads an unsigned byte from rdram and returns it. Alias for
+---`memory.readbyte`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The unsigned byte at `address`
+function memory.LBU(address) end
 
--- function memory.LB() end
+---Loads a signed byte from rdram and returns it. Alias for
+---`memory.readbytesigned`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The signed byte at `address`
+function memory.LB(address) end
 
--- function memory.LHU() end
+---Loads an unsigned word (2 bytes) from rdram and returns it. Alias
+---for `memory.readword`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The unsigned word at `address`
+function memory.LHU(address) end
 
--- function memory.LH() end
+---Loads a signed word (2 bytes) from rdram and returns it. Alias
+---for `memory.readwordsigned`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The signed word at `address`
+function memory.LH(address) end
 
--- function memory.LWU() end
+---Loads an unsigned double word (4 bytes) from rdram and returns it.
+---Alias for `memory.readdword`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The unsigned double word at `address`
+function memory.LWU(address) end
 
--- function memory.LW() end
+---Loads a signed double word (4 bytes) from rdram and returns it.
+---Alias for `memory.readdwordsigned`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer value The signed double word at `address`
+function memory.LW(address) end
 
--- function memory.LDU() end
+---Loads an unsigned quad word (8 bytes) from rdram and returns it.
+---Alias for `memory.readqword`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer[] value A table containing the upper and lower
+---halves of the unsigned quad word at `address`
+function memory.LDU(address) end
 
--- function memory.LD() end
+---Loads a signed quad word (8 bytes) from rdram and returns it.
+---Alias for `memory.readqwordsigned`
+---@nodiscard
+---@param address integer The address to read from
+---@return integer[] value A table containing the upper and lower
+---halves of the unsigned quad word at `address`
+function memory.LD(address) end
 
--- function memory.LWC1() end
+---Loads a float (4 bytes) from rdram and returns it. Alias for
+---`memory.readfloat`
+---@nodiscard
+---@param address integer The address to read from
+---@return number value the float at `address`
+function memory.LWC1(address) end
 
--- function memory.LDC1() end
+---Loads a double (8 bytes) from rdram and returns it. Alias for
+---`memory.readdouble`
+---@nodiscard
+---@param address integer The address to read from
+---@return number value the double at `address`
+function memory.LDC1(address) end
 
--- function memory.loadsize() end
+---Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
+---`memory.readsize`
+---@param address integer The address to read from
+---@param size 1|2|4|8 The number of bytes to read
+---@return integer|integer[]
+function memory.loadsize(address, size) end
 
 -- function memory.loadbytes() end
 
