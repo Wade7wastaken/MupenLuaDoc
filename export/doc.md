@@ -1,0 +1,3940 @@
+# _G
+
+
+A global variable (not a function) that holds the global environment (see [§2.2](command:extension.lua.doc?["en-us/54/manual.html/2.2"])). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-_G"])
+
+
+
+```lua
+_G
+```
+
+
+---
+
+# _VERSION
+
+
+A global variable (not a function) that holds a string containing the running Lua version.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-_VERSION"])
+
+
+
+```lua
+string
+```
+
+
+---
+
+# arg
+
+
+Command-line arguments of Lua Standalone.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-arg"])
+
+
+
+```lua
+string[]
+```
+
+
+---
+
+# assert
+
+
+Raises an error if the value of its argument v is false (i.e., `nil` or `false`); otherwise, returns all its arguments. In case of error, `message` is the error object; when absent, it defaults to `"assertion failed!"`
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-assert"])
+
+
+```lua
+function assert(v?: <T>, message?: any, ...any)
+  -> <T>
+  2. ...any
+```
+
+
+---
+
+# collectgarbage
+
+
+This function is a generic interface to the garbage collector. It performs different functions according to its first argument, `opt`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-collectgarbage"])
+
+
+```lua
+opt:
+   -> "collect" -- Performs a full garbage-collection cycle.
+    | "stop" -- Stops automatic execution.
+    | "restart" -- Restarts automatic execution.
+    | "count" -- Returns the total memory in Kbytes.
+    | "step" -- Performs a garbage-collection step.
+    | "isrunning" -- Returns whether the collector is running.
+    | "incremental" -- Change the collector mode to incremental.
+    | "generational" -- Change the collector mode to generational.
+```
+
+
+```lua
+function collectgarbage(opt?: gcoptions, ...any)
+  -> any
+```
+
+
+---
+
+# color
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+string|"black"|"blue"|"chartreuse"|"clear"...(+9)
+```
+
+
+---
+
+# coroutine
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine"])
+
+
+
+```lua
+coroutinelib
+```
+
+
+---
+
+# coroutine.close
+
+
+Closes coroutine `co` , closing all its pending to-be-closed variables and putting the coroutine in a dead state.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.close"])
+
+
+```lua
+function coroutine.close(co: thread)
+  -> noerror: boolean
+  2. errorobject: any
+```
+
+
+---
+
+# coroutine.create
+
+
+Creates a new coroutine, with body `f`. `f` must be a function. Returns this new coroutine, an object with type `"thread"`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.create"])
+
+
+```lua
+function coroutine.create(f: fun(...any):...unknown)
+  -> thread
+```
+
+
+---
+
+# coroutine.isyieldable
+
+
+Returns true when the coroutine `co` can yield. The default for `co` is the running coroutine.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.isyieldable"])
+
+
+```lua
+function coroutine.isyieldable(co?: thread)
+  -> boolean
+```
+
+
+---
+
+# coroutine.resume
+
+
+Starts or continues the execution of coroutine `co`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.resume"])
+
+
+```lua
+function coroutine.resume(co: thread, val1?: any, ...any)
+  -> success: boolean
+  2. ...any
+```
+
+
+---
+
+# coroutine.running
+
+
+Returns the running coroutine plus a boolean, true when the running coroutine is the main one.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.running"])
+
+
+```lua
+function coroutine.running()
+  -> running: thread
+  2. ismain: boolean
+```
+
+
+---
+
+# coroutine.status
+
+
+Returns the status of coroutine `co`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.status"])
+
+
+```lua
+return #1:
+    | "running" -- Is running.
+    | "suspended" -- Is suspended or not started.
+    | "normal" -- Is active but not running.
+    | "dead" -- Has finished or stopped with an error.
+```
+
+
+```lua
+function coroutine.status(co: thread)
+  -> "dead"|"normal"|"running"|"suspended"
+```
+
+
+---
+
+# coroutine.wrap
+
+
+Creates a new coroutine, with body `f`; `f` must be a function. Returns a function that resumes the coroutine each time it is called.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.wrap"])
+
+
+```lua
+function coroutine.wrap(f: fun(...any):...unknown)
+  -> fun(...any):...unknown
+```
+
+
+---
+
+# coroutine.yield
+
+
+Suspends the execution of the calling coroutine.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-coroutine.yield"])
+
+
+```lua
+(async) function coroutine.yield(...any)
+  -> ...any
+```
+
+
+---
+
+# debug
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug"])
+
+
+
+```lua
+debuglib
+```
+
+
+---
+
+# debug.debug
+
+
+Enters an interactive mode with the user, running each string that the user enters.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.debug"])
+
+
+```lua
+function debug.debug()
+```
+
+
+---
+
+# debug.getfenv
+
+
+Returns the environment of object `o` .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getfenv"])
+
+
+```lua
+function debug.getfenv(o: any)
+  -> table
+```
+
+
+---
+
+# debug.gethook
+
+
+Returns the current hook settings of the thread.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.gethook"])
+
+
+```lua
+function debug.gethook(co?: thread)
+  -> hook: function
+  2. mask: string
+  3. count: integer
+```
+
+
+---
+
+# debug.getinfo
+
+
+Returns a table with information about a function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getinfo"])
+
+
+---
+
+```lua
+what:
+   +> "n" -- `name` and `namewhat`
+   +> "S" -- `source`, `short_src`, `linedefined`, `lastlinedefined`, and `what`
+   +> "l" -- `currentline`
+   +> "t" -- `istailcall`
+   +> "u" -- `nups`, `nparams`, and `isvararg`
+   +> "f" -- `func`
+   +> "r" -- `ftransfer` and `ntransfer`
+   +> "L" -- `activelines`
+```
+
+
+```lua
+function debug.getinfo(thread: thread, f: integer|fun(...any):...unknown, what?: infowhat)
+  -> debuginfo
+```
+
+
+---
+
+# debug.getlocal
+
+
+Returns the name and the value of the local variable with index `local` of the function at level `f` of the stack.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getlocal"])
+
+
+```lua
+function debug.getlocal(thread: thread, f: integer|fun(...any):...unknown, index: integer)
+  -> name: string
+  2. value: any
+```
+
+
+---
+
+# debug.getmetatable
+
+
+Returns the metatable of the given value.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getmetatable"])
+
+
+```lua
+function debug.getmetatable(object: any)
+  -> metatable: table
+```
+
+
+---
+
+# debug.getregistry
+
+
+Returns the registry table.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getregistry"])
+
+
+```lua
+function debug.getregistry()
+  -> table
+```
+
+
+---
+
+# debug.getupvalue
+
+
+Returns the name and the value of the upvalue with index `up` of the function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getupvalue"])
+
+
+```lua
+function debug.getupvalue(f: fun(...any):...unknown, up: integer)
+  -> name: string
+  2. value: any
+```
+
+
+---
+
+# debug.getuservalue
+
+
+Returns the `n`-th user value associated
+to the userdata `u` plus a boolean,
+`false` if the userdata does not have that value.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.getuservalue"])
+
+
+```lua
+function debug.getuservalue(u: userdata, n?: integer)
+  -> any
+  2. boolean
+```
+
+
+---
+
+# debug.setcstacklimit
+
+
+### **Deprecated in `Lua 5.4.2`**
+
+Sets a new limit for the C stack. This limit controls how deeply nested calls can go in Lua, with the intent of avoiding a stack overflow.
+
+In case of success, this function returns the old limit. In case of error, it returns `false`.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setcstacklimit"])
+
+
+```lua
+function debug.setcstacklimit(limit: integer)
+  -> boolean|integer
+```
+
+
+---
+
+# debug.setfenv
+
+
+Sets the environment of the given `object` to the given `table` .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setfenv"])
+
+
+```lua
+function debug.setfenv(object: <T>, env: table)
+  -> object: <T>
+```
+
+
+---
+
+# debug.sethook
+
+
+Sets the given function as a hook.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.sethook"])
+
+
+---
+
+```lua
+mask:
+   +> "c" -- Calls hook when Lua calls a function.
+   +> "r" -- Calls hook when Lua returns from a function.
+   +> "l" -- Calls hook when Lua enters a new line of code.
+```
+
+
+```lua
+function debug.sethook(thread: thread, hook: fun(...any):...unknown, mask: hookmask, count?: integer)
+```
+
+
+---
+
+# debug.setlocal
+
+
+Assigns the `value` to the local variable with index `local` of the function at `level` of the stack.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setlocal"])
+
+
+```lua
+function debug.setlocal(thread: thread, level: integer, index: integer, value: any)
+  -> name: string
+```
+
+
+---
+
+# debug.setmetatable
+
+
+Sets the metatable for the given value to the given table (which can be `nil`).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setmetatable"])
+
+
+```lua
+function debug.setmetatable(value: <T>, meta?: table)
+  -> value: <T>
+```
+
+
+---
+
+# debug.setupvalue
+
+
+Assigns the `value` to the upvalue with index `up` of the function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setupvalue"])
+
+
+```lua
+function debug.setupvalue(f: fun(...any):...unknown, up: integer, value: any)
+  -> name: string
+```
+
+
+---
+
+# debug.setuservalue
+
+
+Sets the given `value` as
+the `n`-th user value associated to the given `udata`.
+`udata` must be a full userdata.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.setuservalue"])
+
+
+```lua
+function debug.setuservalue(udata: userdata, value: any, n?: integer)
+  -> udata: userdata
+```
+
+
+---
+
+# debug.traceback
+
+
+Returns a string with a traceback of the call stack. The optional message string is appended at the beginning of the traceback.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.traceback"])
+
+
+```lua
+function debug.traceback(thread: thread, message?: any, level?: integer)
+  -> message: string
+```
+
+
+---
+
+# debug.upvalueid
+
+
+Returns a unique identifier (as a light userdata) for the upvalue numbered `n` from the given function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.upvalueid"])
+
+
+```lua
+function debug.upvalueid(f: fun(...any):...unknown, n: integer)
+  -> id: lightuserdata
+```
+
+
+---
+
+# debug.upvaluejoin
+
+
+Make the `n1`-th upvalue of the Lua closure `f1` refer to the `n2`-th upvalue of the Lua closure `f2`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-debug.upvaluejoin"])
+
+
+```lua
+function debug.upvaluejoin(f1: fun(...any):...unknown, n1: integer, f2: fun(...any):...unknown, n2: integer)
+```
+
+
+---
+
+# dofile
+
+
+Opens the named file and executes its content as a Lua chunk. When called without arguments, `dofile` executes the content of the standard input (`stdin`). Returns all values returned by the chunk. In case of errors, `dofile` propagates the error to its caller. (That is, `dofile` does not run in protected mode.)
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-dofile"])
+
+
+```lua
+function dofile(filename?: string)
+  -> ...any
+```
+
+
+---
+
+# emu
+
+
+```lua
+table
+```
+
+
+---
+
+# emu.atinput
+
+Registers a function to be run every input frame
+
+
+```lua
+function emu.atinput(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atinterval
+
+Registers a function to be run constantly
+
+
+```lua
+function emu.atinterval(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atloadstate
+
+Registers a function to be run when a savestate is loaded
+
+
+```lua
+function emu.atloadstate(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atreset
+
+Registers a function to be run when the emulator is reset
+
+
+```lua
+function emu.atreset(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atsavestate
+
+Registers a function to be run when a savestate is saved
+
+
+```lua
+function emu.atsavestate(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atstop
+
+Registers a function to be run when the lua script is stopped
+
+
+```lua
+function emu.atstop(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atupdatescreen
+
+Registers a function to be run when the screen updates
+
+
+```lua
+function emu.atupdatescreen(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atvi
+
+Registers a function to be run every VI
+
+
+```lua
+function emu.atvi(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.console
+
+Similar to print, but only accepts strings
+
+
+```lua
+function emu.console(str: string)
+```
+
+
+---
+
+# emu.framecount
+
+Returns the number of VIs since the last movie was played. This should match the statusbar (assuming you have `0-index statusbar` off). If no movie has been played, it returns the number of VIs since the emulator was started, not reset
+
+
+```lua
+function emu.framecount()
+  -> framecount: integer
+```
+
+
+---
+
+# emu.getaddress
+
+?
+
+
+```lua
+function emu.getaddress(address: string)
+```
+
+
+---
+
+# emu.getpause
+
+Returns `1` if the emulator is paused and `0` if it is not
+
+
+```lua
+function emu.getpause()
+  -> emu_paused: boolean
+```
+
+
+---
+
+# emu.getspeed
+
+Returns the current speed limit of the emulator
+
+
+```lua
+function emu.getspeed()
+  -> speed_limit: integer
+```
+
+
+---
+
+# emu.getsystemmetrics
+
+Gets a system metric using the windows [GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics) function
+
+
+```lua
+function emu.getsystemmetrics(param: integer)
+  -> metric: integer
+```
+
+
+---
+
+# emu.getversion
+
+Returns the current mupen version
+
+@*param* `type` — `1` returns `Mupen 64 {version}`. `2` returns `{version}`
+
+```lua
+type:
+    | 1
+    | 2
+```
+
+
+```lua
+function emu.getversion(type: 1|2)
+  -> version: string
+```
+
+
+---
+
+# emu.inputcount
+
+Returns the number of input frames that have happened since the emulator was started. It does not reset when a movie is started
+
+
+```lua
+function emu.inputcount()
+  -> inputcount: integer
+```
+
+
+---
+
+# emu.isreadonly
+
+Returns true if the currently playing movie is read only
+
+
+```lua
+function emu.isreadonly()
+  -> read_only: boolean
+```
+
+
+---
+
+# emu.pause
+
+Pauses or unpauses the emulator
+
+@*param* `pause` — True pauses the emulator and false resumes the emulator
+
+
+```lua
+function emu.pause(pause: boolean)
+```
+
+
+---
+
+# emu.samplecount
+
+Returns the number of input frames since the last movie was played. This should match the statusbar (assuming you have `0-index statusbar` off). If no movie is playing, it will return the last value when a movie was playing. If no movie has been played yet, it will return -1
+
+
+```lua
+function emu.samplecount()
+  -> samplecount: integer
+```
+
+
+---
+
+# emu.speed
+
+Sets the speed limit of the emulator
+
+
+```lua
+function emu.speed(speed_limit: integer)
+```
+
+
+---
+
+# emu.speedmode
+
+Sets the speed mode of the emulator
+
+```lua
+mode:
+    | "normal"
+    | "maximum"
+```
+
+
+```lua
+function emu.speedmode(mode: "maximum"|"normal")
+```
+
+
+---
+
+# emu.statusbar
+
+Sets the statusbar text to `str`
+
+
+```lua
+function emu.statusbar(str: string)
+```
+
+
+---
+
+# error
+
+
+Terminates the last protected function called and returns message as the error object.
+
+Usually, `error` adds some information about the error position at the beginning of the message, if the message is a string.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-error"])
+
+
+```lua
+function error(message: any, level?: integer)
+```
+
+
+---
+
+# getfenv
+
+
+Returns the current environment in use by the function. `f` can be a Lua function or a number that specifies the function at that stack level.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-getfenv"])
+
+
+```lua
+function getfenv(f?: integer|fun(...any):...unknown)
+  -> table
+```
+
+
+---
+
+# getmetatable
+
+
+If object does not have a metatable, returns nil. Otherwise, if the object's metatable has a __metatable field, returns the associated value. Otherwise, returns the metatable of the given object.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-getmetatable"])
+
+
+```lua
+function getmetatable(object: any)
+  -> metatable: table
+```
+
+
+---
+
+# gui
+
+
+```lua
+table
+```
+
+
+---
+
+# input
+
+
+```lua
+table
+```
+
+
+---
+
+# input.diff
+
+Gets the difference in two input tables
+
+
+```lua
+function input.diff(t1: table, t2: table)
+  -> table
+```
+
+
+---
+
+# input.get
+
+Returns a table of booleans corresponding to which keys are pressed
+
+
+```lua
+function input.get()
+  -> table
+```
+
+
+---
+
+# input.prompt
+
+Unknown
+
+
+```lua
+function input.prompt()
+```
+
+
+---
+
+# io
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io"])
+
+
+
+```lua
+iolib
+```
+
+
+---
+
+# io.close
+
+
+Close `file` or default output file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.close"])
+
+
+```lua
+exitcode:
+    | "exit"
+    | "signal"
+```
+
+
+```lua
+function io.close(file?: file*)
+  -> suc: boolean?
+  2. exitcode: exitcode?
+  3. code: integer?
+```
+
+
+---
+
+# io.flush
+
+
+Saves any written data to default output file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.flush"])
+
+
+```lua
+function io.flush()
+```
+
+
+---
+
+# io.input
+
+
+Sets `file` as the default input file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.input"])
+
+
+```lua
+function io.input(file: string|file*)
+```
+
+
+---
+
+# io.lines
+
+
+------
+```lua
+for c in io.lines(filename, ...) do
+    body
+end
+```
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.lines"])
+
+
+```lua
+...(param):
+    | "n" -- Reads a numeral and returns it as number.
+    | "a" -- Reads the whole file.
+   -> "l" -- Reads the next line skipping the end of line.
+    | "L" -- Reads the next line keeping the end of line.
+```
+
+
+```lua
+function io.lines(filename?: string, ...readmode)
+  -> fun():any, ...unknown
+```
+
+
+---
+
+# io.open
+
+
+Opens a file, in the mode specified in the string `mode`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.open"])
+
+
+```lua
+mode:
+   -> "r" -- Read mode.
+    | "w" -- Write mode.
+    | "a" -- Append mode.
+    | "r+" -- Update mode, all previous data is preserved.
+    | "w+" -- Update mode, all previous data is erased.
+    | "a+" -- Append update mode, previous data is preserved, writing is only allowed at the end of file.
+    | "rb" -- Read mode. (in binary mode.)
+    | "wb" -- Write mode. (in binary mode.)
+    | "ab" -- Append mode. (in binary mode.)
+    | "r+b" -- Update mode, all previous data is preserved. (in binary mode.)
+    | "w+b" -- Update mode, all previous data is erased. (in binary mode.)
+    | "a+b" -- Append update mode, previous data is preserved, writing is only allowed at the end of file. (in binary mode.)
+```
+
+
+```lua
+function io.open(filename: string, mode?: openmode)
+  -> file*?
+  2. errmsg: string?
+```
+
+
+---
+
+# io.output
+
+
+Sets `file` as the default output file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.output"])
+
+
+```lua
+function io.output(file: string|file*)
+```
+
+
+---
+
+# io.popen
+
+
+Starts program prog in a separated process.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.popen"])
+
+
+```lua
+mode:
+    | "r" -- Read data from this program by `file`.
+    | "w" -- Write data to this program by `file`.
+```
+
+
+```lua
+function io.popen(prog: string, mode?: popenmode)
+  -> file*?
+  2. errmsg: string?
+```
+
+
+---
+
+# io.read
+
+
+Reads the `file`, according to the given formats, which specify what to read.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.read"])
+
+
+```lua
+...(param):
+    | "n" -- Reads a numeral and returns it as number.
+    | "a" -- Reads the whole file.
+   -> "l" -- Reads the next line skipping the end of line.
+    | "L" -- Reads the next line keeping the end of line.
+```
+
+
+```lua
+function io.read(...readmode)
+  -> any
+  2. ...any
+```
+
+
+---
+
+# io.tmpfile
+
+
+In case of success, returns a handle for a temporary file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.tmpfile"])
+
+
+```lua
+function io.tmpfile()
+  -> file*
+```
+
+
+---
+
+# io.type
+
+
+Checks whether `obj` is a valid file handle.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.type"])
+
+
+```lua
+return #1:
+    | "file" -- Is an open file handle.
+    | "closed file" -- Is a closed file handle.
+    | `nil` -- Is not a file handle.
+```
+
+
+```lua
+function io.type(file: file*)
+  -> filetype
+```
+
+
+---
+
+# io.write
+
+
+Writes the value of each of its arguments to default output file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.write"])
+
+
+```lua
+function io.write(...any)
+  -> file*
+  2. errmsg: string?
+```
+
+
+---
+
+# iohelper
+
+
+```lua
+table
+```
+
+
+---
+
+# ipairs
+
+
+Returns three values (an iterator function, the table `t`, and `0`) so that the construction
+```lua
+    for i,v in ipairs(t) do body end
+```
+will iterate over the key–value pairs `(1,t[1]), (2,t[2]), ...`, up to the first absent index.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-ipairs"])
+
+
+```lua
+function ipairs(t: <T:table>)
+  -> fun(table: <V>[], i?: integer):integer, <V>
+  2. <T:table>
+  3. i: integer
+```
+
+
+---
+
+# joypad
+
+
+```lua
+table
+```
+
+
+---
+
+# load
+
+
+Loads a chunk.
+
+If `chunk` is a string, the chunk is this string. If `chunk` is a function, `load` calls it repeatedly to get the chunk pieces. Each call to `chunk` must return a string that concatenates with previous results. A return of an empty string, `nil`, or no value signals the end of the chunk.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-load"])
+
+
+```lua
+mode:
+    | "b" -- Only binary chunks.
+    | "t" -- Only text chunks.
+   -> "bt" -- Both binary and text.
+```
+
+
+```lua
+function load(chunk: string|function, chunkname?: string, mode?: loadmode, env?: table)
+  -> function?
+  2. error_message: string?
+```
+
+
+---
+
+# loadfile
+
+
+Loads a chunk from file `filename` or from the standard input, if no file name is given.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-loadfile"])
+
+
+```lua
+mode:
+    | "b" -- Only binary chunks.
+    | "t" -- Only text chunks.
+   -> "bt" -- Both binary and text.
+```
+
+
+```lua
+function loadfile(filename?: string, mode?: loadmode, env?: table)
+  -> function?
+  2. error_message: string?
+```
+
+
+---
+
+# loadstring
+
+
+Loads a chunk from the given string.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-loadstring"])
+
+
+```lua
+function loadstring(text: string, chunkname?: string)
+  -> function?
+  2. error_message: string?
+```
+
+
+---
+
+# math
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math"])
+
+
+
+```lua
+mathlib
+```
+
+
+---
+
+# math.abs
+
+
+Returns the absolute value of `x`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.abs"])
+
+
+```lua
+function math.abs(x: <Number:number>)
+  -> <Number:number>
+```
+
+
+---
+
+# math.acos
+
+
+Returns the arc cosine of `x` (in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.acos"])
+
+
+```lua
+function math.acos(x: number)
+  -> number
+```
+
+
+---
+
+# math.asin
+
+
+Returns the arc sine of `x` (in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.asin"])
+
+
+```lua
+function math.asin(x: number)
+  -> number
+```
+
+
+---
+
+# math.atan
+
+
+Returns the arc tangent of `y/x` (in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.atan"])
+
+
+```lua
+function math.atan(y: number, x?: number)
+  -> number
+```
+
+
+---
+
+# math.atan2
+
+
+Returns the arc tangent of `y/x` (in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.atan2"])
+
+
+```lua
+function math.atan2(y: number, x: number)
+  -> number
+```
+
+
+---
+
+# math.ceil
+
+
+Returns the smallest integral value larger than or equal to `x`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.ceil"])
+
+
+```lua
+function math.ceil(x: number)
+  -> integer
+```
+
+
+---
+
+# math.cos
+
+
+Returns the cosine of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.cos"])
+
+
+```lua
+function math.cos(x: number)
+  -> number
+```
+
+
+---
+
+# math.cosh
+
+
+Returns the hyperbolic cosine of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.cosh"])
+
+
+```lua
+function math.cosh(x: number)
+  -> number
+```
+
+
+---
+
+# math.deg
+
+
+Converts the angle `x` from radians to degrees.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.deg"])
+
+
+```lua
+function math.deg(x: number)
+  -> number
+```
+
+
+---
+
+# math.exp
+
+
+Returns the value `e^x` (where `e` is the base of natural logarithms).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.exp"])
+
+
+```lua
+function math.exp(x: number)
+  -> number
+```
+
+
+---
+
+# math.floor
+
+
+Returns the largest integral value smaller than or equal to `x`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.floor"])
+
+
+```lua
+function math.floor(x: number)
+  -> integer
+```
+
+
+---
+
+# math.fmod
+
+
+Returns the remainder of the division of `x` by `y` that rounds the quotient towards zero.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.fmod"])
+
+
+```lua
+function math.fmod(x: number, y: number)
+  -> number
+```
+
+
+---
+
+# math.frexp
+
+
+Decompose `x` into tails and exponents. Returns `m` and `e` such that `x = m * (2 ^ e)`, `e` is an integer and the absolute value of `m` is in the range [0.5, 1) (or zero when `x` is zero).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.frexp"])
+
+
+```lua
+function math.frexp(x: number)
+  -> m: number
+  2. e: number
+```
+
+
+---
+
+# math.ldexp
+
+
+Returns `m * (2 ^ e)` .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.ldexp"])
+
+
+```lua
+function math.ldexp(m: number, e: number)
+  -> number
+```
+
+
+---
+
+# math.log
+
+
+Returns the logarithm of `x` in the given base.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.log"])
+
+
+```lua
+function math.log(x: number, base?: integer)
+  -> number
+```
+
+
+---
+
+# math.log10
+
+
+Returns the base-10 logarithm of x.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.log10"])
+
+
+```lua
+function math.log10(x: number)
+  -> number
+```
+
+
+---
+
+# math.max
+
+
+Returns the argument with the maximum value, according to the Lua operator `<`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.max"])
+
+
+```lua
+function math.max(x: <Number:number>, ...<Number:number>)
+  -> <Number:number>
+```
+
+
+---
+
+# math.min
+
+
+Returns the argument with the minimum value, according to the Lua operator `<`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.min"])
+
+
+```lua
+function math.min(x: <Number:number>, ...<Number:number>)
+  -> <Number:number>
+```
+
+
+---
+
+# math.modf
+
+
+Returns the integral part of `x` and the fractional part of `x`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.modf"])
+
+
+```lua
+function math.modf(x: number)
+  -> integer
+  2. number
+```
+
+
+---
+
+# math.pow
+
+
+Returns `x ^ y` .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.pow"])
+
+
+```lua
+function math.pow(x: number, y: number)
+  -> number
+```
+
+
+---
+
+# math.rad
+
+
+Converts the angle `x` from degrees to radians.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.rad"])
+
+
+```lua
+function math.rad(x: number)
+  -> number
+```
+
+
+---
+
+# math.random
+
+
+* `math.random()`: Returns a float in the range [0,1).
+* `math.random(n)`: Returns a integer in the range [1, n].
+* `math.random(m, n)`: Returns a integer in the range [m, n].
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.random"])
+
+
+```lua
+function math.random(m: integer, n: integer)
+  -> integer
+```
+
+
+---
+
+# math.randomseed
+
+
+* `math.randomseed(x, y)`: Concatenate `x` and `y` into a 128-bit `seed` to reinitialize the pseudo-random generator.
+* `math.randomseed(x)`: Equate to `math.randomseed(x, 0)` .
+* `math.randomseed()`: Generates a seed with a weak attempt for randomness.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.randomseed"])
+
+
+```lua
+function math.randomseed(x?: integer, y?: integer)
+```
+
+
+---
+
+# math.sin
+
+
+Returns the sine of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.sin"])
+
+
+```lua
+function math.sin(x: number)
+  -> number
+```
+
+
+---
+
+# math.sinh
+
+
+Returns the hyperbolic sine of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.sinh"])
+
+
+```lua
+function math.sinh(x: number)
+  -> number
+```
+
+
+---
+
+# math.sqrt
+
+
+Returns the square root of `x`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.sqrt"])
+
+
+```lua
+function math.sqrt(x: number)
+  -> number
+```
+
+
+---
+
+# math.tan
+
+
+Returns the tangent of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.tan"])
+
+
+```lua
+function math.tan(x: number)
+  -> number
+```
+
+
+---
+
+# math.tanh
+
+
+Returns the hyperbolic tangent of `x` (assumed to be in radians).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.tanh"])
+
+
+```lua
+function math.tanh(x: number)
+  -> number
+```
+
+
+---
+
+# math.tointeger
+
+
+If the value `x` is convertible to an integer, returns that integer.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.tointeger"])
+
+
+```lua
+function math.tointeger(x: any)
+  -> integer?
+```
+
+
+---
+
+# math.type
+
+
+Returns `"integer"` if `x` is an integer, `"float"` if it is a float, or `nil` if `x` is not a number.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.type"])
+
+
+```lua
+return #1:
+    | "integer"
+    | "float"
+    | 'nil'
+```
+
+
+```lua
+function math.type(x: any)
+  -> "float"|"integer"|'nil'
+```
+
+
+---
+
+# math.ult
+
+
+Returns `true` if and only if `m` is below `n` when they are compared as unsigned integers.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-math.ult"])
+
+
+```lua
+function math.ult(m: integer, n: integer)
+  -> boolean
+```
+
+
+---
+
+# memory
+
+
+```lua
+table
+```
+
+
+---
+
+# memory.LB
+
+Loads a signed byte from rdram and returns it. Alias for `memory.readbytesigned`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The signed byte at `address`
+
+
+```lua
+function memory.LB(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.LBU
+
+Loads an unsigned byte from rdram and returns it. Alias for `memory.readbyte`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The unsigned byte at `address`
+
+
+```lua
+function memory.LBU(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.LD
+
+Loads a signed long long (8 bytes) from rdram and returns it in a table of 2 integers. Alias for `memory.readqwordsigned`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — A table containing the the upper and lower 4 bytes of the signed long at `address`
+
+
+```lua
+function memory.LD(address: integer)
+  -> value: table
+```
+
+
+---
+
+# memory.LDC1
+
+Loads a double (8 bytes) from rdram and returns it. Alias for `memory.readdouble`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The double at `address`
+
+
+```lua
+function memory.LDC1(address: integer)
+  -> value: number
+```
+
+
+---
+
+# memory.LDU
+
+Loads a unsigned long long (8 bytes) from rdram and returns it in a table of 2 integers. Alias for `memory.readqword`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — A table containing the the upper and lower 4 bytes of the unsigned long long at `address`
+
+
+```lua
+function memory.LDU(address: integer)
+  -> value: table
+```
+
+
+---
+
+# memory.LH
+
+Loads a signed short (2 bytes) from rdram and returns it. Alias for `memory.readwordsigned`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The signed short at `address`
+
+
+```lua
+function memory.LH(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.LHU
+
+Loads an unsigned short (2 bytes) from rdram and returns it. Alias for `memory.readword`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The unsigned short at `address`
+
+
+```lua
+function memory.LHU(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.LW
+
+Loads a signed long (4 bytes) from rdram and returns it. Alias for `memory.readdwordsigned`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The signed long at `address`
+
+
+```lua
+function memory.LW(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.LWC1
+
+Loads a float (4 bytes) from rdram and returns it. Alias for `memory.readfloat`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The float at `address`
+
+
+```lua
+function memory.LWC1(address: integer)
+  -> value: number
+```
+
+
+---
+
+# memory.LWU
+
+Loads an unsigned long (4 bytes) from rdram and returns it. Alias for `memory.readdword`
+
+@*param* `address` — The address to read from
+
+@*return* `value` — The unsigned long at `address`
+
+
+```lua
+function memory.LWU(address: integer)
+  -> value: integer
+```
+
+
+---
+
+# memory.loadsize
+
+Loads `size` bytes at `address` from rdram and returns it. Alias for `memory.readsize`
+
+@*param* `address` — The address to read from
+
+@*param* `size` — The size to read. Must be `1`, `2`, `4`, or `8`
+
+@*return* `value` — `size` bytes at `address`
+
+
+```lua
+function memory.loadsize(address: integer, size: integer)
+  -> value: number
+```
+
+
+---
+
+# module
+
+
+Creates a module.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-module"])
+
+
+```lua
+function module(name: string, ...any)
+```
+
+
+---
+
+# newproxy
+
+
+```lua
+function newproxy(proxy: boolean|table|userdata)
+  -> userdata
+```
+
+
+---
+
+# next
+
+
+Allows a program to traverse all fields of a table. Its first argument is a table and its second argument is an index in this table. A call to `next` returns the next index of the table and its associated value. When called with `nil` as its second argument, `next` returns an initial index and its associated value. When called with the last index, or with `nil` in an empty table, `next` returns `nil`. If the second argument is absent, then it is interpreted as `nil`. In particular, you can use `next(t)` to check whether a table is empty.
+
+The order in which the indices are enumerated is not specified, *even for numeric indices*. (To traverse a table in numerical order, use a numerical `for`.)
+
+The behavior of `next` is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may however modify existing fields. In particular, you may set existing fields to nil.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-next"])
+
+
+```lua
+function next(table: table<<K>, <V>>, index?: <K>)
+  -> <K>?
+  2. <V>?
+```
+
+
+---
+
+# os
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os"])
+
+
+
+```lua
+oslib
+```
+
+
+---
+
+# os.clock
+
+
+Returns an approximation of the amount in seconds of CPU time used by the program.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.clock"])
+
+
+```lua
+function os.clock()
+  -> number
+```
+
+
+---
+
+# os.date
+
+
+Returns a string or a table containing date and time, formatted according to the given string `format`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.date"])
+
+
+```lua
+function os.date(format?: string, time?: integer)
+  -> string|osdate
+```
+
+
+---
+
+# os.difftime
+
+
+Returns the difference, in seconds, from time `t1` to time `t2`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.difftime"])
+
+
+```lua
+function os.difftime(t2: integer, t1: integer)
+  -> integer
+```
+
+
+---
+
+# os.execute
+
+
+Passes `command` to be executed by an operating system shell.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.execute"])
+
+
+```lua
+exitcode:
+    | "exit"
+    | "signal"
+```
+
+
+```lua
+function os.execute(command?: string)
+  -> suc: boolean?
+  2. exitcode: exitcode?
+  3. code: integer?
+```
+
+
+---
+
+# os.exit
+
+
+Calls the ISO C function `exit` to terminate the host program.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.exit"])
+
+
+```lua
+function os.exit(code?: boolean|integer, close?: boolean)
+```
+
+
+---
+
+# os.getenv
+
+
+Returns the value of the process environment variable `varname`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.getenv"])
+
+
+```lua
+function os.getenv(varname: string)
+  -> string?
+```
+
+
+---
+
+# os.remove
+
+
+Deletes the file with the given name.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.remove"])
+
+
+```lua
+function os.remove(filename: string)
+  -> suc: boolean
+  2. errmsg: string?
+```
+
+
+---
+
+# os.rename
+
+
+Renames the file or directory named `oldname` to `newname`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.rename"])
+
+
+```lua
+function os.rename(oldname: string, newname: string)
+  -> suc: boolean
+  2. errmsg: string?
+```
+
+
+---
+
+# os.setlocale
+
+
+Sets the current locale of the program.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.setlocale"])
+
+
+```lua
+category:
+   -> "all"
+    | "collate"
+    | "ctype"
+    | "monetary"
+    | "numeric"
+    | "time"
+```
+
+
+```lua
+function os.setlocale(locale: string|nil, category?: localecategory)
+  -> localecategory: string
+```
+
+
+---
+
+# os.time
+
+
+Returns the current time when called without arguments, or a time representing the local date and time specified by the given table.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.time"])
+
+
+```lua
+function os.time(date?: osdate)
+  -> integer
+```
+
+
+---
+
+# os.tmpname
+
+
+Returns a string with a file name that can be used for a temporary file.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-os.tmpname"])
+
+
+```lua
+function os.tmpname()
+  -> string
+```
+
+
+---
+
+# package
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package"])
+
+
+
+```lua
+packagelib
+```
+
+
+---
+
+# package.config
+
+
+A string describing some compile-time configurations for packages.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.config"])
+
+
+
+```lua
+string
+```
+
+
+---
+
+# package.loaders
+
+
+A table used by `require` to control how to load modules.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.loaders"])
+
+
+
+```lua
+table
+```
+
+
+---
+
+# package.loadlib
+
+
+Dynamically links the host program with the C library `libname`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.loadlib"])
+
+
+```lua
+function package.loadlib(libname: string, funcname: string)
+  -> any
+```
+
+
+---
+
+# package.searchers
+
+
+A table used by `require` to control how to load modules.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.searchers"])
+
+
+
+```lua
+table
+```
+
+
+---
+
+# package.searchpath
+
+
+Searches for the given `name` in the given `path`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.searchpath"])
+
+
+```lua
+function package.searchpath(name: string, path: string, sep?: string, rep?: string)
+  -> filename: string?
+  2. errmsg: string?
+```
+
+
+---
+
+# package.seeall
+
+
+Sets a metatable for `module` with its `__index` field referring to the global environment, so that this module inherits values from the global environment. To be used as an option to function `module` .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-package.seeall"])
+
+
+```lua
+function package.seeall(module: table)
+```
+
+
+---
+
+# pairs
+
+
+If `t` has a metamethod `__pairs`, calls it with t as argument and returns the first three results from the call.
+
+Otherwise, returns three values: the [next](command:extension.lua.doc?["en-us/54/manual.html/pdf-next"]) function, the table `t`, and `nil`, so that the construction
+```lua
+    for k,v in pairs(t) do body end
+```
+will iterate over all key–value pairs of table `t`.
+
+See function [next](command:extension.lua.doc?["en-us/54/manual.html/pdf-next"]) for the caveats of modifying the table during its traversal.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-pairs"])
+
+
+```lua
+function pairs(t: <T:table>)
+  -> fun(table: table<<K>, <V>>, index?: <K>):<K>, <V>
+  2. <T:table>
+```
+
+
+---
+
+# pcall
+
+
+Calls the function `f` with the given arguments in *protected mode*. This means that any error inside `f` is not propagated; instead, `pcall` catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, `pcall` also returns all results from the call, after this first result. In case of any error, `pcall` returns `false` plus the error object.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-pcall"])
+
+
+```lua
+function pcall(f: fun(...any):...unknown, arg1?: any, ...any)
+  -> success: boolean
+  2. result: any
+  3. ...any
+```
+
+
+---
+
+# print
+
+Prints a value to the lua console
+
+
+```lua
+function print(...any)
+```
+
+
+```lua
+function print(data: any)
+```
+
+
+---
+
+# rawequal
+
+
+Checks whether v1 is equal to v2, without invoking the `__eq` metamethod.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-rawequal"])
+
+
+```lua
+function rawequal(v1: any, v2: any)
+  -> boolean
+```
+
+
+---
+
+# rawget
+
+
+Gets the real value of `table[index]`, without invoking the `__index` metamethod.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-rawget"])
+
+
+```lua
+function rawget(table: table, index: any)
+  -> any
+```
+
+
+---
+
+# rawlen
+
+
+Returns the length of the object `v`, without invoking the `__len` metamethod.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-rawlen"])
+
+
+```lua
+function rawlen(v: string|table)
+  -> len: integer
+```
+
+
+---
+
+# rawset
+
+
+Sets the real value of `table[index]` to `value`, without using the `__newindex` metavalue. `table` must be a table, `index` any value different from `nil` and `NaN`, and `value` any Lua value.
+This function returns `table`.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-rawset"])
+
+
+```lua
+function rawset(table: table, index: any, value: any)
+  -> table
+```
+
+
+---
+
+# require
+
+
+Loads the given module, returns any value returned by the searcher(`true` when `nil`). Besides that value, also returns as a second result the loader data returned by the searcher, which indicates how `require` found the module. (For instance, if the module came from a file, this loader data is the file path.)
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-require"])
+
+
+```lua
+function require(modname: string)
+  -> unknown
+  2. loaderdata: unknown
+```
+
+
+---
+
+# savestate
+
+
+```lua
+table
+```
+
+
+---
+
+# select
+
+
+If `index` is a number, returns all arguments after argument number `index`; a negative number indexes from the end (`-1` is the last argument). Otherwise, `index` must be the string `"#"`, and `select` returns the total number of extra arguments it received.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-select"])
+
+
+```lua
+index:
+    | "#"
+```
+
+
+```lua
+function select(index: integer|"#", ...any)
+  -> any
+```
+
+
+---
+
+# setfenv
+
+
+Sets the environment to be used by the given function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-setfenv"])
+
+
+```lua
+function setfenv(f: fun(...any):...integer|unknown, table: table)
+  -> function
+```
+
+
+---
+
+# setmetatable
+
+
+Sets the metatable for the given table. If `metatable` is `nil`, removes the metatable of the given table. If the original metatable has a `__metatable` field, raises an error.
+
+This function returns `table`.
+
+To change the metatable of other types from Lua code, you must use the debug library ([§6.10](command:extension.lua.doc?["en-us/54/manual.html/6.10"])).
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-setmetatable"])
+
+
+```lua
+function setmetatable(table: table, metatable?: table)
+  -> table
+```
+
+
+---
+
+# stop
+
+Stops script execution
+
+
+```lua
+function stop()
+```
+
+
+---
+
+# string
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string"])
+
+
+
+```lua
+stringlib
+```
+
+
+---
+
+# string.byte
+
+
+Returns the internal numeric codes of the characters `s[i], s[i+1], ..., s[j]`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.byte"])
+
+
+```lua
+function string.byte(s: string|number, i?: integer, j?: integer)
+  -> ...integer
+```
+
+
+---
+
+# string.char
+
+
+Returns a string with length equal to the number of arguments, in which each character has the internal numeric code equal to its corresponding argument.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.char"])
+
+
+```lua
+function string.char(byte: integer, ...integer)
+  -> string
+```
+
+
+---
+
+# string.dump
+
+
+Returns a string containing a binary representation (a *binary chunk*) of the given function.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.dump"])
+
+
+```lua
+function string.dump(f: fun(...any):...unknown, strip?: boolean)
+  -> string
+```
+
+
+---
+
+# string.find
+
+
+Looks for the first match of `pattern` (see [§6.4.1](command:extension.lua.doc?["en-us/54/manual.html/6.4.1"])) in the string.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.find"])
+
+@*return* `start`
+
+@*return* `end`
+
+@*return* `...` — captured
+
+
+```lua
+function string.find(s: string|number, pattern: string|number, init?: integer, plain?: boolean)
+  -> start: integer
+  2. end: integer
+  3. ...any
+```
+
+
+---
+
+# string.format
+
+
+Returns a formatted version of its variable number of arguments following the description given in its first argument.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.format"])
+
+
+```lua
+function string.format(s: string|number, ...any)
+  -> string
+```
+
+
+---
+
+# string.gmatch
+
+
+Returns an iterator function that, each time it is called, returns the next captures from `pattern` (see [§6.4.1](command:extension.lua.doc?["en-us/54/manual.html/6.4.1"])) over the string s.
+
+As an example, the following loop will iterate over all the words from string s, printing one per line:
+```lua
+    s =
+"hello world from Lua"
+    for w in string.gmatch(s, "%a+") do
+        print(w)
+    end
+```
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.gmatch"])
+
+
+```lua
+function string.gmatch(s: string|number, pattern: string|number, init?: integer)
+  -> fun():string, ...unknown
+```
+
+
+---
+
+# string.gsub
+
+
+Returns a copy of s in which all (or the first `n`, if given) occurrences of the `pattern` (see [§6.4.1](command:extension.lua.doc?["en-us/54/manual.html/6.4.1"])) have been replaced by a replacement string specified by `repl`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.gsub"])
+
+
+```lua
+function string.gsub(s: string|number, pattern: string|number, repl: string|number|function|table, n?: integer)
+  -> string
+  2. count: integer
+```
+
+
+---
+
+# string.len
+
+
+Returns its length.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.len"])
+
+
+```lua
+function string.len(s: string|number)
+  -> integer
+```
+
+
+---
+
+# string.lower
+
+
+Returns a copy of this string with all uppercase letters changed to lowercase.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.lower"])
+
+
+```lua
+function string.lower(s: string|number)
+  -> string
+```
+
+
+---
+
+# string.match
+
+
+Looks for the first match of `pattern` (see [§6.4.1](command:extension.lua.doc?["en-us/54/manual.html/6.4.1"])) in the string.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.match"])
+
+
+```lua
+function string.match(s: string|number, pattern: string|number, init?: integer)
+  -> ...any
+```
+
+
+---
+
+# string.pack
+
+
+Returns a binary string containing the values `v1`, `v2`, etc. packed (that is, serialized in binary form) according to the format string `fmt` (see [§6.4.2](command:extension.lua.doc?["en-us/54/manual.html/6.4.2"])) .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.pack"])
+
+
+```lua
+function string.pack(fmt: string, v1: string|number, v2: any, ...string|number)
+  -> binary: string
+```
+
+
+---
+
+# string.packsize
+
+
+Returns the size of a string resulting from `string.pack` with the given format string `fmt` (see [§6.4.2](command:extension.lua.doc?["en-us/54/manual.html/6.4.2"])) .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.packsize"])
+
+
+```lua
+function string.packsize(fmt: string)
+  -> integer
+```
+
+
+---
+
+# string.rep
+
+
+Returns a string that is the concatenation of `n` copies of the string `s` separated by the string `sep`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.rep"])
+
+
+```lua
+function string.rep(s: string|number, n: integer, sep?: string|number)
+  -> string
+```
+
+
+---
+
+# string.reverse
+
+
+Returns a string that is the string `s` reversed.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.reverse"])
+
+
+```lua
+function string.reverse(s: string|number)
+  -> string
+```
+
+
+---
+
+# string.sub
+
+
+Returns the substring of the string that starts at `i` and continues until `j`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.sub"])
+
+
+```lua
+function string.sub(s: string|number, i: integer, j?: integer)
+  -> string
+```
+
+
+---
+
+# string.unpack
+
+
+Returns the values packed in string according to the format string `fmt` (see [§6.4.2](command:extension.lua.doc?["en-us/54/manual.html/6.4.2"])) .
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.unpack"])
+
+
+```lua
+function string.unpack(fmt: string, s: string, pos?: integer)
+  -> ...any
+  2. offset: integer
+```
+
+
+---
+
+# string.upper
+
+
+Returns a copy of this string with all lowercase letters changed to uppercase.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.upper"])
+
+
+```lua
+function string.upper(s: string|number)
+  -> string
+```
+
+
+---
+
+# table
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table"])
+
+
+
+```lua
+tablelib
+```
+
+
+---
+
+# table.concat
+
+
+Given a list where all elements are strings or numbers, returns the string `list[i]..sep..list[i+1] ··· sep..list[j]`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.concat"])
+
+
+```lua
+function table.concat(list: table, sep?: string, i?: integer, j?: integer)
+  -> string
+```
+
+
+---
+
+# table.foreach
+
+
+Executes the given f over all elements of table. For each element, f is called with the index and respective value as arguments. If f returns a non-nil value, then the loop is broken, and this value is returned as the final value of foreach.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.foreach"])
+
+
+```lua
+function table.foreach(list: any, callback: fun(key: string, value: any):<T>|nil)
+  -> <T>|nil
+```
+
+
+---
+
+# table.foreachi
+
+
+Executes the given f over the numerical indices of table. For each index, f is called with the index and respective value as arguments. Indices are visited in sequential order, from 1 to n, where n is the size of the table. If f returns a non-nil value, then the loop is broken and this value is returned as the result of foreachi.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.foreachi"])
+
+
+```lua
+function table.foreachi(list: any, callback: fun(key: string, value: any):<T>|nil)
+  -> <T>|nil
+```
+
+
+---
+
+# table.getn
+
+
+Returns the number of elements in the table. This function is equivalent to `#list`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.getn"])
+
+
+```lua
+function table.getn(list: <T>[])
+  -> integer
+```
+
+
+---
+
+# table.insert
+
+
+Inserts element `value` at position `pos` in `list`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.insert"])
+
+
+```lua
+function table.insert(list: table, pos: integer, value: any)
+```
+
+
+---
+
+# table.maxn
+
+
+Returns the largest positive numerical index of the given table, or zero if the table has no positive numerical indices.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.maxn"])
+
+
+```lua
+function table.maxn(table: table)
+  -> integer
+```
+
+
+---
+
+# table.move
+
+
+Moves elements from table `a1` to table `a2`.
+```lua
+a2[t],··· =
+a1[f],···,a1[e]
+return a2
+```
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.move"])
+
+
+```lua
+function table.move(a1: table, f: integer, e: integer, t: integer, a2?: table)
+  -> a2: table
+```
+
+
+---
+
+# table.pack
+
+
+Returns a new table with all arguments stored into keys `1`, `2`, etc. and with a field `"n"` with the total number of arguments.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.pack"])
+
+
+```lua
+function table.pack(...any)
+  -> table
+```
+
+
+---
+
+# table.remove
+
+
+Removes from `list` the element at position `pos`, returning the value of the removed element.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.remove"])
+
+
+```lua
+function table.remove(list: table, pos?: integer)
+  -> any
+```
+
+
+---
+
+# table.sort
+
+
+Sorts list elements in a given order, *in-place*, from `list[1]` to `list[#list]`.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.sort"])
+
+
+```lua
+function table.sort(list: <T>[], comp?: fun(a: <T>, b: <T>):boolean)
+```
+
+
+---
+
+# table.unpack
+
+
+Returns the elements from the given list. This function is equivalent to
+```lua
+    return list[i], list[i+1], ···, list[j]
+```
+By default, `i` is `1` and `j` is `#list`.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-table.unpack"])
+
+
+```lua
+function table.unpack(list: <T>[], i?: integer, j?: integer)
+  -> ...<T>
+```
+
+
+---
+
+# tonumber
+
+
+When called with no `base`, `tonumber` tries to convert its argument to a number. If the argument is already a number or a string convertible to a number, then `tonumber` returns this number; otherwise, it returns `fail`.
+
+The conversion of strings can result in integers or floats, according to the lexical conventions of Lua (see [§3.1](command:extension.lua.doc?["en-us/54/manual.html/3.1"])). The string may have leading and trailing spaces and a sign.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-tonumber"])
+
+
+```lua
+function tonumber(e: any)
+  -> number?
+```
+
+
+---
+
+# tostring
+
+
+Receives a value of any type and converts it to a string in a human-readable format.
+
+If the metatable of `v` has a `__tostring` field, then `tostring` calls the corresponding value with `v` as argument, and uses the result of the call as its result. Otherwise, if the metatable of `v` has a `__name` field with a string value, `tostring` may use that string in its final result.
+
+For complete control of how numbers are converted, use [string.format](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.format"]).
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-tostring"])
+
+
+```lua
+function tostring(v: any)
+  -> string
+```
+
+
+---
+
+# type
+
+
+Returns the type of its only argument, coded as a string. The possible results of this function are `"nil"` (a string, not the value `nil`), `"number"`, `"string"`, `"boolean"`, `"table"`, `"function"`, `"thread"`, and `"userdata"`.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-type"])
+
+
+```lua
+type:
+    | "nil"
+    | "number"
+    | "string"
+    | "boolean"
+    | "table"
+    | "function"
+    | "thread"
+    | "userdata"
+```
+
+
+```lua
+function type(v: any)
+  -> type: type
+```
+
+
+---
+
+# unpack
+
+
+Returns the elements from the given `list`. This function is equivalent to
+```lua
+    return list[i], list[i+1], ···, list[j]
+```
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-unpack"])
+
+
+```lua
+function unpack(list: <T>[], i?: integer, j?: integer)
+  -> ...<T>
+```
+
+
+---
+
+# utf8
+
+
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8"])
+
+
+
+```lua
+utf8lib
+```
+
+
+---
+
+# utf8.char
+
+
+Receives zero or more integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8.char"])
+
+
+```lua
+function utf8.char(code: integer, ...integer)
+  -> string
+```
+
+
+---
+
+# utf8.codepoint
+
+
+Returns the codepoints (as integers) from all characters in `s` that start between byte position `i` and `j` (both included).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8.codepoint"])
+
+
+```lua
+function utf8.codepoint(s: string, i?: integer, j?: integer, lax?: boolean)
+  -> code: integer
+  2. ...integer
+```
+
+
+---
+
+# utf8.codes
+
+
+Returns values so that the construction
+```lua
+for p, c in utf8.codes(s) do
+    body
+end
+```
+will iterate over all UTF-8 characters in string s, with p being the position (in bytes) and c the code point of each character. It raises an error if it meets any invalid byte sequence.
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8.codes"])
+
+
+```lua
+function utf8.codes(s: string, lax?: boolean)
+  -> fun(s: string, p: integer):integer, integer
+```
+
+
+---
+
+# utf8.len
+
+
+Returns the number of UTF-8 characters in string `s` that start between positions `i` and `j` (both inclusive).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8.len"])
+
+
+```lua
+function utf8.len(s: string, i?: integer, j?: integer, lax?: boolean)
+  -> integer?
+  2. errpos: integer?
+```
+
+
+---
+
+# utf8.offset
+
+
+Returns the position (in bytes) where the encoding of the `n`-th character of `s` (counting from position `i`) starts.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-utf8.offset"])
+
+
+```lua
+function utf8.offset(s: string, n: integer, i?: integer)
+  -> p: integer
+```
+
+
+---
+
+# warn
+
+
+Emits a warning with a message composed by the concatenation of all its arguments (which should be strings).
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-warn"])
+
+
+```lua
+function warn(message: string, ...any)
+```
+
+
+---
+
+# wgui
+
+
+```lua
+table
+```
+
+
+---
+
+# wgui.deleteimage
+
+Clears one of all images
+
+@*param* `idx` — The identifier of the image to clear. If it is 0, clear all iamges
+
+
+```lua
+function wgui.deleteimage(idx: integer)
+```
+
+
+---
+
+# wgui.drawimage
+
+Draws the image at index `idx` at the specified coordinates
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, s: number)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer, srcx: integer, srcy: integer, srcw: integer, srch: integer, rotate: number)
+```
+
+
+---
+
+# wgui.drawtext
+
+GDI: Draws text in a rectangle (more documentation soon)
+
+
+```lua
+function wgui.drawtext(text: string, rect: table, format?: string)
+```
+
+
+---
+
+# wgui.ellipse
+
+Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+
+
+```lua
+function wgui.ellipse(left: integer, top: integer, right: integer, bottom: integer)
+```
+
+
+---
+
+# wgui.fillellipsea
+
+GDIPlus: Draws an ellipse at the specified coordinates, size, and color
+
+@*param* `color` — Color names are currently broken
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.fillellipsea(x: integer, y: integer, w: integer, h: integer, color: color)
+```
+
+
+---
+
+# wgui.fillpolygona
+
+Draws a filled in polygon using the points in `points`
+
+@*param* `points` — Ex: `{{x1, y1}, {x2, y2} ,{x3, y3}}`
+
+@*param* `color` — Color names are currently broken
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.fillpolygona(points: table, color: color)
+```
+
+
+---
+
+# wgui.fillrect
+
+Draws a rectangle at the specified coordinates with the specified color
+
+
+```lua
+function wgui.fillrect(left: integer, top: integer, right: integer, bottom: integer, red: integer, green: integer, blue: integer)
+```
+
+
+---
+
+# wgui.fillrecta
+
+GDIPlus: Draws a rectangle at the specified coordinates, size and color
+
+@*param* `color` — Color names are currently broken
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.fillrecta(x: integer, y: integer, w: integer, h: integer, color: color)
+```
+
+
+---
+
+# wgui.getimageinfo
+
+Returns the width and height of the image at `idx`
+
+
+```lua
+function wgui.getimageinfo(idx: integer)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.info
+
+Returns the current width and height of the mupen window in a table
+
+
+```lua
+function wgui.info()
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.line
+
+Draws a line from `(x1, y1)` to `(x2, y2)`
+
+
+```lua
+function wgui.line(x1: integer, y1: integer, x2: integer, y2: integer)
+```
+
+
+---
+
+# wgui.loadimage
+
+Loads an image file from `path` and returns the identifier of that image
+
+
+```lua
+function wgui.loadimage(path: string)
+  -> integer
+```
+
+
+---
+
+# wgui.loadscreen
+
+Captures the current screen and saves it as an image
+
+@*return* `The` — identifier of the saved image
+
+
+```lua
+function wgui.loadscreen()
+  -> The: integer
+```
+
+
+---
+
+# wgui.loadscreenreset
+
+Re-initializes loadscreen
+
+
+```lua
+function wgui.loadscreenreset()
+```
+
+
+---
+
+# wgui.polygon
+
+Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+
+
+```lua
+function wgui.polygon(points: table)
+```
+
+
+---
+
+# wgui.rect
+
+GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a 1 pixel border of the GDI pen color.
+
+@*param* `rounded_width` — The width of the ellipse used to draw the rounded corners. (currently don't seem to be working)
+
+@*param* `rounded_height` — The height of the ellipse used to draw the rounded corners.
+
+
+```lua
+function wgui.rect(left: integer, top: integer, right: integer, bottom: integer, rounded_width?: integer, rounded_height?: integer)
+```
+
+
+---
+
+# wgui.resize
+
+Resizes the mupen window to `w` x `h`
+
+
+```lua
+function wgui.resize(w: integer, h: integer)
+```
+
+
+---
+
+# wgui.setbk
+
+GDI: Sets the current GDI background color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setbk(color: color)
+```
+
+
+---
+
+# wgui.setbrush
+
+GDI: Sets the current GDI brush color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setbrush(color: color)
+```
+
+
+---
+
+# wgui.setcolor
+
+GDI: Sets the current GDI text color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setcolor(color: color)
+```
+
+
+---
+
+# wgui.setfont
+
+Sets the font, font size, and font style
+
+@*param* `size` — The size of the font. Defaults to 0 if not given
+
+@*param* `font` — The name of the font from the operating system. Dafaults to "MS Gothic" if not given
+
+@*param* `style` — Each character in this string sets one style of the font, applied in chronological order. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiased. Defaults to "" if not given
+
+
+```lua
+function wgui.setfont(size?: integer, font?: string, style?: string)
+```
+
+
+---
+
+# wgui.setpen
+
+GDI: Sets the current GDI pen color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setpen(color: color)
+```
+
+
+---
+
+# wgui.text
+
+GDI: Displays text in one line with the current GDI background color and GDI text color
+
+
+```lua
+function wgui.text(x: integer, y: integer, text: string)
+```
+
+
+---
+
+# xpcall
+
+
+Calls function `f` with the given arguments in protected mode with a new message handler.
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-xpcall"])
+
+
+```lua
+function xpcall(f: fun(...any):...unknown, msgh: function, arg1?: any, ...any)
+  -> success: boolean
+  2. result: any
+  3. ...any
+```

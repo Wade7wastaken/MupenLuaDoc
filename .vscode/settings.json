@@ -40,5 +40,9 @@
 	"Lua.diagnostics.neededFileStatus": {
 		"codestyle-check": "Any"
 	},
-	"files.encoding": "utf8"
+	"files.encoding": "utf8",
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none"
 }

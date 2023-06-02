@@ -1,0 +1,1 @@
+To export documentation, right click on any lua file open and select "Lua: Export Document ...", then navigate to this folder and save the documentation. It will overwrite the previously saved documentation.
