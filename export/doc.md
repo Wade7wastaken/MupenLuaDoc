@@ -63,6 +63,16 @@ function assert(v?: <T>, message?: any, ...any)
 
 ---
 
+# avi
+
+
+```lua
+table
+```
+
+
+---
+
 # collectgarbage
 
 
@@ -658,11 +668,22 @@ table
 ```
 
 
+```lua
+table
+```
+
+
 ---
 
 # emu.atinput
 
 Registers a function to be run every input frame
+
+
+```lua
+function emu.atinput(f: fun(a?: integer), unregister?: boolean)
+  -> nil
+```
 
 
 ```lua
@@ -675,6 +696,11 @@ function emu.atinput(func: function, unregister?: boolean)
 # emu.atinterval
 
 Registers a function to be run constantly
+
+
+```lua
+function emu.atinterval(f: fun(nil: any), unregister?: boolean)
+```
 
 
 ```lua
@@ -691,6 +717,21 @@ Registers a function to be run when a savestate is loaded
 
 ```lua
 function emu.atloadstate(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atplaymovie
+
+Calls the function `f` when a movie is played. If `unregister`
+is set to true, the function `f` will no longer
+be called when this event occurs, but it will error if you never
+registered the function.
+
+
+```lua
+function emu.atplaymovie(f: any, unregister: any)
 ```
 
 
@@ -726,6 +767,12 @@ Registers a function to be run when the lua script is stopped
 
 
 ```lua
+function emu.atstop(f: fun(nil: any), unregister?: boolean)
+  -> nil
+```
+
+
+```lua
 function emu.atstop(func: function, unregister?: boolean)
 ```
 
@@ -735,6 +782,12 @@ function emu.atstop(func: function, unregister?: boolean)
 # emu.atupdatescreen
 
 Registers a function to be run when the screen updates
+
+
+```lua
+function emu.atupdatescreen(f: fun(nil: any), unregister?: boolean)
+  -> nil
+```
 
 
 ```lua
@@ -750,7 +803,30 @@ Registers a function to be run every VI
 
 
 ```lua
+function emu.atvi(f: fun(nil: any), unregister?: boolean)
+  -> nil
+```
+
+
+```lua
 function emu.atvi(func: function, unregister?: boolean)
+```
+
+
+---
+
+# emu.atwindowmessage
+
+Defines a handler function that is called when a window receives a
+message. If `unregister` is set to true, the function `f` will no longer
+be called when this event occurs, but it will error if you never
+registered the function.
+
+@*param* `f` — takes the following parameters:
+
+
+```lua
+function emu.atwindowmessage(f: fun(a: 0), unregister: any)
 ```
 
 
@@ -762,7 +838,26 @@ Similar to print, but only accepts strings
 
 
 ```lua
+function emu.console(message: string)
+  -> nil
+```
+
+
+```lua
 function emu.console(str: string)
+```
+
+
+---
+
+# emu.debugview
+
+Seems to do nothing.
+
+
+```lua
+function emu.debugview()
+  -> nil
 ```
 
 
@@ -942,6 +1037,12 @@ Sets the statusbar text to `str`
 
 
 ```lua
+function emu.statusbar(message: string)
+  -> nil
+```
+
+
+```lua
 function emu.statusbar(str: string)
 ```
 
@@ -1006,9 +1107,19 @@ table
 ```
 
 
+```lua
+table
+```
+
+
 ---
 
 # input
+
+
+```lua
+table
+```
 
 
 ```lua
@@ -1314,6 +1425,16 @@ function io.write(...any)
 
 ---
 
+# ioHelper
+
+
+```lua
+table
+```
+
+
+---
+
 # iohelper
 
 
@@ -1348,6 +1469,11 @@ function ipairs(t: <T:table>)
 ---
 
 # joypad
+
+
+```lua
+table
+```
 
 
 ```lua
@@ -1962,6 +2088,11 @@ table
 ```
 
 
+```lua
+table
+```
+
+
 ---
 
 # memory.LB
@@ -2163,6 +2294,16 @@ Creates a module.
 
 ```lua
 function module(name: string, ...any)
+```
+
+
+---
+
+# movie
+
+
+```lua
+table
 ```
 
 
@@ -2586,6 +2727,11 @@ function print(data: any)
 ```
 
 
+```lua
+function print(data: any)
+```
+
+
 ---
 
 # rawequal
@@ -2679,6 +2825,11 @@ table
 ```
 
 
+```lua
+table
+```
+
+
 ---
 
 # select
@@ -2743,6 +2894,11 @@ function setmetatable(table: table, metatable?: table)
 # stop
 
 Stops script execution
+
+
+```lua
+function stop()
+```
 
 
 ```lua
@@ -3479,6 +3635,11 @@ table
 ```
 
 
+```lua
+table
+```
+
+
 ---
 
 # wgui.deleteimage
@@ -3582,7 +3743,7 @@ function wgui.fillellipsea(x: integer, y: integer, w: integer, h: integer, color
 
 Draws a filled in polygon using the points in `points`
 
-@*param* `points` — Ex: `{{x1, y1}, {x2, y2} ,{x3, y3}}`
+@*param* `points` — Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
 
 @*param* `color` — Color names are currently broken
 

@@ -331,7 +331,7 @@ function wgui.fillellipsea(x, y, w, h, color)
 end
 
 ---Draws a filled in polygon using the points in `points`
----@param points table Ex: `{{x1, y1}, {x2, y2} ,{x3, y3}}`
+---@param points table Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
 ---@param color color|string Color names are currently broken
 function wgui.fillpolygona(points, color)
 end
