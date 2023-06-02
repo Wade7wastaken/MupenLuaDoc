@@ -615,7 +615,7 @@ function wgui.fillellipsea(x: integer, y: integer, w: integer, h: integer, color
 
 Draws a filled in polygon using the points in `points`
 
-@*param* `points` — Ex: ```{{x1, y1}, {x2, y2}, {x3, y3}}```
+@*param* `points` — Ex: `\{{x1, y1}, {x2, y2}, {x3, y3}\}`
 
 @*param* `color` — Color names are currently broken
 
