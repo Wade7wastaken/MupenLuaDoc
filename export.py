@@ -11,7 +11,7 @@ def write(strings, f):
 with open("export/doc.json", "rt") as f:
     data = json.loads(f.read())
 
-with open("api.md", "wt") as f:
+with open("index.md", "wt") as f:
     for variable in data:
         variable_name = variable["name"]
         for definition in variable["defines"]:
