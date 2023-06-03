@@ -36,181 +36,174 @@ end
 -- emu functions
 --#region
 
----Displays the text message in the console.
----Similar to `print`, but only accepts strings
----@param message string The string to print to the console
+---Displays the text `message` in the console. Similar to `print`, but only
+---accepts strings. Because of this, `print` should be used instead.
+---@deprecated Use `print` instead.
+---@param message string The string to print to the console.
 ---@return nil
 function emu.console(message) end
 
----Prints `message` to the debug console. If you are not debugging
----mupen with Visual Studio, this function will do nothing
----@deprecated
----@param message string The string to print to the debug console
+---Prints `message` to the debug console. If you are not debugging mupen with
+---Visual Studio, this function will do nothing.
+---@deprecated This function has no use to the end user.
+---@param message string The string to print to the debug console.
 ---@return nil
 function emu.debugview(message) end
 
----Displays the text `message` in the status bar
----on the bottom while replacing any other text.
----The message will only display until the next frame.
----@param message string The string to display on the status bar
+---Displays the text `message` in the status bar on the bottom while replacing
+---any other text. The message will only display until the next frame.
+---@param message string The string to display on the status bar.
 ---@return nil
 function emu.statusbar(message) end
 
----Calls the function `f` every vi frame. For example,
----in Super Mario 64, the function will be called twice
----when you advance by one frame whereas it will be called
----once in Ocarina of Time. If `unregister` is set to true,
----the function `f` will no longer be called when this event occurs,
----but it will error if you never registered the function.
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` every VI frame. For example, in Super Mario 64, the
+---function will be called twice when you advance by one frame, whereas it will
+---be called once in Ocarina of Time. If `unregister` is set to true, the
+---function `f` will no longer be called when this event occurs, but it will
+---error if you never registered the function.
+---@param f fun(): nil The function to be called every VI frame.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atvi(f, unregister) end
 
----Seems similar to `emu.atvi`, except that it is called after.
----If `unregister` is set to true, the function `f` will no longer
----be called when this event occurs, but it will error if you
----never registered the function.
----@param f fun(): nil
----@param unregister boolean?
+---Similar to `emu.atvi`, except that it is called after. If `unregister` is set
+---to true, the function `f` will no longer be called when this event occurs,
+---but it will error if you never registered the function.
+---@param f fun(): nil The function to be called after every VI frame.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atupdatescreen(f, unregister) end
 
----Calls the function `f` every input frame. The function `f` receives
----an argument that seems to always be `0`. If `unregister` is set
----to true, the function `f` will no longer be called when this event
----occurs, but it will error if you never registered the function.
----@param f fun(a: integer?): nil
----@param unregister boolean?
+---Calls the function `f` every input frame. The function `f` receives an
+---argument that seems to always be `0`. If `unregister` is set to true, the
+---function `f` will no longer be called when this event occurs, but it will
+---error if you never registered the function.
+---@param f fun(a: integer?): nil The function to be called every input frame.
+---It receives an argument that seems to always be `0`.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atinput(f, unregister) end
 
----Calls the function `f` when the script is stopped. If `unregister` is
----set to true, the function `f` will no longer be called when this event
----occurs, but it will error if you never registered the function.
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when the script is stopped. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when the script is stopped
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atstop(f, unregister) end
 
----Defines a handler function that is called when a window receives a
----message. The message data is given to the function in 4 parameters.
----If `unregister` is set to true, the function `f` will no longer
----be called when this event occurs, but it will error if you never
----registered the function.
----@param f fun(a, b, c, d): nil
----@param unregister boolean?
+---Defines a handler function that is called when a window receives a message.
+---The message data is given to the function in 4 parameters. If `unregister`
+---is set to true, the function `f` will no longer be called when this event
+---occurs, but it will error if you never registered the function.
+---@param f fun(a, b, c, d): nil The function to be called when a window message
+---is received.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atwindowmessage(f, unregister) end
 
----Calls the function `f` constantly, even when the emulator is paused
----If `unregister` is set to true, the function `f` will no longer
----be called when this event occurs, but it will error if you never
----registered the function.
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` constantly, even when the emulator is paused. If
+---`unregister` is set to true, the function `f` will no longer be called when
+---this event occurs, but it will error if you never registered the function.
+---@param f fun(): nil The function to be called constantly.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atinterval(f, unregister) end
 
----Calls the function `f` when a movie is played. If `unregister`
----is set to true, the function `f` will no longer be called when
----this event occurs, but it will error if you never registered the
----function.
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when a movie is played. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when a movie is played. 
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atplaymovie(f, unregister) end
 
----Calls the function `f` when a movie is stopped. If `unregister`
----is set to true, the function `f` will no longer be called when
----this event occurs, but it will error if you never registered the
----function
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when a movie is stopped. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when a movie is stopped.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atstopmovie(f, unregister) end
 
----Calls the function `f` when a savestate is loaded. If `unregister`
----is set to true, the function `f` will no longer be called when
----this event occurs, but it will error if you never registered the
----function
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when a savestate is loaded. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when a savestate is loaded.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atloadstate(f, unregister) end
 
----Calls the function `f` when a savestate is saved. If `unregister`
----is set to true, the function `f` will no longer be called when
----this event occurs, but it will error if you never registered the
----function
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when a savestate is saved. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when a savestate is saved.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atsavestate(f, unregister) end
 
----Calls the function `f` when the emulator is reset. If `unregister`
----is set to true, the function `f` will no longer be called when
----this event occurs, but it will error if you never registered the
----function
----@param f fun(): nil
----@param unregister boolean?
+---Calls the function `f` when the emulator is reset. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when the emulator is reset.
+---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atreset(f, unregister) end
 
----Returns the number of VIs since the last movie was played.
----This should match the statusbar (assuming you have `0-index
----statusbar` off). If no movie has been played, it returns the
----number of VIs since the emulator was started, not reset
+---Returns the number of VIs since the last movie was played. This should match
+---the statusbar (assuming you have `0-index statusbar` off). If no movie has
+---been played, it returns the number of VIs since the emulator was started, not
+---reset.
 ---@nodiscard
----@return integer framecount
+---@return integer framecount The number of VIs since the last movie was played.
 function emu.framecount() end
 
----Returns the number of input frames since the last movie was
----played. This should match the statusbar (assuming you have
----`0-index statusbar` off). If no movie is playing, it will return
----the last value when a movie was playing. If no movie has been
----played yet, it will return `-1`
+---Returns the number of input frames since the last movie was played. This
+---should match the statusbar (assuming you have `0-index statusbar` off). If no
+---movie is playing, it will return the last value when a movie was playing. If
+---no movie has been played yet, it will return `-1`.
 ---@nodiscard
----@return integer samplecount
+---@return integer samplecount The number of input frames since the last movie
+---was played.
 function emu.samplecount() end
 
----Returns the number of input frames that have happened since
----the emulator was started. It does not reset when a movie is
----started
+---Returns the number of input frames that have happened since the emulator was
+---started. It does not reset when a movie is started.
 ---@nodiscard
----@return integer inputcount
+---@return integer inputcount The number of input frames that have happened
+---since the emulator was started.
 function emu.inputcount() end
 
 ---Returns the current mupen version. If `type` is 0 or less, it
 ---will return the full version name (Mupen 64 0.0.0). If `type`
----is 1 or more, it will return the version number (0.0.0)
+---is 1 or more, it will return the version number (0.0.0).
 ---@nodiscard
----@param type 0|1
----@return string version
+---@param type 0|1 Whether to get the full version (less that 0) or the short
+---version (more than 1).
+---@return string version The mupen version
 function emu.getversion(type) end
 
----Pauses or unpauses the emulator
----@param pause boolean True pauses the emulator and false resumes
----it
+---Pauses or unpauses the emulator.
+---@param pause boolean True pauses the emulator and false resumes it.
 function emu.pause(pause) end
 
----Returns `true` if the emulator is paused and `false` if it is not
+---Returns `true` if the emulator is paused and `false` if it is not.
 ---@nodiscard
----@return boolean emu_paused
+---@return boolean emu_paused `true` if the emulator is paused and `false` if it
+---is not.
 function emu.getpause() end
 
----Returns the current speed limit (not the current speed) of the
----emulator
+---Returns the current speed limit (not the current speed) of the emulator.
 ---@nodiscard
----@return integer speed_limit
+---@return integer speed_limit The current speed limit of the emulator.
 function emu.getspeed() end
 
----Sets the speed limit of the emulator
----@param speed_limit integer
+---Sets the speed limit of the emulator.
+---@param speed_limit integer The new speed limit of the emulator.
 ---@return nil
 function emu.speed(speed_limit) end
 
----Sets the speed mode of the emulator
+---Sets the speed mode of the emulator.
 ---@param mode "normal"|"maximum"
 ---@return nil
 function emu.speedmode(mode) end
@@ -227,21 +220,21 @@ function emu.setgfx(mode) end
 function emu.getaddress(address) end
 
 ---Returnss true if the currently playing movie is read only and
----false if it is not
+---false if it is not.
 ---@nodiscard
 ---@return boolean read_only
 function emu.isreadonly() end
 
 ---Gets a system metric using the windows
 ---[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
----function
+---function.
 ---@nodiscard
 ---@param param integer
 ---@return integer metric
 function emu.getsystemmetrics(param) end
 
 ---Returns `true` if the main mupen window is focused and false if
----it is not
+---it is not.
 ---@nodiscard
 ---@return boolean focused
 function emu.ismainwindowinforeground() end
@@ -250,6 +243,12 @@ function emu.ismainwindowinforeground() end
 ---@param dir string The directory to save the screenshot to
 ---@return nil
 function emu.screenshot(dir) end
+
+--#endregion
+
+
+-- memory functions
+--#region
 
 ---Loads an unsigned byte from rdram and returns it. Alias for
 ---`memory.readbyte`
@@ -460,7 +459,19 @@ function memory.loadwords(address, size) end
 
 -- function memory.setregister() end
 
+--#endregion
+
+
+-- gui functions
+--#region
+
 -- function gui.register() end
+
+--#endregion
+
+
+-- wgui functions
+--#region
 
 ---colors can be any of these or "#RGB", "#RGBA",
 ---"#RRGGBB", or "#RRGGBBA"
@@ -514,7 +525,7 @@ function wgui.setbk(color) end
 ---@return nil
 function wgui.setfont(size, font, style) end
 
----Draws the text `text` at the specified coordinates. Uses the GDI font, 
+---Draws the text `text` at the specified coordinates. Uses the GDI font,
 ---the GDI background, and the GDI text color
 ---@param x integer
 ---@param y integer
@@ -555,11 +566,23 @@ function wgui.text(x, y, text) end
 
 -- function wgui.resize() end
 
+--#endregion
+
+
+-- input functions
+--#region
+
 -- function input.get() end
 
 -- function input.diff() end
 
 -- function input.prompt() end
+
+--#endregion
+
+
+-- joypad functions
+--#region
 
 -- function joypad.get() end
 
@@ -569,17 +592,41 @@ function wgui.text(x, y, text) end
 
 -- function joypad.count() end
 
+--#endregion
+
+
+-- movie functions
+--#region
+
 -- function movie.playmovie() end
 
 -- function movie.stopmovie() end
 
 -- function movie.getmoviefilename() end
 
+--#endregion
+
+
+-- savestate functions
+--#region
+
 -- function savestate.savefile() end
 
 -- function savestate.loadfile() end
 
+--#endregion
+
+
+-- ioHelper functions
+--#region
+
 -- function ioHelper.filediag() end
+
+--#endregion
+
+
+-- avi functions
+--#region
 
 -- function avi.startcapture() end
 
