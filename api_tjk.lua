@@ -326,15 +326,31 @@ function memory.LDC1(address) end
 ---Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
 ---`memory.readsize`
 ---@param address integer The address to read from
----@param size 1|2|4|8 The number of bytes to read
+---@param size 1|2|4|8 The number of bytes to read. Must be `1`,
+---`2`, `4`, or `8`
 ---@return integer|integer[]
 function memory.loadsize(address, size) end
 
--- function memory.loadbytes() end
+---Currently broken
+---@deprecated
+---@nodiscard
+---@param address integer
+---@param size integer
+function memory.loadbytes(address, size) end
 
--- function memory.loadhalfs() end
+---Currently broken
+---@deprecated
+---@nodiscard
+---@param address integer
+---@param size integer
+function memory.loadhalfs(address, size) end
 
--- function memory.loadwords() end
+---Currently broken
+---@deprecated
+---@nodiscard
+---@param address integer
+---@param size integer
+function memory.loadwords(address, size) end
 
 -- function memory.SB() end
 
@@ -446,17 +462,64 @@ function memory.loadsize(address, size) end
 
 -- function gui.register() end
 
--- function wgui.setbrush() end
+---colors can be any of these or "#RGB", "#RGBA",
+---"#RRGGBB", or "#RRGGBBA"
+---@alias color
+---| string
+---| "white"
+---| "black"
+---| "clear"
+---| "gray"
+---| "red"
+---| "orange"
+---| "yellow"
+---| "chartreuse"
+---| "green"
+---| "teal"
+---| "cyan"
+---| "blue"
+---| "purple"
 
--- function wgui.setpen() end
+---Sets the GDI brush to `color`
+---@param color color|"null" A color of "null" resets
+---the brush to its default value
+---@return nil
+function wgui.setbrush(color) end
 
--- function wgui.setcolor() end
+---Sets the GDI pen color to `color` and `width`
+---@param color color|"null" A color of "null" resets
+---the pen to its default value
+---@param width integer? Defaults to 1
+---@return nil
+function wgui.setpen(color, width) end
 
--- function wgui.setbk() end
+---Sets the GDI text color to `color`
+---@param color color
+---@return nil
+function wgui.setcolor(color) end
 
--- function wgui.setfont() end
+---Sets the GDI background color to `color`
+---@param color color|"null" A color of "null" sets
+---the background color to transparent
+---@return nil
+function wgui.setbk(color) end
 
--- function wgui.text() end
+---Sets the GDI font to `size`, `font`, and `style`
+---@param size number The size is stored as an integer, but some opperations
+---are done before that so only integers should not be allowed
+---@param font string? Defaults to "MS Gothic"
+---@param style string? Defaults to "". Each character is processed to change
+---the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets
+---strikethrough, and `a` sets antialiasing
+---@return nil
+function wgui.setfont(size, font, style) end
+
+---Draws the text `text` at the specified coordinates. Uses the GDI font, 
+---the GDI background, and the GDI text color
+---@param x integer
+---@param y integer
+---@param text string
+function wgui.text(x, y, text) end
 
 -- function wgui.drawtext() end
 
