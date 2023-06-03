@@ -74,7 +74,7 @@ with open('index.html', 'w+') as file:
                         # print section header for each function type
                         section_header = ''
                         if func_type != prev_func_type:
-                            section_header = f'# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'
+                            section_header = f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'
                             prev_func_type = func_type
                         variable_anchor = f'<a id="{func_type}{func_name.capitalize()}">'
                     else:
