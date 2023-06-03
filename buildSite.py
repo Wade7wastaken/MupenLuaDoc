@@ -26,7 +26,7 @@ with open('LuaConsole.cpp', 'r', encoding='utf-8') as file:
                 func_type = func_type_pattern.search(line).group('func_type')
                 func_list_dict[func_type] = []
 
-with open('index.html', 'w+') as file:
+with open('site/index.html', 'w+') as file:
     file.write('''<!DOCTYPE html>
 <html>
 <head>
