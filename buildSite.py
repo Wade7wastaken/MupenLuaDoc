@@ -53,7 +53,7 @@ with open('index.html', 'w+') as file:
     with open("export/doc.json", "rt") as f:
         data = json.loads(f.read())
     # only accept documentation from file paths ending in this
-    api_filename_ending = "api_tjk.lua"
+    api_filename_ending = "api.lua"
     prev_func_type = None
     # data is an array with all the variables
     for variable in data:

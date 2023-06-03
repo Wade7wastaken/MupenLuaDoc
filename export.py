@@ -2,7 +2,7 @@ import markdown
 import json
 
 # only accept documentation from file paths ending in this
-api_filename_ending = "api_tjk.lua"
+api_filename_ending = "api.lua"
 
 # custom write function I wrote to automatically add \n
 
