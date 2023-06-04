@@ -2,32 +2,12 @@ import markdown
 import json
 import re
 
-func_type_pattern = re.compile(r'const luaL_Reg (?P<func_type>[A-Za-z]+)Funcs\[\]')
-func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9]+)",.*\}')
+# TODO:
+# - include global functions
+# - (maybe) use something like beautifulsoup to generate html instead of just
+#   strings
 
-func_list_dict = {}
-with open('LuaConsole.cpp', 'r', encoding='utf-8') as file:
-    start_append = False
-    func_type = ''
-    for line in file:
-        # Start at first line of Lua emu func arrays
-        if line == 'const luaL_Reg emuFuncs[] = {\n':
-            start_append = True
-        # Stop at end of namespace
-        if line == '}	//namespace\n':
-            break
-        if start_append:
-            # If we're iterating over a function name line...
-            if ',' in line and 'NULL' not in line:
-                func_name = func_name_pattern.search(line).group('func_name')
-                func_list_dict[func_type].append(func_name)
-            # If we're iterating over a function list line...
-            elif '[' in line:
-                func_type = func_type_pattern.search(line).group('func_type')
-                func_list_dict[func_type] = []
-
-with open('site/index.html', 'w+') as file:
-    file.write('''<!DOCTYPE html>
+output_html_header = '''<!DOCTYPE html>
 <html>
 <head>
     <title>Mupen Lua API Docs</title>
@@ -39,9 +19,51 @@ with open('site/index.html', 'w+') as file:
     <div class="sidebar">
         <center><img src="img/mupen_logo.png"><br>
         mupen64-rr-lua docs</center><br>
-''')
+'''
+
+
+def read_funcs_from_cpp_file():
+    func_type_pattern = re.compile(
+        r'const luaL_Reg (?P<func_type>[A-Za-z]+)Funcs\[\]')
+    func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9]+)",.*\}')
+
+    func_list_dict = {}
+
+    with open('LuaConsole.cpp', 'r', encoding='utf-8') as file:
+        # if we're far enough into the file to start caring
+        in_function_region = False
+        func_type = ''
+        for line in file:
+            # Start at first line of Lua emu func arrays
+            # this would have to be changed to include global functions
+            if line == 'const luaL_Reg emuFuncs[] = {\n':
+                in_function_region = True
+            # Stop at end of namespace
+            if line == '}	//namespace\n':
+                break
+            if in_function_region:
+                # If we're iterating over a function name line...
+                if ',' in line and 'NULL' not in line:
+                    func_name = func_name_pattern.search(
+                        line).group('func_name')
+                    func_list_dict[func_type].append(func_name)
+                # If we're iterating over a function list line...
+                elif '[' in line:
+                    func_type = func_type_pattern.search(
+                        line).group('func_type')
+                    func_list_dict[func_type] = []
+
+    return func_list_dict
+
+
+func_list_dict = read_funcs_from_cpp_file()
+
+with open('site/index.html', 'w+') as file:
+    file.write(output_html_header)
+    # loop over function types (emu, wgui)
     for func_type in func_list_dict:
-        file.write(f'        <button class="collapsible"><a href="#{func_type}Funcs"">{func_type.upper()} FUNCTIONS</a></button>\n            <div class="funcList">')
+        file.write(
+            f'        <button class="collapsible"><a href="#{func_type}Funcs"">{func_type.upper()} FUNCTIONS</a></button>\n            <div class="funcList">')
         for func_name in func_list_dict[func_type]:
             file.write(f'''\n                <button class="funcListItem">
                     <a href="#{func_type}{func_name.capitalize()}">{func_type.upper()}.{func_name.upper()}</a>
