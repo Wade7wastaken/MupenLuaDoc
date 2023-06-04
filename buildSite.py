@@ -58,7 +58,7 @@ def read_funcs_from_cpp_file():
 
 func_list_dict = read_funcs_from_cpp_file()
 
-with open('site/index.html', 'w+') as file:
+with open('docs/index.html', 'w+') as file:
     file.write(output_html_header)
     # loop over function types (emu, wgui)
     for func_type in func_list_dict:
