@@ -113,7 +113,7 @@ function emu.atinterval(f, unregister) end
 ---Calls the function `f` when a movie is played. If `unregister` is set to
 ---true, the function `f` will no longer be called when this event occurs, but
 ---it will error if you never registered the function.
----@param f fun(): nil The function to be called when a movie is played. 
+---@param f fun(): nil The function to be called when a movie is played.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atplaymovie(f, unregister) end
@@ -491,15 +491,29 @@ function memory.loadwords(address, size) end
 ---| "blue"
 ---| "purple"
 
+---@alias align_format
+---| string
+---| "l" aligns the text to the left (already applied by default) (sets DT_LEFT)
+---| "r" aligns the text to the right (sets DT_RIGHT)
+---| "t" aligns the text to the top (already applied by default) (sets DT_TOP)
+---| "b" aligns the text to the bottom (sets DT_BOTTOM)
+---| "c" horizontally aligns the text to the center (sets DT_CENTER)
+---| "v" vertically aligns the text to the center (sets DT_VCENTER)
+---| "e" adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
+---| "s" forces the text to fit into a single line (sets DT_SINGLELINE)
+---| "n" disables word break (unsets DT_WORDBREAK)
+---more information [here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-drawtext)
+
+
 ---Sets the GDI brush to `color`
----@param color color|"null" A color of "null" resets
----the brush to its default value
+---@param color color|"null" A color of "null" resets the brush to its default
+---value
 ---@return nil
 function wgui.setbrush(color) end
 
 ---Sets the GDI pen color to `color` and `width`
----@param color color|"null" A color of "null" resets
----the pen to its default value
+---@param color color|"null" A color of "null" resets the pen to its default
+---value
 ---@param width integer? Defaults to 1
 ---@return nil
 function wgui.setpen(color, width) end
@@ -510,14 +524,14 @@ function wgui.setpen(color, width) end
 function wgui.setcolor(color) end
 
 ---Sets the GDI background color to `color`
----@param color color|"null" A color of "null" sets
----the background color to transparent
+---@param color color|"null" A color of "null" sets the background color to
+---transparent
 ---@return nil
 function wgui.setbk(color) end
 
 ---Sets the GDI font to `size`, `font`, and `style`
----@param size number The size is stored as an integer, but some opperations
----are done before that so only integers should not be allowed
+---@param size number The size is stored as an integer, but some operations are
+---done before that so only integers should not be allowed
 ---@param font string? Defaults to "MS Gothic"
 ---@param style string? Defaults to "". Each character is processed to change
 ---the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets
@@ -526,13 +540,23 @@ function wgui.setbk(color) end
 function wgui.setfont(size, font, style) end
 
 ---Draws the text `text` at the specified coordinates. Uses the GDI font,
----the GDI background, and the GDI text color
+---GDI background, and GDI text color
+---@deprecated use `wgui.drawtext` instead
 ---@param x integer
 ---@param y integer
 ---@param text string
 function wgui.text(x, y, text) end
 
--- function wgui.drawtext() end
+---Draws the text `text` at the specified coordinates and size. If the text is
+---to large to fit in the rectangle specified in `rect`, it will wrap, unlike
+---`wgui.text`. Uses the GDI font, GDI background, and GDI text color.
+---@param text string The text to be drawn.
+---@param rect {l: integer, t: integer, r: integer, b: integer}|{l: integer, t: integer, w: integer, h: integer}
+---The bounding rectangle for the text. Can either be {l, t, r, b} (left, top,
+---right, bottom) or {l, t, w, h} (left, top, width, height).
+---@param format align_format? Each character in this string sets a formatting
+---rule. It can be `nil`, `""`, or one or more characters
+function wgui.drawtext(text, rect, format) end
 
 -- function wgui.rect() end
 
