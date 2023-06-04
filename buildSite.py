@@ -148,7 +148,7 @@ for func_type in cpp_functions:
 
 
 ''', extensions=['fenced_code', 'codehilite']))
-        
+
 
 write("</div>")  # closed div.docBody
 
@@ -174,4 +174,3 @@ write('''<script>
 with open("docs/index.html", "w+") as file:
     # run the html through beautiful soup to validate it and clean it up
     file.write(str(bs(output_html, "html.parser")))
-
