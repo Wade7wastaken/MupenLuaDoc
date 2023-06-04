@@ -673,10 +673,16 @@ table
 
 # emu.atinput
 
-Calls the function `f` every input frame. The function `f` receives
-an argument that seems to always be `0`. If `unregister` is set
-to true, the function `f` will no longer be called when this event
-occurs, but it will error if you never registered the function.
+Calls the function `f` every input frame. The function `f` receives an
+argument that seems to always be `0`. If `unregister` is set to true, the
+function `f` will no longer be called when this event occurs, but it will
+error if you never registered the function.
+
+@*param* `f` — The function to be called every input frame.
+
+It receives an argument that seems to always be `0`.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -689,10 +695,13 @@ function emu.atinput(f: fun(a?: integer):nil, unregister?: boolean)
 
 # emu.atinterval
 
-Calls the function `f` constantly, even when the emulator is paused
-If `unregister` is set to true, the function `f` will no longer
-be called when this event occurs, but it will error if you never
-registered the function.
+Calls the function `f` constantly, even when the emulator is paused. If
+`unregister` is set to true, the function `f` will no longer be called when
+this event occurs, but it will error if you never registered the function.
+
+@*param* `f` — The function to be called constantly.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -705,10 +714,13 @@ function emu.atinterval(f: fun():nil, unregister?: boolean)
 
 # emu.atloadstate
 
-Calls the function `f` when a savestate is loaded. If `unregister`
-is set to true, the function `f` will no longer be called when
-this event occurs, but it will error if you never registered the
-function
+Calls the function `f` when a savestate is loaded. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when a savestate is loaded.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -721,10 +733,13 @@ function emu.atloadstate(f: fun():nil, unregister?: boolean)
 
 # emu.atplaymovie
 
-Calls the function `f` when a movie is played. If `unregister`
-is set to true, the function `f` will no longer be called when
-this event occurs, but it will error if you never registered the
-function.
+Calls the function `f` when a movie is played. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when a movie is played.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -737,10 +752,13 @@ function emu.atplaymovie(f: fun():nil, unregister?: boolean)
 
 # emu.atreset
 
-Calls the function `f` when the emulator is reset. If `unregister`
-is set to true, the function `f` will no longer be called when
-this event occurs, but it will error if you never registered the
-function
+Calls the function `f` when the emulator is reset. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when the emulator is reset.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -753,10 +771,13 @@ function emu.atreset(f: fun():nil, unregister?: boolean)
 
 # emu.atsavestate
 
-Calls the function `f` when a savestate is saved. If `unregister`
-is set to true, the function `f` will no longer be called when
-this event occurs, but it will error if you never registered the
-function
+Calls the function `f` when a savestate is saved. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when a savestate is saved.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -769,9 +790,13 @@ function emu.atsavestate(f: fun():nil, unregister?: boolean)
 
 # emu.atstop
 
-Calls the function `f` when the script is stopped. If `unregister` is
-set to true, the function `f` will no longer be called when this event
-occurs, but it will error if you never registered the function.
+Calls the function `f` when the script is stopped. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when the script is stopped
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -784,10 +809,13 @@ function emu.atstop(f: fun():nil, unregister?: boolean)
 
 # emu.atstopmovie
 
-Calls the function `f` when a movie is stopped. If `unregister`
-is set to true, the function `f` will no longer be called when
-this event occurs, but it will error if you never registered the
-function
+Calls the function `f` when a movie is stopped. If `unregister` is set to
+true, the function `f` will no longer be called when this event occurs, but
+it will error if you never registered the function.
+
+@*param* `f` — The function to be called when a movie is stopped.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -800,10 +828,13 @@ function emu.atstopmovie(f: fun():nil, unregister?: boolean)
 
 # emu.atupdatescreen
 
-Seems similar to `emu.atvi`, except that it is called after.
-If `unregister` is set to true, the function `f` will no longer
-be called when this event occurs, but it will error if you
-never registered the function.
+Similar to `emu.atvi`, except that it is called after. If `unregister` is set
+to true, the function `f` will no longer be called when this event occurs,
+but it will error if you never registered the function.
+
+@*param* `f` — The function to be called after every VI frame.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -816,12 +847,15 @@ function emu.atupdatescreen(f: fun():nil, unregister?: boolean)
 
 # emu.atvi
 
-Calls the function `f` every vi frame. For example,
-in Super Mario 64, the function will be called twice
-when you advance by one frame whereas it will be called
-once in Ocarina of Time. If `unregister` is set to true,
-the function `f` will no longer be called when this event occurs,
-but it will error if you never registered the function.
+Calls the function `f` every VI frame. For example, in Super Mario 64, the
+function will be called twice when you advance by one frame, whereas it will
+be called once in Ocarina of Time. If `unregister` is set to true, the
+function `f` will no longer be called when this event occurs, but it will
+error if you never registered the function.
+
+@*param* `f` — The function to be called every VI frame.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -834,11 +868,16 @@ function emu.atvi(f: fun():nil, unregister?: boolean)
 
 # emu.atwindowmessage
 
-Defines a handler function that is called when a window receives a
-message. The message data is given to the function in 4 parameters.
-If `unregister` is set to true, the function `f` will no longer
-be called when this event occurs, but it will error if you never
-registered the function.
+Defines a handler function that is called when a window receives a message.
+The message data is given to the function in 4 parameters. If `unregister`
+is set to true, the function `f` will no longer be called when this event
+occurs, but it will error if you never registered the function.
+
+@*param* `f` — The function to be called when a window message
+
+is received.
+
+@*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
@@ -851,10 +890,10 @@ function emu.atwindowmessage(f: fun(a: any, b: any, c: any, d: any):nil, unregis
 
 # emu.console
 
-Displays the text message in the console.
-Similar to `print`, but only accepts strings
+Displays the text `message` in the console. Similar to `print`, but only
+accepts strings. Because of this, `print` should be used instead.
 
-@*param* `message` — The string to print to the console
+@*param* `message` — The string to print to the console.
 
 
 ```lua
@@ -867,10 +906,10 @@ function emu.console(message: string)
 
 # emu.debugview
 
-Prints `message` to the debug console. If you are not debugging
-mupen with Visual Studio, this function will do nothing
+Prints `message` to the debug console. If you are not debugging mupen with
+Visual Studio, this function will do nothing.
 
-@*param* `message` — The string to print to the debug console
+@*param* `message` — The string to print to the debug console.
 
 
 ```lua
@@ -883,10 +922,12 @@ function emu.debugview(message: string)
 
 # emu.framecount
 
-Returns the number of VIs since the last movie was played.
-This should match the statusbar (assuming you have `0-index
-statusbar` off). If no movie has been played, it returns the
-number of VIs since the emulator was started, not reset
+Returns the number of VIs since the last movie was played. This should match
+the statusbar (assuming you have `0-index statusbar` off). If no movie has
+been played, it returns the number of VIs since the emulator was started, not
+reset.
+
+@*return* `framecount` — The number of VIs since the last movie was played.
 
 
 ```lua
@@ -912,7 +953,11 @@ function emu.getaddress(address: string)
 
 # emu.getpause
 
-Returns `true` if the emulator is paused and `false` if it is not
+Returns `true` if the emulator is paused and `false` if it is not.
+
+@*return* `emu_paused` — `true` if the emulator is paused and `false` if it
+
+is not.
 
 
 ```lua
@@ -925,8 +970,9 @@ function emu.getpause()
 
 # emu.getspeed
 
-Returns the current speed limit (not the current speed) of the
-emulator
+Returns the current speed limit (not the current speed) of the emulator.
+
+@*return* `speed_limit` — The current speed limit of the emulator.
 
 
 ```lua
@@ -941,7 +987,7 @@ function emu.getspeed()
 
 Gets a system metric using the windows
 [GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
-function
+function.
 
 
 ```lua
@@ -956,7 +1002,13 @@ function emu.getsystemmetrics(param: integer)
 
 Returns the current mupen version. If `type` is 0 or less, it
 will return the full version name (Mupen 64 0.0.0). If `type`
-is 1 or more, it will return the version number (0.0.0)
+is 1 or more, it will return the version number (0.0.0).
+
+@*param* `type` — Whether to get the full version (less that 0) or the short
+
+version (more than 1).
+
+@*return* `version` — The mupen version
 
 ```lua
 type:
@@ -975,9 +1027,12 @@ function emu.getversion(type: 0|1)
 
 # emu.inputcount
 
-Returns the number of input frames that have happened since
-the emulator was started. It does not reset when a movie is
-started
+Returns the number of input frames that have happened since the emulator was
+started. It does not reset when a movie is started.
+
+@*return* `inputcount` — The number of input frames that have happened
+
+since the emulator was started.
 
 
 ```lua
@@ -991,7 +1046,7 @@ function emu.inputcount()
 # emu.ismainwindowinforeground
 
 Returns `true` if the main mupen window is focused and false if
-it is not
+it is not.
 
 
 ```lua
@@ -1005,7 +1060,7 @@ function emu.ismainwindowinforeground()
 # emu.isreadonly
 
 Returnss true if the currently playing movie is read only and
-false if it is not
+false if it is not.
 
 
 ```lua
@@ -1018,11 +1073,9 @@ function emu.isreadonly()
 
 # emu.pause
 
-Pauses or unpauses the emulator
+Pauses or unpauses the emulator.
 
-@*param* `pause` — True pauses the emulator and false resumes
-
-it
+@*param* `pause` — True pauses the emulator and false resumes it.
 
 
 ```lua
@@ -1034,11 +1087,14 @@ function emu.pause(pause: boolean)
 
 # emu.samplecount
 
-Returns the number of input frames since the last movie was
-played. This should match the statusbar (assuming you have
-`0-index statusbar` off). If no movie is playing, it will return
-the last value when a movie was playing. If no movie has been
-played yet, it will return `-1`
+Returns the number of input frames since the last movie was played. This
+should match the statusbar (assuming you have `0-index statusbar` off). If no
+movie is playing, it will return the last value when a movie was playing. If
+no movie has been played yet, it will return `-1`.
+
+@*return* `samplecount` — The number of input frames since the last movie
+
+was played.
 
 
 ```lua
@@ -1085,7 +1141,9 @@ function emu.setgfx(mode: 0|1)
 
 # emu.speed
 
-Sets the speed limit of the emulator
+Sets the speed limit of the emulator.
+
+@*param* `speed_limit` — The new speed limit of the emulator.
 
 
 ```lua
@@ -1098,7 +1156,7 @@ function emu.speed(speed_limit: integer)
 
 # emu.speedmode
 
-Sets the speed mode of the emulator
+Sets the speed mode of the emulator.
 
 ```lua
 mode:
@@ -1117,11 +1175,10 @@ function emu.speedmode(mode: "maximum"|"normal")
 
 # emu.statusbar
 
-Displays the text `message` in the status bar
-on the bottom while replacing any other text.
-The message will only display until the next frame.
+Displays the text `message` in the status bar on the bottom while replacing
+any other text. The message will only display until the next frame.
 
-@*param* `message` — The string to display on the status bar
+@*param* `message` — The string to display on the status bar.
 
 
 ```lua
@@ -3869,7 +3926,7 @@ function wgui.setpen(color: "null"|color, width?: integer)
 
 # wgui.text
 
-Draws the text `text` at the specified coordinates. Uses the GDI font, 
+Draws the text `text` at the specified coordinates. Uses the GDI font,
 the GDI background, and the GDI text color
 
 

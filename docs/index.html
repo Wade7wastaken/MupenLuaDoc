@@ -1,881 +1,1257 @@
+
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Mupen Lua API Docs</title>
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <link href="css/pygments.css" type="text/css" rel="stylesheet">
-    <meta charset="UTF-8">
+<title>Mupen Lua API Docs</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="css/pygments.css" rel="stylesheet" type="text/css"/>
+<meta charset="utf-8"/>
 </head>
 <body>
-    <div class="sidebar">
-        <center><img src="img/mupen_logo.png"><br>
-        mupen64-rr-lua docs</center><br>
-        <button class="collapsible"><a href="#emuFuncs"">EMU FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#emuConsole">EMU.CONSOLE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuDebugview">EMU.DEBUGVIEW</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuStatusbar">EMU.STATUSBAR</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtvi">EMU.ATVI</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtupdatescreen">EMU.ATUPDATESCREEN</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtinput">EMU.ATINPUT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtstop">EMU.ATSTOP</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtwindowmessage">EMU.ATWINDOWMESSAGE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtinterval">EMU.ATINTERVAL</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtplaymovie">EMU.ATPLAYMOVIE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtstopmovie">EMU.ATSTOPMOVIE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtloadstate">EMU.ATLOADSTATE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtsavestate">EMU.ATSAVESTATE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuAtreset">EMU.ATRESET</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuFramecount">EMU.FRAMECOUNT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuSamplecount">EMU.SAMPLECOUNT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuInputcount">EMU.INPUTCOUNT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuGetversion">EMU.GETVERSION</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuPause">EMU.PAUSE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuGetpause">EMU.GETPAUSE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuGetspeed">EMU.GETSPEED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuSpeed">EMU.SPEED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuSpeedmode">EMU.SPEEDMODE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuSetgfx">EMU.SETGFX</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuGetaddress">EMU.GETADDRESS</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuIsreadonly">EMU.ISREADONLY</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuGetsystemmetrics">EMU.GETSYSTEMMETRICS</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuIsmainwindowinforeground">EMU.ISMAINWINDOWINFOREGROUND</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#emuScreenshot">EMU.SCREENSHOT</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#memoryFuncs"">MEMORY FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#memoryLbu">MEMORY.LBU</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLb">MEMORY.LB</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLhu">MEMORY.LHU</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLh">MEMORY.LH</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLwu">MEMORY.LWU</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLw">MEMORY.LW</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLdu">MEMORY.LDU</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLd">MEMORY.LD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLwc1">MEMORY.LWC1</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLdc1">MEMORY.LDC1</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLoadsize">MEMORY.LOADSIZE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLoadbytes">MEMORY.LOADBYTES</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLoadhalfs">MEMORY.LOADHALFS</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryLoadwords">MEMORY.LOADWORDS</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySb">MEMORY.SB</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySh">MEMORY.SH</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySw">MEMORY.SW</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySd">MEMORY.SD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySwc1">MEMORY.SWC1</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySdc1">MEMORY.SDC1</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryStoresize">MEMORY.STORESIZE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySyncbreak">MEMORY.SYNCBREAK</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryPcbreak">MEMORY.PCBREAK</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadbreak">MEMORY.READBREAK</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritebreak">MEMORY.WRITEBREAK</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReg">MEMORY.REG</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryGetreg">MEMORY.GETREG</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySetreg">MEMORY.SETREG</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryTrace">MEMORY.TRACE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryTracemode">MEMORY.TRACEMODE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryGetcore">MEMORY.GETCORE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRecompilenow">MEMORY.RECOMPILENOW</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRecompile">MEMORY.RECOMPILE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRecompilenext">MEMORY.RECOMPILENEXT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRecompilenextall">MEMORY.RECOMPILENEXTALL</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadmemb">MEMORY.READMEMB</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadmemh">MEMORY.READMEMH</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadmem">MEMORY.READMEM</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadmemd">MEMORY.READMEMD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritememb">MEMORY.WRITEMEMB</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritememh">MEMORY.WRITEMEMH</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritemem">MEMORY.WRITEMEM</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritememd">MEMORY.WRITEMEMD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadbytesigned">MEMORY.READBYTESIGNED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadbyte">MEMORY.READBYTE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadwordsigned">MEMORY.READWORDSIGNED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadword">MEMORY.READWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReaddwordsigned">MEMORY.READDWORDSIGNED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReaddword">MEMORY.READDWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadqwordsigned">MEMORY.READQWORDSIGNED</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadqword">MEMORY.READQWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadfloat">MEMORY.READFLOAT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReaddouble">MEMORY.READDOUBLE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadsize">MEMORY.READSIZE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryReadbyterange">MEMORY.READBYTERANGE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritebyte">MEMORY.WRITEBYTE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWriteword">MEMORY.WRITEWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritedword">MEMORY.WRITEDWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritelong">MEMORY.WRITELONG</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWriteqword">MEMORY.WRITEQWORD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritefloat">MEMORY.WRITEFLOAT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritedouble">MEMORY.WRITEDOUBLE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryWritesize">MEMORY.WRITESIZE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRegisterread">MEMORY.REGISTERREAD</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRegisterwrite">MEMORY.REGISTERWRITE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryRegisterexec">MEMORY.REGISTEREXEC</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memoryGetregister">MEMORY.GETREGISTER</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#memorySetregister">MEMORY.SETREGISTER</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#guiFuncs"">GUI FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#guiRegister">GUI.REGISTER</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#wguiFuncs"">WGUI FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#wguiSetbrush">WGUI.SETBRUSH</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiSetpen">WGUI.SETPEN</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiSetcolor">WGUI.SETCOLOR</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiSetbk">WGUI.SETBK</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiSetfont">WGUI.SETFONT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiText">WGUI.TEXT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiDrawtext">WGUI.DRAWTEXT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiGettextextent">WGUI.GETTEXTEXTENT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiRect">WGUI.RECT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiFillrect">WGUI.FILLRECT</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiFillrecta">WGUI.FILLRECTA</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiFillellipsea">WGUI.FILLELLIPSEA</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiFillpolygona">WGUI.FILLPOLYGONA</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiLoadimage">WGUI.LOADIMAGE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiDeleteimage">WGUI.DELETEIMAGE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiDrawimage">WGUI.DRAWIMAGE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiLoadscreen">WGUI.LOADSCREEN</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiLoadscreenreset">WGUI.LOADSCREENRESET</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiGetimageinfo">WGUI.GETIMAGEINFO</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiEllipse">WGUI.ELLIPSE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiPolygon">WGUI.POLYGON</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiLine">WGUI.LINE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiInfo">WGUI.INFO</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#wguiResize">WGUI.RESIZE</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#inputFuncs"">INPUT FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#inputGet">INPUT.GET</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#inputDiff">INPUT.DIFF</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#inputPrompt">INPUT.PROMPT</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#joypadFuncs"">JOYPAD FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#joypadGet">JOYPAD.GET</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#joypadSet">JOYPAD.SET</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#joypadRegister">JOYPAD.REGISTER</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#joypadCount">JOYPAD.COUNT</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#movieFuncs"">MOVIE FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#moviePlaymovie">MOVIE.PLAYMOVIE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#movieStopmovie">MOVIE.STOPMOVIE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#movieGetmoviefilename">MOVIE.GETMOVIEFILENAME</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#savestateFuncs"">SAVESTATE FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#savestateSavefile">SAVESTATE.SAVEFILE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#savestateLoadfile">SAVESTATE.LOADFILE</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#ioHelperFuncs"">IOHELPER FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#ioHelperFilediag">IOHELPER.FILEDIAG</a>
-                </button>
-            </div>
-        <button class="collapsible"><a href="#aviFuncs"">AVI FUNCTIONS</a></button>
-            <div class="funcList">
-                <button class="funcListItem">
-                    <a href="#aviStartcapture">AVI.STARTCAPTURE</a>
-                </button>
-                <button class="funcListItem">
-                    <a href="#aviStopcapture">AVI.STOPCAPTURE</a>
-                </button>
-            </div>
-    </div>
-</body>
-</html>
+<div class="sidebar">
+<center><img src="img/mupen_logo.png"/><br/>
+        mupen64-rr-lua docs</center><br/>
+<button class="collapsible">
+<a href="#emuFuncs">EMU FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#emuConsole">EMU.CONSOLE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuDebugview">EMU.DEBUGVIEW</a>
+</button>
+<button class="funcListItem">
+<a href="#emuStatusbar">EMU.STATUSBAR</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtvi">EMU.ATVI</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtupdatescreen">EMU.ATUPDATESCREEN</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtinput">EMU.ATINPUT</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtstop">EMU.ATSTOP</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtwindowmessage">EMU.ATWINDOWMESSAGE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtinterval">EMU.ATINTERVAL</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtplaymovie">EMU.ATPLAYMOVIE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtstopmovie">EMU.ATSTOPMOVIE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtloadstate">EMU.ATLOADSTATE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtsavestate">EMU.ATSAVESTATE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuAtreset">EMU.ATRESET</a>
+</button>
+<button class="funcListItem">
+<a href="#emuFramecount">EMU.FRAMECOUNT</a>
+</button>
+<button class="funcListItem">
+<a href="#emuSamplecount">EMU.SAMPLECOUNT</a>
+</button>
+<button class="funcListItem">
+<a href="#emuInputcount">EMU.INPUTCOUNT</a>
+</button>
+<button class="funcListItem">
+<a href="#emuGetversion">EMU.GETVERSION</a>
+</button>
+<button class="funcListItem">
+<a href="#emuPause">EMU.PAUSE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuGetpause">EMU.GETPAUSE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuGetspeed">EMU.GETSPEED</a>
+</button>
+<button class="funcListItem">
+<a href="#emuSpeed">EMU.SPEED</a>
+</button>
+<button class="funcListItem">
+<a href="#emuSpeedmode">EMU.SPEEDMODE</a>
+</button>
+<button class="funcListItem">
+<a href="#emuSetgfx">EMU.SETGFX</a>
+</button>
+<button class="funcListItem">
+<a href="#emuGetaddress">EMU.GETADDRESS</a>
+</button>
+<button class="funcListItem">
+<a href="#emuIsreadonly">EMU.ISREADONLY</a>
+</button>
+<button class="funcListItem">
+<a href="#emuGetsystemmetrics">EMU.GETSYSTEMMETRICS</a>
+</button>
+<button class="funcListItem">
+<a href="#emuIsmainwindowinforeground">EMU.ISMAINWINDOWINFOREGROUND</a>
+</button>
+<button class="funcListItem">
+<a href="#emuScreenshot">EMU.SCREENSHOT</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#memoryFuncs">MEMORY FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#memoryLbu">MEMORY.LBU</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLb">MEMORY.LB</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLhu">MEMORY.LHU</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLh">MEMORY.LH</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLwu">MEMORY.LWU</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLw">MEMORY.LW</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLdu">MEMORY.LDU</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLd">MEMORY.LD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLwc1">MEMORY.LWC1</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLdc1">MEMORY.LDC1</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLoadsize">MEMORY.LOADSIZE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLoadbytes">MEMORY.LOADBYTES</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLoadhalfs">MEMORY.LOADHALFS</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryLoadwords">MEMORY.LOADWORDS</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySb">MEMORY.SB</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySh">MEMORY.SH</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySw">MEMORY.SW</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySd">MEMORY.SD</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySwc1">MEMORY.SWC1</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySdc1">MEMORY.SDC1</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryStoresize">MEMORY.STORESIZE</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySyncbreak">MEMORY.SYNCBREAK</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryPcbreak">MEMORY.PCBREAK</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadbreak">MEMORY.READBREAK</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritebreak">MEMORY.WRITEBREAK</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReg">MEMORY.REG</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryGetreg">MEMORY.GETREG</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySetreg">MEMORY.SETREG</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryTrace">MEMORY.TRACE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryTracemode">MEMORY.TRACEMODE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryGetcore">MEMORY.GETCORE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRecompilenow">MEMORY.RECOMPILENOW</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRecompile">MEMORY.RECOMPILE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRecompilenext">MEMORY.RECOMPILENEXT</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRecompilenextall">MEMORY.RECOMPILENEXTALL</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadmemb">MEMORY.READMEMB</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadmemh">MEMORY.READMEMH</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadmem">MEMORY.READMEM</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadmemd">MEMORY.READMEMD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritememb">MEMORY.WRITEMEMB</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritememh">MEMORY.WRITEMEMH</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritemem">MEMORY.WRITEMEM</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritememd">MEMORY.WRITEMEMD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadbytesigned">MEMORY.READBYTESIGNED</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadbyte">MEMORY.READBYTE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadwordsigned">MEMORY.READWORDSIGNED</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadword">MEMORY.READWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReaddwordsigned">MEMORY.READDWORDSIGNED</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReaddword">MEMORY.READDWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadqwordsigned">MEMORY.READQWORDSIGNED</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadqword">MEMORY.READQWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadfloat">MEMORY.READFLOAT</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReaddouble">MEMORY.READDOUBLE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadsize">MEMORY.READSIZE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryReadbyterange">MEMORY.READBYTERANGE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritebyte">MEMORY.WRITEBYTE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWriteword">MEMORY.WRITEWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritedword">MEMORY.WRITEDWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritelong">MEMORY.WRITELONG</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWriteqword">MEMORY.WRITEQWORD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritefloat">MEMORY.WRITEFLOAT</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritedouble">MEMORY.WRITEDOUBLE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryWritesize">MEMORY.WRITESIZE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRegisterread">MEMORY.REGISTERREAD</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRegisterwrite">MEMORY.REGISTERWRITE</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryRegisterexec">MEMORY.REGISTEREXEC</a>
+</button>
+<button class="funcListItem">
+<a href="#memoryGetregister">MEMORY.GETREGISTER</a>
+</button>
+<button class="funcListItem">
+<a href="#memorySetregister">MEMORY.SETREGISTER</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#guiFuncs">GUI FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#guiRegister">GUI.REGISTER</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#wguiFuncs">WGUI FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#wguiSetbrush">WGUI.SETBRUSH</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiSetpen">WGUI.SETPEN</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiSetcolor">WGUI.SETCOLOR</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiSetbk">WGUI.SETBK</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiSetfont">WGUI.SETFONT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiText">WGUI.TEXT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiDrawtext">WGUI.DRAWTEXT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiGettextextent">WGUI.GETTEXTEXTENT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiRect">WGUI.RECT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiFillrect">WGUI.FILLRECT</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiFillrecta">WGUI.FILLRECTA</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiFillellipsea">WGUI.FILLELLIPSEA</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiFillpolygona">WGUI.FILLPOLYGONA</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiLoadimage">WGUI.LOADIMAGE</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiDeleteimage">WGUI.DELETEIMAGE</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiDrawimage">WGUI.DRAWIMAGE</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiLoadscreen">WGUI.LOADSCREEN</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiLoadscreenreset">WGUI.LOADSCREENRESET</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiGetimageinfo">WGUI.GETIMAGEINFO</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiEllipse">WGUI.ELLIPSE</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiPolygon">WGUI.POLYGON</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiLine">WGUI.LINE</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiInfo">WGUI.INFO</a>
+</button>
+<button class="funcListItem">
+<a href="#wguiResize">WGUI.RESIZE</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#inputFuncs">INPUT FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#inputGet">INPUT.GET</a>
+</button>
+<button class="funcListItem">
+<a href="#inputDiff">INPUT.DIFF</a>
+</button>
+<button class="funcListItem">
+<a href="#inputPrompt">INPUT.PROMPT</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#joypadFuncs">JOYPAD FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#joypadGet">JOYPAD.GET</a>
+</button>
+<button class="funcListItem">
+<a href="#joypadSet">JOYPAD.SET</a>
+</button>
+<button class="funcListItem">
+<a href="#joypadRegister">JOYPAD.REGISTER</a>
+</button>
+<button class="funcListItem">
+<a href="#joypadCount">JOYPAD.COUNT</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#movieFuncs">MOVIE FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#moviePlaymovie">MOVIE.PLAYMOVIE</a>
+</button>
+<button class="funcListItem">
+<a href="#movieStopmovie">MOVIE.STOPMOVIE</a>
+</button>
+<button class="funcListItem">
+<a href="#movieGetmoviefilename">MOVIE.GETMOVIEFILENAME</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#savestateFuncs">SAVESTATE FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#savestateSavefile">SAVESTATE.SAVEFILE</a>
+</button>
+<button class="funcListItem">
+<a href="#savestateLoadfile">SAVESTATE.LOADFILE</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#ioHelperFuncs">IOHELPER FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#ioHelperFilediag">IOHELPER.FILEDIAG</a>
+</button>
+</div>
+<button class="collapsible">
+<a href="#aviFuncs">AVI FUNCTIONS</a>
+</button>
+<div class="funcList">
+<button class="funcListItem">
+<a href="#aviStartcapture">AVI.STARTCAPTURE</a>
+</button>
+<button class="funcListItem">
+<a href="#aviStopcapture">AVI.STOPCAPTURE</a>
+</button>
+</div>
+</div>
 <div class="docBody">
-<hr />
+<hr/>
 <h1><a id="emuFuncs">EMU</a> FUNCTIONS</h1>
-<hr />
-<h1><a id="emuAtinput">emu.atinput</a></h1>
-<p>Calls the function <code>f</code> every input frame. The function <code>f</code> receives
-an argument that seems to always be <code>0</code>. If <code>unregister</code> is set
-to true, the function <code>f</code> will no longer be called when this event
-occurs, but it will error if you never registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinput</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtinterval">emu.atinterval</a></h1>
-<p>Calls the function <code>f</code> constantly, even when the emulator is paused
-If <code>unregister</code> is set to true, the function <code>f</code> will no longer
-be called when this event occurs, but it will error if you never
-registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinterval</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtloadstate">emu.atloadstate</a></h1>
-<p>Calls the function <code>f</code> when a savestate is loaded. If <code>unregister</code>
-is set to true, the function <code>f</code> will no longer be called when
-this event occurs, but it will error if you never registered the
-function</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atloadstate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtplaymovie">emu.atplaymovie</a></h1>
-<p>Calls the function <code>f</code> when a movie is played. If <code>unregister</code>
-is set to true, the function <code>f</code> will no longer be called when
-this event occurs, but it will error if you never registered the
-function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atplaymovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtreset">emu.atreset</a></h1>
-<p>Calls the function <code>f</code> when the emulator is reset. If <code>unregister</code>
-is set to true, the function <code>f</code> will no longer be called when
-this event occurs, but it will error if you never registered the
-function</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atreset</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtsavestate">emu.atsavestate</a></h1>
-<p>Calls the function <code>f</code> when a savestate is saved. If <code>unregister</code>
-is set to true, the function <code>f</code> will no longer be called when
-this event occurs, but it will error if you never registered the
-function</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atsavestate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtstop">emu.atstop</a></h1>
-<p>Calls the function <code>f</code> when the script is stopped. If <code>unregister</code> is
-set to true, the function <code>f</code> will no longer be called when this event
-occurs, but it will error if you never registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstop</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtstopmovie">emu.atstopmovie</a></h1>
-<p>Calls the function <code>f</code> when a movie is stopped. If <code>unregister</code>
-is set to true, the function <code>f</code> will no longer be called when
-this event occurs, but it will error if you never registered the
-function</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstopmovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
-<p>Seems similar to <code>emu.atvi</code>, except that it is called after.
-If <code>unregister</code> is set to true, the function <code>f</code> will no longer
-be called when this event occurs, but it will error if you
-never registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atupdatescreen</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtvi">emu.atvi</a></h1>
-<p>Calls the function <code>f</code> every vi frame. For example,
-in Super Mario 64, the function will be called twice
-when you advance by one frame whereas it will be called
-once in Ocarina of Time. If <code>unregister</code> is set to true,
-the function <code>f</code> will no longer be called when this event occurs,
-but it will error if you never registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atvi</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuAtwindowmessage">emu.atwindowmessage</a></h1>
-<p>Defines a handler function that is called when a window receives a
-message. The message data is given to the function in 4 parameters.
-If <code>unregister</code> is set to true, the function <code>f</code> will no longer
-be called when this event occurs, but it will error if you never
-registered the function.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atwindowmessage</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">any</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<hr/>
 <h1><a id="emuConsole">emu.console</a></h1>
-<p>Displays the text message in the console.
-Similar to <code>print</code>, but only accepts strings</p>
-<p>@<em>param</em> <code>message</code> — The string to print to the console</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<p>Displays the text <code>message</code> in the console. Similar to <code>print</code>, but only
+accepts strings. Because of this, <code>print</code> should be used instead.</p>
+<p>@<em>param</em> <code>message</code> — The string to print to the console.</p>
+<pre class="codehilite"><code class="language-lua">function emu.console(message: string)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="emuDebugview">emu.debugview</a></h1>
-<p>Prints <code>message</code> to the debug console. If you are not debugging
-mupen with Visual Studio, this function will do nothing</p>
-<p>@<em>param</em> <code>message</code> — The string to print to the debug console</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">debugview</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<p>Prints <code>message</code> to the debug console. If you are not debugging mupen with
+Visual Studio, this function will do nothing.</p>
+<p>@<em>param</em> <code>message</code> — The string to print to the debug console.</p>
+<pre class="codehilite"><code class="language-lua">function emu.debugview(message: string)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuStatusbar">emu.statusbar</a></h1>
+<p>Displays the text <code>message</code> in the status bar on the bottom while replacing
+any other text. The message will only display until the next frame.</p>
+<p>@<em>param</em> <code>message</code> — The string to display on the status bar.</p>
+<pre class="codehilite"><code class="language-lua">function emu.statusbar(message: string)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtvi">emu.atvi</a></h1>
+<p>Calls the function <code>f</code> every VI frame. For example, in Super Mario 64, the
+function will be called twice when you advance by one frame, whereas it will
+be called once in Ocarina of Time. If <code>unregister</code> is set to true, the
+function <code>f</code> will no longer be called when this event occurs, but it will
+error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every VI frame.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atvi(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
+<p>Similar to <code>emu.atvi</code>, except that it is called after. If <code>unregister</code> is set
+to true, the function <code>f</code> will no longer be called when this event occurs,
+but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called after every VI frame.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atupdatescreen(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtinput">emu.atinput</a></h1>
+<p>Calls the function <code>f</code> every input frame. The function <code>f</code> receives an
+argument that seems to always be <code>0</code>. If <code>unregister</code> is set to true, the
+function <code>f</code> will no longer be called when this event occurs, but it will
+error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every input frame.</p>
+<p>It receives an argument that seems to always be <code>0</code>.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atinput(f: fun(a?: integer):nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtstop">emu.atstop</a></h1>
+<p>Calls the function <code>f</code> when the script is stopped. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when the script is stopped</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atstop(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtwindowmessage">emu.atwindowmessage</a></h1>
+<p>Defines a handler function that is called when a window receives a message.
+The message data is given to the function in 4 parameters. If <code>unregister</code>
+is set to true, the function <code>f</code> will no longer be called when this event
+occurs, but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a window message</p>
+<p>is received.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atwindowmessage(f: fun(a: any, b: any, c: any, d: any):nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtinterval">emu.atinterval</a></h1>
+<p>Calls the function <code>f</code> constantly, even when the emulator is paused. If
+<code>unregister</code> is set to true, the function <code>f</code> will no longer be called when
+this event occurs, but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called constantly.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atinterval(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtplaymovie">emu.atplaymovie</a></h1>
+<p>Calls the function <code>f</code> when a movie is played. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a movie is played.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atplaymovie(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtstopmovie">emu.atstopmovie</a></h1>
+<p>Calls the function <code>f</code> when a movie is stopped. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a movie is stopped.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atstopmovie(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtloadstate">emu.atloadstate</a></h1>
+<p>Calls the function <code>f</code> when a savestate is loaded. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a savestate is loaded.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atloadstate(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtsavestate">emu.atsavestate</a></h1>
+<p>Calls the function <code>f</code> when a savestate is saved. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a savestate is saved.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atsavestate(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuAtreset">emu.atreset</a></h1>
+<p>Calls the function <code>f</code> when the emulator is reset. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when the emulator is reset.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<pre class="codehilite"><code class="language-lua">function emu.atreset(f: fun():nil, unregister?: boolean)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="emuFramecount">emu.framecount</a></h1>
-<p>Returns the number of VIs since the last movie was played.
-This should match the statusbar (assuming you have <code>0-index
-statusbar</code> off). If no movie has been played, it returns the
-number of VIs since the emulator was started, not reset</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">framecount</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">framecount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="emuGetaddress">emu.getaddress</a></h1>
-<p>?</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getaddress</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="emuGetpause">emu.getpause</a></h1>
-<p>Returns <code>true</code> if the emulator is paused and <code>false</code> if it is not</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getpause</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">emu_paused</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre></div><hr />
-<h1><a id="emuGetspeed">emu.getspeed</a></h1>
-<p>Returns the current speed limit (not the current speed) of the
-emulator</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getspeed</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="emuGetsystemmetrics">emu.getsystemmetrics</a></h1>
-<p>Gets a system metric using the windows
-<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">GetSystemMetrics</a>
-function</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getsystemmetrics</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">metric</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
+<p>Returns the number of VIs since the last movie was played. This should match
+the statusbar (assuming you have <code>0-index statusbar</code> off). If no movie has
+been played, it returns the number of VIs since the emulator was started, not
+reset.</p>
+<p>@<em>return</em> <code>framecount</code> — The number of VIs since the last movie was played.</p>
+<pre class="codehilite"><code class="language-lua">function emu.framecount()
+  -&gt; framecount: integer
+</code></pre>
+<hr/>
+<h1><a id="emuSamplecount">emu.samplecount</a></h1>
+<p>Returns the number of input frames since the last movie was played. This
+should match the statusbar (assuming you have <code>0-index statusbar</code> off). If no
+movie is playing, it will return the last value when a movie was playing. If
+no movie has been played yet, it will return <code>-1</code>.</p>
+<p>@<em>return</em> <code>samplecount</code> — The number of input frames since the last movie</p>
+<p>was played.</p>
+<pre class="codehilite"><code class="language-lua">function emu.samplecount()
+  -&gt; samplecount: integer
+</code></pre>
+<hr/>
+<h1><a id="emuInputcount">emu.inputcount</a></h1>
+<p>Returns the number of input frames that have happened since the emulator was
+started. It does not reset when a movie is started.</p>
+<p>@<em>return</em> <code>inputcount</code> — The number of input frames that have happened</p>
+<p>since the emulator was started.</p>
+<pre class="codehilite"><code class="language-lua">function emu.inputcount()
+  -&gt; inputcount: integer
+</code></pre>
+<hr/>
 <h1><a id="emuGetversion">emu.getversion</a></h1>
 <p>Returns the current mupen version. If <code>type</code> is 0 or less, it
 will return the full version name (Mupen 64 0.0.0). If <code>type</code>
-is 1 or more, it will return the version number (0.0.0)</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">type</span><span class="p">:</span>
-    <span class="o">|</span> <span class="mi">0</span>
-    <span class="o">|</span> <span class="mi">1</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getversion</span><span class="p">(</span><span class="nb">type</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">version</span><span class="p">:</span> <span class="n">string</span>
-</code></pre></div><hr />
-<h1><a id="emuInputcount">emu.inputcount</a></h1>
-<p>Returns the number of input frames that have happened since
-the emulator was started. It does not reset when a movie is
-started</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">inputcount</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
-<p>Returns <code>true</code> if the main mupen window is focused and false if
-it is not</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">focused</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre></div><hr />
+is 1 or more, it will return the version number (0.0.0).</p>
+<p>@<em>param</em> <code>type</code> — Whether to get the full version (less that 0) or the short</p>
+<p>version (more than 1).</p>
+<p>@<em>return</em> <code>version</code> — The mupen version</p>
+<pre class="codehilite"><code class="language-lua">type:
+    | 0
+    | 1
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function emu.getversion(type: 0|1)
+  -&gt; version: string
+</code></pre>
+<hr/>
+<h1><a id="emuPause">emu.pause</a></h1>
+<p>Pauses or unpauses the emulator.</p>
+<p>@<em>param</em> <code>pause</code> — True pauses the emulator and false resumes it.</p>
+<pre class="codehilite"><code class="language-lua">function emu.pause(pause: boolean)
+</code></pre>
+<hr/>
+<h1><a id="emuGetpause">emu.getpause</a></h1>
+<p>Returns <code>true</code> if the emulator is paused and <code>false</code> if it is not.</p>
+<p>@<em>return</em> <code>emu_paused</code> — <code>true</code> if the emulator is paused and <code>false</code> if it</p>
+<p>is not.</p>
+<pre class="codehilite"><code class="language-lua">function emu.getpause()
+  -&gt; emu_paused: boolean
+</code></pre>
+<hr/>
+<h1><a id="emuGetspeed">emu.getspeed</a></h1>
+<p>Returns the current speed limit (not the current speed) of the emulator.</p>
+<p>@<em>return</em> <code>speed_limit</code> — The current speed limit of the emulator.</p>
+<pre class="codehilite"><code class="language-lua">function emu.getspeed()
+  -&gt; speed_limit: integer
+</code></pre>
+<hr/>
+<h1><a id="emuSpeed">emu.speed</a></h1>
+<p>Sets the speed limit of the emulator.</p>
+<p>@<em>param</em> <code>speed_limit</code> — The new speed limit of the emulator.</p>
+<pre class="codehilite"><code class="language-lua">function emu.speed(speed_limit: integer)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuSpeedmode">emu.speedmode</a></h1>
+<p>Sets the speed mode of the emulator.</p>
+<pre class="codehilite"><code class="language-lua">mode:
+    | "normal"
+    | "maximum"
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function emu.speedmode(mode: "maximum"|"normal")
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuSetgfx">emu.setgfx</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">mode:
+    | 0
+    | 1
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function emu.setgfx(mode: 0|1)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="emuGetaddress">emu.getaddress</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">function emu.getaddress(address: string)
+  -&gt; integer
+</code></pre>
+<hr/>
 <h1><a id="emuIsreadonly">emu.isreadonly</a></h1>
 <p>Returnss true if the currently playing movie is read only and
-false if it is not</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">isreadonly</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">read_only</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre></div><hr />
-<h1><a id="emuPause">emu.pause</a></h1>
-<p>Pauses or unpauses the emulator</p>
-<p>@<em>param</em> <code>pause</code> — True pauses the emulator and false resumes</p>
-<p>it</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">pause</span><span class="p">(</span><span class="n">pause</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-</code></pre></div><hr />
-<h1><a id="emuSamplecount">emu.samplecount</a></h1>
-<p>Returns the number of input frames since the last movie was
-played. This should match the statusbar (assuming you have
-<code>0-index statusbar</code> off). If no movie is playing, it will return
-the last value when a movie was playing. If no movie has been
-played yet, it will return <code>-1</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">samplecount</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">samplecount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
+false if it is not.</p>
+<pre class="codehilite"><code class="language-lua">function emu.isreadonly()
+  -&gt; read_only: boolean
+</code></pre>
+<hr/>
+<h1><a id="emuGetsystemmetrics">emu.getsystemmetrics</a></h1>
+<p>Gets a system metric using the windows
+<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">GetSystemMetrics</a>
+function.</p>
+<pre class="codehilite"><code class="language-lua">function emu.getsystemmetrics(param: integer)
+  -&gt; metric: integer
+</code></pre>
+<hr/>
+<h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
+<p>Returns <code>true</code> if the main mupen window is focused and false if
+it is not.</p>
+<pre class="codehilite"><code class="language-lua">function emu.ismainwindowinforeground()
+  -&gt; focused: boolean
+</code></pre>
+<hr/>
 <h1><a id="emuScreenshot">emu.screenshot</a></h1>
 <p>Takes a screenshot and saves it to the directory <code>dir</code></p>
 <p>@<em>param</em> <code>dir</code> — The directory to save the screenshot to</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">screenshot</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuSetgfx">emu.setgfx</a></h1>
-<p>?</p>
-<div class="codehilite"><pre><span></span><code><span class="n">mode</span><span class="p">:</span>
-    <span class="o">|</span> <span class="mi">0</span>
-    <span class="o">|</span> <span class="mi">1</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">setgfx</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuSpeed">emu.speed</a></h1>
-<p>Sets the speed limit of the emulator</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speed</span><span class="p">(</span><span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuSpeedmode">emu.speedmode</a></h1>
-<p>Sets the speed mode of the emulator</p>
-<div class="codehilite"><pre><span></span><code><span class="n">mode</span><span class="p">:</span>
-    <span class="o">|</span> <span class="s2">&quot;normal&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;maximum&quot;</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speedmode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="s2">&quot;maximum&quot;</span><span class="o">|</span><span class="s2">&quot;normal&quot;</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="emuStatusbar">emu.statusbar</a></h1>
-<p>Displays the text <code>message</code> in the status bar
-on the bottom while replacing any other text.
-The message will only display until the next frame.</p>
-<p>@<em>param</em> <code>message</code> — The string to display on the status bar</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">function emu.screenshot(dir: string)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="memoryFuncs">MEMORY</a> FUNCTIONS</h1>
-<hr />
-<h1><a id="memoryLb">memory.LB</a></h1>
-<p>Loads a signed byte from rdram and returns it. Alias for
-<code>memory.readbytesigned</code></p>
-<p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — The signed byte at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LB</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
+<hr/>
 <h1><a id="memoryLbu">memory.LBU</a></h1>
 <p>Loads an unsigned byte from rdram and returns it. Alias for
 <code>memory.readbyte</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
 <p>@<em>return</em> <code>value</code> — The unsigned byte at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LBU</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="memoryLd">memory.LD</a></h1>
-<p>Loads a signed quad word (8 bytes) from rdram and returns it.
-Alias for <code>memory.readqwordsigned</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LBU(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
+<h1><a id="memoryLb">memory.LB</a></h1>
+<p>Loads a signed byte from rdram and returns it. Alias for
+<code>memory.readbytesigned</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — A table containing the upper and lower</p>
-<p>halves of the unsigned quad word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LD</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span><span class="p">[]</span>
-</code></pre></div><hr />
-<h1><a id="memoryLdc1">memory.LDC1</a></h1>
-<p>Loads a double (8 bytes) from rdram and returns it. Alias for
-<code>memory.readdouble</code></p>
+<p>@<em>return</em> <code>value</code> — The signed byte at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LB(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
+<h1><a id="memoryLhu">memory.LHU</a></h1>
+<p>Loads an unsigned word (2 bytes) from rdram and returns it. Alias
+for <code>memory.readword</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — the double at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LDC1</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">number</span>
-</code></pre></div><hr />
+<p>@<em>return</em> <code>value</code> — The unsigned word at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LHU(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
+<h1><a id="memoryLh">memory.LH</a></h1>
+<p>Loads a signed word (2 bytes) from rdram and returns it. Alias
+for <code>memory.readwordsigned</code></p>
+<p>@<em>param</em> <code>address</code> — The address to read from</p>
+<p>@<em>return</em> <code>value</code> — The signed word at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LH(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
+<h1><a id="memoryLwu">memory.LWU</a></h1>
+<p>Loads an unsigned double word (4 bytes) from rdram and returns it.
+Alias for <code>memory.readdword</code></p>
+<p>@<em>param</em> <code>address</code> — The address to read from</p>
+<p>@<em>return</em> <code>value</code> — The unsigned double word at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LWU(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
+<h1><a id="memoryLw">memory.LW</a></h1>
+<p>Loads a signed double word (4 bytes) from rdram and returns it.
+Alias for <code>memory.readdwordsigned</code></p>
+<p>@<em>param</em> <code>address</code> — The address to read from</p>
+<p>@<em>return</em> <code>value</code> — The signed double word at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LW(address: integer)
+  -&gt; value: integer
+</code></pre>
+<hr/>
 <h1><a id="memoryLdu">memory.LDU</a></h1>
 <p>Loads an unsigned quad word (8 bytes) from rdram and returns it.
 Alias for <code>memory.readqword</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
 <p>@<em>return</em> <code>value</code> — A table containing the upper and lower</p>
 <p>halves of the unsigned quad word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LDU</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span><span class="p">[]</span>
-</code></pre></div><hr />
-<h1><a id="memoryLh">memory.LH</a></h1>
-<p>Loads a signed word (2 bytes) from rdram and returns it. Alias
-for <code>memory.readwordsigned</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LDU(address: integer)
+  -&gt; value: integer[]
+</code></pre>
+<hr/>
+<h1><a id="memoryLd">memory.LD</a></h1>
+<p>Loads a signed quad word (8 bytes) from rdram and returns it.
+Alias for <code>memory.readqwordsigned</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — The signed word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LH</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="memoryLhu">memory.LHU</a></h1>
-<p>Loads an unsigned word (2 bytes) from rdram and returns it. Alias
-for <code>memory.readword</code></p>
-<p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — The unsigned word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LHU</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="memoryLw">memory.LW</a></h1>
-<p>Loads a signed double word (4 bytes) from rdram and returns it.
-Alias for <code>memory.readdwordsigned</code></p>
-<p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — The signed double word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LW</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
+<p>@<em>return</em> <code>value</code> — A table containing the upper and lower</p>
+<p>halves of the unsigned quad word at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LD(address: integer)
+  -&gt; value: integer[]
+</code></pre>
+<hr/>
 <h1><a id="memoryLwc1">memory.LWC1</a></h1>
 <p>Loads a float (4 bytes) from rdram and returns it. Alias for
 <code>memory.readfloat</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
 <p>@<em>return</em> <code>value</code> — the float at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LWC1</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">number</span>
-</code></pre></div><hr />
-<h1><a id="memoryLwu">memory.LWU</a></h1>
-<p>Loads an unsigned double word (4 bytes) from rdram and returns it.
-Alias for <code>memory.readdword</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LWC1(address: integer)
+  -&gt; value: number
+</code></pre>
+<hr/>
+<h1><a id="memoryLdc1">memory.LDC1</a></h1>
+<p>Loads a double (8 bytes) from rdram and returns it. Alias for
+<code>memory.readdouble</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — The unsigned double word at <code>address</code></p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LWU</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div><hr />
-<h1><a id="memoryLoadbytes">memory.loadbytes</a></h1>
-<p>Currently broken</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">loadbytes</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre></div><hr />
-<h1><a id="memoryLoadhalfs">memory.loadhalfs</a></h1>
-<p>Currently broken</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">loadhalfs</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre></div><hr />
+<p>@<em>return</em> <code>value</code> — the double at <code>address</code></p>
+<pre class="codehilite"><code class="language-lua">function memory.LDC1(address: integer)
+  -&gt; value: number
+</code></pre>
+<hr/>
 <h1><a id="memoryLoadsize">memory.loadsize</a></h1>
 <p>Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
 <code>memory.readsize</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
 <p>@<em>param</em> <code>size</code> — The number of bytes to read. Must be <code>1</code>,</p>
 <p><code>2</code>, <code>4</code>, or <code>8</code></p>
-<div class="codehilite"><pre><span></span><code><span class="n">size</span><span class="p">:</span>
-    <span class="o">|</span> <span class="mi">1</span>
-    <span class="o">|</span> <span class="mi">2</span>
-    <span class="o">|</span> <span class="mi">4</span>
-    <span class="o">|</span> <span class="mi">8</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">loadsize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">4</span><span class="o">|</span><span class="mi">8</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">integer</span><span class="o">|</span><span class="n">integer</span><span class="p">[]</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">size:
+    | 1
+    | 2
+    | 4
+    | 8
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function memory.loadsize(address: integer, size: 1|2|4|8)
+  -&gt; integer|integer[]
+</code></pre>
+<hr/>
+<h1><a id="memoryLoadbytes">memory.loadbytes</a></h1>
+<p>Currently broken</p>
+<pre class="codehilite"><code class="language-lua">function memory.loadbytes(address: integer, size: integer)
+</code></pre>
+<hr/>
+<h1><a id="memoryLoadhalfs">memory.loadhalfs</a></h1>
+<p>Currently broken</p>
+<pre class="codehilite"><code class="language-lua">function memory.loadhalfs(address: integer, size: integer)
+</code></pre>
+<hr/>
 <h1><a id="memoryLoadwords">memory.loadwords</a></h1>
 <p>Currently broken</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">loadwords</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre></div><hr />
-<h1><a id="print">print</a></h1>
-<p>Prints a value to the lua console</p>
-<p>@<em>param</em> <code>data</code> — The data to print to the console</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-</code></pre></div><hr />
-<h1><a id="stop">stop</a></h1>
-<p>Stops script execution</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">stop</span><span class="p">()</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">function memory.loadwords(address: integer, size: integer)
+</code></pre>
+<hr/>
+<h1><a id="memorySb">memory.SB</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySh">memory.SH</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySw">memory.SW</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySd">memory.SD</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySwc1">memory.SWC1</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySdc1">memory.SDC1</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryStoresize">memory.storesize</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySyncbreak">memory.syncbreak</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryPcbreak">memory.pcbreak</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadbreak">memory.readbreak</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritebreak">memory.writebreak</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReg">memory.reg</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryGetreg">memory.getreg</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySetreg">memory.setreg</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryTrace">memory.trace</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryTracemode">memory.tracemode</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryGetcore">memory.getcore</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRecompilenow">memory.recompilenow</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRecompile">memory.recompile</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRecompilenext">memory.recompilenext</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRecompilenextall">memory.recompilenextall</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadmemb">memory.readmemb</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadmemh">memory.readmemh</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadmem">memory.readmem</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadmemd">memory.readmemd</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritememb">memory.writememb</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritememh">memory.writememh</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritemem">memory.writemem</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritememd">memory.writememd</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadbytesigned">memory.readbytesigned</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadbyte">memory.readbyte</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadwordsigned">memory.readwordsigned</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadword">memory.readword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReaddwordsigned">memory.readdwordsigned</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReaddword">memory.readdword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadqwordsigned">memory.readqwordsigned</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadqword">memory.readqword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadfloat">memory.readfloat</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReaddouble">memory.readdouble</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadsize">memory.readsize</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryReadbyterange">memory.readbyterange</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritebyte">memory.writebyte</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWriteword">memory.writeword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritedword">memory.writedword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritelong">memory.writelong</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWriteqword">memory.writeqword</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritefloat">memory.writefloat</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritedouble">memory.writedouble</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryWritesize">memory.writesize</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRegisterread">memory.registerread</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRegisterwrite">memory.registerwrite</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryRegisterexec">memory.registerexec</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memoryGetregister">memory.getregister</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="memorySetregister">memory.setregister</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="guiFuncs">GUI</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="guiRegister">gui.register</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
 <h1><a id="wguiFuncs">WGUI</a> FUNCTIONS</h1>
-<hr />
-<h1><a id="wguiSetbk">wgui.setbk</a></h1>
-<p>Sets the GDI background color to <code>color</code></p>
-<p>@<em>param</em> <code>color</code> — A color of "null" sets</p>
-<p>the background color to transparent</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;,</span>
-<span class="c1">-- &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
-<span class="n">color</span><span class="p">:</span>
-    <span class="o">|</span> <span class="s2">&quot;white&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;black&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;clear&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;gray&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;red&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;orange&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;yellow&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;chartreuse&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;green&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;teal&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;cyan&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;blue&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;null&quot;</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbk</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span><span class="o">|</span><span class="n">color</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<hr/>
 <h1><a id="wguiSetbrush">wgui.setbrush</a></h1>
 <p>Sets the GDI brush to <code>color</code></p>
 <p>@<em>param</em> <code>color</code> — A color of "null" resets</p>
 <p>the brush to its default value</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;,</span>
-<span class="c1">-- &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
-<span class="n">color</span><span class="p">:</span>
-    <span class="o">|</span> <span class="s2">&quot;white&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;black&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;clear&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;gray&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;red&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;orange&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;yellow&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;chartreuse&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;green&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;teal&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;cyan&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;blue&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;null&quot;</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbrush</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span><span class="o">|</span><span class="n">color</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">-- colors can be any of these or "#RGB", "#RGBA",
+-- "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+    | "null"
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function wgui.setbrush(color: "null"|color)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="wguiSetpen">wgui.setpen</a></h1>
+<p>Sets the GDI pen color to <code>color</code> and <code>width</code></p>
+<p>@<em>param</em> <code>color</code> — A color of "null" resets</p>
+<p>the pen to its default value</p>
+<p>@<em>param</em> <code>width</code> — Defaults to 1</p>
+<pre class="codehilite"><code class="language-lua">-- colors can be any of these or "#RGB", "#RGBA",
+-- "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+    | "null"
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function wgui.setpen(color: "null"|color, width?: integer)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="wguiSetcolor">wgui.setcolor</a></h1>
 <p>Sets the GDI text color to <code>color</code></p>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;,</span>
-<span class="c1">-- &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
-<span class="n">color</span><span class="p">:</span>
-    <span class="o">|</span> <span class="s2">&quot;white&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;black&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;clear&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;gray&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;red&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;orange&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;yellow&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;chartreuse&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;green&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;teal&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;cyan&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;blue&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setcolor</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">color</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">-- colors can be any of these or "#RGB", "#RGBA",
+-- "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function wgui.setcolor(color: color)
+  -&gt; nil
+</code></pre>
+<hr/>
+<h1><a id="wguiSetbk">wgui.setbk</a></h1>
+<p>Sets the GDI background color to <code>color</code></p>
+<p>@<em>param</em> <code>color</code> — A color of "null" sets</p>
+<p>the background color to transparent</p>
+<pre class="codehilite"><code class="language-lua">-- colors can be any of these or "#RGB", "#RGBA",
+-- "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+    | "null"
+</code></pre>
+<pre class="codehilite"><code class="language-lua">function wgui.setbk(color: "null"|color)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="wguiSetfont">wgui.setfont</a></h1>
 <p>Sets the GDI font to <code>size</code>, <code>font</code>, and <code>style</code></p>
 <p>@<em>param</em> <code>size</code> — The size is stored as an integer, but some opperations</p>
@@ -884,41 +1260,192 @@ Alias for <code>memory.readdword</code></p>
 <p>@<em>param</em> <code>style</code> — Defaults to "". Each character is processed to change</p>
 <p>the style. <code>b</code> sets bold, <code>i</code> sets italics, <code>u</code> sets underline, <code>s</code> sets
 strikethrough, and <code>a</code> sets antialiasing</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setfont</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">font</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">style</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
-<h1><a id="wguiSetpen">wgui.setpen</a></h1>
-<p>Sets the GDI pen color to <code>color</code> and <code>width</code></p>
-<p>@<em>param</em> <code>color</code> — A color of "null" resets</p>
-<p>the pen to its default value</p>
-<p>@<em>param</em> <code>width</code> — Defaults to 1</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;,</span>
-<span class="c1">-- &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
-<span class="n">color</span><span class="p">:</span>
-    <span class="o">|</span> <span class="s2">&quot;white&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;black&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;clear&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;gray&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;red&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;orange&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;yellow&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;chartreuse&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;green&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;teal&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;cyan&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;blue&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
-    <span class="o">|</span> <span class="s2">&quot;null&quot;</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setpen</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">&quot;null&quot;</span><span class="o">|</span><span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div><hr />
+<pre class="codehilite"><code class="language-lua">function wgui.setfont(size: number, font?: string, style?: string)
+  -&gt; nil
+</code></pre>
+<hr/>
 <h1><a id="wguiText">wgui.text</a></h1>
-<p>Draws the text <code>text</code> at the specified coordinates. Uses the GDI font, 
+<p>Draws the text <code>text</code> at the specified coordinates. Uses the GDI font,
 the GDI background, and the GDI text color</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-lua">function wgui.text(x: integer, y: integer, text: string)
+</code></pre>
+<hr/>
+<h1><a id="wguiDrawtext">wgui.drawtext</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiGettextextent">wgui.gettextextent</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiRect">wgui.rect</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiFillrect">wgui.fillrect</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiFillrecta">wgui.fillrecta</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiFillellipsea">wgui.fillellipsea</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiFillpolygona">wgui.fillpolygona</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiLoadimage">wgui.loadimage</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiDeleteimage">wgui.deleteimage</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiLoadscreen">wgui.loadscreen</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiLoadscreenreset">wgui.loadscreenreset</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiGetimageinfo">wgui.getimageinfo</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiEllipse">wgui.ellipse</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiPolygon">wgui.polygon</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiLine">wgui.line</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiInfo">wgui.info</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="wguiResize">wgui.resize</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="inputFuncs">INPUT</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="inputGet">input.get</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="inputDiff">input.diff</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="inputPrompt">input.prompt</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="joypadFuncs">JOYPAD</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="joypadGet">joypad.get</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="joypadSet">joypad.set</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="joypadRegister">joypad.register</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="joypadCount">joypad.count</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="movieFuncs">MOVIE</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="moviePlaymovie">movie.playmovie</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="movieStopmovie">movie.stopmovie</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="movieGetmoviefilename">movie.getmoviefilename</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="savestateFuncs">SAVESTATE</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="savestateSavefile">savestate.savefile</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="savestateLoadfile">savestate.loadfile</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="ioHelperFuncs">IOHELPER</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="ioHelperFilediag">ioHelper.filediag</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="aviFuncs">AVI</a> FUNCTIONS</h1>
+<hr/>
+<h1><a id="aviStartcapture">avi.startcapture</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
+<hr/>
+<h1><a id="aviStopcapture">avi.stopcapture</a></h1>
+<p>?</p>
+<pre class="codehilite"><code class="language-lua">?
+</code></pre>
 </div>
 <script>
     var coll = document.getElementsByClassName("collapsible");
@@ -936,3 +1463,4 @@ the GDI background, and the GDI text color</p>
       });
     }
 </script>
+</body></html>
