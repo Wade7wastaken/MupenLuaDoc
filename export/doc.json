@@ -41,6 +41,88 @@
         "defines": [
             {
                 "extends": {
+                    "finish": 4930008,
+                    "start": 4830022,
+                    "type": "doc.type",
+                    "types": [
+                        {
+                            "finish": 4840011,
+                            "start": 4840005,
+                            "type": "doc.type.name",
+                            "view": "string"
+                        },
+                        {
+                            "finish": 4850008,
+                            "start": 4850005,
+                            "type": "doc.type.string",
+                            "view": "\"l\""
+                        },
+                        {
+                            "finish": 4860008,
+                            "start": 4860005,
+                            "type": "doc.type.string",
+                            "view": "\"r\""
+                        },
+                        {
+                            "finish": 4870008,
+                            "start": 4870005,
+                            "type": "doc.type.string",
+                            "view": "\"t\""
+                        },
+                        {
+                            "finish": 4880008,
+                            "start": 4880005,
+                            "type": "doc.type.string",
+                            "view": "\"b\""
+                        },
+                        {
+                            "finish": 4890008,
+                            "start": 4890005,
+                            "type": "doc.type.string",
+                            "view": "\"c\""
+                        },
+                        {
+                            "finish": 4900008,
+                            "start": 4900005,
+                            "type": "doc.type.string",
+                            "view": "\"v\""
+                        },
+                        {
+                            "finish": 4910008,
+                            "start": 4910005,
+                            "type": "doc.type.string",
+                            "view": "\"e\""
+                        },
+                        {
+                            "finish": 4920008,
+                            "start": 4920005,
+                            "type": "doc.type.string",
+                            "view": "\"s\""
+                        },
+                        {
+                            "finish": 4930008,
+                            "start": 4930005,
+                            "type": "doc.type.string",
+                            "view": "\"n\""
+                        }
+                    ],
+                    "view": "string|\"b\"|\"c\"|\"e\"|\"l\"...(+5)"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 4930008,
+                "start": 4830010,
+                "type": "doc.alias"
+            }
+        ],
+        "desc": "```lua\nalign_format:\n    | \"l\" -- aligns the text to the left (already applied by default) (sets DT_LEFT)\n    | \"r\" -- aligns the text to the right (sets DT_RIGHT)\n    | \"t\" -- aligns the text to the top (already applied by default) (sets DT_TOP)\n    | \"b\" -- aligns the text to the bottom (sets DT_BOTTOM)\n    | \"c\" -- horizontally aligns the text to the center (sets DT_CENTER)\n    | \"v\" -- vertically aligns the text to the center (sets DT_VCENTER)\n    | \"e\" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)\n    | \"s\" -- forces the text to fit into a single line (sets DT_SINGLELINE)\n    | \"n\" -- disables word break (unsets DT_WORDBREAK)\n```",
+        "fields": [],
+        "name": "align_format",
+        "type": "type"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
                     "finish": 80008,
                     "start": 80006,
                     "type": "table",
@@ -172,91 +254,91 @@
         "defines": [
             {
                 "extends": {
-                    "finish": 4910013,
-                    "start": 4770015,
+                    "finish": 4810013,
+                    "start": 4670015,
                     "type": "doc.type",
                     "types": [
                         {
-                            "finish": 4780011,
-                            "start": 4780005,
+                            "finish": 4680011,
+                            "start": 4680005,
                             "type": "doc.type.name",
                             "view": "string"
                         },
                         {
-                            "finish": 4790012,
-                            "start": 4790005,
+                            "finish": 4690012,
+                            "start": 4690005,
                             "type": "doc.type.string",
                             "view": "\"white\""
                         },
                         {
-                            "finish": 4800012,
-                            "start": 4800005,
+                            "finish": 4700012,
+                            "start": 4700005,
                             "type": "doc.type.string",
                             "view": "\"black\""
                         },
                         {
-                            "finish": 4810012,
-                            "start": 4810005,
+                            "finish": 4710012,
+                            "start": 4710005,
                             "type": "doc.type.string",
                             "view": "\"clear\""
                         },
                         {
-                            "finish": 4820011,
-                            "start": 4820005,
+                            "finish": 4720011,
+                            "start": 4720005,
                             "type": "doc.type.string",
                             "view": "\"gray\""
                         },
                         {
-                            "finish": 4830010,
-                            "start": 4830005,
+                            "finish": 4730010,
+                            "start": 4730005,
                             "type": "doc.type.string",
                             "view": "\"red\""
                         },
                         {
-                            "finish": 4840013,
-                            "start": 4840005,
+                            "finish": 4740013,
+                            "start": 4740005,
                             "type": "doc.type.string",
                             "view": "\"orange\""
                         },
                         {
-                            "finish": 4850013,
-                            "start": 4850005,
+                            "finish": 4750013,
+                            "start": 4750005,
                             "type": "doc.type.string",
                             "view": "\"yellow\""
                         },
                         {
-                            "finish": 4860017,
-                            "start": 4860005,
+                            "finish": 4760017,
+                            "start": 4760005,
                             "type": "doc.type.string",
                             "view": "\"chartreuse\""
                         },
                         {
-                            "finish": 4870012,
-                            "start": 4870005,
+                            "finish": 4770012,
+                            "start": 4770005,
                             "type": "doc.type.string",
                             "view": "\"green\""
                         },
                         {
-                            "finish": 4880011,
-                            "start": 4880005,
+                            "finish": 4780011,
+                            "start": 4780005,
                             "type": "doc.type.string",
                             "view": "\"teal\""
                         },
                         {
-                            "finish": 4890011,
-                            "start": 4890005,
+                            "finish": 4790011,
+                            "start": 4790005,
                             "type": "doc.type.string",
                             "view": "\"cyan\""
                         },
                         {
-                            "finish": 4900011,
-                            "start": 4900005,
+                            "finish": 4800011,
+                            "start": 4800005,
                             "type": "doc.type.string",
                             "view": "\"blue\""
                         },
                         {
-                            "finish": 4910013,
-                            "start": 4910005,
+                            "finish": 4810013,
+                            "start": 4810005,
                             "type": "doc.type.string",
                             "view": "\"purple\""
                         }
@@ -264,8 +346,8 @@
                     "view": "string|\"black\"|\"blue\"|\"chartreuse\"|\"clear\"...(+9)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4910013,
-                "start": 4770010,
+                "finish": 4810013,
+                "start": 4670010,
                 "type": "doc.alias"
             }
         ],
@@ -1509,41 +1591,41 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "The function to be called every input frame.",
-                            "finish": 840022,
+                            "desc": "The function to be called every input frame. It receives an argument that seems to always be `0`.",
+                            "finish": 830022,
                             "name": "f",
-                            "start": 840021,
+                            "start": 830021,
                             "type": "local",
                             "view": "fun(a?: integer):nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 840034,
+                            "finish": 830034,
                             "name": "unregister",
-                            "start": 840024,
+                            "start": 830024,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
-                    "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function.\n\n@*param* `f` — The function to be called every input frame.\n\nIt receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 840039,
+                    "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function.\n\n@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+                    "finish": 830039,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 840000,
+                    "start": 830000,
                     "type": "function",
                     "view": "function emu.atinput(f: fun(a?: integer):nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 840020,
-                "start": 840009,
+                "finish": 830020,
+                "start": 830009,
                 "type": "setfield"
             }
         ],
-        "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function.\n\n@*param* `f` — The function to be called every input frame.\n\nIt receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+        "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function.\n\n@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
         "name": "emu.atinput",
         "type": "variable"
     },
@@ -1554,36 +1636,36 @@
                     "args": [
                         {
                             "desc": "The function to be called constantly.",
-                            "finish": 1100025,
+                            "finish": 1080025,
                             "name": "f",
-                            "start": 1100024,
+                            "start": 1080024,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1100037,
+                            "finish": 1080037,
                             "name": "unregister",
-                            "start": 1100027,
+                            "start": 1080027,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` constantly, even when the emulator is paused. If\n`unregister` is set to true, the function `f` will no longer be called when\nthis event occurs, but it will error if you never registered the function.\n\n@*param* `f` — The function to be called constantly.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1100042,
+                    "finish": 1080042,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1100000,
+                    "start": 1080000,
                     "type": "function",
                     "view": "function emu.atinterval(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1100023,
-                "start": 1100009,
+                "finish": 1080023,
+                "start": 1080009,
                 "type": "setfield"
             }
         ],
@@ -1598,36 +1680,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when a savestate is loaded.",
-                            "finish": 1340026,
+                            "finish": 1320026,
                             "name": "f",
-                            "start": 1340025,
+                            "start": 1320025,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1340038,
+                            "finish": 1320038,
                             "name": "unregister",
-                            "start": 1340028,
+                            "start": 1320028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when a savestate is loaded. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when a savestate is loaded.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1340043,
+                    "finish": 1320043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1340000,
+                    "start": 1320000,
                     "type": "function",
                     "view": "function emu.atloadstate(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1340024,
-                "start": 1340009,
+                "finish": 1320024,
+                "start": 1320009,
                 "type": "setfield"
             }
         ],
@@ -1642,36 +1724,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when a movie is played.",
-                            "finish": 1180026,
+                            "finish": 1160026,
                             "name": "f",
-                            "start": 1180025,
+                            "start": 1160025,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1180038,
+                            "finish": 1160038,
                             "name": "unregister",
-                            "start": 1180028,
+                            "start": 1160028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when a movie is played. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when a movie is played.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1180043,
+                    "finish": 1160043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1180000,
+                    "start": 1160000,
                     "type": "function",
                     "view": "function emu.atplaymovie(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1180024,
-                "start": 1180009,
+                "finish": 1160024,
+                "start": 1160009,
                 "type": "setfield"
             }
         ],
@@ -1686,36 +1768,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when the emulator is reset.",
-                            "finish": 1500022,
+                            "finish": 1480022,
                             "name": "f",
-                            "start": 1500021,
+                            "start": 1480021,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1500034,
+                            "finish": 1480034,
                             "name": "unregister",
-                            "start": 1500024,
+                            "start": 1480024,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when the emulator is reset. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the emulator is reset.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1500039,
+                    "finish": 1480039,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1500000,
+                    "start": 1480000,
                     "type": "function",
                     "view": "function emu.atreset(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1500020,
-                "start": 1500009,
+                "finish": 1480020,
+                "start": 1480009,
                 "type": "setfield"
             }
         ],
@@ -1730,36 +1812,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when a savestate is saved.",
-                            "finish": 1420026,
+                            "finish": 1400026,
                             "name": "f",
-                            "start": 1420025,
+                            "start": 1400025,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1420038,
+                            "finish": 1400038,
                             "name": "unregister",
-                            "start": 1420028,
+                            "start": 1400028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when a savestate is saved. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when a savestate is saved.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1420043,
+                    "finish": 1400043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1420000,
+                    "start": 1400000,
                     "type": "function",
                     "view": "function emu.atsavestate(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1420024,
-                "start": 1420009,
+                "finish": 1400024,
+                "start": 1400009,
                 "type": "setfield"
             }
         ],
@@ -1774,36 +1856,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when the script is stopped",
-                            "finish": 920021,
+                            "finish": 910021,
                             "name": "f",
-                            "start": 920020,
+                            "start": 910020,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 920033,
+                            "finish": 910033,
                             "name": "unregister",
-                            "start": 920023,
+                            "start": 910023,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when the script is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the script is stopped\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 920038,
+                    "finish": 910038,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 920000,
+                    "start": 910000,
                     "type": "function",
                     "view": "function emu.atstop(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 920019,
-                "start": 920009,
+                "finish": 910019,
+                "start": 910009,
                 "type": "setfield"
             }
         ],
@@ -1818,36 +1900,36 @@
                     "args": [
                         {
                             "desc": "The function to be called when a movie is stopped.",
-                            "finish": 1260026,
+                            "finish": 1240026,
                             "name": "f",
-                            "start": 1260025,
+                            "start": 1240025,
                             "type": "local",
                             "view": "fun():nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1260038,
+                            "finish": 1240038,
                             "name": "unregister",
-                            "start": 1260028,
+                            "start": 1240028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` when a movie is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when a movie is stopped.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1260043,
+                    "finish": 1240043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1260000,
+                    "start": 1240000,
                     "type": "function",
                     "view": "function emu.atstopmovie(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1260024,
-                "start": 1260009,
+                "finish": 1240024,
+                "start": 1240009,
                 "type": "setfield"
             }
         ],
@@ -1949,41 +2031,41 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "The function to be called when a window message",
-                            "finish": 1020030,
+                            "desc": "The function to be called when a window message is received.",
+                            "finish": 1000030,
                             "name": "f",
-                            "start": 1020029,
+                            "start": 1000029,
                             "type": "local",
                             "view": "fun(a: any, b: any, c: any, d: any):nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 1020042,
+                            "finish": 1000042,
                             "name": "unregister",
-                            "start": 1020032,
+                            "start": 1000032,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
-                    "desc": "Defines a handler function that is called when a window receives a message.\nThe message data is given to the function in 4 parameters. If `unregister`\nis set to true, the function `f` will no longer be called when this event\noccurs, but it will error if you never registered the function.\n\n@*param* `f` — The function to be called when a window message\n\nis received.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 1020047,
+                    "desc": "Defines a handler function that is called when a window receives a message.\nThe message data is given to the function in 4 parameters. If `unregister`\nis set to true, the function `f` will no longer be called when this event\noccurs, but it will error if you never registered the function.\n\n@*param* `f` — The function to be called when a window message is received.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+                    "finish": 1000047,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 1020000,
+                    "start": 1000000,
                     "type": "function",
                     "view": "function emu.atwindowmessage(f: fun(a: any, b: any, c: any, d: any):nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1020028,
-                "start": 1020009,
+                "finish": 1000028,
+                "start": 1000009,
                 "type": "setfield"
             }
         ],
-        "desc": "Defines a handler function that is called when a window receives a message.\nThe message data is given to the function in 4 parameters. If `unregister`\nis set to true, the function `f` will no longer be called when this event\noccurs, but it will error if you never registered the function.\n\n@*param* `f` — The function to be called when a window message\n\nis received.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+        "desc": "Defines a handler function that is called when a window receives a message.\nThe message data is given to the function in 4 parameters. If `unregister`\nis set to true, the function `f` will no longer be called when this event\noccurs, but it will error if you never registered the function.\n\n@*param* `f` — The function to be called when a window message is received.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
         "name": "emu.atwindowmessage",
         "type": "variable"
     },
@@ -2065,7 +2147,7 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the number of VIs since the last movie was played. This should match\nthe statusbar (assuming you have `0-index statusbar` off). If no movie has\nbeen played, it returns the number of VIs since the emulator was started, not\nreset.\n\n@*return* `framecount` — The number of VIs since the last movie was played.",
-                    "finish": 1580029,
+                    "finish": 1560029,
                     "returns": [
                         {
                             "desc": "The number of VIs since the last movie was played.",
@@ -2074,13 +2156,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 1580000,
+                    "start": 1560000,
                     "type": "function",
                     "view": "function emu.framecount()\n  -> framecount: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1580023,
-                "start": 1580009,
+                "finish": 1560023,
+                "start": 1560009,
                 "type": "setfield"
             }
         ],
@@ -2094,28 +2176,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 2190031,
+                            "finish": 2130031,
                             "name": "address",
-                            "start": 2190024,
+                            "start": 2130024,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "?",
-                    "finish": 2190036,
+                    "finish": 2130036,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "integer"
                         }
                     ],
-                    "start": 2190000,
+                    "start": 2130000,
                     "type": "function",
                     "view": "function emu.getaddress(address: string)\n  -> integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2190023,
-                "start": 2190009,
+                "finish": 2130023,
+                "start": 2130009,
                 "type": "setfield"
             }
         ],
@@ -2128,27 +2210,27 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Returns `true` if the emulator is paused and `false` if it is not.\n\n@*return* `emu_paused` — `true` if the emulator is paused and `false` if it\n\nis not.",
-                    "finish": 1930027,
+                    "desc": "Returns `true` if the emulator is paused and `false` if it is not.\n\n@*return* `emu_paused` — `true` if the emulator is paused and `false` if it is not.",
+                    "finish": 1870027,
                     "returns": [
                         {
-                            "desc": "`true` if the emulator is paused and `false` if it",
+                            "desc": "`true` if the emulator is paused and `false` if it is not.",
                             "name": "emu_paused",
                             "type": "function.return",
                             "view": "boolean"
                         }
                     ],
-                    "start": 1930000,
+                    "start": 1870000,
                     "type": "function",
                     "view": "function emu.getpause()\n  -> emu_paused: boolean"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1930021,
-                "start": 1930009,
+                "finish": 1870021,
+                "start": 1870009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns `true` if the emulator is paused and `false` if it is not.\n\n@*return* `emu_paused` — `true` if the emulator is paused and `false` if it\n\nis not.",
+        "desc": "Returns `true` if the emulator is paused and `false` if it is not.\n\n@*return* `emu_paused` — `true` if the emulator is paused and `false` if it is not.",
         "name": "emu.getpause",
         "type": "variable"
     },
@@ -2158,7 +2240,7 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the current speed limit (not the current speed) of the emulator.\n\n@*return* `speed_limit` — The current speed limit of the emulator.",
-                    "finish": 1980027,
+                    "finish": 1920027,
                     "returns": [
                         {
                             "desc": "The current speed limit of the emulator.",
@@ -2167,13 +2249,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 1980000,
+                    "start": 1920000,
                     "type": "function",
                     "view": "function emu.getspeed()\n  -> speed_limit: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1980021,
-                "start": 1980009,
+                "finish": 1920021,
+                "start": 1920009,
                 "type": "setfield"
             }
         ],
@@ -2187,15 +2269,15 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 2330035,
+                            "finish": 2270035,
                             "name": "param",
-                            "start": 2330030,
+                            "start": 2270030,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Gets a system metric using the windows\n[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)\nfunction.",
-                    "finish": 2330040,
+                    "finish": 2270040,
                     "returns": [
                         {
                             "name": "metric",
@@ -2203,13 +2285,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2330000,
+                    "start": 2270000,
                     "type": "function",
                     "view": "function emu.getsystemmetrics(param: integer)\n  -> metric: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2330029,
-                "start": 2330009,
+                "finish": 2270029,
+                "start": 2270009,
                 "type": "setfield"
             }
         ],
@@ -2223,16 +2305,16 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "Whether to get the full version (less that 0) or the short",
-                            "finish": 1830028,
+                            "desc": "Whether to get the full version (less that 0) or the short version (more than 1).",
+                            "finish": 1780028,
                             "name": "type",
-                            "start": 1830024,
+                            "start": 1780024,
                             "type": "local",
                             "view": "0|1"
                         }
                     ],
-                    "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short\n\nversion (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
-                    "finish": 1830033,
+                    "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
+                    "finish": 1780033,
                     "returns": [
                         {
                             "desc": "The mupen version",
@@ -2241,17 +2323,17 @@
                             "view": "string"
                         }
                     ],
-                    "start": 1830000,
+                    "start": 1780000,
                     "type": "function",
                     "view": "function emu.getversion(type: 0|1)\n  -> version: string"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1830023,
-                "start": 1830009,
+                "finish": 1780023,
+                "start": 1780009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short\n\nversion (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
+        "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
         "name": "emu.getversion",
         "type": "variable"
     },
@@ -2260,27 +2342,27 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started.\n\n@*return* `inputcount` — The number of input frames that have happened\n\nsince the emulator was started.",
-                    "finish": 1740029,
+                    "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started.\n\n@*return* `inputcount` — The number of input frames that have happened since the emulator was started.",
+                    "finish": 1700029,
                     "returns": [
                         {
-                            "desc": "The number of input frames that have happened",
+                            "desc": "The number of input frames that have happened since the emulator was started.",
                             "name": "inputcount",
                             "type": "function.return",
                             "view": "integer"
                         }
                     ],
-                    "start": 1740000,
+                    "start": 1700000,
                     "type": "function",
                     "view": "function emu.inputcount()\n  -> inputcount: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1740023,
-                "start": 1740009,
+                "finish": 1700023,
+                "start": 1700009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started.\n\n@*return* `inputcount` — The number of input frames that have happened\n\nsince the emulator was started.",
+        "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started.\n\n@*return* `inputcount` — The number of input frames that have happened since the emulator was started.",
         "name": "emu.inputcount",
         "type": "variable"
     },
@@ -2289,8 +2371,8 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Returns `true` if the main mupen window is focused and false if\nit is not.",
-                    "finish": 2390043,
+                    "desc": "Returns `true` if the main mupen window is focused and false if it is not.",
+                    "finish": 2320043,
                     "returns": [
                         {
                             "name": "focused",
@@ -2298,17 +2380,17 @@
                             "view": "boolean"
                         }
                     ],
-                    "start": 2390000,
+                    "start": 2320000,
                     "type": "function",
                     "view": "function emu.ismainwindowinforeground()\n  -> focused: boolean"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2390037,
-                "start": 2390009,
+                "finish": 2320037,
+                "start": 2320009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns `true` if the main mupen window is focused and false if\nit is not.",
+        "desc": "Returns `true` if the main mupen window is focused and false if it is not.",
         "name": "emu.ismainwindowinforeground",
         "type": "variable"
     },
@@ -2317,8 +2399,8 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Returnss true if the currently playing movie is read only and\nfalse if it is not.",
-                    "finish": 2250029,
+                    "desc": "Returns true if the currently playing movie is read only and false if it is\nnot.",
+                    "finish": 2190029,
                     "returns": [
                         {
                             "name": "read_only",
@@ -2326,17 +2408,17 @@
                             "view": "boolean"
                         }
                     ],
-                    "start": 2250000,
+                    "start": 2190000,
                     "type": "function",
                     "view": "function emu.isreadonly()\n  -> read_only: boolean"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2250023,
-                "start": 2250009,
+                "finish": 2190023,
+                "start": 2190009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returnss true if the currently playing movie is read only and\nfalse if it is not.",
+        "desc": "Returns true if the currently playing movie is read only and false if it is\nnot.",
         "name": "emu.isreadonly",
         "type": "variable"
     },
@@ -2347,22 +2429,22 @@
                     "args": [
                         {
                             "desc": "True pauses the emulator and false resumes it.",
-                            "finish": 1870024,
+                            "finish": 1820024,
                             "name": "pause",
-                            "start": 1870019,
+                            "start": 1820019,
                             "type": "local",
                             "view": "boolean"
                         }
                     ],
                     "desc": "Pauses or unpauses the emulator.\n\n@*param* `pause` — True pauses the emulator and false resumes it.",
-                    "finish": 1870029,
-                    "start": 1870000,
+                    "finish": 1820029,
+                    "start": 1820000,
                     "type": "function",
                     "view": "function emu.pause(pause: boolean)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1870018,
-                "start": 1870009,
+                "finish": 1820018,
+                "start": 1820009,
                 "type": "setfield"
             }
         ],
@@ -2375,27 +2457,27 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Returns the number of input frames since the last movie was played. This\nshould match the statusbar (assuming you have `0-index statusbar` off). If no\nmovie is playing, it will return the last value when a movie was playing. If\nno movie has been played yet, it will return `-1`.\n\n@*return* `samplecount` — The number of input frames since the last movie\n\nwas played.",
-                    "finish": 1670030,
+                    "desc": "Returns the number of input frames since the last movie was played. This\nshould match the statusbar (assuming you have `0-index statusbar` off). If no\nmovie is playing, it will return the last value when a movie was playing. If\nno movie has been played yet, it will return `-1`.\n\n@*return* `samplecount` — The number of input frames since the last movie was played.",
+                    "finish": 1640030,
                     "returns": [
                         {
-                            "desc": "The number of input frames since the last movie",
+                            "desc": "The number of input frames since the last movie was played.",
                             "name": "samplecount",
                             "type": "function.return",
                             "view": "integer"
                         }
                     ],
-                    "start": 1670000,
+                    "start": 1640000,
                     "type": "function",
                     "view": "function emu.samplecount()\n  -> samplecount: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 1670024,
-                "start": 1670009,
+                "finish": 1640024,
+                "start": 1640009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns the number of input frames since the last movie was played. This\nshould match the statusbar (assuming you have `0-index statusbar` off). If no\nmovie is playing, it will return the last value when a movie was playing. If\nno movie has been played yet, it will return `-1`.\n\n@*return* `samplecount` — The number of input frames since the last movie\n\nwas played.",
+        "desc": "Returns the number of input frames since the last movie was played. This\nshould match the statusbar (assuming you have `0-index statusbar` off). If no\nmovie is playing, it will return the last value when a movie was playing. If\nno movie has been played yet, it will return `-1`.\n\n@*return* `samplecount` — The number of input frames since the last movie was played.",
         "name": "emu.samplecount",
         "type": "variable"
     },
@@ -2406,28 +2488,28 @@
                     "args": [
                         {
                             "desc": "The directory to save the screenshot to",
-                            "finish": 2440027,
+                            "finish": 2370027,
                             "name": "dir",
-                            "start": 2440024,
+                            "start": 2370024,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Takes a screenshot and saves it to the directory `dir`\n\n@*param* `dir` — The directory to save the screenshot to",
-                    "finish": 2440032,
+                    "finish": 2370032,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 2440000,
+                    "start": 2370000,
                     "type": "function",
                     "view": "function emu.screenshot(dir: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2440023,
-                "start": 2440009,
+                "finish": 2370023,
+                "start": 2370009,
                 "type": "setfield"
             }
         ],
@@ -2441,28 +2523,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 2130024,
+                            "finish": 2070024,
                             "name": "mode",
-                            "start": 2130020,
+                            "start": 2070020,
                             "type": "local",
                             "view": "0|1"
                         }
                     ],
                     "desc": "?\n\n```lua\nmode:\n    | 0\n    | 1\n```",
-                    "finish": 2130029,
+                    "finish": 2070029,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 2130000,
+                    "start": 2070000,
                     "type": "function",
                     "view": "function emu.setgfx(mode: 0|1)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2130019,
-                "start": 2130009,
+                "finish": 2070019,
+                "start": 2070009,
                 "type": "setfield"
             }
         ],
@@ -2477,28 +2559,28 @@
                     "args": [
                         {
                             "desc": "The new speed limit of the emulator.",
-                            "finish": 2030030,
+                            "finish": 1970030,
                             "name": "speed_limit",
-                            "start": 2030019,
+                            "start": 1970019,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Sets the speed limit of the emulator.\n\n@*param* `speed_limit` — The new speed limit of the emulator.",
-                    "finish": 2030035,
+                    "finish": 1970035,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 2030000,
+                    "start": 1970000,
                     "type": "function",
                     "view": "function emu.speed(speed_limit: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2030018,
-                "start": 2030009,
+                "finish": 1970018,
+                "start": 1970009,
                 "type": "setfield"
             }
         ],
@@ -2512,28 +2594,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 2080027,
+                            "finish": 2020027,
                             "name": "mode",
-                            "start": 2080023,
+                            "start": 2020023,
                             "type": "local",
                             "view": "\"maximum\"|\"normal\""
                         }
                     ],
                     "desc": "Sets the speed mode of the emulator.\n\n```lua\nmode:\n    | \"normal\"\n    | \"maximum\"\n```",
-                    "finish": 2080032,
+                    "finish": 2020032,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 2080000,
+                    "start": 2020000,
                     "type": "function",
                     "view": "function emu.speedmode(mode: \"maximum\"|\"normal\")\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2080022,
-                "start": 2080009,
+                "finish": 2020022,
+                "start": 2020009,
                 "type": "setfield"
             }
         ],
@@ -4593,15 +4675,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2640026,
+                            "finish": 2570026,
                             "name": "address",
-                            "start": 2640019,
+                            "start": 2570019,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads a signed byte from rdram and returns it. Alias for\n`memory.readbytesigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The signed byte at `address`",
-                    "finish": 2640031,
+                    "finish": 2570031,
                     "returns": [
                         {
                             "desc": "The signed byte at `address`",
@@ -4610,13 +4692,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2640000,
+                    "start": 2570000,
                     "type": "function",
                     "view": "function memory.LB(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2640018,
-                "start": 2640009,
+                "finish": 2570018,
+                "start": 2570009,
                 "type": "setfield"
             }
         ],
@@ -4631,15 +4713,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2570027,
+                            "finish": 2500027,
                             "name": "address",
-                            "start": 2570020,
+                            "start": 2500020,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads an unsigned byte from rdram and returns it. Alias for\n`memory.readbyte`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The unsigned byte at `address`",
-                    "finish": 2570032,
+                    "finish": 2500032,
                     "returns": [
                         {
                             "desc": "The unsigned byte at `address`",
@@ -4648,13 +4730,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2570000,
+                    "start": 2500000,
                     "type": "function",
                     "view": "function memory.LBU(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2570019,
-                "start": 2570009,
+                "finish": 2500019,
+                "start": 2500009,
                 "type": "setfield"
             }
         ],
@@ -4669,34 +4751,34 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 3080026,
+                            "finish": 2990026,
                             "name": "address",
-                            "start": 3080019,
+                            "start": 2990019,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
-                    "desc": "Loads a signed quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower\n\nhalves of the unsigned quad word at `address`",
-                    "finish": 3080031,
+                    "desc": "Loads a signed quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`",
+                    "finish": 2990031,
                     "returns": [
                         {
-                            "desc": "A table containing the upper and lower",
+                            "desc": "A table containing the upper and lower halves of the unsigned quad word at `address`",
                             "name": "value",
                             "type": "function.return",
                             "view": "integer[]"
                         }
                     ],
-                    "start": 3080000,
+                    "start": 2990000,
                     "type": "function",
                     "view": "function memory.LD(address: integer)\n  -> value: integer[]"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3080018,
-                "start": 3080009,
+                "finish": 2990018,
+                "start": 2990009,
                 "type": "setfield"
             }
         ],
-        "desc": "Loads a signed quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower\n\nhalves of the unsigned quad word at `address`",
+        "desc": "Loads a signed quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`",
         "name": "memory.LD",
         "type": "variable"
     },
@@ -4707,15 +4789,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 3220028,
+                            "finish": 3130028,
                             "name": "address",
-                            "start": 3220021,
+                            "start": 3130021,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads a double (8 bytes) from rdram and returns it. Alias for\n`memory.readdouble`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — the double at `address`",
-                    "finish": 3220033,
+                    "finish": 3130033,
                     "returns": [
                         {
                             "desc": "the double at `address`",
@@ -4724,13 +4806,13 @@
                             "view": "number"
                         }
                     ],
-                    "start": 3220000,
+                    "start": 3130000,
                     "type": "function",
                     "view": "function memory.LDC1(address: integer)\n  -> value: number"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3220020,
-                "start": 3220009,
+                "finish": 3130020,
+                "start": 3130009,
                 "type": "setfield"
             }
         ],
@@ -4745,34 +4827,34 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 3000027,
+                            "finish": 2920027,
                             "name": "address",
-                            "start": 3000020,
+                            "start": 2920020,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
-                    "desc": "Loads an unsigned quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower\n\nhalves of the unsigned quad word at `address`",
-                    "finish": 3000032,
+                    "desc": "Loads an unsigned quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`",
+                    "finish": 2920032,
                     "returns": [
                         {
-                            "desc": "A table containing the upper and lower",
+                            "desc": "A table containing the upper and lower halves of the unsigned quad word at `address`",
                             "name": "value",
                             "type": "function.return",
                             "view": "integer[]"
                         }
                     ],
-                    "start": 3000000,
+                    "start": 2920000,
                     "type": "function",
                     "view": "function memory.LDU(address: integer)\n  -> value: integer[]"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3000019,
-                "start": 3000009,
+                "finish": 2920019,
+                "start": 2920009,
                 "type": "setfield"
             }
         ],
-        "desc": "Loads an unsigned quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower\n\nhalves of the unsigned quad word at `address`",
+        "desc": "Loads an unsigned quad word (8 bytes) from rdram and returns it.\nAlias for `memory.readqword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`",
         "name": "memory.LDU",
         "type": "variable"
     },
@@ -4783,15 +4865,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2780026,
+                            "finish": 2710026,
                             "name": "address",
-                            "start": 2780019,
+                            "start": 2710019,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads a signed word (2 bytes) from rdram and returns it. Alias\nfor `memory.readwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The signed word at `address`",
-                    "finish": 2780031,
+                    "finish": 2710031,
                     "returns": [
                         {
                             "desc": "The signed word at `address`",
@@ -4800,13 +4882,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2780000,
+                    "start": 2710000,
                     "type": "function",
                     "view": "function memory.LH(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2780018,
-                "start": 2780009,
+                "finish": 2710018,
+                "start": 2710009,
                 "type": "setfield"
             }
         ],
@@ -4821,15 +4903,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2710027,
+                            "finish": 2640027,
                             "name": "address",
-                            "start": 2710020,
+                            "start": 2640020,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads an unsigned word (2 bytes) from rdram and returns it. Alias\nfor `memory.readword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The unsigned word at `address`",
-                    "finish": 2710032,
+                    "finish": 2640032,
                     "returns": [
                         {
                             "desc": "The unsigned word at `address`",
@@ -4838,13 +4920,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2710000,
+                    "start": 2640000,
                     "type": "function",
                     "view": "function memory.LHU(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2710019,
-                "start": 2710009,
+                "finish": 2640019,
+                "start": 2640009,
                 "type": "setfield"
             }
         ],
@@ -4859,15 +4941,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2920026,
+                            "finish": 2850026,
                             "name": "address",
-                            "start": 2920019,
+                            "start": 2850019,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads a signed double word (4 bytes) from rdram and returns it.\nAlias for `memory.readdwordsigned`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The signed double word at `address`",
-                    "finish": 2920031,
+                    "finish": 2850031,
                     "returns": [
                         {
                             "desc": "The signed double word at `address`",
@@ -4876,13 +4958,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2920000,
+                    "start": 2850000,
                     "type": "function",
                     "view": "function memory.LW(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2920018,
-                "start": 2920009,
+                "finish": 2850018,
+                "start": 2850009,
                 "type": "setfield"
             }
         ],
@@ -4897,15 +4979,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 3150028,
+                            "finish": 3060028,
                             "name": "address",
-                            "start": 3150021,
+                            "start": 3060021,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads a float (4 bytes) from rdram and returns it. Alias for\n`memory.readfloat`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — the float at `address`",
-                    "finish": 3150033,
+                    "finish": 3060033,
                     "returns": [
                         {
                             "desc": "the float at `address`",
@@ -4914,13 +4996,13 @@
                             "view": "number"
                         }
                     ],
-                    "start": 3150000,
+                    "start": 3060000,
                     "type": "function",
                     "view": "function memory.LWC1(address: integer)\n  -> value: number"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3150020,
-                "start": 3150009,
+                "finish": 3060020,
+                "start": 3060009,
                 "type": "setfield"
             }
         ],
@@ -4935,15 +5017,15 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 2850027,
+                            "finish": 2780027,
                             "name": "address",
-                            "start": 2850020,
+                            "start": 2780020,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Loads an unsigned double word (4 bytes) from rdram and returns it.\nAlias for `memory.readdword`\n\n@*param* `address` — The address to read from\n\n@*return* `value` — The unsigned double word at `address`",
-                    "finish": 2850032,
+                    "finish": 2780032,
                     "returns": [
                         {
                             "desc": "The unsigned double word at `address`",
@@ -4952,13 +5034,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 2850000,
+                    "start": 2780000,
                     "type": "function",
                     "view": "function memory.LWU(address: integer)\n  -> value: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 2850019,
-                "start": 2850009,
+                "finish": 2780019,
+                "start": 2780009,
                 "type": "setfield"
             }
         ],
@@ -4972,29 +5054,29 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3370033,
+                            "finish": 3270033,
                             "name": "address",
-                            "start": 3370026,
+                            "start": 3270026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3370039,
+                            "finish": 3270039,
                             "name": "size",
-                            "start": 3370035,
+                            "start": 3270035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Currently broken",
-                    "finish": 3370044,
-                    "start": 3370000,
+                    "finish": 3270044,
+                    "start": 3270000,
                     "type": "function",
                     "view": "function memory.loadbytes(address: integer, size: integer)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3370025,
-                "start": 3370009,
+                "finish": 3270025,
+                "start": 3270009,
                 "type": "setfield"
             }
         ],
@@ -5008,29 +5090,29 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3440033,
+                            "finish": 3340033,
                             "name": "address",
-                            "start": 3440026,
+                            "start": 3340026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3440039,
+                            "finish": 3340039,
                             "name": "size",
-                            "start": 3440035,
+                            "start": 3340035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Currently broken",
-                    "finish": 3440044,
-                    "start": 3440000,
+                    "finish": 3340044,
+                    "start": 3340000,
                     "type": "function",
                     "view": "function memory.loadhalfs(address: integer, size: integer)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3440025,
-                "start": 3440009,
+                "finish": 3340025,
+                "start": 3340009,
                 "type": "setfield"
             }
         ],
@@ -5045,40 +5127,40 @@
                     "args": [
                         {
                             "desc": "The address to read from",
-                            "finish": 3300032,
+                            "finish": 3200032,
                             "name": "address",
-                            "start": 3300025,
+                            "start": 3200025,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "desc": "The number of bytes to read. Must be `1`,",
-                            "finish": 3300038,
+                            "desc": "The number of bytes to read. Must be `1`, `2`, `4`, or `8`",
+                            "finish": 3200038,
                             "name": "size",
-                            "start": 3300034,
+                            "start": 3200034,
                             "type": "local",
                             "view": "1|2|4|8"
                         }
                     ],
-                    "desc": "Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for\n`memory.readsize`\n\n@*param* `address` — The address to read from\n\n@*param* `size` — The number of bytes to read. Must be `1`,\n\n`2`, `4`, or `8`\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n```",
-                    "finish": 3300043,
+                    "desc": "Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for\n`memory.readsize`\n\n@*param* `address` — The address to read from\n\n@*param* `size` — The number of bytes to read. Must be `1`, `2`, `4`, or `8`\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n```",
+                    "finish": 3200043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "integer|integer[]"
                         }
                     ],
-                    "start": 3300000,
+                    "start": 3200000,
                     "type": "function",
                     "view": "function memory.loadsize(address: integer, size: 1|2|4|8)\n  -> integer|integer[]"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3300024,
-                "start": 3300009,
+                "finish": 3200024,
+                "start": 3200009,
                 "type": "setfield"
             }
         ],
-        "desc": "Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for\n`memory.readsize`\n\n@*param* `address` — The address to read from\n\n@*param* `size` — The number of bytes to read. Must be `1`,\n\n`2`, `4`, or `8`\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n```",
+        "desc": "Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for\n`memory.readsize`\n\n@*param* `address` — The address to read from\n\n@*param* `size` — The number of bytes to read. Must be `1`, `2`, `4`, or `8`\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n```",
         "name": "memory.loadsize",
         "type": "variable"
     },
@@ -5088,29 +5170,29 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3510033,
+                            "finish": 3410033,
                             "name": "address",
-                            "start": 3510026,
+                            "start": 3410026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3510039,
+                            "finish": 3410039,
                             "name": "size",
-                            "start": 3510035,
+                            "start": 3410035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Currently broken",
-                    "finish": 3510044,
-                    "start": 3510000,
+                    "finish": 3410044,
+                    "start": 3410000,
                     "type": "function",
                     "view": "function memory.loadwords(address: integer, size: integer)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3510025,
-                "start": 3510009,
+                "finish": 3410025,
+                "start": 3410009,
                 "type": "setfield"
             }
         ],
@@ -6045,7 +6127,7 @@
                 "type": "setglobal"
             }
         ],
-        "desc": "Prints a value to the lua console\n\n@*param* `data` — The data to print to the console",
+        "desc": "\nReceives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [tostring](command:extension.lua.doc?[\"en-us/54/manual.html/pdf-tostring\"]).\nThe function print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [string.format](command:extension.lua.doc?[\"en-us/54/manual.html/pdf-string.format\"]) and [io.write](command:extension.lua.doc?[\"en-us/54/manual.html/pdf-io.write\"]).\n\n\n[View documents](command:extension.lua.doc?[\"en-us/54/manual.html/pdf-print\"])",
         "name": "print",
         "type": "variable"
     },
@@ -8215,33 +8297,79 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "A color of \"null\" sets",
-                            "finish": 5150025,
-                            "name": "color",
-                            "start": 5150020,
+                            "desc": "The text to be drawn.",
+                            "finish": 5390027,
+                            "name": "text",
+                            "start": 5390023,
                             "type": "local",
-                            "view": "\"null\"|color"
+                            "view": "string"
+                        },
+                        {
+                            "desc": "The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).",
+                            "finish": 5390033,
+                            "name": "rect",
+                            "start": 5390029,
+                            "type": "local",
+                            "view": "{ l: integer, t: integer, r: integer, b: integer }|{ l: integer, t: integer, w: integer, h: integer }"
+                        },
+                        {
+                            "desc": "Each character in this string sets a formatting rule. It can be `nil`, `\"\"`, or one or more formatting characters",
+                            "finish": 5390041,
+                            "name": "format",
+                            "start": 5390035,
+                            "type": "local",
+                            "view": "nil"
                         }
                     ],
-                    "desc": "Sets the GDI background color to `color`\n\n@*param* `color` — A color of \"null\" sets\n\nthe background color to transparent\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
-                    "finish": 5150030,
+                    "desc": "Draws the text `text` at the specified coordinates and size. If the text is\nto large to fit in the rectangle specified in `rect`, it will wrap, unlike\n`wgui.text`. Uses the GDI font, GDI background, and GDI text color.\n\n@*param* `text` — The text to be drawn.\n\n@*param* `rect` — The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).\n\n@*param* `format` — Each character in this string sets a formatting rule. It can be `nil`, `\"\"`, or one or more formatting characters\n\n```lua\nformat:\n    | \"l\" -- aligns the text to the left (already applied by default) (sets DT_LEFT)\n    | \"r\" -- aligns the text to the right (sets DT_RIGHT)\n    | \"t\" -- aligns the text to the top (already applied by default) (sets DT_TOP)\n    | \"b\" -- aligns the text to the bottom (sets DT_BOTTOM)\n    | \"c\" -- horizontally aligns the text to the center (sets DT_CENTER)\n    | \"v\" -- vertically aligns the text to the center (sets DT_VCENTER)\n    | \"e\" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)\n    | \"s\" -- forces the text to fit into a single line (sets DT_SINGLELINE)\n    | \"n\" -- disables word break (unsets DT_WORDBREAK)\n```",
+                    "finish": 5390046,
+                    "start": 5390000,
+                    "type": "function",
+                    "view": "function wgui.drawtext(text: string, rect: { l: integer, t: integer, r: integer, b: integer }|{ l: integer, t: integer, w: integer, h: integer }, format?: align_format)"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 5390022,
+                "start": 5390009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws the text `text` at the specified coordinates and size. If the text is\nto large to fit in the rectangle specified in `rect`, it will wrap, unlike\n`wgui.text`. Uses the GDI font, GDI background, and GDI text color.\n\n@*param* `text` — The text to be drawn.\n\n@*param* `rect` — The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).\n\n@*param* `format` — Each character in this string sets a formatting rule. It can be `nil`, `\"\"`, or one or more formatting characters\n\n```lua\nformat:\n    | \"l\" -- aligns the text to the left (already applied by default) (sets DT_LEFT)\n    | \"r\" -- aligns the text to the right (sets DT_RIGHT)\n    | \"t\" -- aligns the text to the top (already applied by default) (sets DT_TOP)\n    | \"b\" -- aligns the text to the bottom (sets DT_BOTTOM)\n    | \"c\" -- horizontally aligns the text to the center (sets DT_CENTER)\n    | \"v\" -- vertically aligns the text to the center (sets DT_VCENTER)\n    | \"e\" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)\n    | \"s\" -- forces the text to fit into a single line (sets DT_SINGLELINE)\n    | \"n\" -- disables word break (unsets DT_WORDBREAK)\n```",
+        "name": "wgui.drawtext",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "desc": "A color of \"null\" sets the background color to transparent",
+                            "finish": 5160025,
+                            "name": "color",
+                            "start": 5160020,
+                            "type": "local",
+                            "view": "\"null\""
+                        }
+                    ],
+                    "desc": "Sets the GDI background color to `color`\n\n@*param* `color` — A color of \"null\" sets the background color to transparent\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+                    "finish": 5160030,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5150000,
+                    "start": 5160000,
                     "type": "function",
-                    "view": "function wgui.setbk(color: \"null\"|color)\n  -> nil"
+                    "view": "function wgui.setbk(color: \"null\")\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5150019,
-                "start": 5150009,
+                "finish": 5160019,
+                "start": 5160009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the GDI background color to `color`\n\n@*param* `color` — A color of \"null\" sets\n\nthe background color to transparent\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+        "desc": "Sets the GDI background color to `color`\n\n@*param* `color` — A color of \"null\" sets the background color to transparent\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
         "name": "wgui.setbk",
         "type": "variable"
     },
@@ -8251,33 +8379,33 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "A color of \"null\" resets",
-                            "finish": 4970028,
+                            "desc": "A color of \"null\" resets the brush to its default value",
+                            "finish": 5000028,
                             "name": "color",
-                            "start": 4970023,
+                            "start": 5000023,
                             "type": "local",
-                            "view": "\"null\"|color"
+                            "view": "\"null\""
                         }
                     ],
-                    "desc": "Sets the GDI brush to `color`\n\n@*param* `color` — A color of \"null\" resets\n\nthe brush to its default value\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
-                    "finish": 4970033,
+                    "desc": "Sets the GDI brush to `color`\n\n@*param* `color` — A color of \"null\" resets the brush to its default value\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+                    "finish": 5000033,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 4970000,
+                    "start": 5000000,
                     "type": "function",
-                    "view": "function wgui.setbrush(color: \"null\"|color)\n  -> nil"
+                    "view": "function wgui.setbrush(color: \"null\")\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4970022,
-                "start": 4970009,
+                "finish": 5000022,
+                "start": 5000009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the GDI brush to `color`\n\n@*param* `color` — A color of \"null\" resets\n\nthe brush to its default value\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+        "desc": "Sets the GDI brush to `color`\n\n@*param* `color` — A color of \"null\" resets the brush to its default value\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
         "name": "wgui.setbrush",
         "type": "variable"
     },
@@ -8288,28 +8416,28 @@
                     "args": [
                         {
                             "desc": "colors can be any of these or \"#RGB\", \"#RGBA\",\n\"#RRGGBB\", or \"#RRGGBBA\"",
-                            "finish": 5090028,
+                            "finish": 5110028,
                             "name": "color",
-                            "start": 5090023,
+                            "start": 5110023,
                             "type": "local",
-                            "view": "color"
+                            "view": "unknown"
                         }
                     ],
                     "desc": "Sets the GDI text color to `color`\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n```",
-                    "finish": 5090033,
+                    "finish": 5110033,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5090000,
+                    "start": 5110000,
                     "type": "function",
-                    "view": "function wgui.setcolor(color: color)\n  -> nil"
+                    "view": "function wgui.setcolor(color: any)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5090022,
-                "start": 5090009,
+                "finish": 5110022,
+                "start": 5110009,
                 "type": "setfield"
             }
         ],
@@ -8323,49 +8451,49 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "The size is stored as an integer, but some opperations",
-                            "finish": 5250026,
+                            "desc": "The size is stored as an integer, but some operations are done before that so only integers should not be allowed",
+                            "finish": 5230026,
                             "name": "size",
-                            "start": 5250022,
+                            "start": 5230022,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "Defaults to \"MS Gothic\"",
-                            "finish": 5250032,
+                            "finish": 5230032,
                             "name": "font",
-                            "start": 5250028,
+                            "start": 5230028,
                             "type": "local",
                             "view": "string?"
                         },
                         {
-                            "desc": "Defaults to \"\". Each character is processed to change",
-                            "finish": 5250039,
+                            "desc": "Defaults to \"\". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing",
+                            "finish": 5230039,
                             "name": "style",
-                            "start": 5250034,
+                            "start": 5230034,
                             "type": "local",
                             "view": "string?"
                         }
                     ],
-                    "desc": "Sets the GDI font to `size`, `font`, and `style`\n\n@*param* `size` — The size is stored as an integer, but some opperations\n\nare done before that so only integers should not be allowed\n\n@*param* `font` — Defaults to \"MS Gothic\"\n\n@*param* `style` — Defaults to \"\". Each character is processed to change\n\nthe style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets\nstrikethrough, and `a` sets antialiasing",
-                    "finish": 5250044,
+                    "desc": "Sets the GDI font to `size`, `font`, and `style`\n\n@*param* `size` — The size is stored as an integer, but some operations are done before that so only integers should not be allowed\n\n@*param* `font` — Defaults to \"MS Gothic\"\n\n@*param* `style` — Defaults to \"\". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing",
+                    "finish": 5230044,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5250000,
+                    "start": 5230000,
                     "type": "function",
                     "view": "function wgui.setfont(size: number, font?: string, style?: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5250021,
-                "start": 5250009,
+                "finish": 5230021,
+                "start": 5230009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the GDI font to `size`, `font`, and `style`\n\n@*param* `size` — The size is stored as an integer, but some opperations\n\nare done before that so only integers should not be allowed\n\n@*param* `font` — Defaults to \"MS Gothic\"\n\n@*param* `style` — Defaults to \"\". Each character is processed to change\n\nthe style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets\nstrikethrough, and `a` sets antialiasing",
+        "desc": "Sets the GDI font to `size`, `font`, and `style`\n\n@*param* `size` — The size is stored as an integer, but some operations are done before that so only integers should not be allowed\n\n@*param* `font` — Defaults to \"MS Gothic\"\n\n@*param* `style` — Defaults to \"\". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing",
         "name": "wgui.setfont",
         "type": "variable"
     },
@@ -8375,41 +8503,41 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "A color of \"null\" resets",
-                            "finish": 5040026,
+                            "desc": "A color of \"null\" resets the pen to its default value",
+                            "finish": 5060026,
                             "name": "color",
-                            "start": 5040021,
+                            "start": 5060021,
                             "type": "local",
-                            "view": "\"null\"|color"
+                            "view": "\"null\""
                         },
                         {
                             "desc": "Defaults to 1",
-                            "finish": 5040033,
+                            "finish": 5060033,
                             "name": "width",
-                            "start": 5040028,
+                            "start": 5060028,
                             "type": "local",
                             "view": "integer?"
                         }
                     ],
-                    "desc": "Sets the GDI pen color to `color` and `width`\n\n@*param* `color` — A color of \"null\" resets\n\nthe pen to its default value\n\n@*param* `width` — Defaults to 1\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
-                    "finish": 5040038,
+                    "desc": "Sets the GDI pen color to `color` and `width`\n\n@*param* `color` — A color of \"null\" resets the pen to its default value\n\n@*param* `width` — Defaults to 1\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+                    "finish": 5060038,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5040000,
+                    "start": 5060000,
                     "type": "function",
-                    "view": "function wgui.setpen(color: \"null\"|color, width?: integer)\n  -> nil"
+                    "view": "function wgui.setpen(color: \"null\", width?: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5040020,
-                "start": 5040009,
+                "finish": 5060020,
+                "start": 5060009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the GDI pen color to `color` and `width`\n\n@*param* `color` — A color of \"null\" resets\n\nthe pen to its default value\n\n@*param* `width` — Defaults to 1\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
+        "desc": "Sets the GDI pen color to `color` and `width`\n\n@*param* `color` — A color of \"null\" resets the pen to its default value\n\n@*param* `width` — Defaults to 1\n\n```lua\n-- colors can be any of these or \"#RGB\", \"#RGBA\",\n-- \"#RRGGBB\", or \"#RRGGBBA\"\ncolor:\n    | \"white\"\n    | \"black\"\n    | \"clear\"\n    | \"gray\"\n    | \"red\"\n    | \"orange\"\n    | \"yellow\"\n    | \"chartreuse\"\n    | \"green\"\n    | \"teal\"\n    | \"cyan\"\n    | \"blue\"\n    | \"purple\"\n    | \"null\"\n```",
         "name": "wgui.setpen",
         "type": "variable"
     },
@@ -8419,40 +8547,40 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5320020,
+                            "finish": 5310020,
                             "name": "x",
-                            "start": 5320019,
+                            "start": 5310019,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5320023,
+                            "finish": 5310023,
                             "name": "y",
-                            "start": 5320022,
+                            "start": 5310022,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5320029,
+                            "finish": 5310029,
                             "name": "text",
-                            "start": 5320025,
+                            "start": 5310025,
                             "type": "local",
                             "view": "string"
                         }
                     ],
-                    "desc": "Draws the text `text` at the specified coordinates. Uses the GDI font,\nthe GDI background, and the GDI text color",
-                    "finish": 5320034,
-                    "start": 5320000,
+                    "desc": "Draws the text `text` at the specified coordinates. Uses the GDI font,\nGDI background, and GDI text color",
+                    "finish": 5310034,
+                    "start": 5310000,
                     "type": "function",
                     "view": "function wgui.text(x: integer, y: integer, text: string)"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5320018,
-                "start": 5320009,
+                "finish": 5310018,
+                "start": 5310009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws the text `text` at the specified coordinates. Uses the GDI font,\nthe GDI background, and the GDI text color",
+        "desc": "Draws the text `text` at the specified coordinates. Uses the GDI font,\nGDI background, and GDI text color",
         "name": "wgui.text",
         "type": "variable"
     },

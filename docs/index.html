@@ -529,8 +529,7 @@ but it will error if you never registered the function.</p>
 argument that seems to always be <code>0</code>. If <code>unregister</code> is set to true, the
 function <code>f</code> will no longer be called when this event occurs, but it will
 error if you never registered the function.</p>
-<p>@<em>param</em> <code>f</code> — The function to be called every input frame.</p>
-<p>It receives an argument that seems to always be <code>0</code>.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every input frame. It receives an argument that seems to always be <code>0</code>.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinput</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
@@ -551,8 +550,7 @@ it will error if you never registered the function.</p>
 The message data is given to the function in 4 parameters. If <code>unregister</code>
 is set to true, the function <code>f</code> will no longer be called when this event
 occurs, but it will error if you never registered the function.</p>
-<p>@<em>param</em> <code>f</code> — The function to be called when a window message</p>
-<p>is received.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a window message is received.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atwindowmessage</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">any</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
@@ -633,8 +631,7 @@ reset.</p>
 should match the statusbar (assuming you have <code>0-index statusbar</code> off). If no
 movie is playing, it will return the last value when a movie was playing. If
 no movie has been played yet, it will return <code>-1</code>.</p>
-<p>@<em>return</em> <code>samplecount</code> — The number of input frames since the last movie</p>
-<p>was played.</p>
+<p>@<em>return</em> <code>samplecount</code> — The number of input frames since the last movie was played.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">samplecount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">samplecount</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div>
@@ -642,8 +639,7 @@ no movie has been played yet, it will return <code>-1</code>.</p>
 <h1><a id="emuInputcount">emu.inputcount</a></h1>
 <p>Returns the number of input frames that have happened since the emulator was
 started. It does not reset when a movie is started.</p>
-<p>@<em>return</em> <code>inputcount</code> — The number of input frames that have happened</p>
-<p>since the emulator was started.</p>
+<p>@<em>return</em> <code>inputcount</code> — The number of input frames that have happened since the emulator was started.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">inputcount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div>
@@ -652,8 +648,7 @@ started. It does not reset when a movie is started.</p>
 <p>Returns the current mupen version. If <code>type</code> is 0 or less, it
 will return the full version name (Mupen 64 0.0.0). If <code>type</code>
 is 1 or more, it will return the version number (0.0.0).</p>
-<p>@<em>param</em> <code>type</code> — Whether to get the full version (less that 0) or the short</p>
-<p>version (more than 1).</p>
+<p>@<em>param</em> <code>type</code> — Whether to get the full version (less that 0) or the short version (more than 1).</p>
 <p>@<em>return</em> <code>version</code> — The mupen version</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">type</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">0</span>
@@ -671,8 +666,7 @@ is 1 or more, it will return the version number (0.0.0).</p>
 <hr/>
 <h1><a id="emuGetpause">emu.getpause</a></h1>
 <p>Returns <code>true</code> if the emulator is paused and <code>false</code> if it is not.</p>
-<p>@<em>return</em> <code>emu_paused</code> — <code>true</code> if the emulator is paused and <code>false</code> if it</p>
-<p>is not.</p>
+<p>@<em>return</em> <code>emu_paused</code> — <code>true</code> if the emulator is paused and <code>false</code> if it is not.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getpause</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">emu_paused</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div>
@@ -718,8 +712,8 @@ is 1 or more, it will return the version number (0.0.0).</p>
 </code></pre></div>
 <hr/>
 <h1><a id="emuIsreadonly">emu.isreadonly</a></h1>
-<p>Returnss true if the currently playing movie is read only and
-false if it is not.</p>
+<p>Returns true if the currently playing movie is read only and false if it is
+not.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">isreadonly</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">read_only</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div>
@@ -733,8 +727,7 @@ function.</p>
 </code></pre></div>
 <hr/>
 <h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
-<p>Returns <code>true</code> if the main mupen window is focused and false if
-it is not.</p>
+<p>Returns <code>true</code> if the main mupen window is focused and false if it is not.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">focused</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div>
@@ -806,8 +799,7 @@ Alias for <code>memory.readdwordsigned</code></p>
 <p>Loads an unsigned quad word (8 bytes) from rdram and returns it.
 Alias for <code>memory.readqword</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — A table containing the upper and lower</p>
-<p>halves of the unsigned quad word at <code>address</code></p>
+<p>@<em>return</em> <code>value</code> — A table containing the upper and lower halves of the unsigned quad word at <code>address</code></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LDU</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span><span class="p">[]</span>
 </code></pre></div>
@@ -816,8 +808,7 @@ Alias for <code>memory.readqword</code></p>
 <p>Loads a signed quad word (8 bytes) from rdram and returns it.
 Alias for <code>memory.readqwordsigned</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>return</em> <code>value</code> — A table containing the upper and lower</p>
-<p>halves of the unsigned quad word at <code>address</code></p>
+<p>@<em>return</em> <code>value</code> — A table containing the upper and lower halves of the unsigned quad word at <code>address</code></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">LD</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">value</span><span class="p">:</span> <span class="n">integer</span><span class="p">[]</span>
 </code></pre></div>
@@ -844,8 +835,7 @@ Alias for <code>memory.readqwordsigned</code></p>
 <p>Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
 <code>memory.readsize</code></p>
 <p>@<em>param</em> <code>address</code> — The address to read from</p>
-<p>@<em>param</em> <code>size</code> — The number of bytes to read. Must be <code>1</code>,</p>
-<p><code>2</code>, <code>4</code>, or <code>8</code></p>
+<p>@<em>param</em> <code>size</code> — The number of bytes to read. Must be <code>1</code>, <code>2</code>, <code>4</code>, or <code>8</code></p>
 <div class="codehilite"><pre><span></span><code><span class="n">size</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">1</span>
     <span class="o">|</span> <span class="mi">2</span>
@@ -1152,8 +1142,7 @@ Alias for <code>memory.readqwordsigned</code></p>
 <hr/>
 <h1><a id="wguiSetbrush">wgui.setbrush</a></h1>
 <p>Sets the GDI brush to <code>color</code></p>
-<p>@<em>param</em> <code>color</code> — A color of "null" resets</p>
-<p>the brush to its default value</p>
+<p>@<em>param</em> <code>color</code> — A color of "null" resets the brush to its default value</p>
 <div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or "#RGB", "#RGBA",</span>
 <span class="c1">-- "#RRGGBB", or "#RRGGBBA"</span>
 <span class="n">color</span><span class="p">:</span>
@@ -1172,14 +1161,13 @@ Alias for <code>memory.readqwordsigned</code></p>
     <span class="o">|</span> <span class="s2">"purple"</span>
     <span class="o">|</span> <span class="s2">"null"</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbrush</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="o">|</span><span class="n">color</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbrush</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiSetpen">wgui.setpen</a></h1>
 <p>Sets the GDI pen color to <code>color</code> and <code>width</code></p>
-<p>@<em>param</em> <code>color</code> — A color of "null" resets</p>
-<p>the pen to its default value</p>
+<p>@<em>param</em> <code>color</code> — A color of "null" resets the pen to its default value</p>
 <p>@<em>param</em> <code>width</code> — Defaults to 1</p>
 <div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or "#RGB", "#RGBA",</span>
 <span class="c1">-- "#RRGGBB", or "#RRGGBBA"</span>
@@ -1199,7 +1187,7 @@ Alias for <code>memory.readqwordsigned</code></p>
     <span class="o">|</span> <span class="s2">"purple"</span>
     <span class="o">|</span> <span class="s2">"null"</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setpen</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="o">|</span><span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setpen</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="p">,</span> <span class="n">width</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div>
 <hr/>
@@ -1222,14 +1210,13 @@ Alias for <code>memory.readqwordsigned</code></p>
     <span class="o">|</span> <span class="s2">"blue"</span>
     <span class="o">|</span> <span class="s2">"purple"</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setcolor</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">color</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setcolor</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiSetbk">wgui.setbk</a></h1>
 <p>Sets the GDI background color to <code>color</code></p>
-<p>@<em>param</em> <code>color</code> — A color of "null" sets</p>
-<p>the background color to transparent</p>
+<p>@<em>param</em> <code>color</code> — A color of "null" sets the background color to transparent</p>
 <div class="codehilite"><pre><span></span><code><span class="c1">-- colors can be any of these or "#RGB", "#RGBA",</span>
 <span class="c1">-- "#RRGGBB", or "#RRGGBBA"</span>
 <span class="n">color</span><span class="p">:</span>
@@ -1248,31 +1235,44 @@ Alias for <code>memory.readqwordsigned</code></p>
     <span class="o">|</span> <span class="s2">"purple"</span>
     <span class="o">|</span> <span class="s2">"null"</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbk</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="o">|</span><span class="n">color</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setbk</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="s2">"null"</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiSetfont">wgui.setfont</a></h1>
 <p>Sets the GDI font to <code>size</code>, <code>font</code>, and <code>style</code></p>
-<p>@<em>param</em> <code>size</code> — The size is stored as an integer, but some opperations</p>
-<p>are done before that so only integers should not be allowed</p>
+<p>@<em>param</em> <code>size</code> — The size is stored as an integer, but some operations are done before that so only integers should not be allowed</p>
 <p>@<em>param</em> <code>font</code> — Defaults to "MS Gothic"</p>
-<p>@<em>param</em> <code>style</code> — Defaults to "". Each character is processed to change</p>
-<p>the style. <code>b</code> sets bold, <code>i</code> sets italics, <code>u</code> sets underline, <code>s</code> sets
-strikethrough, and <code>a</code> sets antialiasing</p>
+<p>@<em>param</em> <code>style</code> — Defaults to "". Each character is processed to change the style. <code>b</code> sets bold, <code>i</code> sets italics, <code>u</code> sets underline, <code>s</code> sets strikethrough, and <code>a</code> sets antialiasing</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setfont</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">font</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">style</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiText">wgui.text</a></h1>
 <p>Draws the text <code>text</code> at the specified coordinates. Uses the GDI font,
-the GDI background, and the GDI text color</p>
+GDI background, and GDI text color</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiDrawtext">wgui.drawtext</a></h1>
-<p>?</p>
-<div class="codehilite"><pre><span></span><code><span class="err">?</span>
+<p>Draws the text <code>text</code> at the specified coordinates and size. If the text is
+to large to fit in the rectangle specified in <code>rect</code>, it will wrap, unlike
+<code>wgui.text</code>. Uses the GDI font, GDI background, and GDI text color.</p>
+<p>@<em>param</em> <code>text</code> — The text to be drawn.</p>
+<p>@<em>param</em> <code>rect</code> — The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).</p>
+<p>@<em>param</em> <code>format</code> — Each character in this string sets a formatting rule. It can be <code>nil</code>, <code>""</code>, or one or more formatting characters</p>
+<div class="codehilite"><pre><span></span><code><span class="n">format</span><span class="p">:</span>
+    <span class="o">|</span> <span class="s2">"l"</span> <span class="c1">-- aligns the text to the left (already applied by default) (sets DT_LEFT)</span>
+    <span class="o">|</span> <span class="s2">"r"</span> <span class="c1">-- aligns the text to the right (sets DT_RIGHT)</span>
+    <span class="o">|</span> <span class="s2">"t"</span> <span class="c1">-- aligns the text to the top (already applied by default) (sets DT_TOP)</span>
+    <span class="o">|</span> <span class="s2">"b"</span> <span class="c1">-- aligns the text to the bottom (sets DT_BOTTOM)</span>
+    <span class="o">|</span> <span class="s2">"c"</span> <span class="c1">-- horizontally aligns the text to the center (sets DT_CENTER)</span>
+    <span class="o">|</span> <span class="s2">"v"</span> <span class="c1">-- vertically aligns the text to the center (sets DT_VCENTER)</span>
+    <span class="o">|</span> <span class="s2">"e"</span> <span class="c1">-- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)</span>
+    <span class="o">|</span> <span class="s2">"s"</span> <span class="c1">-- forces the text to fit into a single line (sets DT_SINGLELINE)</span>
+    <span class="o">|</span> <span class="s2">"n"</span> <span class="c1">-- disables word break (unsets DT_WORDBREAK)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawtext</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">rect</span><span class="p">:</span> <span class="p">{</span> <span class="n">l</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span><span class="o">|</span><span class="p">{</span> <span class="n">l</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">integer</span> <span class="p">},</span> <span class="n">format</span><span class="err">?</span><span class="p">:</span> <span class="n">align_format</span><span class="p">)</span>
 </code></pre></div>
 <hr/>
 <h1><a id="wguiGettextextent">wgui.gettextextent</a></h1>

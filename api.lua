@@ -78,8 +78,7 @@ function emu.atupdatescreen(f, unregister) end
 ---argument that seems to always be `0`. If `unregister` is set to true, the
 ---function `f` will no longer be called when this event occurs, but it will
 ---error if you never registered the function.
----@param f fun(a: integer?): nil The function to be called every input frame.
----It receives an argument that seems to always be `0`.
+---@param f fun(a: integer?): nil The function to be called every input frame. It receives an argument that seems to always be `0`.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atinput(f, unregister) end
@@ -96,8 +95,7 @@ function emu.atstop(f, unregister) end
 ---The message data is given to the function in 4 parameters. If `unregister`
 ---is set to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
----@param f fun(a, b, c, d): nil The function to be called when a window message
----is received.
+---@param f fun(a, b, c, d): nil The function to be called when a window message is received.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atwindowmessage(f, unregister) end
@@ -163,23 +161,20 @@ function emu.framecount() end
 ---movie is playing, it will return the last value when a movie was playing. If
 ---no movie has been played yet, it will return `-1`.
 ---@nodiscard
----@return integer samplecount The number of input frames since the last movie
----was played.
+---@return integer samplecount The number of input frames since the last movie was played.
 function emu.samplecount() end
 
 ---Returns the number of input frames that have happened since the emulator was
 ---started. It does not reset when a movie is started.
 ---@nodiscard
----@return integer inputcount The number of input frames that have happened
----since the emulator was started.
+---@return integer inputcount The number of input frames that have happened since the emulator was started.
 function emu.inputcount() end
 
 ---Returns the current mupen version. If `type` is 0 or less, it
 ---will return the full version name (Mupen 64 0.0.0). If `type`
 ---is 1 or more, it will return the version number (0.0.0).
 ---@nodiscard
----@param type 0|1 Whether to get the full version (less that 0) or the short
----version (more than 1).
+---@param type 0|1 Whether to get the full version (less that 0) or the short version (more than 1).
 ---@return string version The mupen version
 function emu.getversion(type) end
 
@@ -189,8 +184,7 @@ function emu.pause(pause) end
 
 ---Returns `true` if the emulator is paused and `false` if it is not.
 ---@nodiscard
----@return boolean emu_paused `true` if the emulator is paused and `false` if it
----is not.
+---@return boolean emu_paused `true` if the emulator is paused and `false` if it is not.
 function emu.getpause() end
 
 ---Returns the current speed limit (not the current speed) of the emulator.
@@ -219,8 +213,8 @@ function emu.setgfx(mode) end
 ---@return integer
 function emu.getaddress(address) end
 
----Returnss true if the currently playing movie is read only and
----false if it is not.
+---Returns true if the currently playing movie is read only and false if it is
+---not.
 ---@nodiscard
 ---@return boolean read_only
 function emu.isreadonly() end
@@ -233,8 +227,7 @@ function emu.isreadonly() end
 ---@return integer metric
 function emu.getsystemmetrics(param) end
 
----Returns `true` if the main mupen window is focused and false if
----it is not.
+---Returns `true` if the main mupen window is focused and false if it is not.
 ---@nodiscard
 ---@return boolean focused
 function emu.ismainwindowinforeground() end
@@ -296,16 +289,14 @@ function memory.LW(address) end
 ---Alias for `memory.readqword`
 ---@nodiscard
 ---@param address integer The address to read from
----@return integer[] value A table containing the upper and lower
----halves of the unsigned quad word at `address`
+---@return integer[] value A table containing the upper and lower halves of the unsigned quad word at `address`
 function memory.LDU(address) end
 
 ---Loads a signed quad word (8 bytes) from rdram and returns it.
 ---Alias for `memory.readqwordsigned`
 ---@nodiscard
 ---@param address integer The address to read from
----@return integer[] value A table containing the upper and lower
----halves of the unsigned quad word at `address`
+---@return integer[] value A table containing the upper and lower halves of the unsigned quad word at `address`
 function memory.LD(address) end
 
 ---Loads a float (4 bytes) from rdram and returns it. Alias for
@@ -325,8 +316,7 @@ function memory.LDC1(address) end
 ---Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
 ---`memory.readsize`
 ---@param address integer The address to read from
----@param size 1|2|4|8 The number of bytes to read. Must be `1`,
----`2`, `4`, or `8`
+---@param size 1|2|4|8 The number of bytes to read. Must be `1`, `2`, `4`, or `8`
 ---@return integer|integer[]
 function memory.loadsize(address, size) end
 
@@ -506,14 +496,12 @@ function memory.loadwords(address, size) end
 
 
 ---Sets the GDI brush to `color`
----@param color color|"null" A color of "null" resets the brush to its default
----value
+---@param color color|"null" A color of "null" resets the brush to its default value
 ---@return nil
 function wgui.setbrush(color) end
 
 ---Sets the GDI pen color to `color` and `width`
----@param color color|"null" A color of "null" resets the pen to its default
----value
+---@param color color|"null" A color of "null" resets the pen to its default value
 ---@param width integer? Defaults to 1
 ---@return nil
 function wgui.setpen(color, width) end
@@ -524,18 +512,14 @@ function wgui.setpen(color, width) end
 function wgui.setcolor(color) end
 
 ---Sets the GDI background color to `color`
----@param color color|"null" A color of "null" sets the background color to
----transparent
+---@param color color|"null" A color of "null" sets the background color to transparent
 ---@return nil
 function wgui.setbk(color) end
 
 ---Sets the GDI font to `size`, `font`, and `style`
----@param size number The size is stored as an integer, but some operations are
----done before that so only integers should not be allowed
+---@param size number The size is stored as an integer, but some operations are done before that so only integers should not be allowed
 ---@param font string? Defaults to "MS Gothic"
----@param style string? Defaults to "". Each character is processed to change
----the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets
----strikethrough, and `a` sets antialiasing
+---@param style string? Defaults to "". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing
 ---@return nil
 function wgui.setfont(size, font, style) end
 
@@ -551,11 +535,8 @@ function wgui.text(x, y, text) end
 ---to large to fit in the rectangle specified in `rect`, it will wrap, unlike
 ---`wgui.text`. Uses the GDI font, GDI background, and GDI text color.
 ---@param text string The text to be drawn.
----@param rect {l: integer, t: integer, r: integer, b: integer}|{l: integer, t: integer, w: integer, h: integer}
----The bounding rectangle for the text. Can either be {l, t, r, b} (left, top,
----right, bottom) or {l, t, w, h} (left, top, width, height).
----@param format align_format? Each character in this string sets a formatting
----rule. It can be `nil`, `""`, or one or more characters
+---@param rect {l: integer, t: integer, r: integer, b: integer}|{l: integer, t: integer, w: integer, h: integer} The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).
+---@param format align_format? Each character in this string sets a formatting rule. It can be `nil`, `""`, or one or more formatting characters
 function wgui.drawtext(text, rect, format) end
 
 -- function wgui.rect() end

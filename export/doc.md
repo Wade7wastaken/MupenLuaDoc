@@ -30,6 +30,29 @@ string
 
 ---
 
+# align_format
+
+```lua
+align_format:
+    | "l" -- aligns the text to the left (already applied by default) (sets DT_LEFT)
+    | "r" -- aligns the text to the right (sets DT_RIGHT)
+    | "t" -- aligns the text to the top (already applied by default) (sets DT_TOP)
+    | "b" -- aligns the text to the bottom (sets DT_BOTTOM)
+    | "c" -- horizontally aligns the text to the center (sets DT_CENTER)
+    | "v" -- vertically aligns the text to the center (sets DT_VCENTER)
+    | "e" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
+    | "s" -- forces the text to fit into a single line (sets DT_SINGLELINE)
+    | "n" -- disables word break (unsets DT_WORDBREAK)
+```
+
+
+```lua
+string|"b"|"c"|"e"|"l"...(+5)
+```
+
+
+---
+
 # arg
 
 
@@ -678,9 +701,7 @@ argument that seems to always be `0`. If `unregister` is set to true, the
 function `f` will no longer be called when this event occurs, but it will
 error if you never registered the function.
 
-@*param* `f` — The function to be called every input frame.
-
-It receives an argument that seems to always be `0`.
+@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.
 
 @*param* `unregister` — If true, then unregister the function `f`.
 
@@ -873,9 +894,7 @@ The message data is given to the function in 4 parameters. If `unregister`
 is set to true, the function `f` will no longer be called when this event
 occurs, but it will error if you never registered the function.
 
-@*param* `f` — The function to be called when a window message
-
-is received.
+@*param* `f` — The function to be called when a window message is received.
 
 @*param* `unregister` — If true, then unregister the function `f`.
 
@@ -955,9 +974,7 @@ function emu.getaddress(address: string)
 
 Returns `true` if the emulator is paused and `false` if it is not.
 
-@*return* `emu_paused` — `true` if the emulator is paused and `false` if it
-
-is not.
+@*return* `emu_paused` — `true` if the emulator is paused and `false` if it is not.
 
 
 ```lua
@@ -1004,9 +1021,7 @@ Returns the current mupen version. If `type` is 0 or less, it
 will return the full version name (Mupen 64 0.0.0). If `type`
 is 1 or more, it will return the version number (0.0.0).
 
-@*param* `type` — Whether to get the full version (less that 0) or the short
-
-version (more than 1).
+@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).
 
 @*return* `version` — The mupen version
 
@@ -1030,9 +1045,7 @@ function emu.getversion(type: 0|1)
 Returns the number of input frames that have happened since the emulator was
 started. It does not reset when a movie is started.
 
-@*return* `inputcount` — The number of input frames that have happened
-
-since the emulator was started.
+@*return* `inputcount` — The number of input frames that have happened since the emulator was started.
 
 
 ```lua
@@ -1045,8 +1058,7 @@ function emu.inputcount()
 
 # emu.ismainwindowinforeground
 
-Returns `true` if the main mupen window is focused and false if
-it is not.
+Returns `true` if the main mupen window is focused and false if it is not.
 
 
 ```lua
@@ -1059,8 +1071,8 @@ function emu.ismainwindowinforeground()
 
 # emu.isreadonly
 
-Returnss true if the currently playing movie is read only and
-false if it is not.
+Returns true if the currently playing movie is read only and false if it is
+not.
 
 
 ```lua
@@ -1092,9 +1104,7 @@ should match the statusbar (assuming you have `0-index statusbar` off). If no
 movie is playing, it will return the last value when a movie was playing. If
 no movie has been played yet, it will return `-1`.
 
-@*return* `samplecount` — The number of input frames since the last movie
-
-was played.
+@*return* `samplecount` — The number of input frames since the last movie was played.
 
 
 ```lua
@@ -2210,9 +2220,7 @@ Alias for `memory.readqwordsigned`
 
 @*param* `address` — The address to read from
 
-@*return* `value` — A table containing the upper and lower
-
-halves of the unsigned quad word at `address`
+@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`
 
 
 ```lua
@@ -2248,9 +2256,7 @@ Alias for `memory.readqword`
 
 @*param* `address` — The address to read from
 
-@*return* `value` — A table containing the upper and lower
-
-halves of the unsigned quad word at `address`
+@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`
 
 
 ```lua
@@ -2382,9 +2388,7 @@ Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
 
 @*param* `address` — The address to read from
 
-@*param* `size` — The number of bytes to read. Must be `1`,
-
-`2`, `4`, or `8`
+@*param* `size` — The number of bytes to read. Must be `1`, `2`, `4`, or `8`
 
 ```lua
 size:
@@ -2845,9 +2849,12 @@ function pcall(f: fun(...any):...unknown, arg1?: any, ...any)
 
 # print
 
-Prints a value to the lua console
 
-@*param* `data` — The data to print to the console
+Receives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [tostring](command:extension.lua.doc?["en-us/54/manual.html/pdf-tostring"]).
+The function print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [string.format](command:extension.lua.doc?["en-us/54/manual.html/pdf-string.format"]) and [io.write](command:extension.lua.doc?["en-us/54/manual.html/pdf-io.write"]).
+
+
+[View documents](command:extension.lua.doc?["en-us/54/manual.html/pdf-print"])
 
 
 ```lua
@@ -3755,13 +3762,44 @@ table
 
 ---
 
+# wgui.drawtext
+
+Draws the text `text` at the specified coordinates and size. If the text is
+to large to fit in the rectangle specified in `rect`, it will wrap, unlike
+`wgui.text`. Uses the GDI font, GDI background, and GDI text color.
+
+@*param* `text` — The text to be drawn.
+
+@*param* `rect` — The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).
+
+@*param* `format` — Each character in this string sets a formatting rule. It can be `nil`, `""`, or one or more formatting characters
+
+```lua
+format:
+    | "l" -- aligns the text to the left (already applied by default) (sets DT_LEFT)
+    | "r" -- aligns the text to the right (sets DT_RIGHT)
+    | "t" -- aligns the text to the top (already applied by default) (sets DT_TOP)
+    | "b" -- aligns the text to the bottom (sets DT_BOTTOM)
+    | "c" -- horizontally aligns the text to the center (sets DT_CENTER)
+    | "v" -- vertically aligns the text to the center (sets DT_VCENTER)
+    | "e" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
+    | "s" -- forces the text to fit into a single line (sets DT_SINGLELINE)
+    | "n" -- disables word break (unsets DT_WORDBREAK)
+```
+
+
+```lua
+function wgui.drawtext(text: string, rect: { l: integer, t: integer, r: integer, b: integer }|{ l: integer, t: integer, w: integer, h: integer }, format?: align_format)
+```
+
+
+---
+
 # wgui.setbk
 
 Sets the GDI background color to `color`
 
-@*param* `color` — A color of "null" sets
-
-the background color to transparent
+@*param* `color` — A color of "null" sets the background color to transparent
 
 ```lua
 -- colors can be any of these or "#RGB", "#RGBA",
@@ -3785,7 +3823,7 @@ color:
 
 
 ```lua
-function wgui.setbk(color: "null"|color)
+function wgui.setbk(color: "null")
   -> nil
 ```
 
@@ -3796,9 +3834,7 @@ function wgui.setbk(color: "null"|color)
 
 Sets the GDI brush to `color`
 
-@*param* `color` — A color of "null" resets
-
-the brush to its default value
+@*param* `color` — A color of "null" resets the brush to its default value
 
 ```lua
 -- colors can be any of these or "#RGB", "#RGBA",
@@ -3822,7 +3858,7 @@ color:
 
 
 ```lua
-function wgui.setbrush(color: "null"|color)
+function wgui.setbrush(color: "null")
   -> nil
 ```
 
@@ -3854,7 +3890,7 @@ color:
 
 
 ```lua
-function wgui.setcolor(color: color)
+function wgui.setcolor(color: any)
   -> nil
 ```
 
@@ -3865,16 +3901,11 @@ function wgui.setcolor(color: color)
 
 Sets the GDI font to `size`, `font`, and `style`
 
-@*param* `size` — The size is stored as an integer, but some opperations
-
-are done before that so only integers should not be allowed
+@*param* `size` — The size is stored as an integer, but some operations are done before that so only integers should not be allowed
 
 @*param* `font` — Defaults to "MS Gothic"
 
-@*param* `style` — Defaults to "". Each character is processed to change
-
-the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets
-strikethrough, and `a` sets antialiasing
+@*param* `style` — Defaults to "". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing
 
 
 ```lua
@@ -3889,9 +3920,7 @@ function wgui.setfont(size: number, font?: string, style?: string)
 
 Sets the GDI pen color to `color` and `width`
 
-@*param* `color` — A color of "null" resets
-
-the pen to its default value
+@*param* `color` — A color of "null" resets the pen to its default value
 
 @*param* `width` — Defaults to 1
 
@@ -3917,7 +3946,7 @@ color:
 
 
 ```lua
-function wgui.setpen(color: "null"|color, width?: integer)
+function wgui.setpen(color: "null", width?: integer)
   -> nil
 ```
 
@@ -3927,7 +3956,7 @@ function wgui.setpen(color: "null"|color, width?: integer)
 # wgui.text
 
 Draws the text `text` at the specified coordinates. Uses the GDI font,
-the GDI background, and the GDI text color
+GDI background, and GDI text color
 
 
 ```lua
