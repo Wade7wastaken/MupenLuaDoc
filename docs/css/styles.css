@@ -1,103 +1,107 @@
 body {
-    /* font-family: "Courier New", sans-serif, monospace; */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-    font-weight: bold;
-    font-size: large;
-    display: flex;
+	/* font-family: "Courier New", sans-serif, monospace; */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+		system-ui, "Ubuntu", "Droid Sans", sans-serif;
+	font-weight: bold;
+	font-size: large;
+	display: flex;
 }
 
 .sidebar {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-    font-weight: bold;
-    font-size: large;
-    background-color: #E9E9ED;
-    height: 100%;
-    width: 15%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: scroll;
-    z-index: 1;
-    /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none;    /* Firefox */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+		system-ui, "Ubuntu", "Droid Sans", sans-serif;
+	font-weight: bold;
+	font-size: large;
+	background-color: #e9e9ed;
+	height: 100%;
+	width: 15%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow-y: scroll;
+	z-index: 1;
+	/* Hide scrollbar for IE, Edge and Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .sidebar::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .sidebar a {
-    color: #6B0B0D;
-    text-decoration: none;
+	color: #6b0b0d;
+	text-decoration: none;
 }
 
 .sidebar a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .sidebar button:hover {
-    background-color: #D0D0D7;
+	background-color: #d0d0d7;
 }
 
 .sidebar img {
-    min-height: auto;
-    min-width: auto;
-    max-height: 200;
-    max-width: 200;
-    padding: 2%;
+	min-height: auto;
+	min-width: auto;
+	max-height: 200;
+	max-width: 200;
+	padding: 2%;
 }
 
 .collapsible {
-    background-color: #E9E9ED;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-    font-weight: bold;
-    font-size: larger;
-    border: none;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
+	background-color: #e9e9ed;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+		system-ui, "Ubuntu", "Droid Sans", sans-serif;
+	font-weight: bold;
+	font-size: larger;
+	border: none;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	cursor: pointer;
+	text-align: left;
+	width: 100%;
 }
 
 .funcList {
-    /* color: #acacac; */
-    background-color: #D0D0D7;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.05s ease-out;
+	/* color: #acacac; */
+	background-color: #d0d0d7;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.05s ease-out;
 }
 
 .funcList button:hover {
-    background-color: #b3b3ba;
+	background-color: #b3b3ba;
 }
 
 .funcListItem {
-    background-color: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: medium;
-    border: none;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    cursor: pointer;
-    text-align: center;
-    width: 100%;
-    text-decoration: none;
+	background-color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: medium;
+	border: none;
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
+	cursor: pointer;
+	text-align: center;
+	width: 100%;
+	text-decoration: none;
 }
 
 .funcListItem a:hover {
-    text-decoration: inherit;
+	text-decoration: inherit;
 }
 
-.active, .collapsible:hover {
-    /* color: #acacac; */
-    background-color: #D0D0D7;
+.active,
+.collapsible:hover {
+	/* color: #acacac; */
+	background-color: #d0d0d7;
 }
 
 .docBody {
-    margin-left: 15%;
-    text-align: left;
+	margin-left: 15%;
+	text-align: left;
 }
