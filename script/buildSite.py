@@ -13,7 +13,6 @@ from bs4 import BeautifulSoup as bs
 # pygmentize -S pastie -f html -a .codehilite > pygments.css
 
 # TODO:
-# - include global functions
 
 
 class Segments:
