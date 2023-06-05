@@ -34,7 +34,7 @@ def parse_markdown(str: str) -> str:
 def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
         r'const luaL_Reg (?P<func_type>[A-Za-z]+)Funcs\[\]')
-    func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9]+)",.*\}')
+    func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9_]+)",.*\}')
 
     func_list_dict = {}
 
@@ -45,7 +45,7 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
         for line in file:
             # Start at first line of Lua emu func arrays
             # this would have to be changed to include global functions
-            if line == 'const luaL_Reg emuFuncs[] = {\n':
+            if line == 'const luaL_Reg globalFuncs[] = {\n':
                 in_function_region = True
             # Stop at end of namespace
             if line == '}	//namespace\n':
@@ -76,12 +76,17 @@ def read_funcs_from_json_file() -> dict[str, dict[str, str]]:
     for variable in data:
         # store the name of the variable
         variable_name = variable["name"]
+        # print(variable_name)
         # each variable can have multiple definitions (print has 2, one is for mupen and one is the regular lua one)
         for definition in variable["defines"]:
             # get the source file name for every definition
             file_name = definition["file"]
             # only process the definition if it is one we want
             if file_name.endswith(api_filename_ending):
+
+                if not "." in variable_name:
+                    variable_name = f"global.{variable_name}"
+
                 extends = definition["extends"]
                 variable_type = extends["type"]
                 if variable_type == "function":
@@ -123,10 +128,12 @@ def main():
             ''')
         segments.write('<div class="funcList">')
         for func_name in cpp_functions[func_type]:
+            display_name = func_name.upper() if func_type == "global" else f"{func_type.upper()}.{func_name.upper()}"
+
             segments.write(
                 f'''
                 <button class="funcListItem">
-                    <a href="#{func_type}{func_name.capitalize()}">{func_type.upper()}.{func_name.upper()}</a>
+                    <a href="#{func_type}{func_name.capitalize()}">{display_name}</a>
                 </button>
                 ''')
         segments.write('</div>')  # closes div.funcList
@@ -141,6 +148,7 @@ def main():
 
         for func_name in cpp_functions[func_type]:
             fullname = f"{func_type}.{func_name}"
+            display_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
             if fullname in lua_functions:
                 lua_data = lua_functions[fullname]
                 desc = lua_data["desc"]
@@ -154,7 +162,7 @@ def main():
             segments.write(parse_markdown(f'''
 ---
 
-# {variable_anchor}{fullname}</a>
+# {variable_anchor}{display_name}</a>
 
 {desc}
 
