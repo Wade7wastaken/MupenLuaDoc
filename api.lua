@@ -115,7 +115,7 @@ function emu.atupdatescreen(f, unregister) end
 ---Calls the function `f` every input frame. The function `f` receives an
 ---argument that seems to always be `0`. If `unregister` is set to true, the
 ---function `f` will no longer be called when this event occurs, but it will
----error if you never registered the function.
+---error if you never registered the function. Alias for `joypad.register`.
 ---@param f fun(a: integer?): nil The function to be called every input frame. It receives an argument that seems to always be `0`.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
@@ -203,7 +203,7 @@ function emu.framecount() end
 function emu.samplecount() end
 
 ---Returns the number of input frames that have happened since the emulator was
----started. It does not reset when a movie is started.
+---started. It does not reset when a movie is started. Alias for `joypad.count`.
 ---@nodiscard
 ---@return integer inputcount The number of input frames that have happened since the emulator was started.
 function emu.inputcount() end
@@ -615,11 +615,20 @@ function wgui.drawtext(text, rect, format) end
 -- input functions
 --#region
 
--- function input.get() end
+---Returns the state of all keyboard keys and the mouse position in a table. Ex: `input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.
+---@return table
+function input.get() end
 
--- function input.diff() end
+---Returns the differences between `t1` and `t2`. For example, if `t1` is the inputs for this frame, and `t2` is the inputs for last frame, it would return which buttons were pressed this frame, not which buttons are active.
+---@param t1 table
+---@param t2 table
+---@return table
+function input.diff(t1, t2) end
 
--- function input.prompt() end
+---Opens a window where the user can input text. If `OK` is clicked, that text is returned. If `Cancel` is clicked or the window is closed, `nil` is returned.
+---@param title string? The title of the text box. Defaults to "input:".
+---@param placeholder string? The text box is filled with this string when it opens. Defaults to "".
+function input.prompt(title, placeholder) end
 
 --#endregion
 
@@ -627,13 +636,31 @@ function wgui.drawtext(text, rect, format) end
 -- joypad functions
 --#region
 
--- function joypad.get() end
+---Gets the currently pressed game buttons and stick direction for a given port. Note that the `y` coordinate of the stick is the opposite of what is shown on TAS Input.
+---@param port 1|2|3|4
+---@return table
+function joypad.get(port) end
 
--- function joypad.set() end
+---Sets the current joypad to `inputs`. If you do not specify one or more inputs, they will be set to `false` for buttons or `0` for stick coordinates
+---@param port 1|2|3|4
+---@param inputs table
+function joypad.set(port, inputs) end
 
--- function joypad.register() end
+---Calls the function `f` every input frame. The function `f` receives an
+---argument that seems to always be `0`. If `unregister` is set to true, the
+---function `f` will no longer be called when this event occurs, but it will
+---error if you never registered the function. Alias for `emu.atinput`.
+---@param f fun(a: integer?): nil The function to be called every input frame. It receives an argument that seems to always be `0`.
+---@param unregister boolean? If true, then unregister the function `f`.
+---@return nil
+function joypad.register(f, unregister) end
 
--- function joypad.count() end
+
+---Returns the number of input frames that have happened since the emulator was
+---started. It does not reset when a movie is started. Alias for `emu.inputcount`.
+---@nodiscard
+---@return integer inputcount The number of input frames that have happened since the emulator was started.
+function joypad.count() end
 
 --#endregion
 
@@ -641,11 +668,16 @@ function wgui.drawtext(text, rect, format) end
 -- movie functions
 --#region
 
--- function movie.playmovie() end
+---Plays a movie file located at `filename`. This function sets `Read Only` to true.
+---@param filename string
+function movie.playmovie(filename) end
 
--- function movie.stopmovie() end
+---Stops the currently playing movie.
+function movie.stopmovie() end
 
--- function movie.getmoviefilename() end
+---Returns the filename of the currently playing movie. It will error if no movie is playing.
+---@return string
+function movie.getmoviefilename() end
 
 --#endregion
 
@@ -653,9 +685,13 @@ function wgui.drawtext(text, rect, format) end
 -- savestate functions
 --#region
 
--- function savestate.savefile() end
+---Saves a savestate to `filename`.
+---@param filename string
+function savestate.savefile(filename) end
 
--- function savestate.loadfile() end
+---Loads a savestate from `filename`
+---@param filename string
+function savestate.loadfile(filename) end
 
 --#endregion
 
@@ -663,7 +699,11 @@ function wgui.drawtext(text, rect, format) end
 -- ioHelper functions
 --#region
 
--- function ioHelper.filediag() end
+---Opens a file dialouge and returns the file path
+---@param filter string
+---@param type integer
+---@return string
+function ioHelper.filediag(filter, type) end
 
 --#endregion
 
@@ -671,6 +711,9 @@ function wgui.drawtext(text, rect, format) end
 -- avi functions
 --#region
 
--- function avi.startcapture() end
+---Begins an avi recording using the previously saved encoding settings. It is saved to `filename`.
+---@param filename string
+function avi.startcapture(filename) end
 
--- function avi.stopcapture() end
+---Stops avi recording.
+function avi.stopcapture() end
