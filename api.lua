@@ -17,18 +17,56 @@ savestate = {}
 ioHelper = {}
 avi = {}
 
+---@alias qword integer[] A representation of an 8 byte integer (quad word) as
+---two 4 byte integers. This is sometime misnamed in the code as a dword
 
 -- Global Functions
 --#region
 
 ---Prints a value to the lua console
 ---@param data any The data to print to the console
-function print(data)
-end
+function print(data) end
 
 ---Stops script execution
-function stop()
-end
+function stop() end
+
+---Takes in a 4 byte integer and reinterprets the bits as a float. This does not
+---convert from an integer to a float, but reinterprets the memory. This
+---function should only be used as a last option. If you need to read a
+---floating point number from memory, use `memory.readfloat` or `memory.LWC1`.
+---@param data integer
+---@return number
+function MTC1(data) end
+
+---Takes in an 8 byte integer as a table of two 4 byte integers and reinterprets
+---the bits as a double. This does not convert from an integer to a double, but
+---reinterprets the memory. This function should only be used as a last option.
+---If you need to read a double floating point number from memory, use
+---`memory.readdouble` or `memory.LDC1`.
+---@param data qword
+---@return number
+function DMTC1(data) end
+
+---Takes in a 4 byte single float and reinterprets the bits as a 4 byte integer.
+---This does not convert from a float to an integer, but reinterprets the
+---memory. This function should only be used as a last option.
+---@param data number
+---@return integer
+function MFC1(data) end
+
+---Takes in an 8 byte double float and reinterprets the bits as an 8 byte
+---integer and returns it as a table of two 4 byte integers. This does not
+---convert from a double float to an integer, but reinterprets the memory. This
+---function should only be used as a last option.
+---@param data number
+---@return qword
+function DMFC1(data) end
+
+---Takes in an 8 byte integer as a table of two 4 byte integers and returns it
+---as a number.
+---@param data qword
+---@return number
+function CVT_D_L(data) end
 
 --#endregion
 
