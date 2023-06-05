@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup as bs
 
 # TODO:
 # - include global functions
-# - (maybe) use something like beautifulsoup to generate html instead of just
-#   strings
 
 output_html = '''
 <!DOCTYPE html>
@@ -152,23 +150,9 @@ for func_type in cpp_functions:
 
 write("</div>")  # closed div.docBody
 
-
-write('''<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
-    }
-</script>''')
+# add javascript
+with open("script/index.js", "rt") as file:
+    write(f"<script>{file.read()}</script>")
 
 
 with open("docs/index.html", "w+") as file:
