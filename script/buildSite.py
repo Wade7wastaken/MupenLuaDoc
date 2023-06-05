@@ -173,4 +173,4 @@ write('''<script>
 
 with open("docs/index.html", "w+") as file:
     # run the html through beautiful soup to validate it and clean it up
-    file.write(str(bs(output_html, "html.parser")))
+    file.write(bs(output_html, "html.parser").prettify())
