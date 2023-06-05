@@ -97,22 +97,26 @@ def read_funcs_from_json_file() -> dict[str, dict[str, str]]:
 
 
 def main():
+    skipped_functions = ["printx", "tostringex"]
+
     segments = Segments()
 
-    segments.write('''
+    segments.write("""
     <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Mupen Lua API Docs</title>
-        <link href="css/styles.css" type="text/css" rel="stylesheet">
-        <link href="css/pygments.css" type="text/css" rel="stylesheet">
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <div class="sidebar">
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link href="css/styles.css" type="text/css" rel="stylesheet">
+            <link href="css/pygments.css" type="text/css" rel="stylesheet">
+            <title>Mupen Lua API Docs</title>
+        </head>
+        <body>
+            <div class="sidebar">
             <center><img src="img/mupen_logo.png"><br>
             mupen64-rr-lua docs</center><br>
-    ''')
+    """)
 
     cpp_functions = read_funcs_from_cpp_file()
     lua_functions = read_funcs_from_json_file()
@@ -127,7 +131,11 @@ def main():
             ''')
         segments.write('<div class="funcList">')
         for func_name in cpp_functions[func_type]:
-            display_name = func_name.upper() if func_type == "global" else f"{func_type.upper()}.{func_name.upper()}"
+            if func_name in skipped_functions:
+                continue
+
+            display_name = func_name.upper(
+            ) if func_type == "global" else f"{func_type.upper()}.{func_name.upper()}"
 
             segments.write(
                 f'''
@@ -146,6 +154,8 @@ def main():
             f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'))
 
         for func_name in cpp_functions[func_type]:
+            if func_name in skipped_functions:
+                continue
             fullname = f"{func_type}.{func_name}"
             display_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
             if fullname in lua_functions:
