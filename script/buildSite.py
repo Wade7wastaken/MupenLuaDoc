@@ -1,34 +1,37 @@
 import markdown
+from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions.fenced_code import FencedCodeExtension
 import json
 import re
 from bs4 import BeautifulSoup as bs
 
+# RUN "pip install -r requirements.txt" BEFORE RUNNING THIS SCRIPT
+# This script assumes the working directory is the base git directory (not /script)
+# It is recommended that you run this with VS Code instead of the command line
+
+# Command to generate pygments.css (run inside the css folder):
+# pygmentize -S pastie -f html -a .codehilite > pygments.css
+
 # TODO:
 # - include global functions
 
-output_html = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Mupen Lua API Docs</title>
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <link href="css/pygments.css" type="text/css" rel="stylesheet">
-    <meta charset="UTF-8">
-</head>
-<body>
-    <div class="sidebar">
-        <center><img src="img/mupen_logo.png"><br>
-        mupen64-rr-lua docs</center><br>
-'''
+
+class Segments:
+    def __init__(self):
+        self.segments: list[str] = []
+
+    def write(self, string: str):
+        self.segments.append(string)
+
+    def retrieve(self) -> str:
+        return "".join(self.segments)
 
 
-def write(str):
-    # i know this isn't the best practice but i don't really care
-    global output_html
-    output_html += (str + "\n")
+def parse_markdown(str: str) -> str:
+    return markdown.markdown(str, extensions=[CodeHiliteExtension(), FencedCodeExtension()])
 
 
-def read_funcs_from_cpp_file():
+def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
         r'const luaL_Reg (?P<func_type>[A-Za-z]+)Funcs\[\]')
     func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9]+)",.*\}')
@@ -62,7 +65,7 @@ def read_funcs_from_cpp_file():
     return func_list_dict
 
 
-def read_funcs_from_json_file():
+def read_funcs_from_json_file() -> dict[str, dict[str, str]]:
     functions = {}
     # only accept definitions from this file
     api_filename_ending = "api.lua"
@@ -89,50 +92,66 @@ def read_funcs_from_json_file():
     return functions
 
 
-cpp_functions = read_funcs_from_cpp_file()
-lua_functions = read_funcs_from_json_file()
+def main():
+    segments = Segments()
 
+    segments.write('''
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Mupen Lua API Docs</title>
+        <link href="css/styles.css" type="text/css" rel="stylesheet">
+        <link href="css/pygments.css" type="text/css" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="sidebar">
+            <center><img src="img/mupen_logo.png"><br>
+            mupen64-rr-lua docs</center><br>
+    ''')
 
-# loop over function types (emu, wgui)
-for func_type in cpp_functions:
-    write(
-        f'''
-        <button class="collapsible">
-            <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
-        </button>
-        ''')
-    write('<div class="funcList">')
-    for func_name in cpp_functions[func_type]:
-        write(
+    cpp_functions = read_funcs_from_cpp_file()
+    lua_functions = read_funcs_from_json_file()
+
+    # loop over function types (emu, wgui)
+    for func_type in cpp_functions:
+        segments.write(
             f'''
-            <button class="funcListItem">
-                <a href="#{func_type}{func_name.capitalize()}">{func_type.upper()}.{func_name.upper()}</a>
+            <button class="collapsible">
+                <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
             </button>
             ''')
-    write('</div>')  # closes div.funcList
-write('</div>')  # closes div.sidebar
+        segments.write('<div class="funcList">')
+        for func_name in cpp_functions[func_type]:
+            segments.write(
+                f'''
+                <button class="funcListItem">
+                    <a href="#{func_type}{func_name.capitalize()}">{func_type.upper()}.{func_name.upper()}</a>
+                </button>
+                ''')
+        segments.write('</div>')  # closes div.funcList
+    segments.write('</div>')  # closes div.sidebar
 
-write('<div class="docBody">')
-for func_type in cpp_functions:
-    # create the section header
+    segments.write('<div class="docBody">')
+    for func_type in cpp_functions:
+        # create the section header
 
-    write(markdown.markdown(
-        f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS',
-        extensions=['fenced_code', 'codehilite']))
+        segments.write(parse_markdown(
+            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'))
 
-    for func_name in cpp_functions[func_type]:
-        fullname = f"{func_type}.{func_name}"
-        if fullname in lua_functions:
-            lua_data = lua_functions[fullname]
-            desc = lua_data["desc"]
-            view = lua_data["view"]
-        else:
-            print(f"{fullname} failed")
-            desc = "?"
-            view = "?"
-        variable_anchor = f'<a id="{func_type}{func_name.capitalize()}">'
+        for func_name in cpp_functions[func_type]:
+            fullname = f"{func_type}.{func_name}"
+            if fullname in lua_functions:
+                lua_data = lua_functions[fullname]
+                desc = lua_data["desc"]
+                view = lua_data["view"]
+            else:
+                print(f"{fullname} failed")
+                desc = "?"
+                view = "?"
+            variable_anchor = f'<a id="{func_type}{func_name.capitalize()}">'
 
-        write(markdown.markdown(f'''
+            segments.write(parse_markdown(f'''
 ---
 
 # {variable_anchor}{fullname}</a>
@@ -145,16 +164,18 @@ for func_type in cpp_functions:
 ```
 
 
-''', extensions=['fenced_code', 'codehilite']))
+'''))
+
+    segments.write("</div>")  # closed div.docBody
+
+    # add javascript
+    with open("script/index.js", "rt") as file:
+        segments.write(f"<script>{file.read()}</script>")
+
+    with open("docs/index.html", "w+") as file:
+        # run the html through beautiful soup to validate it and clean it up
+        file.write(str(bs(segments.retrieve(), "html.parser")))
 
 
-write("</div>")  # closed div.docBody
-
-# add javascript
-with open("script/index.js", "rt") as file:
-    write(f"<script>{file.read()}</script>")
-
-
-with open("docs/index.html", "w+") as file:
-    # run the html through beautiful soup to validate it and clean it up
-    file.write(str(bs(output_html, "html.parser")))
+if __name__ == "__main__":
+    main()
