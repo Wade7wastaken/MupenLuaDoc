@@ -41,12 +41,8 @@
 		"codestyle-check": "Any"
 	},
 	"files.encoding": "utf8",
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.autopep8"
-	},
-	"python.formatting.provider": "none",
+	"python.formatting.provider": "autopep8",
 	"C_Cpp.dimInactiveRegions": false,
-	"rewrap.wrappingColumn": 80,
 	"editor.rulers": [80],
 	"cSpell.words": ["savestate"]
 }

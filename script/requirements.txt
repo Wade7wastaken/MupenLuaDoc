@@ -1,2 +1,5 @@
 markdown
+json
+re
+bs4
 pygments
