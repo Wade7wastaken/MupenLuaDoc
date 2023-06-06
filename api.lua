@@ -399,7 +399,7 @@ function memory.SW(address, value) end
 ---@param value qword The unsigned qword to write at `address`. Made up of a table of the upper and lower 4 bytes of the 8 byte number
 function memory.SD(address, value) end
 
----Writes a float to `rdram` at `address`. alias for 
+---Writes a float to `rdram` at `address`. alias for
 function memory.SWC1() end
 
 -- function memory.SDC1() end
@@ -545,54 +545,36 @@ function memory.SWC1() end
 ---| "n" disables word break (unsets DT_WORDBREAK)
 ---more information [here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-drawtext)
 
+---Draws a filled in rectangle at the specified coordinates and color
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
+---@param red any
+---@param green any
+---@param blue any
+---@param alpha any
+function wgui.d2d_fill_rectangle(top, left, bottom, right, red, green, blue,
+	alpha) end
 
----Sets the GDI brush to `color`
----@param color color|"null" A color of "null" resets the brush to its default value
----@return nil
-function wgui.setbrush(color) end
+function wgui.d2d_draw_rectangle(top, left, buttom, right, red, green, blue,
+	alpha) end
 
----Sets the GDI pen color to `color` and `width`
----@param color color|"null" A color of "null" resets the pen to its default value
----@param width integer? Defaults to 1
----@return nil
-function wgui.setpen(color, width) end
+function wgui.d2d_fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
----Sets the GDI text color to `color`
----@param color color
----@return nil
-function wgui.setcolor(color) end
+function wgui.d2d_draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
----Sets the GDI background color to `color`
----@param color color|"null" A color of "null" sets the background color to transparent
----@return nil
-function wgui.setbk(color) end
+function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
 
----Sets the GDI font to `size`, `font`, and `style`
----@param size number The size is stored as an integer, but some operations are done before that so only integers should not be allowed
----@param font string? Defaults to "MS Gothic"
----@param style string? Defaults to "". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing
----@return nil
-function wgui.setfont(size, font, style) end
+function wgui.d2d_draw_text(top, left, bottom, right, red, green, blue, alpha,
+	text, fontname, fontsize, horizalign, vertalign) end
 
----Draws the text `text` at the specified coordinates. Uses the GDI font,
----GDI background, and GDI text color
----@deprecated use `wgui.drawtext` instead
----@param x integer
----@param y integer
----@param text string
-function wgui.text(x, y, text) end
+function wgui.d2d_push_clip(top, left, bottom, right) end
 
----Draws the text `text` at the specified coordinates and size. If the text is
----to large to fit in the rectangle specified in `rect`, it will wrap, unlike
----`wgui.text`. Uses the GDI font, GDI background, and GDI text color.
----@param text string The text to be drawn.
----@param rect {l: integer, t: integer, r: integer, b: integer}|{l: integer, t: integer, w: integer, h: integer} The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).
----@param format align_format? Each character in this string sets a formatting rule. It can be `nil`, `""`, or one or more formatting characters
-function wgui.drawtext(text, rect, format) end
+function wgui.d2d_pop_clip() end
 
--- function wgui.rect() end
-
--- function wgui.fillrect() end
+---@return {width: integer, height: integer}
+function wgui.d2d_get_text_size(text, fontname, fontsize) end
 
 -- function wgui.fillrecta() end
 
@@ -611,12 +593,6 @@ function wgui.drawtext(text, rect, format) end
 -- function wgui.loadscreenreset() end
 
 -- function wgui.getimageinfo() end
-
--- function wgui.ellipse() end
-
--- function wgui.polygon() end
-
--- function wgui.line() end
 
 -- function wgui.info() end
 
@@ -667,7 +643,6 @@ function joypad.set(port, inputs) end
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function joypad.register(f, unregister) end
-
 
 ---Returns the number of input frames that have happened since the emulator was
 ---started. It does not reset when a movie is started. Alias for `emu.inputcount`.
