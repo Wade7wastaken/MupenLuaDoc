@@ -379,15 +379,28 @@ function memory.loadhalfs(address, size) end
 ---@param size integer
 function memory.loadwords(address, size) end
 
--- function memory.SB() end
+---Writes an unsigned byte to `rdram` at `address`. Alias for `memory.writebyte`.
+---@param address integer The address to write to
+---@param value integer The unsigned byte to write at `address`
+function memory.SB(address, value) end
 
--- function memory.SH() end
+---Writes an unsigned word (2 bytes) to `rdram` at `address`. Alias for `memory.writeword`.
+---@param address integer The address to write to
+---@param value integer The unsigned word to write at `address`
+function memory.SH(address, value) end
 
--- function memory.SW() end
+---Writes an unsigned dword (4 bytes) to `rdram` at `address`. Alias for `memory.writedword` and `memory.writelong`.
+---@param address integer The address to write to
+---@param value integer The unsigned dword to write at `address`
+function memory.SW(address, value) end
 
--- function memory.SD() end
+---Writes an unsigned qword (8 bytes) to `rdram` at `address`. Alias for `memory.writedword` and `memory.writelong`.
+---@param address integer The address to write to
+---@param value qword The unsigned qword to write at `address`. Made up of a table of the upper and lower 4 bytes of the 8 byte number
+function memory.SD(address, value) end
 
--- function memory.SWC1() end
+---Writes a float to `rdram` at `address`. alias for 
+function memory.SWC1() end
 
 -- function memory.SDC1() end
 
@@ -699,9 +712,9 @@ function savestate.loadfile(filename) end
 -- ioHelper functions
 --#region
 
----Opens a file dialouge and returns the file path
----@param filter string
----@param type integer
+---Opens a file dialouge and returns the file path of the file chosen.
+---@param filter string This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files
+---@param type integer Unknown
 ---@return string
 function ioHelper.filediag(filter, type) end
 
