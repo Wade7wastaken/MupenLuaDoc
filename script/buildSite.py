@@ -64,7 +64,7 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     return func_list_dict
 
 
-def read_funcs_from_json_file() -> dict[str, dict[str, str]]:
+def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     functions = {}
     # only accept definitions from this file
     api_filename_ending = "api.lua"
@@ -86,15 +86,33 @@ def read_funcs_from_json_file() -> dict[str, dict[str, str]]:
                 if not "." in variable_name:
                     variable_name = f"global.{variable_name}"
 
+                if not variable_name in functions:
+                    functions[variable_name] = []
+
                 extends = definition["extends"]
                 variable_type = extends["type"]
                 if variable_type == "function":
-                    functions[variable_name] = {
+                    functions[variable_name].append({
                         "desc": extends["desc"],
                         "view": extends["view"]
-                    }
+                    })
     return functions
 
+def generate_function_html(func_type, func_name, display_name, desc, view):
+    return parse_markdown(f'''
+---
+
+# {f'<a id="{func_type}{func_name.capitalize()}">'}{display_name}</a>
+
+{desc}
+
+
+```lua
+{view}
+```
+
+
+''')
 
 def main():
     skipped_functions = ["printx", "tostringex"]
@@ -160,29 +178,15 @@ def main():
             display_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
             if fullname in lua_functions:
                 lua_data = lua_functions[fullname]
-                lua_functions[fullname]["accessed"] = True
-                desc = lua_data["desc"]
-                view = lua_data["view"]
+                for var in lua_data:
+                    desc = var["desc"]
+                    view = var["view"]
+                    segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
             else:
                 print(f"{fullname} failed")
                 desc = "?"
                 view = "?"
-            variable_anchor = f'<a id="{func_type}{func_name.capitalize()}">'
-
-            segments.write(parse_markdown(f'''
----
-
-# {variable_anchor}{display_name}</a>
-
-{desc}
-
-
-```lua
-{view}
-```
-
-
-'''))
+                segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
 
     segments.write("</div>")  # closed div.docBody
 
@@ -193,10 +197,6 @@ def main():
     with open("docs/index.html", "w+") as file:
         # run the html through beautiful soup to validate it and clean it up
         file.write(str(bs(segments.retrieve(), "html.parser")))
-
-    for function in lua_functions:
-        if not lua_functions[function]["accessed"]:
-            print(f"Lua function was not accessed: {function}")
 
 
 if __name__ == "__main__":
