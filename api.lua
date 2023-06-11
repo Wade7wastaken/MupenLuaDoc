@@ -18,7 +18,7 @@ ioHelper = {}
 avi = {}
 
 ---@alias qword integer[] A representation of an 8 byte integer (quad word) as
----two 4 byte integers. This is sometime misnamed in the code as a dword
+---two 4 byte integers.
 
 -- Global Functions
 --#region
@@ -29,44 +29,6 @@ function print(data) end
 
 ---Stops script execution
 function stop() end
-
----Takes in a 4 byte integer and reinterprets the bits as a float. This does not
----convert from an integer to a float, but reinterprets the memory. This
----function should only be used as a last option. If you need to read a
----floating point number from memory, use `memory.readfloat` or `memory.LWC1`.
----@param data integer
----@return number
-function MTC1(data) end
-
----Takes in an 8 byte integer as a table of two 4 byte integers and reinterprets
----the bits as a double. This does not convert from an integer to a double, but
----reinterprets the memory. This function should only be used as a last option.
----If you need to read a double floating point number from memory, use
----`memory.readdouble` or `memory.LDC1`.
----@param data qword
----@return number
-function DMTC1(data) end
-
----Takes in a 4 byte single float and reinterprets the bits as a 4 byte integer.
----This does not convert from a float to an integer, but reinterprets the
----memory. This function should only be used as a last option.
----@param data number
----@return integer
-function MFC1(data) end
-
----Takes in an 8 byte double float and reinterprets the bits as an 8 byte
----integer and returns it as a table of two 4 byte integers. This does not
----convert from a double float to an integer, but reinterprets the memory. This
----function should only be used as a last option.
----@param data number
----@return qword
-function DMFC1(data) end
-
----Takes in an 8 byte integer as a table of two 4 byte integers and returns it
----as a number.
----@param data qword
----@return number
-function CVT_D_L(data) end
 
 --#endregion
 
@@ -281,232 +243,154 @@ function emu.screenshot(dir) end
 -- memory functions
 --#region
 
----Loads an unsigned byte from rdram and returns it. Alias for
----`memory.readbyte`
+---Reinterprets the bits of a 4 byte integer `n` as a float and returns it. This
+--- does not convert from an int to a float, but reinterprets the memory
 ---@nodiscard
----@param address integer The address to read from
----@return integer value The unsigned byte at `address`
-function memory.LBU(address) end
+---@param n integer
+---@return number
+function memory.inttofloat(n) end
 
----Loads a signed byte from rdram and returns it. Alias for
----`memory.readbytesigned`
+---Reinterprets the bits of an 8 byte integer `n` as a double and returns it.
+---This does not convert from an int to a double, but reinterprets the memory
 ---@nodiscard
----@param address integer The address to read from
----@return integer value The signed byte at `address`
-function memory.LB(address) end
+---@param n qword
+---@return number
+function memory.inttodouble(n) end
 
----Loads an unsigned word (2 bytes) from rdram and returns it. Alias
----for `memory.readword`
+---Reinterprets the bits of a float `n` as a 4 byte integer and returns it. This
+--- does not convert from an int to a float, but reinterprets the memory
 ---@nodiscard
----@param address integer The address to read from
----@return integer value The unsigned word at `address`
-function memory.LHU(address) end
+---@param n number
+---@return integer
+function memory.floattoint(n) end
 
----Loads a signed word (2 bytes) from rdram and returns it. Alias
----for `memory.readwordsigned`
+---Reinterprets the bits of a 8 byte integer `n` as a double and returns it.
+---This does not convert from an int to a float, but reinterprets the memory
 ---@nodiscard
----@param address integer The address to read from
----@return integer value The signed word at `address`
-function memory.LH(address) end
+---@param n qword
+---@return number
+function memory.doubletoint(n) end
 
----Loads an unsigned double word (4 bytes) from rdram and returns it.
----Alias for `memory.readdword`
+---Takes in an 8 byte integer and returns it as a lua number. This function
+---should only be used when reading a qword from memory.
 ---@nodiscard
----@param address integer The address to read from
----@return integer value The unsigned double word at `address`
-function memory.LWU(address) end
+---@param n qword
+---@return number
+function memory.qwordtonumber(n) end
 
----Loads a signed double word (4 bytes) from rdram and returns it.
----Alias for `memory.readdwordsigned`
----@nodiscard
----@param address integer The address to read from
----@return integer value The signed double word at `address`
-function memory.LW(address) end
-
----Loads an unsigned quad word (8 bytes) from rdram and returns it.
----Alias for `memory.readqword`
----@nodiscard
----@param address integer The address to read from
----@return integer[] value A table containing the upper and lower halves of the unsigned quad word at `address`
-function memory.LDU(address) end
-
----Loads a signed quad word (8 bytes) from rdram and returns it.
----Alias for `memory.readqwordsigned`
----@nodiscard
----@param address integer The address to read from
----@return integer[] value A table containing the upper and lower halves of the unsigned quad word at `address`
-function memory.LD(address) end
-
----Loads a float (4 bytes) from rdram and returns it. Alias for
----`memory.readfloat`
----@nodiscard
----@param address integer The address to read from
----@return number value the float at `address`
-function memory.LWC1(address) end
-
----Loads a double (8 bytes) from rdram and returns it. Alias for
----`memory.readdouble`
----@nodiscard
----@param address integer The address to read from
----@return number value the double at `address`
-function memory.LDC1(address) end
-
----Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
----`memory.readsize`
----@param address integer The address to read from
----@param size 1|2|4|8 The number of bytes to read. Must be `1`, `2`, `4`, or `8`
----@return integer|integer[]
-function memory.loadsize(address, size) end
-
----Currently broken
----@deprecated
+---Reads a signed byte from memory at `address` and returns it.
 ---@nodiscard
 ---@param address integer
----@param size integer
-function memory.loadbytes(address, size) end
+---@return integer
+function memory.readbytesigned(address) end
 
----Currently broken
----@deprecated
+---Reads an unsigned byte from memory at `address` and returns it.
 ---@nodiscard
 ---@param address integer
----@param size integer
-function memory.loadhalfs(address, size) end
+---@return integer
+function memory.readbyte(address) end
 
----Currently broken
----@deprecated
+---Reads a signed word (2 bytes) from memory at `address` and returns it.
 ---@nodiscard
 ---@param address integer
----@param size integer
-function memory.loadwords(address, size) end
+---@return integer
+function memory.readwordsigned(address) end
 
----Writes an unsigned byte to `rdram` at `address`. Alias for `memory.writebyte`.
----@param address integer The address to write to
----@param value integer The unsigned byte to write at `address`
-function memory.SB(address, value) end
+---Reads an unsigned word (2 bytes) from memory at `address` and returns it.
+---@nodiscard
+---@param address integer
+---@return integer
+function memory.readword(address) end
 
----Writes an unsigned word (2 bytes) to `rdram` at `address`. Alias for `memory.writeword`.
----@param address integer The address to write to
----@param value integer The unsigned word to write at `address`
-function memory.SH(address, value) end
+---Reads a signed dword (4 bytes) from memory at `address` and returns it.
+---@nodiscard
+---@param address integer
+---@return integer
+function memory.readdwordsigned(address) end
 
----Writes an unsigned dword (4 bytes) to `rdram` at `address`. Alias for `memory.writedword` and `memory.writelong`.
----@param address integer The address to write to
----@param value integer The unsigned dword to write at `address`
-function memory.SW(address, value) end
+---Reads an unsigned dword (4 bytes) from memory at `address` and returns it.
+---@nodiscard
+---@param address integer
+---@return integer
+function memory.readdword(address) end
 
----Writes an unsigned qword (8 bytes) to `rdram` at `address`. Alias for `memory.writedword` and `memory.writelong`.
----@param address integer The address to write to
----@param value qword The unsigned qword to write at `address`. Made up of a table of the upper and lower 4 bytes of the 8 byte number
-function memory.SD(address, value) end
+---Reads a signed qword (8 bytes) from memory at `address` and returns it as a
+---table of the upper and lower 4 bytes.
+---@nodiscard
+---@param address integer
+---@return qword
+function memory.readqwordsigned(address) end
 
----Writes a float to `rdram` at `address`. alias for
-function memory.SWC1() end
+---Reads an unsigned qword (8 bytes) from memory at `address` and returns it as
+---a table of the upper and lower 4 bytes.
+---@nodiscard
+---@param address integer
+---@return integer
+function memory.readqword(address) end
 
--- function memory.SDC1() end
+---Reads a float (4 bytes) from memory at `address` and returns it.
+---@nodiscard
+---@param address integer
+---@return number
+function memory.readfloat(address) end
 
--- function memory.storesize() end
+---Reads a double (8 bytes) from memory at `address` and returns it.
+---@nodiscard
+---@param address integer
+---@return number
+function memory.readdouble(address) end
 
--- function memory.syncbreak() end
+---Reads `size` bytes from memory at `address` and returns them. The memory is
+---treated as signed if `size` is is negative.
+---@nodiscard
+---@param address integer
+---@param size 1|2|4|8|-1|-2|-4|-8
+function memory.readsize(address, size) end
 
--- function memory.pcbreak() end
+---Writes an unsigned byte to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data integer
+function memory.writebyte(address, data) end
 
--- function memory.readbreak() end
+---Writes an unsigned word (2 bytes) to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data integer
+function memory.writeword(address, data) end
 
--- function memory.writebreak() end
+---Writes an unsigned dword (4 bytes) to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data integer
+function memory.writedword(address, data) end
 
--- function memory.reg() end
+---Writes an unsigned qword consisting of a table with the upper and lower 4
+---bytes to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data qword
+function memory.writeqword(address, data) end
 
--- function memory.getreg() end
+---Writes a float to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data number
+function memory.writefloat(address, data) end
 
--- function memory.setreg() end
+---Writes a double to memory at `address`.
+---@nodiscard
+---@param address integer
+---@param data number
+function memory.writedouble(address, data) end
 
--- function memory.trace() end
-
--- function memory.tracemode() end
-
--- function memory.getcore() end
-
--- function memory.recompilenow() end
-
--- function memory.recompile() end
-
--- function memory.recompilenext() end
-
--- function memory.recompilenextall() end
-
--- function memory.readmemb() end
-
--- function memory.readmemh() end
-
--- function memory.readmem() end
-
--- function memory.readmemd() end
-
--- function memory.writememb() end
-
--- function memory.writememh() end
-
--- function memory.writemem() end
-
--- function memory.writememd() end
-
--- function memory.readbytesigned() end
-
--- function memory.readbyte() end
-
--- function memory.readwordsigned() end
-
--- function memory.readword() end
-
--- function memory.readdwordsigned() end
-
--- function memory.readdword() end
-
--- function memory.readqwordsigned() end
-
--- function memory.readqword() end
-
--- function memory.readfloat() end
-
--- function memory.readdouble() end
-
--- function memory.readsize() end
-
--- function memory.readbyterange() end
-
--- function memory.writebyte() end
-
--- function memory.writeword() end
-
--- function memory.writedword() end
-
--- function memory.writelong() end
-
--- function memory.writeqword() end
-
--- function memory.writefloat() end
-
--- function memory.writedouble() end
-
--- function memory.writesize() end
-
--- function memory.registerread() end
-
--- function memory.registerwrite() end
-
--- function memory.registerexec() end
-
--- function memory.getregister() end
-
--- function memory.setregister() end
-
---#endregion
-
-
--- gui functions
---#region
-
--- function gui.register() end
+---Writes `size` bytes to memory at `address`. The memory is treated as signed
+---if `size` is is negative.
+---@nodiscard
+---@param address integer
+---@param size 1|2|4|8|-1|-2|-4|-8
+---@param data integer|qword
+function memory.writesize(address, size, data) end
 
 --#endregion
 
@@ -514,89 +398,204 @@ function memory.SWC1() end
 -- wgui functions
 --#region
 
----colors can be any of these or "#RGB", "#RGBA",
----"#RRGGBB", or "#RRGGBBA"
----@alias color
----| string
----| "white"
----| "black"
----| "clear"
----| "gray"
----| "red"
----| "orange"
----| "yellow"
----| "chartreuse"
----| "green"
----| "teal"
----| "cyan"
----| "blue"
----| "purple"
-
----@alias align_format
----| string
----| "l" aligns the text to the left (already applied by default) (sets DT_LEFT)
----| "r" aligns the text to the right (sets DT_RIGHT)
----| "t" aligns the text to the top (already applied by default) (sets DT_TOP)
----| "b" aligns the text to the bottom (sets DT_BOTTOM)
----| "c" horizontally aligns the text to the center (sets DT_CENTER)
----| "v" vertically aligns the text to the center (sets DT_VCENTER)
----| "e" adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
----| "s" forces the text to fit into a single line (sets DT_SINGLELINE)
----| "n" disables word break (unsets DT_WORDBREAK)
----more information [here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-drawtext)
-
----Draws a filled in rectangle at the specified coordinates and color
+---Draws a filled in rectangle at the specified coordinates and color.
 ---@param top integer
 ---@param left integer
 ---@param bottom integer
 ---@param right integer
----@param red any
----@param green any
----@param blue any
----@param alpha any
-function wgui.d2d_fill_rectangle(top, left, bottom, right, red, green, blue,
-	alpha) end
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
+function wgui.d2d_fill_rectangle(top, left, bottom, right, red, green, blue, alpha) end
 
-function wgui.d2d_draw_rectangle(top, left, buttom, right, red, green, blue,
-	alpha) end
+---Draws the border of a rectangle at the specified coordinates and color.
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
+function wgui.d2d_draw_rectangle(top, left, bottom, right, red, green, blue, alpha) end
 
+---Draws a filled in ellipse at the specified coordinates and color.
+---@param x integer
+---@param y integer
+---@param radiusX integer
+---@param radiusY integer
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
 function wgui.d2d_fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
+---Draws the border of an ellipse at the specified coordinates and color.
+---@param x integer
+---@param y integer
+---@param radiusX integer
+---@param radiusY integer
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
 function wgui.d2d_draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
+---Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
 function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
 
-function wgui.d2d_draw_text(top, left, bottom, right, red, green, blue, alpha,
-	text, fontname, fontsize, horizalign, vertalign) end
+---Draws the text `text` at the specified coordinates, color, font, and
+---alignment.
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
+---@param text string
+---@param fontname string
+---@param fontsize number
+---@param horizalign integer
+---@param vertalign integer
+function wgui.d2d_draw_text(top, left, bottom, right, red, green, blue, alpha, text, fontname, fontsize, horizalign, vertalign) end
 
+---Specifies a rectangle to which all subsequent drawing operations are clipped.
+---This clip is put onto a stack. It can then be popped off the stack with
+---`wgui.d2d_pop_clip`.
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
 function wgui.d2d_push_clip(top, left, bottom, right) end
 
+---Pops the most recent clip off the clip stack.
 function wgui.d2d_pop_clip() end
 
+---Returns the width and height of the specified text.
+---@param text string
+---@param fontname string
+---@param fontsize number
 ---@return {width: integer, height: integer}
 function wgui.d2d_get_text_size(text, fontname, fontsize) end
 
--- function wgui.fillrecta() end
+---Draws a filled in rounded rectangle at the specified coordinates, color and
+---radius
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
+---@param radiusX number
+---@param radiusY number
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
+function wgui.d2d_fill_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
 
--- function wgui.fillellipsea() end
+---Draws the border of a rounded rectangle at the specified coordinates, color
+---and radius
+---@param top integer
+---@param left integer
+---@param bottom integer
+---@param right integer
+---@param radiusX number
+---@param radiusY number
+---@param red number d2d colors range from 0.0 to 1.0
+---@param green number d2d colors range from 0.0 to 1.0
+---@param blue number d2d colors range from 0.0 to 1.0
+---@param alpha number d2d colors range from 0.0 to 1.0
+function wgui.d2d_fill_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
 
--- function wgui.fillpolygona() end
+---Draws a polygon at the specified coordinates and color
+---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
+---@param alpha integer GDI+ colors range from 0 to 255
+---@param red integer GDI+ colors range from 0 to 255
+---@param green integer GDI+ colors range from 0 to 255
+---@param blue integer GDI+ colors range from 0 to 255
+function wgui.fillpolygona(points, alpha, red, green, blue) end
 
--- function wgui.loadimage() end
+---Loads an image file into the image pool and returns the identifier.
+---@nodiscard
+---@param path string
+function wgui.loadimage(path) end
 
--- function wgui.deleteimage() end
+---Deletes one or more images from the image pool.
+---@param identifier integer If `identifier` is 0, all images are deleted. If not, only the image at that index is deleted.
+function wgui.deleteimage(identifier) end
 
--- function wgui.drawimage() end
+---Draws the image at `identifier` at the specified coordinates
+---@param identifier integer
+---@param x integer
+---@param y integer
+function wgui.drawimage(identifier, x, y) end
 
--- function wgui.loadscreen() end
+---Draws the image at `identifier` at the specified coordinates and scale
+---@param identifier integer
+---@param x integer
+---@param y integer
+---@param scale number
+function wgui.drawimage(identifier, x, y, scale) end
 
--- function wgui.loadscreenreset() end
+---Draws the image at `identifier` at the specified coordinates. The image is
+---stretched to the specified width and height.
+---@param identifier integer
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+function wgui.drawimage(identifier, x, y, width, height) end
 
--- function wgui.getimageinfo() end
+---Draws the image at `identifier` at the specified coordinates. Only a section
+---of the source image is drawn, specified by `srcx`, `srcy`, `srcwidth`, and
+---`srcheight`. That section is then stretched to match `width` and `height`,
+---placed at `(x, y)`, then rotated by `rotate` degrees.
+---@param identifier integer
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+---@param srcx integer
+---@param srcy integer
+---@param srcwidth integer
+---@param srcheight integer
+---@param rotate number
+function wgui.drawimage(identifier, x, y, width, height, srcx, srcy, srcwidth, srcheight, rotate) end
 
--- function wgui.info() end
+---Loads the current screen into the image pool and returns the identifier.
+---@nodiscard
+---@return integer
+function wgui.loadscreen() end
 
--- function wgui.resize() end
+---Reinitializes `wgui.loadscreen`. This function should only be used when
+---conditions have changed, such as if the resolution changes.
+function wgui.loadscreenreset() end
+
+---Returns the width and height of the image at `identifier`.
+---@nodiscard
+---@param identifier integer
+---@return {width: integer, height: integer}
+function wgui.getimageinfo(identifier) end
+
+---Returns the current size of the window.
+---@nodiscard
+---@return {width: integer, height: integer}
+function wgui.info() end
+
+---Resizes the window to `width` and `height`
+---@param width integer
+---@param height integer
+function wgui.resize(width, height) end
 
 --#endregion
 
@@ -604,17 +603,22 @@ function wgui.d2d_get_text_size(text, fontname, fontsize) end
 -- input functions
 --#region
 
----Returns the state of all keyboard keys and the mouse position in a table. Ex: `input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.
+---Returns the state of all keyboard keys and the mouse position in a table. Ex:
+---`input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.
 ---@return table
 function input.get() end
 
----Returns the differences between `t1` and `t2`. For example, if `t1` is the inputs for this frame, and `t2` is the inputs for last frame, it would return which buttons were pressed this frame, not which buttons are active.
+---Returns the differences between `t1` and `t2`. For example, if `t1` is the
+---inputs for this frame, and `t2` is the inputs for last frame, it would return
+---which buttons were pressed this frame, not which buttons are active.
 ---@param t1 table
 ---@param t2 table
 ---@return table
 function input.diff(t1, t2) end
 
----Opens a window where the user can input text. If `OK` is clicked, that text is returned. If `Cancel` is clicked or the window is closed, `nil` is returned.
+---Opens a window where the user can input text. If `OK` is clicked, that text
+---is returned. If `Cancel` is clicked or the window is closed, `nil` is
+---returned.
 ---@param title string? The title of the text box. Defaults to "input:".
 ---@param placeholder string? The text box is filled with this string when it opens. Defaults to "".
 function input.prompt(title, placeholder) end
@@ -625,12 +629,15 @@ function input.prompt(title, placeholder) end
 -- joypad functions
 --#region
 
----Gets the currently pressed game buttons and stick direction for a given port. Note that the `y` coordinate of the stick is the opposite of what is shown on TAS Input.
+---Gets the currently pressed game buttons and stick direction for a given port.
+---Note that the `y` coordinate of the stick is the opposite of what is shown on
+---TAS Input.
 ---@param port 1|2|3|4
 ---@return table
 function joypad.get(port) end
 
----Sets the current joypad to `inputs`. If you do not specify one or more inputs, they will be set to `false` for buttons or `0` for stick coordinates
+---Sets the current joypad to `inputs`. If you do not specify one or more
+---inputs, they will be set to `false` for buttons or `0` for stick coordinates
 ---@param port 1|2|3|4
 ---@param inputs table
 function joypad.set(port, inputs) end
@@ -645,7 +652,8 @@ function joypad.set(port, inputs) end
 function joypad.register(f, unregister) end
 
 ---Returns the number of input frames that have happened since the emulator was
----started. It does not reset when a movie is started. Alias for `emu.inputcount`.
+---started. It does not reset when a movie is started. Alias for
+---`emu.inputcount`.
 ---@nodiscard
 ---@return integer inputcount The number of input frames that have happened since the emulator was started.
 function joypad.count() end
@@ -656,14 +664,16 @@ function joypad.count() end
 -- movie functions
 --#region
 
----Plays a movie file located at `filename`. This function sets `Read Only` to true.
+---Plays a movie file located at `filename`. This function sets `Read Only` to
+---true.
 ---@param filename string
 function movie.playmovie(filename) end
 
 ---Stops the currently playing movie.
 function movie.stopmovie() end
 
----Returns the filename of the currently playing movie. It will error if no movie is playing.
+---Returns the filename of the currently playing movie. It will error if no
+---movie is playing.
 ---@return string
 function movie.getmoviefilename() end
 
@@ -699,9 +709,12 @@ function ioHelper.filediag(filter, type) end
 -- avi functions
 --#region
 
----Begins an avi recording using the previously saved encoding settings. It is saved to `filename`.
+---Begins an avi recording using the previously saved encoding settings. It is
+---saved to `filename`.
 ---@param filename string
 function avi.startcapture(filename) end
 
 ---Stops avi recording.
 function avi.stopcapture() end
+
+--#endregion
