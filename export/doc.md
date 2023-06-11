@@ -1,81 +1,3 @@
-# CVT_D_L
-
-Takes in an 8 byte integer as a table of two 4 byte integers and returns it
-as a number.
-
-
-```lua
-function CVT_D_L(data: integer[])
-  -> number
-```
-
-
----
-
-# DMFC1
-
-Takes in an 8 byte double float and reinterprets the bits as an 8 byte
-integer and returns it as a table of two 4 byte integers. This does not
-convert from a double float to an integer, but reinterprets the memory. This
-function should only be used as a last option.
-
-
-```lua
-function DMFC1(data: number)
-  -> integer[]
-```
-
-
----
-
-# DMTC1
-
-Takes in an 8 byte integer as a table of two 4 byte integers and reinterprets
-the bits as a double. This does not convert from an integer to a double, but
-reinterprets the memory. This function should only be used as a last option.
-If you need to read a double floating point number from memory, use
-`memory.readdouble` or `memory.LDC1`.
-
-
-```lua
-function DMTC1(data: integer[])
-  -> number
-```
-
-
----
-
-# MFC1
-
-Takes in a 4 byte single float and reinterprets the bits as a 4 byte integer.
-This does not convert from a float to an integer, but reinterprets the
-memory. This function should only be used as a last option.
-
-
-```lua
-function MFC1(data: number)
-  -> integer
-```
-
-
----
-
-# MTC1
-
-Takes in a 4 byte integer and reinterprets the bits as a float. This does not
-convert from an integer to a float, but reinterprets the memory. This
-function should only be used as a last option. If you need to read a
-floating point number from memory, use `memory.readfloat` or `memory.LWC1`.
-
-
-```lua
-function MTC1(data: integer)
-  -> number
-```
-
-
----
-
 # _G
 
 
@@ -103,29 +25,6 @@ A global variable (not a function) that holds a string containing the running Lu
 
 ```lua
 string
-```
-
-
----
-
-# align_format
-
-```lua
-align_format:
-    | "l" -- aligns the text to the left (already applied by default) (sets DT_LEFT)
-    | "r" -- aligns the text to the right (sets DT_RIGHT)
-    | "t" -- aligns the text to the top (already applied by default) (sets DT_TOP)
-    | "b" -- aligns the text to the bottom (sets DT_BOTTOM)
-    | "c" -- horizontally aligns the text to the center (sets DT_CENTER)
-    | "v" -- vertically aligns the text to the center (sets DT_VCENTER)
-    | "e" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
-    | "s" -- forces the text to fit into a single line (sets DT_SINGLELINE)
-    | "n" -- disables word break (unsets DT_WORDBREAK)
-```
-
-
-```lua
-string|"b"|"c"|"e"|"l"...(+5)
 ```
 
 
@@ -174,6 +73,31 @@ table
 
 ---
 
+# avi.startcapture
+
+Begins an avi recording using the previously saved encoding settings. It is
+saved to `filename`.
+
+
+```lua
+function avi.startcapture(filename: string)
+```
+
+
+---
+
+# avi.stopcapture
+
+Stops avi recording.
+
+
+```lua
+function avi.stopcapture()
+```
+
+
+---
+
 # collectgarbage
 
 
@@ -198,35 +122,6 @@ opt:
 ```lua
 function collectgarbage(opt?: "collect"|"count"|"generational"|"incremental"|"isrunning"...(+3), ...any)
   -> any
-```
-
-
----
-
-# color
-
-```lua
--- colors can be any of these or "#RGB", "#RGBA",
--- "#RRGGBB", or "#RRGGBBA"
-color:
-    | "white"
-    | "black"
-    | "clear"
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "chartreuse"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "blue"
-    | "purple"
-```
-
-
-```lua
-string|"black"|"blue"|"chartreuse"|"clear"...(+9)
 ```
 
 
@@ -777,7 +672,7 @@ table
 Calls the function `f` every input frame. The function `f` receives an
 argument that seems to always be `0`. If `unregister` is set to true, the
 function `f` will no longer be called when this event occurs, but it will
-error if you never registered the function.
+error if you never registered the function. Alias for `joypad.register`.
 
 @*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.
 
@@ -1121,7 +1016,7 @@ function emu.getversion(type: 0|1)
 # emu.inputcount
 
 Returns the number of input frames that have happened since the emulator was
-started. It does not reset when a movie is started.
+started. It does not reset when a movie is started. Alias for `joypad.count`.
 
 @*return* `inputcount` — The number of input frames that have happened since the emulator was started.
 
@@ -1342,6 +1237,53 @@ table
 
 ```lua
 table
+```
+
+
+---
+
+# input.diff
+
+Returns the differences between `t1` and `t2`. For example, if `t1` is the
+inputs for this frame, and `t2` is the inputs for last frame, it would return
+which buttons were pressed this frame, not which buttons are active.
+
+
+```lua
+function input.diff(t1: table, t2: table)
+  -> table
+```
+
+
+---
+
+# input.get
+
+Returns the state of all keyboard keys and the mouse position in a table. Ex:
+`input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.
+
+
+```lua
+function input.get()
+  -> table
+```
+
+
+---
+
+# input.prompt
+
+Opens a window where the user can input text. If `OK` is clicked, that text
+is returned. If `Cancel` is clicked or the window is closed, `nil` is
+returned.
+
+@*param* `title` — The title of the text box. Defaults to "input:".
+
+@*param* `placeholder` — The text box is filled with this string when it opens. Defaults to "".
+
+
+```lua
+function input.prompt(title?: string, placeholder?: string)
 ```
 
 
@@ -1615,6 +1557,23 @@ table
 
 ---
 
+# ioHelper.filediag
+
+Opens a file dialouge and returns the file path of the file chosen.
+
+@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files
+
+@*param* `type` — Unknown
+
+
+```lua
+function ioHelper.filediag(filter: string, type: integer)
+  -> string
+```
+
+
+---
+
 # ipairs
 
 
@@ -1643,6 +1602,87 @@ function ipairs(t: <T:table>)
 
 ```lua
 table
+```
+
+
+---
+
+# joypad.count
+
+Returns the number of input frames that have happened since the emulator was
+started. It does not reset when a movie is started. Alias for
+`emu.inputcount`.
+
+@*return* `inputcount` — The number of input frames that have happened since the emulator was started.
+
+
+```lua
+function joypad.count()
+  -> inputcount: integer
+```
+
+
+---
+
+# joypad.get
+
+Gets the currently pressed game buttons and stick direction for a given port.
+Note that the `y` coordinate of the stick is the opposite of what is shown on
+TAS Input.
+
+```lua
+port:
+    | 1
+    | 2
+    | 3
+    | 4
+```
+
+
+```lua
+function joypad.get(port: 1|2|3|4)
+  -> table
+```
+
+
+---
+
+# joypad.register
+
+Calls the function `f` every input frame. The function `f` receives an
+argument that seems to always be `0`. If `unregister` is set to true, the
+function `f` will no longer be called when this event occurs, but it will
+error if you never registered the function. Alias for `emu.atinput`.
+
+@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.
+
+@*param* `unregister` — If true, then unregister the function `f`.
+
+
+```lua
+function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)
+  -> nil
+```
+
+
+---
+
+# joypad.set
+
+Sets the current joypad to `inputs`. If you do not specify one or more
+inputs, they will be set to `false` for buttons or `0` for stick coordinates
+
+```lua
+port:
+    | 1
+    | 2
+    | 3
+    | 4
+```
+
+
+```lua
+function joypad.set(port: 1|2|3|4, inputs: table)
 ```
 
 
@@ -2255,218 +2295,186 @@ table
 
 ---
 
-# memory.LB
+# memory.doubletoint
 
-Loads a signed byte from rdram and returns it. Alias for
-`memory.readbytesigned`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The signed byte at `address`
+Reinterprets the bits of a 8 byte integer `n` as a double and returns it.
+This does not convert from an int to a float, but reinterprets the memory
 
 
 ```lua
-function memory.LB(address: integer)
-  -> value: integer
+function memory.doubletoint(n: integer[])
+  -> number
 ```
 
 
 ---
 
-# memory.LBU
+# memory.floattoint
 
-Loads an unsigned byte from rdram and returns it. Alias for
-`memory.readbyte`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The unsigned byte at `address`
+Reinterprets the bits of a float `n` as a 4 byte integer and returns it. This
+ does not convert from an int to a float, but reinterprets the memory
 
 
 ```lua
-function memory.LBU(address: integer)
-  -> value: integer
+function memory.floattoint(n: number)
+  -> integer
 ```
 
 
 ---
 
-# memory.LD
+# memory.inttodouble
 
-Loads a signed quad word (8 bytes) from rdram and returns it.
-Alias for `memory.readqwordsigned`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`
+Reinterprets the bits of an 8 byte integer `n` as a double and returns it.
+This does not convert from an int to a double, but reinterprets the memory
 
 
 ```lua
-function memory.LD(address: integer)
-  -> value: integer[]
+function memory.inttodouble(n: integer[])
+  -> number
 ```
 
 
 ---
 
-# memory.LDC1
+# memory.inttofloat
 
-Loads a double (8 bytes) from rdram and returns it. Alias for
-`memory.readdouble`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — the double at `address`
+Reinterprets the bits of a 4 byte integer `n` as a float and returns it. This
+ does not convert from an int to a float, but reinterprets the memory
 
 
 ```lua
-function memory.LDC1(address: integer)
-  -> value: number
+function memory.inttofloat(n: integer)
+  -> number
 ```
 
 
 ---
 
-# memory.LDU
+# memory.qwordtonumber
 
-Loads an unsigned quad word (8 bytes) from rdram and returns it.
-Alias for `memory.readqword`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — A table containing the upper and lower halves of the unsigned quad word at `address`
+Takes in an 8 byte integer and returns it as a lua number. This function
+should only be used when reading a qword from memory.
 
 
 ```lua
-function memory.LDU(address: integer)
-  -> value: integer[]
+function memory.qwordtonumber(n: integer[])
+  -> number
 ```
 
 
 ---
 
-# memory.LH
+# memory.readbyte
 
-Loads a signed word (2 bytes) from rdram and returns it. Alias
-for `memory.readwordsigned`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The signed word at `address`
+Reads an unsigned byte from memory at `address` and returns it.
 
 
 ```lua
-function memory.LH(address: integer)
-  -> value: integer
+function memory.readbyte(address: integer)
+  -> integer
 ```
 
 
 ---
 
-# memory.LHU
+# memory.readbytesigned
 
-Loads an unsigned word (2 bytes) from rdram and returns it. Alias
-for `memory.readword`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The unsigned word at `address`
+Reads a signed byte from memory at `address` and returns it.
 
 
 ```lua
-function memory.LHU(address: integer)
-  -> value: integer
+function memory.readbytesigned(address: integer)
+  -> integer
 ```
 
 
 ---
 
-# memory.LW
+# memory.readdouble
 
-Loads a signed double word (4 bytes) from rdram and returns it.
-Alias for `memory.readdwordsigned`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The signed double word at `address`
+Reads a double (8 bytes) from memory at `address` and returns it.
 
 
 ```lua
-function memory.LW(address: integer)
-  -> value: integer
+function memory.readdouble(address: integer)
+  -> number
 ```
 
 
 ---
 
-# memory.LWC1
+# memory.readdword
 
-Loads a float (4 bytes) from rdram and returns it. Alias for
-`memory.readfloat`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — the float at `address`
+Reads an unsigned dword (4 bytes) from memory at `address` and returns it.
 
 
 ```lua
-function memory.LWC1(address: integer)
-  -> value: number
+function memory.readdword(address: integer)
+  -> integer
 ```
 
 
 ---
 
-# memory.LWU
+# memory.readdwordsigned
 
-Loads an unsigned double word (4 bytes) from rdram and returns it.
-Alias for `memory.readdword`
-
-@*param* `address` — The address to read from
-
-@*return* `value` — The unsigned double word at `address`
+Reads a signed dword (4 bytes) from memory at `address` and returns it.
 
 
 ```lua
-function memory.LWU(address: integer)
-  -> value: integer
+function memory.readdwordsigned(address: integer)
+  -> integer
 ```
 
 
 ---
 
-# memory.loadbytes
+# memory.readfloat
 
-Currently broken
+Reads a float (4 bytes) from memory at `address` and returns it.
 
 
 ```lua
-function memory.loadbytes(address: integer, size: integer)
+function memory.readfloat(address: integer)
+  -> number
 ```
 
 
 ---
 
-# memory.loadhalfs
+# memory.readqword
 
-Currently broken
+Reads an unsigned qword (8 bytes) from memory at `address` and returns it as
+a table of the upper and lower 4 bytes.
 
 
 ```lua
-function memory.loadhalfs(address: integer, size: integer)
+function memory.readqword(address: integer)
+  -> integer
 ```
 
 
 ---
 
-# memory.loadsize
+# memory.readqwordsigned
 
-Reads 1, 2, 4, or 8 bytes from rdram and returns it. Alias for
-`memory.readsize`
+Reads a signed qword (8 bytes) from memory at `address` and returns it as a
+table of the upper and lower 4 bytes.
 
-@*param* `address` — The address to read from
 
-@*param* `size` — The number of bytes to read. Must be `1`, `2`, `4`, or `8`
+```lua
+function memory.readqwordsigned(address: integer)
+  -> integer[]
+```
+
+
+---
+
+# memory.readsize
+
+Reads `size` bytes from memory at `address` and returns them. The memory is
+treated as signed if `size` is is negative.
 
 ```lua
 size:
@@ -2474,24 +2482,139 @@ size:
     | 2
     | 4
     | 8
+    | -1
+    | -2
+    | -4
+    | -8
 ```
 
 
 ```lua
-function memory.loadsize(address: integer, size: 1|2|4|8)
-  -> integer|integer[]
+function memory.readsize(address: integer, size: -1|-2|-4|-8|1...(+3))
 ```
 
 
 ---
 
-# memory.loadwords
+# memory.readword
 
-Currently broken
+Reads an unsigned word (2 bytes) from memory at `address` and returns it.
 
 
 ```lua
-function memory.loadwords(address: integer, size: integer)
+function memory.readword(address: integer)
+  -> integer
+```
+
+
+---
+
+# memory.readwordsigned
+
+Reads a signed word (2 bytes) from memory at `address` and returns it.
+
+
+```lua
+function memory.readwordsigned(address: integer)
+  -> integer
+```
+
+
+---
+
+# memory.writebyte
+
+Writes an unsigned byte to memory at `address`.
+
+
+```lua
+function memory.writebyte(address: integer, data: integer)
+```
+
+
+---
+
+# memory.writedouble
+
+Writes a double to memory at `address`.
+
+
+```lua
+function memory.writedouble(address: integer, data: number)
+```
+
+
+---
+
+# memory.writedword
+
+Writes an unsigned dword (4 bytes) to memory at `address`.
+
+
+```lua
+function memory.writedword(address: integer, data: integer)
+```
+
+
+---
+
+# memory.writefloat
+
+Writes a float to memory at `address`.
+
+
+```lua
+function memory.writefloat(address: integer, data: number)
+```
+
+
+---
+
+# memory.writeqword
+
+Writes an unsigned qword consisting of a table with the upper and lower 4
+bytes to memory at `address`.
+
+
+```lua
+function memory.writeqword(address: integer, data: integer[])
+```
+
+
+---
+
+# memory.writesize
+
+Writes `size` bytes to memory at `address`. The memory is treated as signed
+if `size` is is negative.
+
+```lua
+size:
+    | 1
+    | 2
+    | 4
+    | 8
+    | -1
+    | -2
+    | -4
+    | -8
+```
+
+
+```lua
+function memory.writesize(address: integer, size: -1|-2|-4|-8|1...(+3), data: integer|integer[])
+```
+
+
+---
+
+# memory.writeword
+
+Writes an unsigned word (2 bytes) to memory at `address`.
+
+
+```lua
+function memory.writeword(address: integer, data: integer)
 ```
 
 
@@ -2517,6 +2640,45 @@ function module(name: string, ...any)
 
 ```lua
 table
+```
+
+
+---
+
+# movie.getmoviefilename
+
+Returns the filename of the currently playing movie. It will error if no
+movie is playing.
+
+
+```lua
+function movie.getmoviefilename()
+  -> string
+```
+
+
+---
+
+# movie.playmovie
+
+Plays a movie file located at `filename`. This function sets `Read Only` to
+true.
+
+
+```lua
+function movie.playmovie(filename: string)
+```
+
+
+---
+
+# movie.stopmovie
+
+Stops the currently playing movie.
+
+
+```lua
+function movie.stopmovie()
 ```
 
 
@@ -3045,6 +3207,30 @@ function require(modname: string)
 
 ```lua
 table
+```
+
+
+---
+
+# savestate.loadfile
+
+Loads a savestate from `filename`
+
+
+```lua
+function savestate.loadfile(filename: string)
+```
+
+
+---
+
+# savestate.savefile
+
+Saves a savestate to `filename`.
+
+
+```lua
+function savestate.savefile(filename: string)
 ```
 
 
@@ -3850,205 +4036,342 @@ table
 
 ---
 
-# wgui.drawtext
+# wgui.d2d_draw_ellipse
 
-Draws the text `text` at the specified coordinates and size. If the text is
-to large to fit in the rectangle specified in `rect`, it will wrap, unlike
-`wgui.text`. Uses the GDI font, GDI background, and GDI text color.
+Draws the border of an ellipse at the specified coordinates and color.
 
-@*param* `text` — The text to be drawn.
+@*param* `red` — d2d colors range from 0.0 to 1.0
 
-@*param* `rect` — The bounding rectangle for the text. Can either be {l, t, r, b} (left, top, right, bottom) or {l, t, w, h} (left, top, width, height).
+@*param* `green` — d2d colors range from 0.0 to 1.0
 
-@*param* `format` — Each character in this string sets a formatting rule. It can be `nil`, `""`, or one or more formatting characters
+@*param* `blue` — d2d colors range from 0.0 to 1.0
 
-```lua
-format:
-    | "l" -- aligns the text to the left (already applied by default) (sets DT_LEFT)
-    | "r" -- aligns the text to the right (sets DT_RIGHT)
-    | "t" -- aligns the text to the top (already applied by default) (sets DT_TOP)
-    | "b" -- aligns the text to the bottom (sets DT_BOTTOM)
-    | "c" -- horizontally aligns the text to the center (sets DT_CENTER)
-    | "v" -- vertically aligns the text to the center (sets DT_VCENTER)
-    | "e" -- adds ellipsis if the text will not fit (sets DT_WORD_ELLIPSIS)
-    | "s" -- forces the text to fit into a single line (sets DT_SINGLELINE)
-    | "n" -- disables word break (unsets DT_WORDBREAK)
-```
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.drawtext(text: string, rect: { l: integer, t: integer, r: integer, b: integer }|{ l: integer, t: integer, w: integer, h: integer }, format?: string|"b"|"c"|"e"|"l"...(+5))
+function wgui.d2d_draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.setbk
+# wgui.d2d_draw_line
 
-Sets the GDI background color to `color`
+Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
-@*param* `color` — A color of "null" sets the background color to transparent
+@*param* `red` — d2d colors range from 0.0 to 1.0
 
-```lua
--- colors can be any of these or "#RGB", "#RGBA",
--- "#RRGGBB", or "#RRGGBBA"
-color:
-    | "white"
-    | "black"
-    | "clear"
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "chartreuse"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "blue"
-    | "purple"
-    | "null"
-```
+@*param* `green` — d2d colors range from 0.0 to 1.0
+
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.setbk(color: string|"black"|"blue"|"chartreuse"|"clear"...(+10))
-  -> nil
+function wgui.d2d_draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.setbrush
+# wgui.d2d_draw_rectangle
 
-Sets the GDI brush to `color`
+Draws the border of a rectangle at the specified coordinates and color.
 
-@*param* `color` — A color of "null" resets the brush to its default value
+@*param* `red` — d2d colors range from 0.0 to 1.0
 
-```lua
--- colors can be any of these or "#RGB", "#RGBA",
--- "#RRGGBB", or "#RRGGBBA"
-color:
-    | "white"
-    | "black"
-    | "clear"
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "chartreuse"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "blue"
-    | "purple"
-    | "null"
-```
+@*param* `green` — d2d colors range from 0.0 to 1.0
+
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.setbrush(color: string|"black"|"blue"|"chartreuse"|"clear"...(+10))
-  -> nil
+function wgui.d2d_draw_rectangle(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.setcolor
+# wgui.d2d_draw_rounded_rectangle
 
-Sets the GDI text color to `color`
+Draws the border of a rounded rectangle at the specified coordinates, color
+and radius
 
-```lua
--- colors can be any of these or "#RGB", "#RGBA",
--- "#RRGGBB", or "#RRGGBBA"
-color:
-    | "white"
-    | "black"
-    | "clear"
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "chartreuse"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "blue"
-    | "purple"
-```
+@*param* `red` — d2d colors range from 0.0 to 1.0
+
+@*param* `green` — d2d colors range from 0.0 to 1.0
+
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.setcolor(color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
-  -> nil
+function wgui.d2d_draw_rounded_rectangle(top: integer, left: integer, bottom: integer, right: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.setfont
+# wgui.d2d_draw_text
 
-Sets the GDI font to `size`, `font`, and `style`
+Draws the text `text` at the specified coordinates, color, font, and
+alignment.
 
-@*param* `size` — The size is stored as an integer, but some operations are done before that so only integers should not be allowed
+@*param* `red` — d2d colors range from 0.0 to 1.0
 
-@*param* `font` — Defaults to "MS Gothic"
+@*param* `green` — d2d colors range from 0.0 to 1.0
 
-@*param* `style` — Defaults to "". Each character is processed to change the style. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiasing
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.setfont(size: number, font?: string, style?: string)
-  -> nil
+function wgui.d2d_draw_text(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, horizalign: integer, vertalign: integer)
 ```
 
 
 ---
 
-# wgui.setpen
+# wgui.d2d_fill_ellipse
 
-Sets the GDI pen color to `color` and `width`
+Draws a filled in ellipse at the specified coordinates and color.
 
-@*param* `color` — A color of "null" resets the pen to its default value
+@*param* `red` — d2d colors range from 0.0 to 1.0
 
-@*param* `width` — Defaults to 1
+@*param* `green` — d2d colors range from 0.0 to 1.0
 
-```lua
--- colors can be any of these or "#RGB", "#RGBA",
--- "#RRGGBB", or "#RRGGBBA"
-color:
-    | "white"
-    | "black"
-    | "clear"
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "chartreuse"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "blue"
-    | "purple"
-    | "null"
-```
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.setpen(color: string|"black"|"blue"|"chartreuse"|"clear"...(+10), width?: integer)
-  -> nil
+function wgui.d2d_fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.text
+# wgui.d2d_fill_rectangle
 
-Draws the text `text` at the specified coordinates. Uses the GDI font,
-GDI background, and GDI text color
+Draws a filled in rectangle at the specified coordinates and color.
+
+@*param* `red` — d2d colors range from 0.0 to 1.0
+
+@*param* `green` — d2d colors range from 0.0 to 1.0
+
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
 
 
 ```lua
-function wgui.text(x: integer, y: integer, text: string)
+function wgui.d2d_fill_rectangle(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number)
+```
+
+
+---
+
+# wgui.d2d_fill_rounded_rectangle
+
+Draws a filled in rounded rectangle at the specified coordinates, color and
+radius
+
+@*param* `red` — d2d colors range from 0.0 to 1.0
+
+@*param* `green` — d2d colors range from 0.0 to 1.0
+
+@*param* `blue` — d2d colors range from 0.0 to 1.0
+
+@*param* `alpha` — d2d colors range from 0.0 to 1.0
+
+
+```lua
+function wgui.d2d_fill_rounded_rectangle(top: integer, left: integer, bottom: integer, right: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+```
+
+
+---
+
+# wgui.d2d_get_text_size
+
+Returns the width and height of the specified text.
+
+
+```lua
+function wgui.d2d_get_text_size(text: string, fontname: string, fontsize: number)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.d2d_pop_clip
+
+Pops the most recent clip off the clip stack.
+
+
+```lua
+function wgui.d2d_pop_clip()
+```
+
+
+---
+
+# wgui.d2d_push_clip
+
+Specifies a rectangle to which all subsequent drawing operations are clipped.
+This clip is put onto a stack. It can then be popped off the stack with
+`wgui.d2d_pop_clip`.
+
+
+```lua
+function wgui.d2d_push_clip(top: integer, left: integer, bottom: integer, right: integer)
+```
+
+
+---
+
+# wgui.deleteimage
+
+Deletes one or more images from the image pool.
+
+@*param* `identifier` — If `identifier` is 0, all images are deleted. If not, only the image at that index is deleted.
+
+
+```lua
+function wgui.deleteimage(identifier: integer)
+```
+
+
+---
+
+# wgui.drawimage
+
+Draws the image at `identifier` at the specified coordinates
+
+
+```lua
+function wgui.drawimage(identifier: integer, x: integer, y: integer)
+```
+
+
+```lua
+function wgui.drawimage(identifier: integer, x: integer, y: integer, scale: number)
+```
+
+
+```lua
+function wgui.drawimage(identifier: integer, x: integer, y: integer, width: integer, height: integer)
+```
+
+
+```lua
+function wgui.drawimage(identifier: integer, x: integer, y: integer, width: integer, height: integer, srcx: integer, srcy: integer, srcwidth: integer, srcheight: integer, rotate: number)
+```
+
+
+---
+
+# wgui.fillpolygona
+
+Draws a polygon at the specified coordinates and color
+
+@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
+
+@*param* `alpha` — GDI+ colors range from 0 to 255
+
+@*param* `red` — GDI+ colors range from 0 to 255
+
+@*param* `green` — GDI+ colors range from 0 to 255
+
+@*param* `blue` — GDI+ colors range from 0 to 255
+
+
+```lua
+function wgui.fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)
+```
+
+
+---
+
+# wgui.getimageinfo
+
+Returns the width and height of the image at `identifier`.
+
+
+```lua
+function wgui.getimageinfo(identifier: integer)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.info
+
+Returns the current size of the window.
+
+
+```lua
+function wgui.info()
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.loadimage
+
+Loads an image file into the image pool and returns the identifier.
+
+
+```lua
+function wgui.loadimage(path: string)
+```
+
+
+---
+
+# wgui.loadscreen
+
+Loads the current screen into the image pool and returns the identifier.
+
+
+```lua
+function wgui.loadscreen()
+  -> integer
+```
+
+
+---
+
+# wgui.loadscreenreset
+
+Reinitializes `wgui.loadscreen`. This function should only be used when
+conditions have changed, such as if the resolution changes.
+
+
+```lua
+function wgui.loadscreenreset()
+```
+
+
+---
+
+# wgui.resize
+
+Resizes the window to `width` and `height`
+
+
+```lua
+function wgui.resize(width: integer, height: integer)
 ```
 
 

@@ -44,14 +44,14 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
         for line in file:
             # Start at first line of Lua emu func arrays
             # this would have to be changed to include global functions
-            if line == 'const luaL_Reg globalFuncs[] = {\n':
+            if line == '	const luaL_Reg globalFuncs[] = {\n':
                 in_function_region = True
             # Stop at end of namespace
             if line == '}	//namespace\n':
                 break
             if in_function_region:
                 # If we're iterating over a function name line...
-                if ',' in line and 'NULL' not in line:
+                if '{"' in line and 'NULL' not in line:
                     func_name = func_name_pattern.search(
                         line).group('func_name')
                     func_list_dict[func_type].append(func_name)
@@ -160,6 +160,7 @@ def main():
             display_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
             if fullname in lua_functions:
                 lua_data = lua_functions[fullname]
+                lua_functions[fullname]["accessed"] = True
                 desc = lua_data["desc"]
                 view = lua_data["view"]
             else:
@@ -192,6 +193,10 @@ def main():
     with open("docs/index.html", "w+") as file:
         # run the html through beautiful soup to validate it and clean it up
         file.write(str(bs(segments.retrieve(), "html.parser")))
+
+    for function in lua_functions:
+        if not lua_functions[function]["accessed"]:
+            print(f"Lua function was not accessed: {function}")
 
 
 if __name__ == "__main__":

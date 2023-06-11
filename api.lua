@@ -515,7 +515,7 @@ function wgui.d2d_fill_rounded_rectangle(top, left, bottom, right, radiusX, radi
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.d2d_draw_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws a polygon at the specified coordinates and color
 ---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
