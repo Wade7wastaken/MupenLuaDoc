@@ -132,8 +132,14 @@ def main():
         </head>
         <body>
             <div class="sidebar">
-            <center><img src="img/mupen_logo.png"><br>
-            mupen64-rr-lua docs</center><br>
+            <div class="sidebarheader">
+                <div class="logo">
+                    <img src="img/mupen_logo.png">
+                </div>
+                <div class="logolabel">
+                    mupen64-rr-lua docs
+                </div>
+            </div>
     """)
 
     cpp_functions = read_funcs_from_cpp_file()
@@ -143,9 +149,9 @@ def main():
     for func_type in cpp_functions:
         segments.write(
             f'''
-            <button class="collapsible">
+            <div class="collapsible">
                 <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
-            </button>
+            </div>
             ''')
         segments.write('<div class="funcList">')
         for func_name in cpp_functions[func_type]:
@@ -157,9 +163,9 @@ def main():
 
             segments.write(
                 f'''
-                <button class="funcListItem">
+                <div class="funcListItem">
                     <a href="#{func_type}{func_name.capitalize()}">{display_name}</a>
-                </button>
+                </div>
                 ''')
         segments.write('</div>')  # closes div.funcList
     segments.write('</div>')  # closes div.sidebar

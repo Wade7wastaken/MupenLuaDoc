@@ -11,337 +11,338 @@
 	</head>
 	<body>
 		<div class="sidebar">
-			<center>
-				<img src="img/mupen_logo.png" /><br />
-				mupen64-rr-lua docs
-			</center>
-			<br />
-			<button class="collapsible">
-				<a href="#globalFuncs">GLOBAL FUNCTIONS</a>
-			</button>
-			<div class="funcList">
-				<button class="funcListItem">
-					<a href="#globalPrint">PRINT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#globalStop">STOP</a>
-				</button>
+			<div class="sidebarheader">
+				<div class="logo">
+					<img src="img/mupen_logo.png" />
+				</div>
+				<div class="logolabel">mupen64-rr-lua docs</div>
 			</div>
-			<button class="collapsible">
-				<a href="#emuFuncs">EMU FUNCTIONS</a>
-			</button>
+			<div class="collapsible">
+				<a href="#globalFuncs">GLOBAL FUNCTIONS</a>
+			</div>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
+					<a href="#globalPrint">PRINT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#globalStop">STOP</a>
+				</div>
+			</div>
+			<div class="collapsible">
+				<a href="#emuFuncs">EMU FUNCTIONS</a>
+			</div>
+			<div class="funcList">
+				<div class="funcListItem">
 					<a href="#emuConsole">EMU.CONSOLE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuDebugview">EMU.DEBUGVIEW</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuStatusbar">EMU.STATUSBAR</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtvi">EMU.ATVI</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtupdatescreen">EMU.ATUPDATESCREEN</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtinput">EMU.ATINPUT</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtstop">EMU.ATSTOP</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtwindowmessage">EMU.ATWINDOWMESSAGE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtinterval">EMU.ATINTERVAL</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtplaymovie">EMU.ATPLAYMOVIE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtstopmovie">EMU.ATSTOPMOVIE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtloadstate">EMU.ATLOADSTATE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtsavestate">EMU.ATSAVESTATE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuAtreset">EMU.ATRESET</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuFramecount">EMU.FRAMECOUNT</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuSamplecount">EMU.SAMPLECOUNT</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuInputcount">EMU.INPUTCOUNT</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuGetversion">EMU.GETVERSION</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuPause">EMU.PAUSE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuGetpause">EMU.GETPAUSE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuGetspeed">EMU.GETSPEED</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuSpeed">EMU.SPEED</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuSpeedmode">EMU.SPEEDMODE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuSetgfx">EMU.SETGFX</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuGetaddress">EMU.GETADDRESS</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuIsreadonly">EMU.ISREADONLY</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuGetsystemmetrics">EMU.GETSYSTEMMETRICS</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuIsmainwindowinforeground"
 						>EMU.ISMAINWINDOWINFOREGROUND</a
 					>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#emuScreenshot">EMU.SCREENSHOT</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#memoryFuncs">MEMORY FUNCTIONS</a>
-			</button>
-			<div class="funcList">
-				<button class="funcListItem">
-					<a href="#memoryInttofloat">MEMORY.INTTOFLOAT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryInttodouble">MEMORY.INTTODOUBLE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryFloattoint">MEMORY.FLOATTOINT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryDoubletoint">MEMORY.DOUBLETOINT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryQwordtonumber">MEMORY.QWORDTONUMBER</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadbytesigned">MEMORY.READBYTESIGNED</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadbyte">MEMORY.READBYTE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadwordsigned">MEMORY.READWORDSIGNED</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadword">MEMORY.READWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReaddwordsigned">MEMORY.READDWORDSIGNED</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReaddword">MEMORY.READDWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadqwordsigned">MEMORY.READQWORDSIGNED</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadqword">MEMORY.READQWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadfloat">MEMORY.READFLOAT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReaddouble">MEMORY.READDOUBLE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryReadsize">MEMORY.READSIZE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWritebyte">MEMORY.WRITEBYTE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWriteword">MEMORY.WRITEWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWritedword">MEMORY.WRITEDWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWriteqword">MEMORY.WRITEQWORD</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWritefloat">MEMORY.WRITEFLOAT</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWritedouble">MEMORY.WRITEDOUBLE</a>
-				</button>
-				<button class="funcListItem">
-					<a href="#memoryWritesize">MEMORY.WRITESIZE</a>
-				</button>
 			</div>
-			<button class="collapsible">
-				<a href="#wguiFuncs">WGUI FUNCTIONS</a>
-			</button>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
+					<a href="#memoryInttofloat">MEMORY.INTTOFLOAT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryInttodouble">MEMORY.INTTODOUBLE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryFloattoint">MEMORY.FLOATTOINT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryDoubletoint">MEMORY.DOUBLETOINT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryQwordtonumber">MEMORY.QWORDTONUMBER</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadbytesigned">MEMORY.READBYTESIGNED</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadbyte">MEMORY.READBYTE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadwordsigned">MEMORY.READWORDSIGNED</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadword">MEMORY.READWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReaddwordsigned">MEMORY.READDWORDSIGNED</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReaddword">MEMORY.READDWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadqwordsigned">MEMORY.READQWORDSIGNED</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadqword">MEMORY.READQWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadfloat">MEMORY.READFLOAT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReaddouble">MEMORY.READDOUBLE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryReadsize">MEMORY.READSIZE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWritebyte">MEMORY.WRITEBYTE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWriteword">MEMORY.WRITEWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWritedword">MEMORY.WRITEDWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWriteqword">MEMORY.WRITEQWORD</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWritefloat">MEMORY.WRITEFLOAT</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWritedouble">MEMORY.WRITEDOUBLE</a>
+				</div>
+				<div class="funcListItem">
+					<a href="#memoryWritesize">MEMORY.WRITESIZE</a>
+				</div>
+			</div>
+			<div class="collapsible">
+				<a href="#wguiFuncs">WGUI FUNCTIONS</a>
+			</div>
+			<div class="funcList">
+				<div class="funcListItem">
 					<a href="#wguiD2d_fill_rectangle"
 						>WGUI.D2D_FILL_RECTANGLE</a
 					>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_draw_rectangle"
 						>WGUI.D2D_DRAW_RECTANGLE</a
 					>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_fill_ellipse">WGUI.D2D_FILL_ELLIPSE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_draw_ellipse">WGUI.D2D_DRAW_ELLIPSE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_draw_line">WGUI.D2D_DRAW_LINE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_draw_text">WGUI.D2D_DRAW_TEXT</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_push_clip">WGUI.D2D_PUSH_CLIP</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_pop_clip">WGUI.D2D_POP_CLIP</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_get_text_size">WGUI.D2D_GET_TEXT_SIZE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_fill_rounded_rectangle"
 						>WGUI.D2D_FILL_ROUNDED_RECTANGLE</a
 					>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiD2d_draw_rounded_rectangle"
 						>WGUI.D2D_DRAW_ROUNDED_RECTANGLE</a
 					>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiFillpolygona">WGUI.FILLPOLYGONA</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiLoadimage">WGUI.LOADIMAGE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiDeleteimage">WGUI.DELETEIMAGE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiDrawimage">WGUI.DRAWIMAGE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiLoadscreen">WGUI.LOADSCREEN</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiLoadscreenreset">WGUI.LOADSCREENRESET</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiGetimageinfo">WGUI.GETIMAGEINFO</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiInfo">WGUI.INFO</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#wguiResize">WGUI.RESIZE</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#inputFuncs">INPUT FUNCTIONS</a>
-			</button>
+			</div>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
 					<a href="#inputGet">INPUT.GET</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#inputDiff">INPUT.DIFF</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#inputPrompt">INPUT.PROMPT</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#joypadFuncs">JOYPAD FUNCTIONS</a>
-			</button>
+			</div>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
 					<a href="#joypadGet">JOYPAD.GET</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#joypadSet">JOYPAD.SET</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#joypadRegister">JOYPAD.REGISTER</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#joypadCount">JOYPAD.COUNT</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#movieFuncs">MOVIE FUNCTIONS</a>
-			</button>
+			</div>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
 					<a href="#moviePlaymovie">MOVIE.PLAYMOVIE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#movieStopmovie">MOVIE.STOPMOVIE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#movieGetmoviefilename">MOVIE.GETMOVIEFILENAME</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#savestateFuncs">SAVESTATE FUNCTIONS</a>
-			</button>
+			</div>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
 					<a href="#savestateSavefile">SAVESTATE.SAVEFILE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#savestateLoadfile">SAVESTATE.LOADFILE</a>
-				</button>
+				</div>
 			</div>
-			<button class="collapsible">
+			<div class="collapsible">
 				<a href="#ioHelperFuncs">IOHELPER FUNCTIONS</a>
-			</button>
-			<div class="funcList">
-				<button class="funcListItem">
-					<a href="#ioHelperFilediag">IOHELPER.FILEDIAG</a>
-				</button>
 			</div>
-			<button class="collapsible">
-				<a href="#aviFuncs">AVI FUNCTIONS</a>
-			</button>
 			<div class="funcList">
-				<button class="funcListItem">
+				<div class="funcListItem">
+					<a href="#ioHelperFilediag">IOHELPER.FILEDIAG</a>
+				</div>
+			</div>
+			<div class="collapsible">
+				<a href="#aviFuncs">AVI FUNCTIONS</a>
+			</div>
+			<div class="funcList">
+				<div class="funcListItem">
 					<a href="#aviStartcapture">AVI.STARTCAPTURE</a>
-				</button>
-				<button class="funcListItem">
+				</div>
+				<div class="funcListItem">
 					<a href="#aviStopcapture">AVI.STOPCAPTURE</a>
-				</button>
+				</div>
 			</div>
 		</div>
 		<div class="docBody">

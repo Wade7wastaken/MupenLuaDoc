@@ -1,20 +1,21 @@
 body {
-	/* font-family: "Courier New", sans-serif, monospace; */
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
 		system-ui, "Ubuntu", "Droid Sans", sans-serif;
 	font-weight: bold;
 	font-size: large;
-	display: flex;
+	color: #cccccc; /*text color, might change later*/
+	background-color: #101010;
 }
 
 .sidebar {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
-		system-ui, "Ubuntu", "Droid Sans", sans-serif;
-	font-weight: bold;
-	font-size: large;
-	background-color: #e9e9ed;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	background-color: #2b2b2b;
 	height: 100%;
 	width: 15%;
+	min-width: 320px;
+	max-width: 400px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -30,8 +31,12 @@ body {
 	display: none;
 }
 
+.sidebarheader {
+	margin-bottom: 20px;
+}
+
 .sidebar a {
-	color: #6b0b0d;
+	color: #bababa;
 	text-decoration: none;
 }
 
@@ -39,42 +44,33 @@ body {
 	text-decoration: underline;
 }
 
-.sidebar button:hover {
-	background-color: #d0d0d7;
+.logo {
+	/*this is the most cursed way of centering i've seen*/
+	margin: auto;
+	width: fit-content;
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
 
-.sidebar img {
-	min-height: auto;
-	min-width: auto;
-	max-height: 200;
-	max-width: 200;
-	padding: 2%;
+.logolabel {
+	text-align: center;
 }
 
 .collapsible {
-	background-color: #e9e9ed;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
-		system-ui, "Ubuntu", "Droid Sans", sans-serif;
-	font-weight: bold;
-	font-size: larger;
-	border: none;
-	padding-top: 3%;
-	padding-bottom: 3%;
+	background-color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	padding: 3%;
 	cursor: pointer;
 	text-align: left;
-	width: 100%;
 }
 
 .funcList {
-	/* color: #acacac; */
-	background-color: #d0d0d7;
+	background-color: #3c3c3c;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.05s ease-out;
-}
-
-.funcList button:hover {
-	background-color: #b3b3ba;
+	transition: max-height 0.1s ease-out;
 }
 
 .funcListItem {
@@ -91,17 +87,25 @@ body {
 	text-decoration: none;
 }
 
+.funcListItem:hover {
+	background-color: #505050;
+}
+
 .funcListItem a:hover {
-	text-decoration: inherit;
+	text-decoration: underline;
 }
 
 .active,
 .collapsible:hover {
-	/* color: #acacac; */
-	background-color: #d0d0d7;
+	background-color: #505050;
+}
+
+pre {
+	/*make sure code snippet text wraps*/
+	white-space: pre-wrap;
 }
 
 .docBody {
-	margin-left: 15%;
+	margin-left: clamp(320px, 15%, 400px);
 	text-align: left;
 }
