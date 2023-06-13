@@ -35,6 +35,10 @@ body {
 	margin-bottom: 20px;
 }
 
+.sidebar button {
+	color: inherit;
+}
+
 .sidebar a {
 	color: #bababa;
 	text-decoration: none;
