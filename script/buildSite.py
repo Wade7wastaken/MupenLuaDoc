@@ -98,6 +98,7 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
                     })
     return functions
 
+
 def generate_function_html(func_type, func_name, display_name, desc, view):
     return parse_markdown(f'''
 ---
@@ -113,6 +114,7 @@ def generate_function_html(func_type, func_name, display_name, desc, view):
 
 
 ''')
+
 
 def main():
     skipped_functions = ["printx", "tostringex"]
@@ -187,15 +189,19 @@ def main():
                 for var in lua_data:
                     desc = var["desc"]
                     view = var["view"]
-                    segments.write(f'<div name={func_type}{func_name.capitalize()}>')
-                    segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
+                    segments.write(
+                        f'<div name={func_type}{func_name.capitalize()}>')
+                    segments.write(generate_function_html(
+                        func_type, func_name, display_name, desc, view))
                     segments.write('</div>')
             else:
                 print(f"{fullname} failed")
                 desc = "?"
                 view = "?"
-                segments.write(f'<div name={func_type}{func_name.capitalize()}>')
-                segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
+                segments.write(
+                    f'<div name={func_type}{func_name.capitalize()}>')
+                segments.write(generate_function_html(
+                    func_type, func_name, display_name, desc, view))
                 segments.write('</div>')
 
     segments.write("</div>")  # closed div.docBody
