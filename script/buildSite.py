@@ -134,7 +134,7 @@ def main():
             <div class="sidebar">
             <div class="sidebarheader">
                 <div class="logo">
-                    <img src="img/mupen_logo.png">
+                    <a href="index.html"><img src="img/mupen_logo.png"></a>
                 </div>
                 <div class="logolabel">
                     mupen64-rr-lua docs
@@ -163,9 +163,9 @@ def main():
 
             segments.write(
                 f'''
-                <div class="funcListItem">
-                    <a href="#{func_type}{func_name.capitalize()}">{display_name}</a>
-                </div>
+                <a href="#{func_type}{func_name.capitalize()}">
+                    <button class="funcListItem" onclick="highlightFunc('{func_type}{func_name.capitalize()}')">{display_name}</button>
+                </a>
                 ''')
         segments.write('</div>')  # closes div.funcList
     segments.write('</div>')  # closes div.sidebar
@@ -187,12 +187,16 @@ def main():
                 for var in lua_data:
                     desc = var["desc"]
                     view = var["view"]
+                    segments.write(f'<div name={func_type}{func_name.capitalize()}>')
                     segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
+                    segments.write('</div>')
             else:
                 print(f"{fullname} failed")
                 desc = "?"
                 view = "?"
+                segments.write(f'<div name={func_type}{func_name.capitalize()}>')
                 segments.write(generate_function_html(func_type, func_name, display_name, desc, view))
+                segments.write('</div>')
 
     segments.write("</div>")  # closed div.docBody
 

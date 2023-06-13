@@ -1,5 +1,3 @@
-markdown
-json
-re
 bs4
+markdown
 pygments

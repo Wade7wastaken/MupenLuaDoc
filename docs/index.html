@@ -1,1062 +1,672 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="IE=edge" http-equiv="X-UA-Compatible" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<link href="css/styles.css" rel="stylesheet" type="text/css" />
-		<link href="css/pygments.css" rel="stylesheet" type="text/css" />
-		<title>Mupen Lua API Docs</title>
-	</head>
-	<body>
-		<div class="sidebar">
-			<div class="sidebarheader">
-				<div class="logo">
-					<img src="img/mupen_logo.png" />
-				</div>
-				<div class="logolabel">mupen64-rr-lua docs</div>
-			</div>
-			<div class="collapsible">
-				<a href="#globalFuncs">GLOBAL FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#globalPrint">PRINT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#globalStop">STOP</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#emuFuncs">EMU FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#emuConsole">EMU.CONSOLE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuDebugview">EMU.DEBUGVIEW</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuStatusbar">EMU.STATUSBAR</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtvi">EMU.ATVI</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtupdatescreen">EMU.ATUPDATESCREEN</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtinput">EMU.ATINPUT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtstop">EMU.ATSTOP</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtwindowmessage">EMU.ATWINDOWMESSAGE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtinterval">EMU.ATINTERVAL</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtplaymovie">EMU.ATPLAYMOVIE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtstopmovie">EMU.ATSTOPMOVIE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtloadstate">EMU.ATLOADSTATE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtsavestate">EMU.ATSAVESTATE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuAtreset">EMU.ATRESET</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuFramecount">EMU.FRAMECOUNT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuSamplecount">EMU.SAMPLECOUNT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuInputcount">EMU.INPUTCOUNT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuGetversion">EMU.GETVERSION</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuPause">EMU.PAUSE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuGetpause">EMU.GETPAUSE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuGetspeed">EMU.GETSPEED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuSpeed">EMU.SPEED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuSpeedmode">EMU.SPEEDMODE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuSetgfx">EMU.SETGFX</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuGetaddress">EMU.GETADDRESS</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuIsreadonly">EMU.ISREADONLY</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuGetsystemmetrics">EMU.GETSYSTEMMETRICS</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuIsmainwindowinforeground"
-						>EMU.ISMAINWINDOWINFOREGROUND</a
-					>
-				</div>
-				<div class="funcListItem">
-					<a href="#emuScreenshot">EMU.SCREENSHOT</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#memoryFuncs">MEMORY FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#memoryInttofloat">MEMORY.INTTOFLOAT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryInttodouble">MEMORY.INTTODOUBLE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryFloattoint">MEMORY.FLOATTOINT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryDoubletoint">MEMORY.DOUBLETOINT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryQwordtonumber">MEMORY.QWORDTONUMBER</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadbytesigned">MEMORY.READBYTESIGNED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadbyte">MEMORY.READBYTE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadwordsigned">MEMORY.READWORDSIGNED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadword">MEMORY.READWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReaddwordsigned">MEMORY.READDWORDSIGNED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReaddword">MEMORY.READDWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadqwordsigned">MEMORY.READQWORDSIGNED</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadqword">MEMORY.READQWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadfloat">MEMORY.READFLOAT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReaddouble">MEMORY.READDOUBLE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryReadsize">MEMORY.READSIZE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWritebyte">MEMORY.WRITEBYTE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWriteword">MEMORY.WRITEWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWritedword">MEMORY.WRITEDWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWriteqword">MEMORY.WRITEQWORD</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWritefloat">MEMORY.WRITEFLOAT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWritedouble">MEMORY.WRITEDOUBLE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#memoryWritesize">MEMORY.WRITESIZE</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#wguiFuncs">WGUI FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#wguiD2d_fill_rectangle"
-						>WGUI.D2D_FILL_RECTANGLE</a
-					>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_draw_rectangle"
-						>WGUI.D2D_DRAW_RECTANGLE</a
-					>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_fill_ellipse">WGUI.D2D_FILL_ELLIPSE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_draw_ellipse">WGUI.D2D_DRAW_ELLIPSE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_draw_line">WGUI.D2D_DRAW_LINE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_draw_text">WGUI.D2D_DRAW_TEXT</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_push_clip">WGUI.D2D_PUSH_CLIP</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_pop_clip">WGUI.D2D_POP_CLIP</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_get_text_size">WGUI.D2D_GET_TEXT_SIZE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_fill_rounded_rectangle"
-						>WGUI.D2D_FILL_ROUNDED_RECTANGLE</a
-					>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiD2d_draw_rounded_rectangle"
-						>WGUI.D2D_DRAW_ROUNDED_RECTANGLE</a
-					>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiFillpolygona">WGUI.FILLPOLYGONA</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiLoadimage">WGUI.LOADIMAGE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiDeleteimage">WGUI.DELETEIMAGE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiDrawimage">WGUI.DRAWIMAGE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiLoadscreen">WGUI.LOADSCREEN</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiLoadscreenreset">WGUI.LOADSCREENRESET</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiGetimageinfo">WGUI.GETIMAGEINFO</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiInfo">WGUI.INFO</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#wguiResize">WGUI.RESIZE</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#inputFuncs">INPUT FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#inputGet">INPUT.GET</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#inputDiff">INPUT.DIFF</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#inputPrompt">INPUT.PROMPT</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#joypadFuncs">JOYPAD FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#joypadGet">JOYPAD.GET</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#joypadSet">JOYPAD.SET</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#joypadRegister">JOYPAD.REGISTER</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#joypadCount">JOYPAD.COUNT</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#movieFuncs">MOVIE FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#moviePlaymovie">MOVIE.PLAYMOVIE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#movieStopmovie">MOVIE.STOPMOVIE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#movieGetmoviefilename">MOVIE.GETMOVIEFILENAME</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#savestateFuncs">SAVESTATE FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#savestateSavefile">SAVESTATE.SAVEFILE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#savestateLoadfile">SAVESTATE.LOADFILE</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#ioHelperFuncs">IOHELPER FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#ioHelperFilediag">IOHELPER.FILEDIAG</a>
-				</div>
-			</div>
-			<div class="collapsible">
-				<a href="#aviFuncs">AVI FUNCTIONS</a>
-			</div>
-			<div class="funcList">
-				<div class="funcListItem">
-					<a href="#aviStartcapture">AVI.STARTCAPTURE</a>
-				</div>
-				<div class="funcListItem">
-					<a href="#aviStopcapture">AVI.STOPCAPTURE</a>
-				</div>
-			</div>
-		</div>
-		<div class="docBody">
-			<hr />
-			<h1><a id="globalFuncs">GLOBAL</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="globalPrint">print</a></h1>
-			<p>Prints a value to the lua console</p>
-			<p>
-				@<em>param</em> <code>data</code> — The data to print to the
-				console
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="globalStop">stop</a></h1>
-			<p>Stops script execution</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nf">stop</span><span class="p">()</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuFuncs">EMU</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="emuConsole">emu.console</a></h1>
-			<p>
-				Displays the text <code>message</code> in the console. Similar
-				to <code>print</code>, but only accepts strings. Because of
-				this, <code>print</code> should be used instead.
-			</p>
-			<p>
-				@<em>param</em> <code>message</code> — The string to print to
-				the console.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="css/pygments.css" rel="stylesheet" type="text/css"/>
+<title>Mupen Lua API Docs</title>
+</head>
+<body>
+<div class="sidebar">
+<div class="sidebarheader">
+<div class="logo">
+<a href="index.html"><img src="img/mupen_logo.png"/></a>
+</div>
+<div class="logolabel">
+                    mupen64-rr-lua docs
+                </div>
+</div>
+<div class="collapsible">
+<a href="#globalFuncs">GLOBAL FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#globalPrint">
+<button class="funcListItem" onclick="highlightFunc('globalPrint')">PRINT</button>
+</a>
+<a href="#globalStop">
+<button class="funcListItem" onclick="highlightFunc('globalStop')">STOP</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#emuFuncs">EMU FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#emuConsole">
+<button class="funcListItem" onclick="highlightFunc('emuConsole')">EMU.CONSOLE</button>
+</a>
+<a href="#emuDebugview">
+<button class="funcListItem" onclick="highlightFunc('emuDebugview')">EMU.DEBUGVIEW</button>
+</a>
+<a href="#emuStatusbar">
+<button class="funcListItem" onclick="highlightFunc('emuStatusbar')">EMU.STATUSBAR</button>
+</a>
+<a href="#emuAtvi">
+<button class="funcListItem" onclick="highlightFunc('emuAtvi')">EMU.ATVI</button>
+</a>
+<a href="#emuAtupdatescreen">
+<button class="funcListItem" onclick="highlightFunc('emuAtupdatescreen')">EMU.ATUPDATESCREEN</button>
+</a>
+<a href="#emuAtinput">
+<button class="funcListItem" onclick="highlightFunc('emuAtinput')">EMU.ATINPUT</button>
+</a>
+<a href="#emuAtstop">
+<button class="funcListItem" onclick="highlightFunc('emuAtstop')">EMU.ATSTOP</button>
+</a>
+<a href="#emuAtwindowmessage">
+<button class="funcListItem" onclick="highlightFunc('emuAtwindowmessage')">EMU.ATWINDOWMESSAGE</button>
+</a>
+<a href="#emuAtinterval">
+<button class="funcListItem" onclick="highlightFunc('emuAtinterval')">EMU.ATINTERVAL</button>
+</a>
+<a href="#emuAtplaymovie">
+<button class="funcListItem" onclick="highlightFunc('emuAtplaymovie')">EMU.ATPLAYMOVIE</button>
+</a>
+<a href="#emuAtstopmovie">
+<button class="funcListItem" onclick="highlightFunc('emuAtstopmovie')">EMU.ATSTOPMOVIE</button>
+</a>
+<a href="#emuAtloadstate">
+<button class="funcListItem" onclick="highlightFunc('emuAtloadstate')">EMU.ATLOADSTATE</button>
+</a>
+<a href="#emuAtsavestate">
+<button class="funcListItem" onclick="highlightFunc('emuAtsavestate')">EMU.ATSAVESTATE</button>
+</a>
+<a href="#emuAtreset">
+<button class="funcListItem" onclick="highlightFunc('emuAtreset')">EMU.ATRESET</button>
+</a>
+<a href="#emuFramecount">
+<button class="funcListItem" onclick="highlightFunc('emuFramecount')">EMU.FRAMECOUNT</button>
+</a>
+<a href="#emuSamplecount">
+<button class="funcListItem" onclick="highlightFunc('emuSamplecount')">EMU.SAMPLECOUNT</button>
+</a>
+<a href="#emuInputcount">
+<button class="funcListItem" onclick="highlightFunc('emuInputcount')">EMU.INPUTCOUNT</button>
+</a>
+<a href="#emuGetversion">
+<button class="funcListItem" onclick="highlightFunc('emuGetversion')">EMU.GETVERSION</button>
+</a>
+<a href="#emuPause">
+<button class="funcListItem" onclick="highlightFunc('emuPause')">EMU.PAUSE</button>
+</a>
+<a href="#emuGetpause">
+<button class="funcListItem" onclick="highlightFunc('emuGetpause')">EMU.GETPAUSE</button>
+</a>
+<a href="#emuGetspeed">
+<button class="funcListItem" onclick="highlightFunc('emuGetspeed')">EMU.GETSPEED</button>
+</a>
+<a href="#emuSpeed">
+<button class="funcListItem" onclick="highlightFunc('emuSpeed')">EMU.SPEED</button>
+</a>
+<a href="#emuSpeedmode">
+<button class="funcListItem" onclick="highlightFunc('emuSpeedmode')">EMU.SPEEDMODE</button>
+</a>
+<a href="#emuSetgfx">
+<button class="funcListItem" onclick="highlightFunc('emuSetgfx')">EMU.SETGFX</button>
+</a>
+<a href="#emuGetaddress">
+<button class="funcListItem" onclick="highlightFunc('emuGetaddress')">EMU.GETADDRESS</button>
+</a>
+<a href="#emuIsreadonly">
+<button class="funcListItem" onclick="highlightFunc('emuIsreadonly')">EMU.ISREADONLY</button>
+</a>
+<a href="#emuGetsystemmetrics">
+<button class="funcListItem" onclick="highlightFunc('emuGetsystemmetrics')">EMU.GETSYSTEMMETRICS</button>
+</a>
+<a href="#emuIsmainwindowinforeground">
+<button class="funcListItem" onclick="highlightFunc('emuIsmainwindowinforeground')">EMU.ISMAINWINDOWINFOREGROUND</button>
+</a>
+<a href="#emuScreenshot">
+<button class="funcListItem" onclick="highlightFunc('emuScreenshot')">EMU.SCREENSHOT</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#memoryFuncs">MEMORY FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#memoryInttofloat">
+<button class="funcListItem" onclick="highlightFunc('memoryInttofloat')">MEMORY.INTTOFLOAT</button>
+</a>
+<a href="#memoryInttodouble">
+<button class="funcListItem" onclick="highlightFunc('memoryInttodouble')">MEMORY.INTTODOUBLE</button>
+</a>
+<a href="#memoryFloattoint">
+<button class="funcListItem" onclick="highlightFunc('memoryFloattoint')">MEMORY.FLOATTOINT</button>
+</a>
+<a href="#memoryDoubletoint">
+<button class="funcListItem" onclick="highlightFunc('memoryDoubletoint')">MEMORY.DOUBLETOINT</button>
+</a>
+<a href="#memoryQwordtonumber">
+<button class="funcListItem" onclick="highlightFunc('memoryQwordtonumber')">MEMORY.QWORDTONUMBER</button>
+</a>
+<a href="#memoryReadbytesigned">
+<button class="funcListItem" onclick="highlightFunc('memoryReadbytesigned')">MEMORY.READBYTESIGNED</button>
+</a>
+<a href="#memoryReadbyte">
+<button class="funcListItem" onclick="highlightFunc('memoryReadbyte')">MEMORY.READBYTE</button>
+</a>
+<a href="#memoryReadwordsigned">
+<button class="funcListItem" onclick="highlightFunc('memoryReadwordsigned')">MEMORY.READWORDSIGNED</button>
+</a>
+<a href="#memoryReadword">
+<button class="funcListItem" onclick="highlightFunc('memoryReadword')">MEMORY.READWORD</button>
+</a>
+<a href="#memoryReaddwordsigned">
+<button class="funcListItem" onclick="highlightFunc('memoryReaddwordsigned')">MEMORY.READDWORDSIGNED</button>
+</a>
+<a href="#memoryReaddword">
+<button class="funcListItem" onclick="highlightFunc('memoryReaddword')">MEMORY.READDWORD</button>
+</a>
+<a href="#memoryReadqwordsigned">
+<button class="funcListItem" onclick="highlightFunc('memoryReadqwordsigned')">MEMORY.READQWORDSIGNED</button>
+</a>
+<a href="#memoryReadqword">
+<button class="funcListItem" onclick="highlightFunc('memoryReadqword')">MEMORY.READQWORD</button>
+</a>
+<a href="#memoryReadfloat">
+<button class="funcListItem" onclick="highlightFunc('memoryReadfloat')">MEMORY.READFLOAT</button>
+</a>
+<a href="#memoryReaddouble">
+<button class="funcListItem" onclick="highlightFunc('memoryReaddouble')">MEMORY.READDOUBLE</button>
+</a>
+<a href="#memoryReadsize">
+<button class="funcListItem" onclick="highlightFunc('memoryReadsize')">MEMORY.READSIZE</button>
+</a>
+<a href="#memoryWritebyte">
+<button class="funcListItem" onclick="highlightFunc('memoryWritebyte')">MEMORY.WRITEBYTE</button>
+</a>
+<a href="#memoryWriteword">
+<button class="funcListItem" onclick="highlightFunc('memoryWriteword')">MEMORY.WRITEWORD</button>
+</a>
+<a href="#memoryWritedword">
+<button class="funcListItem" onclick="highlightFunc('memoryWritedword')">MEMORY.WRITEDWORD</button>
+</a>
+<a href="#memoryWriteqword">
+<button class="funcListItem" onclick="highlightFunc('memoryWriteqword')">MEMORY.WRITEQWORD</button>
+</a>
+<a href="#memoryWritefloat">
+<button class="funcListItem" onclick="highlightFunc('memoryWritefloat')">MEMORY.WRITEFLOAT</button>
+</a>
+<a href="#memoryWritedouble">
+<button class="funcListItem" onclick="highlightFunc('memoryWritedouble')">MEMORY.WRITEDOUBLE</button>
+</a>
+<a href="#memoryWritesize">
+<button class="funcListItem" onclick="highlightFunc('memoryWritesize')">MEMORY.WRITESIZE</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#wguiFuncs">WGUI FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#wguiD2d_fill_rectangle">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_fill_rectangle')">WGUI.D2D_FILL_RECTANGLE</button>
+</a>
+<a href="#wguiD2d_draw_rectangle">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_draw_rectangle')">WGUI.D2D_DRAW_RECTANGLE</button>
+</a>
+<a href="#wguiD2d_fill_ellipse">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_fill_ellipse')">WGUI.D2D_FILL_ELLIPSE</button>
+</a>
+<a href="#wguiD2d_draw_ellipse">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_draw_ellipse')">WGUI.D2D_DRAW_ELLIPSE</button>
+</a>
+<a href="#wguiD2d_draw_line">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_draw_line')">WGUI.D2D_DRAW_LINE</button>
+</a>
+<a href="#wguiD2d_draw_text">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_draw_text')">WGUI.D2D_DRAW_TEXT</button>
+</a>
+<a href="#wguiD2d_push_clip">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_push_clip')">WGUI.D2D_PUSH_CLIP</button>
+</a>
+<a href="#wguiD2d_pop_clip">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_pop_clip')">WGUI.D2D_POP_CLIP</button>
+</a>
+<a href="#wguiD2d_get_text_size">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_get_text_size')">WGUI.D2D_GET_TEXT_SIZE</button>
+</a>
+<a href="#wguiD2d_fill_rounded_rectangle">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_fill_rounded_rectangle')">WGUI.D2D_FILL_ROUNDED_RECTANGLE</button>
+</a>
+<a href="#wguiD2d_draw_rounded_rectangle">
+<button class="funcListItem" onclick="highlightFunc('wguiD2d_draw_rounded_rectangle')">WGUI.D2D_DRAW_ROUNDED_RECTANGLE</button>
+</a>
+<a href="#wguiFillpolygona">
+<button class="funcListItem" onclick="highlightFunc('wguiFillpolygona')">WGUI.FILLPOLYGONA</button>
+</a>
+<a href="#wguiLoadimage">
+<button class="funcListItem" onclick="highlightFunc('wguiLoadimage')">WGUI.LOADIMAGE</button>
+</a>
+<a href="#wguiDeleteimage">
+<button class="funcListItem" onclick="highlightFunc('wguiDeleteimage')">WGUI.DELETEIMAGE</button>
+</a>
+<a href="#wguiDrawimage">
+<button class="funcListItem" onclick="highlightFunc('wguiDrawimage')">WGUI.DRAWIMAGE</button>
+</a>
+<a href="#wguiLoadscreen">
+<button class="funcListItem" onclick="highlightFunc('wguiLoadscreen')">WGUI.LOADSCREEN</button>
+</a>
+<a href="#wguiLoadscreenreset">
+<button class="funcListItem" onclick="highlightFunc('wguiLoadscreenreset')">WGUI.LOADSCREENRESET</button>
+</a>
+<a href="#wguiGetimageinfo">
+<button class="funcListItem" onclick="highlightFunc('wguiGetimageinfo')">WGUI.GETIMAGEINFO</button>
+</a>
+<a href="#wguiInfo">
+<button class="funcListItem" onclick="highlightFunc('wguiInfo')">WGUI.INFO</button>
+</a>
+<a href="#wguiResize">
+<button class="funcListItem" onclick="highlightFunc('wguiResize')">WGUI.RESIZE</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#inputFuncs">INPUT FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#inputGet">
+<button class="funcListItem" onclick="highlightFunc('inputGet')">INPUT.GET</button>
+</a>
+<a href="#inputDiff">
+<button class="funcListItem" onclick="highlightFunc('inputDiff')">INPUT.DIFF</button>
+</a>
+<a href="#inputPrompt">
+<button class="funcListItem" onclick="highlightFunc('inputPrompt')">INPUT.PROMPT</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#joypadFuncs">JOYPAD FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#joypadGet">
+<button class="funcListItem" onclick="highlightFunc('joypadGet')">JOYPAD.GET</button>
+</a>
+<a href="#joypadSet">
+<button class="funcListItem" onclick="highlightFunc('joypadSet')">JOYPAD.SET</button>
+</a>
+<a href="#joypadRegister">
+<button class="funcListItem" onclick="highlightFunc('joypadRegister')">JOYPAD.REGISTER</button>
+</a>
+<a href="#joypadCount">
+<button class="funcListItem" onclick="highlightFunc('joypadCount')">JOYPAD.COUNT</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#movieFuncs">MOVIE FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#moviePlaymovie">
+<button class="funcListItem" onclick="highlightFunc('moviePlaymovie')">MOVIE.PLAYMOVIE</button>
+</a>
+<a href="#movieStopmovie">
+<button class="funcListItem" onclick="highlightFunc('movieStopmovie')">MOVIE.STOPMOVIE</button>
+</a>
+<a href="#movieGetmoviefilename">
+<button class="funcListItem" onclick="highlightFunc('movieGetmoviefilename')">MOVIE.GETMOVIEFILENAME</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#savestateFuncs">SAVESTATE FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#savestateSavefile">
+<button class="funcListItem" onclick="highlightFunc('savestateSavefile')">SAVESTATE.SAVEFILE</button>
+</a>
+<a href="#savestateLoadfile">
+<button class="funcListItem" onclick="highlightFunc('savestateLoadfile')">SAVESTATE.LOADFILE</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#ioHelperFuncs">IOHELPER FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#ioHelperFilediag">
+<button class="funcListItem" onclick="highlightFunc('ioHelperFilediag')">IOHELPER.FILEDIAG</button>
+</a>
+</div>
+<div class="collapsible">
+<a href="#aviFuncs">AVI FUNCTIONS</a>
+</div>
+<div class="funcList">
+<a href="#aviStartcapture">
+<button class="funcListItem" onclick="highlightFunc('aviStartcapture')">AVI.STARTCAPTURE</button>
+</a>
+<a href="#aviStopcapture">
+<button class="funcListItem" onclick="highlightFunc('aviStopcapture')">AVI.STOPCAPTURE</button>
+</a>
+</div></div><div class="docBody"><hr/>
+<h1><a id="globalFuncs">GLOBAL</a> FUNCTIONS</h1><div name="globalPrint"><hr/>
+<h1><a id="globalPrint">print</a></h1>
+<p>Prints a value to the lua console</p>
+<p>@<em>param</em> <code>data</code> — The data to print to the console</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
+</code></pre></div></div><div name="globalStop"><hr/>
+<h1><a id="globalStop">stop</a></h1>
+<p>Stops script execution</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">stop</span><span class="p">()</span>
+</code></pre></div></div><hr/>
+<h1><a id="emuFuncs">EMU</a> FUNCTIONS</h1><div name="emuConsole"><hr/>
+<h1><a id="emuConsole">emu.console</a></h1>
+<p>Displays the text <code>message</code> in the console. Similar to <code>print</code>, but only
+accepts strings. Because of this, <code>print</code> should be used instead.</p>
+<p>@<em>param</em> <code>message</code> — The string to print to the console.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuDebugview">emu.debugview</a></h1>
-			<p>
-				Prints <code>message</code> to the debug console. If you are not
-				debugging mupen with Visual Studio, this function will do
-				nothing.
-			</p>
-			<p>
-				@<em>param</em> <code>message</code> — The string to print to
-				the debug console.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">debugview</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="emuDebugview"><hr/>
+<h1><a id="emuDebugview">emu.debugview</a></h1>
+<p>Prints <code>message</code> to the debug console. If you are not debugging mupen with
+Visual Studio, this function will do nothing.</p>
+<p>@<em>param</em> <code>message</code> — The string to print to the debug console.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">debugview</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuStatusbar">emu.statusbar</a></h1>
-			<p>
-				Displays the text <code>message</code> in the status bar on the
-				bottom while replacing any other text. The message will only
-				display until the next frame.
-			</p>
-			<p>
-				@<em>param</em> <code>message</code> — The string to display on
-				the status bar.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="emuStatusbar"><hr/>
+<h1><a id="emuStatusbar">emu.statusbar</a></h1>
+<p>Displays the text <code>message</code> in the status bar on the bottom while replacing
+any other text. The message will only display until the next frame.</p>
+<p>@<em>param</em> <code>message</code> — The string to display on the status bar.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtvi">emu.atvi</a></h1>
-			<p>
-				Calls the function <code>f</code> every VI frame. For example,
-				in Super Mario 64, the function will be called twice when you
-				advance by one frame, whereas it will be called once in Ocarina
-				of Time. If <code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called every
-				VI frame.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atvi</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtvi"><hr/>
+<h1><a id="emuAtvi">emu.atvi</a></h1>
+<p>Calls the function <code>f</code> every VI frame. For example, in Super Mario 64, the
+function will be called twice when you advance by one frame, whereas it will
+be called once in Ocarina of Time. If <code>unregister</code> is set to true, the
+function <code>f</code> will no longer be called when this event occurs, but it will
+error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every VI frame.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atvi</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
-			<p>
-				Similar to <code>emu.atvi</code>, except that it is called
-				after. If <code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called after
-				every VI frame.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atupdatescreen</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtupdatescreen"><hr/>
+<h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
+<p>Similar to <code>emu.atvi</code>, except that it is called after. If <code>unregister</code> is set
+to true, the function <code>f</code> will no longer be called when this event occurs,
+but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called after every VI frame.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atupdatescreen</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtinput">emu.atinput</a></h1>
-			<p>
-				Calls the function <code>f</code> every input frame. The
-				function <code>f</code> receives an argument that seems to
-				always be <code>0</code>. If <code>unregister</code> is set to
-				true, the function <code>f</code> will no longer be called when
-				this event occurs, but it will error if you never registered the
-				function. Alias for <code>joypad.register</code>.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called every
-				input frame. It receives an argument that seems to always be
-				<code>0</code>.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinput</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtinput"><hr/>
+<h1><a id="emuAtinput">emu.atinput</a></h1>
+<p>Calls the function <code>f</code> every input frame. The function <code>f</code> receives an
+argument that seems to always be <code>0</code>. If <code>unregister</code> is set to true, the
+function <code>f</code> will no longer be called when this event occurs, but it will
+error if you never registered the function. Alias for <code>joypad.register</code>.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every input frame. It receives an argument that seems to always be <code>0</code>.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinput</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtstop">emu.atstop</a></h1>
-			<p>
-				Calls the function <code>f</code> when the script is stopped. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				the script is stopped
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstop</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtstop"><hr/>
+<h1><a id="emuAtstop">emu.atstop</a></h1>
+<p>Calls the function <code>f</code> when the script is stopped. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when the script is stopped</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstop</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtwindowmessage">emu.atwindowmessage</a></h1>
-			<p>
-				Defines a handler function that is called when a window receives
-				a message. The message data is given to the function in 4
-				parameters. If <code>unregister</code> is set to true, the
-				function <code>f</code> will no longer be called when this event
-				occurs, but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				a window message is received.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atwindowmessage</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">any</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtwindowmessage"><hr/>
+<h1><a id="emuAtwindowmessage">emu.atwindowmessage</a></h1>
+<p>Defines a handler function that is called when a window receives a message.
+The message data is given to the function in 4 parameters. If <code>unregister</code>
+is set to true, the function <code>f</code> will no longer be called when this event
+occurs, but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a window message is received.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atwindowmessage</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">any</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">any</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtinterval">emu.atinterval</a></h1>
-			<p>
-				Calls the function <code>f</code> constantly, even when the
-				emulator is paused. If <code>unregister</code> is set to true,
-				the function <code>f</code> will no longer be called when this
-				event occurs, but it will error if you never registered the
-				function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called
-				constantly.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinterval</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtinterval"><hr/>
+<h1><a id="emuAtinterval">emu.atinterval</a></h1>
+<p>Calls the function <code>f</code> constantly, even when the emulator is paused. If
+<code>unregister</code> is set to true, the function <code>f</code> will no longer be called when
+this event occurs, but it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called constantly.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atinterval</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtplaymovie">emu.atplaymovie</a></h1>
-			<p>
-				Calls the function <code>f</code> when a movie is played. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				a movie is played.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atplaymovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtplaymovie"><hr/>
+<h1><a id="emuAtplaymovie">emu.atplaymovie</a></h1>
+<p>Calls the function <code>f</code> when a movie is played. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a movie is played.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atplaymovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtstopmovie">emu.atstopmovie</a></h1>
-			<p>
-				Calls the function <code>f</code> when a movie is stopped. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				a movie is stopped.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstopmovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtstopmovie"><hr/>
+<h1><a id="emuAtstopmovie">emu.atstopmovie</a></h1>
+<p>Calls the function <code>f</code> when a movie is stopped. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a movie is stopped.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atstopmovie</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtloadstate">emu.atloadstate</a></h1>
-			<p>
-				Calls the function <code>f</code> when a savestate is loaded. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				a savestate is loaded.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atloadstate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtloadstate"><hr/>
+<h1><a id="emuAtloadstate">emu.atloadstate</a></h1>
+<p>Calls the function <code>f</code> when a savestate is loaded. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a savestate is loaded.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atloadstate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtsavestate">emu.atsavestate</a></h1>
-			<p>
-				Calls the function <code>f</code> when a savestate is saved. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				a savestate is saved.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atsavestate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtsavestate"><hr/>
+<h1><a id="emuAtsavestate">emu.atsavestate</a></h1>
+<p>Calls the function <code>f</code> when a savestate is saved. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when a savestate is saved.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atsavestate</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuAtreset">emu.atreset</a></h1>
-			<p>
-				Calls the function <code>f</code> when the emulator is reset. If
-				<code>unregister</code> is set to true, the function
-				<code>f</code> will no longer be called when this event occurs,
-				but it will error if you never registered the function.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called when
-				the emulator is reset.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atreset</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuAtreset"><hr/>
+<h1><a id="emuAtreset">emu.atreset</a></h1>
+<p>Calls the function <code>f</code> when the emulator is reset. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when the emulator is reset.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atreset</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuFramecount">emu.framecount</a></h1>
-			<p>
-				Returns the number of VIs since the last movie was played. This
-				should match the statusbar (assuming you have
-				<code>0-index statusbar</code> off). If no movie has been
-				played, it returns the number of VIs since the emulator was
-				started, not reset.
-			</p>
-			<p>
-				@<em>return</em> <code>framecount</code> — The number of VIs
-				since the last movie was played.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">framecount</span><span class="p">()</span>
+</code></pre></div></div><div name="emuFramecount"><hr/>
+<h1><a id="emuFramecount">emu.framecount</a></h1>
+<p>Returns the number of VIs since the last movie was played. This should match
+the statusbar (assuming you have <code>0-index statusbar</code> off). If no movie has
+been played, it returns the number of VIs since the emulator was started, not
+reset.</p>
+<p>@<em>return</em> <code>framecount</code> — The number of VIs since the last movie was played.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">framecount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">framecount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuSamplecount">emu.samplecount</a></h1>
-			<p>
-				Returns the number of input frames since the last movie was
-				played. This should match the statusbar (assuming you have
-				<code>0-index statusbar</code> off). If no movie is playing, it
-				will return the last value when a movie was playing. If no movie
-				has been played yet, it will return <code>-1</code>.
-			</p>
-			<p>
-				@<em>return</em> <code>samplecount</code> — The number of input
-				frames since the last movie was played.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">samplecount</span><span class="p">()</span>
+</code></pre></div></div><div name="emuSamplecount"><hr/>
+<h1><a id="emuSamplecount">emu.samplecount</a></h1>
+<p>Returns the number of input frames since the last movie was played. This
+should match the statusbar (assuming you have <code>0-index statusbar</code> off). If no
+movie is playing, it will return the last value when a movie was playing. If
+no movie has been played yet, it will return <code>-1</code>.</p>
+<p>@<em>return</em> <code>samplecount</code> — The number of input frames since the last movie was played.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">samplecount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">samplecount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuInputcount">emu.inputcount</a></h1>
-			<p>
-				Returns the number of input frames that have happened since the
-				emulator was started. It does not reset when a movie is started.
-				Alias for <code>joypad.count</code>.
-			</p>
-			<p>
-				@<em>return</em> <code>inputcount</code> — The number of input
-				frames that have happened since the emulator was started.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">inputcount</span><span class="p">()</span>
+</code></pre></div></div><div name="emuInputcount"><hr/>
+<h1><a id="emuInputcount">emu.inputcount</a></h1>
+<p>Returns the number of input frames that have happened since the emulator was
+started. It does not reset when a movie is started. Alias for <code>joypad.count</code>.</p>
+<p>@<em>return</em> <code>inputcount</code> — The number of input frames that have happened since the emulator was started.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">inputcount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuGetversion">emu.getversion</a></h1>
-			<p>
-				Returns the current mupen version. If <code>type</code> is 0 or
-				less, it will return the full version name (Mupen 64 0.0.0). If
-				<code>type</code> is 1 or more, it will return the version
-				number (0.0.0).
-			</p>
-			<p>
-				@<em>param</em> <code>type</code> — Whether to get the full
-				version (less that 0) or the short version (more than 1).
-			</p>
-			<p>@<em>return</em> <code>version</code> — The mupen version</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="nb">type</span><span class="p">:</span>
+</code></pre></div></div><div name="emuGetversion"><hr/>
+<h1><a id="emuGetversion">emu.getversion</a></h1>
+<p>Returns the current mupen version. If <code>type</code> is 0 or less, it
+will return the full version name (Mupen 64 0.0.0). If <code>type</code>
+is 1 or more, it will return the version number (0.0.0).</p>
+<p>@<em>param</em> <code>type</code> — Whether to get the full version (less that 0) or the short version (more than 1).</p>
+<p>@<em>return</em> <code>version</code> — The mupen version</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">type</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">0</span>
     <span class="o">|</span> <span class="mi">1</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getversion</span><span class="p">(</span><span class="nb">type</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getversion</span><span class="p">(</span><span class="nb">type</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">version</span><span class="p">:</span> <span class="n">string</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuPause">emu.pause</a></h1>
-			<p>Pauses or unpauses the emulator.</p>
-			<p>
-				@<em>param</em> <code>pause</code> — True pauses the emulator
-				and false resumes it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">pause</span><span class="p">(</span><span class="n">pause</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuGetpause">emu.getpause</a></h1>
-			<p>
-				Returns <code>true</code> if the emulator is paused and
-				<code>false</code> if it is not.
-			</p>
-			<p>
-				@<em>return</em> <code>emu_paused</code> — <code>true</code> if
-				the emulator is paused and <code>false</code> if it is not.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getpause</span><span class="p">()</span>
+</code></pre></div></div><div name="emuPause"><hr/>
+<h1><a id="emuPause">emu.pause</a></h1>
+<p>Pauses or unpauses the emulator.</p>
+<p>@<em>param</em> <code>pause</code> — True pauses the emulator and false resumes it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">pause</span><span class="p">(</span><span class="n">pause</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="emuGetpause"><hr/>
+<h1><a id="emuGetpause">emu.getpause</a></h1>
+<p>Returns <code>true</code> if the emulator is paused and <code>false</code> if it is not.</p>
+<p>@<em>return</em> <code>emu_paused</code> — <code>true</code> if the emulator is paused and <code>false</code> if it is not.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getpause</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">emu_paused</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuGetspeed">emu.getspeed</a></h1>
-			<p>
-				Returns the current speed limit (not the current speed) of the
-				emulator.
-			</p>
-			<p>
-				@<em>return</em> <code>speed_limit</code> — The current speed
-				limit of the emulator.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getspeed</span><span class="p">()</span>
+</code></pre></div></div><div name="emuGetspeed"><hr/>
+<h1><a id="emuGetspeed">emu.getspeed</a></h1>
+<p>Returns the current speed limit (not the current speed) of the emulator.</p>
+<p>@<em>return</em> <code>speed_limit</code> — The current speed limit of the emulator.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getspeed</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuSpeed">emu.speed</a></h1>
-			<p>Sets the speed limit of the emulator.</p>
-			<p>
-				@<em>param</em> <code>speed_limit</code> — The new speed limit
-				of the emulator.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speed</span><span class="p">(</span><span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="emuSpeed"><hr/>
+<h1><a id="emuSpeed">emu.speed</a></h1>
+<p>Sets the speed limit of the emulator.</p>
+<p>@<em>param</em> <code>speed_limit</code> — The new speed limit of the emulator.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speed</span><span class="p">(</span><span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuSpeedmode">emu.speedmode</a></h1>
-			<p>Sets the speed mode of the emulator.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">mode</span><span class="p">:</span>
+</code></pre></div></div><div name="emuSpeedmode"><hr/>
+<h1><a id="emuSpeedmode">emu.speedmode</a></h1>
+<p>Sets the speed mode of the emulator.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mode</span><span class="p">:</span>
     <span class="o">|</span> <span class="s2">"normal"</span>
     <span class="o">|</span> <span class="s2">"maximum"</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speedmode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="s2">"maximum"</span><span class="o">|</span><span class="s2">"normal"</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">speedmode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="s2">"maximum"</span><span class="o">|</span><span class="s2">"normal"</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuSetgfx">emu.setgfx</a></h1>
-			<p>?</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">mode</span><span class="p">:</span>
+</code></pre></div></div><div name="emuSetgfx"><hr/>
+<h1><a id="emuSetgfx">emu.setgfx</a></h1>
+<p>?</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mode</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">0</span>
     <span class="o">|</span> <span class="mi">1</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">setgfx</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">setgfx</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuGetaddress">emu.getaddress</a></h1>
-			<p>?</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getaddress</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="emuGetaddress"><hr/>
+<h1><a id="emuGetaddress">emu.getaddress</a></h1>
+<p>?</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getaddress</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuIsreadonly">emu.isreadonly</a></h1>
-			<p>
-				Returns true if the currently playing movie is read only and
-				false if it is not.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">isreadonly</span><span class="p">()</span>
+</code></pre></div></div><div name="emuIsreadonly"><hr/>
+<h1><a id="emuIsreadonly">emu.isreadonly</a></h1>
+<p>Returns true if the currently playing movie is read only and false if it is
+not.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">isreadonly</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">read_only</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuGetsystemmetrics">emu.getsystemmetrics</a></h1>
-			<p>
-				Gets a system metric using the windows
-				<a
-					href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics"
-					>GetSystemMetrics</a
-				>
-				function.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getsystemmetrics</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="emuGetsystemmetrics"><hr/>
+<h1><a id="emuGetsystemmetrics">emu.getsystemmetrics</a></h1>
+<p>Gets a system metric using the windows
+<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">GetSystemMetrics</a>
+function.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getsystemmetrics</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">metric</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1>
-				<a id="emuIsmainwindowinforeground"
-					>emu.ismainwindowinforeground</a
-				>
-			</h1>
-			<p>
-				Returns <code>true</code> if the main mupen window is focused
-				and false if it is not.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
+</code></pre></div></div><div name="emuIsmainwindowinforeground"><hr/>
+<h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
+<p>Returns <code>true</code> if the main mupen window is focused and false if it is not.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">focused</span><span class="p">:</span> <span class="n">boolean</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="emuScreenshot">emu.screenshot</a></h1>
-			<p>
-				Takes a screenshot and saves it to the directory
-				<code>dir</code>
-			</p>
-			<p>
-				@<em>param</em> <code>dir</code> — The directory to save the
-				screenshot to
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">screenshot</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="emuScreenshot"><hr/>
+<h1><a id="emuScreenshot">emu.screenshot</a></h1>
+<p>Takes a screenshot and saves it to the directory <code>dir</code></p>
+<p>@<em>param</em> <code>dir</code> — The directory to save the screenshot to</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">screenshot</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryFuncs">MEMORY</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="memoryInttofloat">memory.inttofloat</a></h1>
-			<p>
-				Reinterprets the bits of a 4 byte integer <code>n</code> as a
-				float and returns it. This does not convert from an int to a
-				float, but reinterprets the memory
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">inttofloat</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><hr/>
+<h1><a id="memoryFuncs">MEMORY</a> FUNCTIONS</h1><div name="memoryInttofloat"><hr/>
+<h1><a id="memoryInttofloat">memory.inttofloat</a></h1>
+<p>Reinterprets the bits of a 4 byte integer <code>n</code> as a float and returns it. This
+ does not convert from an int to a float, but reinterprets the memory</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">inttofloat</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryInttodouble">memory.inttodouble</a></h1>
-			<p>
-				Reinterprets the bits of an 8 byte integer <code>n</code> as a
-				double and returns it. This does not convert from an int to a
-				double, but reinterprets the memory
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">inttodouble</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
+</code></pre></div></div><div name="memoryInttodouble"><hr/>
+<h1><a id="memoryInttodouble">memory.inttodouble</a></h1>
+<p>Reinterprets the bits of an 8 byte integer <code>n</code> as a double and returns it.
+This does not convert from an int to a double, but reinterprets the memory</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">inttodouble</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryFloattoint">memory.floattoint</a></h1>
-			<p>
-				Reinterprets the bits of a float <code>n</code> as a 4 byte
-				integer and returns it. This does not convert from an int to a
-				float, but reinterprets the memory
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">floattoint</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryFloattoint"><hr/>
+<h1><a id="memoryFloattoint">memory.floattoint</a></h1>
+<p>Reinterprets the bits of a float <code>n</code> as a 4 byte integer and returns it. This
+ does not convert from an int to a float, but reinterprets the memory</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">floattoint</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryDoubletoint">memory.doubletoint</a></h1>
-			<p>
-				Reinterprets the bits of a 8 byte integer <code>n</code> as a
-				double and returns it. This does not convert from an int to a
-				float, but reinterprets the memory
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">doubletoint</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
+</code></pre></div></div><div name="memoryDoubletoint"><hr/>
+<h1><a id="memoryDoubletoint">memory.doubletoint</a></h1>
+<p>Reinterprets the bits of a 8 byte integer <code>n</code> as a double and returns it.
+This does not convert from an int to a float, but reinterprets the memory</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">doubletoint</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryQwordtonumber">memory.qwordtonumber</a></h1>
-			<p>
-				Takes in an 8 byte integer and returns it as a lua number. This
-				function should only be used when reading a qword from memory.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">qwordtonumber</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
+</code></pre></div></div><div name="memoryQwordtonumber"><hr/>
+<h1><a id="memoryQwordtonumber">memory.qwordtonumber</a></h1>
+<p>Takes in an 8 byte integer and returns it as a lua number. This function
+should only be used when reading a qword from memory.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">qwordtonumber</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadbytesigned">memory.readbytesigned</a></h1>
-			<p>
-				Reads a signed byte from memory at <code>address</code> and
-				returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readbytesigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadbytesigned"><hr/>
+<h1><a id="memoryReadbytesigned">memory.readbytesigned</a></h1>
+<p>Reads a signed byte from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readbytesigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadbyte">memory.readbyte</a></h1>
-			<p>
-				Reads an unsigned byte from memory at <code>address</code> and
-				returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readbyte</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadbyte"><hr/>
+<h1><a id="memoryReadbyte">memory.readbyte</a></h1>
+<p>Reads an unsigned byte from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readbyte</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadwordsigned">memory.readwordsigned</a></h1>
-			<p>
-				Reads a signed word (2 bytes) from memory at
-				<code>address</code> and returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadwordsigned"><hr/>
+<h1><a id="memoryReadwordsigned">memory.readwordsigned</a></h1>
+<p>Reads a signed word (2 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadword">memory.readword</a></h1>
-			<p>
-				Reads an unsigned word (2 bytes) from memory at
-				<code>address</code> and returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadword"><hr/>
+<h1><a id="memoryReadword">memory.readword</a></h1>
+<p>Reads an unsigned word (2 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReaddwordsigned">memory.readdwordsigned</a></h1>
-			<p>
-				Reads a signed dword (4 bytes) from memory at
-				<code>address</code> and returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReaddwordsigned"><hr/>
+<h1><a id="memoryReaddwordsigned">memory.readdwordsigned</a></h1>
+<p>Reads a signed dword (4 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReaddword">memory.readdword</a></h1>
-			<p>
-				Reads an unsigned dword (4 bytes) from memory at
-				<code>address</code> and returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReaddword"><hr/>
+<h1><a id="memoryReaddword">memory.readdword</a></h1>
+<p>Reads an unsigned dword (4 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadqwordsigned">memory.readqwordsigned</a></h1>
-			<p>
-				Reads a signed qword (8 bytes) from memory at
-				<code>address</code> and returns it as a table of the upper and
-				lower 4 bytes.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readqwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadqwordsigned"><hr/>
+<h1><a id="memoryReadqwordsigned">memory.readqwordsigned</a></h1>
+<p>Reads a signed qword (8 bytes) from memory at <code>address</code> and returns it as a
+table of the upper and lower 4 bytes.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readqwordsigned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span><span class="p">[]</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadqword">memory.readqword</a></h1>
-			<p>
-				Reads an unsigned qword (8 bytes) from memory at
-				<code>address</code> and returns it as a table of the upper and
-				lower 4 bytes.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readqword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadqword"><hr/>
+<h1><a id="memoryReadqword">memory.readqword</a></h1>
+<p>Reads an unsigned qword (8 bytes) from memory at <code>address</code> and returns it as
+a table of the upper and lower 4 bytes.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readqword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadfloat">memory.readfloat</a></h1>
-			<p>
-				Reads a float (4 bytes) from memory at <code>address</code> and
-				returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readfloat</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReadfloat"><hr/>
+<h1><a id="memoryReadfloat">memory.readfloat</a></h1>
+<p>Reads a float (4 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readfloat</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReaddouble">memory.readdouble</a></h1>
-			<p>
-				Reads a double (8 bytes) from memory at <code>address</code> and
-				returns it.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdouble</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryReaddouble"><hr/>
+<h1><a id="memoryReaddouble">memory.readdouble</a></h1>
+<p>Reads a double (8 bytes) from memory at <code>address</code> and returns it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readdouble</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryReadsize">memory.readsize</a></h1>
-			<p>
-				Reads <code>size</code> bytes from memory at
-				<code>address</code> and returns them. The memory is treated as
-				signed if <code>size</code> is is negative.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">size</span><span class="p">:</span>
+</code></pre></div></div><div name="memoryReadsize"><hr/>
+<h1><a id="memoryReadsize">memory.readsize</a></h1>
+<p>Reads <code>size</code> bytes from memory at <code>address</code> and returns them. The memory is
+treated as signed if <code>size</code> is is negative.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">size</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">1</span>
     <span class="o">|</span> <span class="mi">2</span>
     <span class="o">|</span> <span class="mi">4</span>
@@ -1065,72 +675,38 @@
     <span class="o">|</span> <span class="o">-</span><span class="mi">2</span>
     <span class="o">|</span> <span class="o">-</span><span class="mi">4</span>
     <span class="o">|</span> <span class="o">-</span><span class="mi">8</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readsize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">|-</span><span class="mi">2</span><span class="o">|-</span><span class="mi">4</span><span class="o">|-</span><span class="mi">8</span><span class="o">|</span><span class="mf">1.</span><span class="o">..</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWritebyte">memory.writebyte</a></h1>
-			<p>Writes an unsigned byte to memory at <code>address</code>.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writebyte</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWriteword">memory.writeword</a></h1>
-			<p>
-				Writes an unsigned word (2 bytes) to memory at
-				<code>address</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writeword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWritedword">memory.writedword</a></h1>
-			<p>
-				Writes an unsigned dword (4 bytes) to memory at
-				<code>address</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writedword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWriteqword">memory.writeqword</a></h1>
-			<p>
-				Writes an unsigned qword consisting of a table with the upper
-				and lower 4 bytes to memory at <code>address</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writeqword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWritefloat">memory.writefloat</a></h1>
-			<p>Writes a float to memory at <code>address</code>.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writefloat</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWritedouble">memory.writedouble</a></h1>
-			<p>Writes a double to memory at <code>address</code>.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writedouble</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="memoryWritesize">memory.writesize</a></h1>
-			<p>
-				Writes <code>size</code> bytes to memory at
-				<code>address</code>. The memory is treated as signed if
-				<code>size</code> is is negative.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">size</span><span class="p">:</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">readsize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">|-</span><span class="mi">2</span><span class="o">|-</span><span class="mi">4</span><span class="o">|-</span><span class="mi">8</span><span class="o">|</span><span class="mf">1.</span><span class="o">..</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div></div><div name="memoryWritebyte"><hr/>
+<h1><a id="memoryWritebyte">memory.writebyte</a></h1>
+<p>Writes an unsigned byte to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writebyte</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryWriteword"><hr/>
+<h1><a id="memoryWriteword">memory.writeword</a></h1>
+<p>Writes an unsigned word (2 bytes) to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writeword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryWritedword"><hr/>
+<h1><a id="memoryWritedword">memory.writedword</a></h1>
+<p>Writes an unsigned dword (4 bytes) to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writedword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryWriteqword"><hr/>
+<h1><a id="memoryWriteqword">memory.writeqword</a></h1>
+<p>Writes an unsigned qword consisting of a table with the upper and lower 4
+bytes to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writeqword</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="p">[])</span>
+</code></pre></div></div><div name="memoryWritefloat"><hr/>
+<h1><a id="memoryWritefloat">memory.writefloat</a></h1>
+<p>Writes a float to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writefloat</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryWritedouble"><hr/>
+<h1><a id="memoryWritedouble">memory.writedouble</a></h1>
+<p>Writes a double to memory at <code>address</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writedouble</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="memoryWritesize"><hr/>
+<h1><a id="memoryWritesize">memory.writesize</a></h1>
+<p>Writes <code>size</code> bytes to memory at <code>address</code>. The memory is treated as signed
+if <code>size</code> is is negative.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">size</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">1</span>
     <span class="o">|</span> <span class="mi">2</span>
     <span class="o">|</span> <span class="mi">4</span>
@@ -1139,635 +715,283 @@
     <span class="o">|</span> <span class="o">-</span><span class="mi">2</span>
     <span class="o">|</span> <span class="o">-</span><span class="mi">4</span>
     <span class="o">|</span> <span class="o">-</span><span class="mi">8</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writesize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">|-</span><span class="mi">2</span><span class="o">|-</span><span class="mi">4</span><span class="o">|-</span><span class="mi">8</span><span class="o">|</span><span class="mf">1.</span><span class="o">..</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">),</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="o">|</span><span class="n">integer</span><span class="p">[])</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiFuncs">WGUI</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="wguiD2d_fill_rectangle">wgui.d2d_fill_rectangle</a></h1>
-			<p>
-				Draws a filled in rectangle at the specified coordinates and
-				color.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_draw_rectangle">wgui.d2d_draw_rectangle</a></h1>
-			<p>
-				Draws the border of a rectangle at the specified coordinates and
-				color.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_fill_ellipse">wgui.d2d_fill_ellipse</a></h1>
-			<p>
-				Draws a filled in ellipse at the specified coordinates and
-				color.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_draw_ellipse">wgui.d2d_draw_ellipse</a></h1>
-			<p>
-				Draws the border of an ellipse at the specified coordinates and
-				color.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_draw_line">wgui.d2d_draw_line</a></h1>
-			<p>
-				Draws a line from <code>(x1, y1)</code> to
-				<code>(x2, y2)</code> in the specified color.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_line</span><span class="p">(</span><span class="n">x1</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x2</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y2</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_draw_text">wgui.d2d_draw_text</a></h1>
-			<p>
-				Draws the text <code>text</code> at the specified coordinates,
-				color, font, and alignment.
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_text</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontname</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">horizalign</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">vertalign</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_push_clip">wgui.d2d_push_clip</a></h1>
-			<p>
-				Specifies a rectangle to which all subsequent drawing operations
-				are clipped. This clip is put onto a stack. It can then be
-				popped off the stack with <code>wgui.d2d_pop_clip</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_push_clip</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_pop_clip">wgui.d2d_pop_clip</a></h1>
-			<p>Pops the most recent clip off the clip stack.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_pop_clip</span><span class="p">()</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiD2d_get_text_size">wgui.d2d_get_text_size</a></h1>
-			<p>Returns the width and height of the specified text.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_get_text_size</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontname</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writesize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">|-</span><span class="mi">2</span><span class="o">|-</span><span class="mi">4</span><span class="o">|-</span><span class="mi">8</span><span class="o">|</span><span class="mf">1.</span><span class="o">..</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">),</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="o">|</span><span class="n">integer</span><span class="p">[])</span>
+</code></pre></div></div><hr/>
+<h1><a id="wguiFuncs">WGUI</a> FUNCTIONS</h1><div name="wguiD2d_fill_rectangle"><hr/>
+<h1><a id="wguiD2d_fill_rectangle">wgui.d2d_fill_rectangle</a></h1>
+<p>Draws a filled in rectangle at the specified coordinates and color.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_draw_rectangle"><hr/>
+<h1><a id="wguiD2d_draw_rectangle">wgui.d2d_draw_rectangle</a></h1>
+<p>Draws the border of a rectangle at the specified coordinates and color.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_fill_ellipse"><hr/>
+<h1><a id="wguiD2d_fill_ellipse">wgui.d2d_fill_ellipse</a></h1>
+<p>Draws a filled in ellipse at the specified coordinates and color.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_draw_ellipse"><hr/>
+<h1><a id="wguiD2d_draw_ellipse">wgui.d2d_draw_ellipse</a></h1>
+<p>Draws the border of an ellipse at the specified coordinates and color.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_draw_line"><hr/>
+<h1><a id="wguiD2d_draw_line">wgui.d2d_draw_line</a></h1>
+<p>Draws a line from <code>(x1, y1)</code> to <code>(x2, y2)</code> in the specified color.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_line</span><span class="p">(</span><span class="n">x1</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y1</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x2</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y2</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_draw_text"><hr/>
+<h1><a id="wguiD2d_draw_text">wgui.d2d_draw_text</a></h1>
+<p>Draws the text <code>text</code> at the specified coordinates, color, font, and
+alignment.</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_text</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontname</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">horizalign</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">vertalign</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_push_clip"><hr/>
+<h1><a id="wguiD2d_push_clip">wgui.d2d_push_clip</a></h1>
+<p>Specifies a rectangle to which all subsequent drawing operations are clipped.
+This clip is put onto a stack. It can then be popped off the stack with
+<code>wgui.d2d_pop_clip</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_push_clip</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_pop_clip"><hr/>
+<h1><a id="wguiD2d_pop_clip">wgui.d2d_pop_clip</a></h1>
+<p>Pops the most recent clip off the clip stack.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_pop_clip</span><span class="p">()</span>
+</code></pre></div></div><div name="wguiD2d_get_text_size"><hr/>
+<h1><a id="wguiD2d_get_text_size">wgui.d2d_get_text_size</a></h1>
+<p>Returns the width and height of the specified text.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_get_text_size</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontname</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1>
-				<a id="wguiD2d_fill_rounded_rectangle"
-					>wgui.d2d_fill_rounded_rectangle</a
-				>
-			</h1>
-			<p>
-				Draws a filled in rounded rectangle at the specified
-				coordinates, color and radius
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_rounded_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1>
-				<a id="wguiD2d_draw_rounded_rectangle"
-					>wgui.d2d_draw_rounded_rectangle</a
-				>
-			</h1>
-			<p>
-				Draws the border of a rounded rectangle at the specified
-				coordinates, color and radius
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to
-				1.0
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — d2d colors range from 0.0
-				to 1.0
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_rounded_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiFillpolygona">wgui.fillpolygona</a></h1>
-			<p>Draws a polygon at the specified coordinates and color</p>
-			<p>
-				@<em>param</em> <code>points</code> — Double array of points.
-				For example, <code>{{0, 0}, {1, 0}, {0, 1}}</code> will draw a
-				triangle.
-			</p>
-			<p>
-				@<em>param</em> <code>alpha</code> — GDI+ colors range from 0 to
-				255
-			</p>
-			<p>
-				@<em>param</em> <code>red</code> — GDI+ colors range from 0 to
-				255
-			</p>
-			<p>
-				@<em>param</em> <code>green</code> — GDI+ colors range from 0 to
-				255
-			</p>
-			<p>
-				@<em>param</em> <code>blue</code> — GDI+ colors range from 0 to
-				255
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">fillpolygona</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">integer</span><span class="p">[][],</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiLoadimage">wgui.loadimage</a></h1>
-			<p>
-				Loads an image file into the image pool and returns the
-				identifier.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadimage</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiDeleteimage">wgui.deleteimage</a></h1>
-			<p>Deletes one or more images from the image pool.</p>
-			<p>
-				@<em>param</em> <code>identifier</code> — If
-				<code>identifier</code> is 0, all images are deleted. If not,
-				only the image at that index is deleted.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">deleteimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
-			<p>
-				Draws the image at <code>identifier</code> at the specified
-				coordinates
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
-			<p>
-				Draws the image at <code>identifier</code> at the specified
-				coordinates and scale
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
-			<p>
-				Draws the image at <code>identifier</code> at the specified
-				coordinates. The image is stretched to the specified width and
-				height.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
-			<p>
-				Draws the image at <code>identifier</code> at the specified
-				coordinates. Only a section of the source image is drawn,
-				specified by <code>srcx</code>, <code>srcy</code>,
-				<code>srcwidth</code>, and <code>srcheight</code>. That section
-				is then stretched to match <code>width</code> and
-				<code>height</code>, placed at <code>(x, y)</code>, then rotated
-				by <code>rotate</code> degrees.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcx</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcy</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcwidth</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcheight</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">rotate</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiLoadscreen">wgui.loadscreen</a></h1>
-			<p>
-				Loads the current screen into the image pool and returns the
-				identifier.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadscreen</span><span class="p">()</span>
+</code></pre></div></div><div name="wguiD2d_fill_rounded_rectangle"><hr/>
+<h1><a id="wguiD2d_fill_rounded_rectangle">wgui.d2d_fill_rounded_rectangle</a></h1>
+<p>Draws a filled in rounded rectangle at the specified coordinates, color and
+radius</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_fill_rounded_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiD2d_draw_rounded_rectangle"><hr/>
+<h1><a id="wguiD2d_draw_rounded_rectangle">wgui.d2d_draw_rounded_rectangle</a></h1>
+<p>Draws the border of a rounded rectangle at the specified coordinates, color
+and radius</p>
+<p>@<em>param</em> <code>red</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>green</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>blue</code> — d2d colors range from 0.0 to 1.0</p>
+<p>@<em>param</em> <code>alpha</code> — d2d colors range from 0.0 to 1.0</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">d2d_draw_rounded_rectangle</span><span class="p">(</span><span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">radiusX</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">radiusY</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiFillpolygona"><hr/>
+<h1><a id="wguiFillpolygona">wgui.fillpolygona</a></h1>
+<p>Draws a polygon at the specified coordinates and color</p>
+<p>@<em>param</em> <code>points</code> — Double array of points. For example, <code>{{0, 0}, {1, 0}, {0, 1}}</code> will draw a triangle.</p>
+<p>@<em>param</em> <code>alpha</code> — GDI+ colors range from 0 to 255</p>
+<p>@<em>param</em> <code>red</code> — GDI+ colors range from 0 to 255</p>
+<p>@<em>param</em> <code>green</code> — GDI+ colors range from 0 to 255</p>
+<p>@<em>param</em> <code>blue</code> — GDI+ colors range from 0 to 255</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">fillpolygona</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">integer</span><span class="p">[][],</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiLoadimage"><hr/>
+<h1><a id="wguiLoadimage">wgui.loadimage</a></h1>
+<p>Loads an image file into the image pool and returns the identifier.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadimage</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiDeleteimage"><hr/>
+<h1><a id="wguiDeleteimage">wgui.deleteimage</a></h1>
+<p>Deletes one or more images from the image pool.</p>
+<p>@<em>param</em> <code>identifier</code> — If <code>identifier</code> is 0, all images are deleted. If not, only the image at that index is deleted.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">deleteimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiDrawimage"><hr/>
+<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
+<p>Draws the image at <code>identifier</code> at the specified coordinates</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiDrawimage"><hr/>
+<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
+<p>Draws the image at <code>identifier</code> at the specified coordinates and scale</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiDrawimage"><hr/>
+<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
+<p>Draws the image at <code>identifier</code> at the specified coordinates. The image is
+stretched to the specified width and height.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiDrawimage"><hr/>
+<h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
+<p>Draws the image at <code>identifier</code> at the specified coordinates. Only a section
+of the source image is drawn, specified by <code>srcx</code>, <code>srcy</code>, <code>srcwidth</code>, and
+<code>srcheight</code>. That section is then stretched to match <code>width</code> and <code>height</code>,
+placed at <code>(x, y)</code>, then rotated by <code>rotate</code> degrees.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawimage</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcx</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcy</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcwidth</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">srcheight</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">rotate</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiLoadscreen"><hr/>
+<h1><a id="wguiLoadscreen">wgui.loadscreen</a></h1>
+<p>Loads the current screen into the image pool and returns the identifier.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadscreen</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiLoadscreenreset">wgui.loadscreenreset</a></h1>
-			<p>
-				Reinitializes <code>wgui.loadscreen</code>. This function should
-				only be used when conditions have changed, such as if the
-				resolution changes.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadscreenreset</span><span class="p">()</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiGetimageinfo">wgui.getimageinfo</a></h1>
-			<p>
-				Returns the width and height of the image at
-				<code>identifier</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">getimageinfo</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiLoadscreenreset"><hr/>
+<h1><a id="wguiLoadscreenreset">wgui.loadscreenreset</a></h1>
+<p>Reinitializes <code>wgui.loadscreen</code>. This function should only be used when
+conditions have changed, such as if the resolution changes.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">loadscreenreset</span><span class="p">()</span>
+</code></pre></div></div><div name="wguiGetimageinfo"><hr/>
+<h1><a id="wguiGetimageinfo">wgui.getimageinfo</a></h1>
+<p>Returns the width and height of the image at <code>identifier</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">getimageinfo</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiInfo">wgui.info</a></h1>
-			<p>Returns the current size of the window.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">info</span><span class="p">()</span>
+</code></pre></div></div><div name="wguiInfo"><hr/>
+<h1><a id="wguiInfo">wgui.info</a></h1>
+<p>Returns the current size of the window.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">info</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="wguiResize">wgui.resize</a></h1>
-			<p>
-				Resizes the window to <code>width</code> and <code>height</code>
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">resize</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="inputFuncs">INPUT</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="inputGet">input.get</a></h1>
-			<p>
-				Returns the state of all keyboard keys and the mouse position in
-				a table. Ex:
-				<code
-					>input.get() -&gt; {xmouse=297, ymouse=120, A=true,
-					B=true}</code
-				>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">get</span><span class="p">()</span>
+</code></pre></div></div><div name="wguiResize"><hr/>
+<h1><a id="wguiResize">wgui.resize</a></h1>
+<p>Resizes the window to <code>width</code> and <code>height</code></p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">resize</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><hr/>
+<h1><a id="inputFuncs">INPUT</a> FUNCTIONS</h1><div name="inputGet"><hr/>
+<h1><a id="inputGet">input.get</a></h1>
+<p>Returns the state of all keyboard keys and the mouse position in a table. Ex:
+<code>input.get() -&gt; {xmouse=297, ymouse=120, A=true, B=true}</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">get</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">table</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="inputDiff">input.diff</a></h1>
-			<p>
-				Returns the differences between <code>t1</code> and
-				<code>t2</code>. For example, if <code>t1</code> is the inputs
-				for this frame, and <code>t2</code> is the inputs for last
-				frame, it would return which buttons were pressed this frame,
-				not which buttons are active.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">diff</span><span class="p">(</span><span class="n">t1</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+</code></pre></div></div><div name="inputDiff"><hr/>
+<h1><a id="inputDiff">input.diff</a></h1>
+<p>Returns the differences between <code>t1</code> and <code>t2</code>. For example, if <code>t1</code> is the
+inputs for this frame, and <code>t2</code> is the inputs for last frame, it would return
+which buttons were pressed this frame, not which buttons are active.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">diff</span><span class="p">(</span><span class="n">t1</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">table</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="inputPrompt">input.prompt</a></h1>
-			<p>
-				Opens a window where the user can input text. If
-				<code>OK</code> is clicked, that text is returned. If
-				<code>Cancel</code> is clicked or the window is closed,
-				<code>nil</code> is returned.
-			</p>
-			<p>
-				@<em>param</em> <code>title</code> — The title of the text box.
-				Defaults to "input:".
-			</p>
-			<p>
-				@<em>param</em> <code>placeholder</code> — The text box is
-				filled with this string when it opens. Defaults to "".
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">prompt</span><span class="p">(</span><span class="n">title</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">placeholder</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="joypadFuncs">JOYPAD</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="joypadGet">joypad.get</a></h1>
-			<p>
-				Gets the currently pressed game buttons and stick direction for
-				a given port. Note that the <code>y</code> coordinate of the
-				stick is the opposite of what is shown on TAS Input.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">port</span><span class="p">:</span>
+</code></pre></div></div><div name="inputPrompt"><hr/>
+<h1><a id="inputPrompt">input.prompt</a></h1>
+<p>Opens a window where the user can input text. If <code>OK</code> is clicked, that text
+is returned. If <code>Cancel</code> is clicked or the window is closed, <code>nil</code> is
+returned.</p>
+<p>@<em>param</em> <code>title</code> — The title of the text box. Defaults to "input:".</p>
+<p>@<em>param</em> <code>placeholder</code> — The text box is filled with this string when it opens. Defaults to "".</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">prompt</span><span class="p">(</span><span class="n">title</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">placeholder</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><hr/>
+<h1><a id="joypadFuncs">JOYPAD</a> FUNCTIONS</h1><div name="joypadGet"><hr/>
+<h1><a id="joypadGet">joypad.get</a></h1>
+<p>Gets the currently pressed game buttons and stick direction for a given port.
+Note that the <code>y</code> coordinate of the stick is the opposite of what is shown on
+TAS Input.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">port</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">1</span>
     <span class="o">|</span> <span class="mi">2</span>
     <span class="o">|</span> <span class="mi">3</span>
     <span class="o">|</span> <span class="mi">4</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">port</span><span class="p">:</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">port</span><span class="p">:</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="mi">4</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">table</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="joypadSet">joypad.set</a></h1>
-			<p>
-				Sets the current joypad to <code>inputs</code>. If you do not
-				specify one or more inputs, they will be set to
-				<code>false</code> for buttons or <code>0</code> for stick
-				coordinates
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="n">port</span><span class="p">:</span>
+</code></pre></div></div><div name="joypadSet"><hr/>
+<h1><a id="joypadSet">joypad.set</a></h1>
+<p>Sets the current joypad to <code>inputs</code>. If you do not specify one or more
+inputs, they will be set to <code>false</code> for buttons or <code>0</code> for stick coordinates</p>
+<div class="codehilite"><pre><span></span><code><span class="n">port</span><span class="p">:</span>
     <span class="o">|</span> <span class="mi">1</span>
     <span class="o">|</span> <span class="mi">2</span>
     <span class="o">|</span> <span class="mi">3</span>
     <span class="o">|</span> <span class="mi">4</span>
-</code></pre>
-			</div>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">port</span><span class="p">:</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="mi">4</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="joypadRegister">joypad.register</a></h1>
-			<p>
-				Calls the function <code>f</code> every input frame. The
-				function <code>f</code> receives an argument that seems to
-				always be <code>0</code>. If <code>unregister</code> is set to
-				true, the function <code>f</code> will no longer be called when
-				this event occurs, but it will error if you never registered the
-				function. Alias for <code>emu.atinput</code>.
-			</p>
-			<p>
-				@<em>param</em> <code>f</code> — The function to be called every
-				input frame. It receives an argument that seems to always be
-				<code>0</code>.
-			</p>
-			<p>
-				@<em>param</em> <code>unregister</code> — If true, then
-				unregister the function <code>f</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">port</span><span class="p">:</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="mi">4</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+</code></pre></div></div><div name="joypadRegister"><hr/>
+<h1><a id="joypadRegister">joypad.register</a></h1>
+<p>Calls the function <code>f</code> every input frame. The function <code>f</code> receives an
+argument that seems to always be <code>0</code>. If <code>unregister</code> is set to true, the
+function <code>f</code> will no longer be called when this event occurs, but it will
+error if you never registered the function. Alias for <code>emu.atinput</code>.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called every input frame. It receives an argument that seems to always be <code>0</code>.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">):</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="joypadCount">joypad.count</a></h1>
-			<p>
-				Returns the number of input frames that have happened since the
-				emulator was started. It does not reset when a movie is started.
-				Alias for <code>emu.inputcount</code>.
-			</p>
-			<p>
-				@<em>return</em> <code>inputcount</code> — The number of input
-				frames that have happened since the emulator was started.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span>
+</code></pre></div></div><div name="joypadCount"><hr/>
+<h1><a id="joypadCount">joypad.count</a></h1>
+<p>Returns the number of input frames that have happened since the emulator was
+started. It does not reset when a movie is started. Alias for
+<code>emu.inputcount</code>.</p>
+<p>@<em>return</em> <code>inputcount</code> — The number of input frames that have happened since the emulator was started.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="movieFuncs">MOVIE</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="moviePlaymovie">movie.playmovie</a></h1>
-			<p>
-				Plays a movie file located at <code>filename</code>. This
-				function sets <code>Read Only</code> to true.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">playmovie</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="movieStopmovie">movie.stopmovie</a></h1>
-			<p>Stops the currently playing movie.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">stopmovie</span><span class="p">()</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="movieGetmoviefilename">movie.getmoviefilename</a></h1>
-			<p>
-				Returns the filename of the currently playing movie. It will
-				error if no movie is playing.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">getmoviefilename</span><span class="p">()</span>
+</code></pre></div></div><hr/>
+<h1><a id="movieFuncs">MOVIE</a> FUNCTIONS</h1><div name="moviePlaymovie"><hr/>
+<h1><a id="moviePlaymovie">movie.playmovie</a></h1>
+<p>Plays a movie file located at <code>filename</code>. This function sets <code>Read Only</code> to
+true.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">playmovie</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="movieStopmovie"><hr/>
+<h1><a id="movieStopmovie">movie.stopmovie</a></h1>
+<p>Stops the currently playing movie.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">stopmovie</span><span class="p">()</span>
+</code></pre></div></div><div name="movieGetmoviefilename"><hr/>
+<h1><a id="movieGetmoviefilename">movie.getmoviefilename</a></h1>
+<p>Returns the filename of the currently playing movie. It will error if no
+movie is playing.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">getmoviefilename</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">string</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="savestateFuncs">SAVESTATE</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="savestateSavefile">savestate.savefile</a></h1>
-			<p>Saves a savestate to <code>filename</code>.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">savefile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="savestateLoadfile">savestate.loadfile</a></h1>
-			<p>Loads a savestate from <code>filename</code></p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">loadfile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="ioHelperFuncs">IOHELPER</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="ioHelperFilediag">ioHelper.filediag</a></h1>
-			<p>
-				Opens a file dialouge and returns the file path of the file
-				chosen.
-			</p>
-			<p>
-				@<em>param</em> <code>filter</code> — This string acts as a
-				filter for what files can be chosen. For example
-				<code>*.*</code> selects all files, where
-				<code>*.txt</code> selects only text files
-			</p>
-			<p>@<em>param</em> <code>type</code> — Unknown</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">ioHelper</span><span class="p">.</span><span class="nf">filediag</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><hr/>
+<h1><a id="savestateFuncs">SAVESTATE</a> FUNCTIONS</h1><div name="savestateSavefile"><hr/>
+<h1><a id="savestateSavefile">savestate.savefile</a></h1>
+<p>Saves a savestate to <code>filename</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">savefile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="savestateLoadfile"><hr/>
+<h1><a id="savestateLoadfile">savestate.loadfile</a></h1>
+<p>Loads a savestate from <code>filename</code></p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">loadfile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><hr/>
+<h1><a id="ioHelperFuncs">IOHELPER</a> FUNCTIONS</h1><div name="ioHelperFilediag"><hr/>
+<h1><a id="ioHelperFilediag">ioHelper.filediag</a></h1>
+<p>Opens a file dialouge and returns the file path of the file chosen.</p>
+<p>@<em>param</em> <code>filter</code> — This string acts as a filter for what files can be chosen. For example <code>*.*</code> selects all files, where <code>*.txt</code> selects only text files</p>
+<p>@<em>param</em> <code>type</code> — Unknown</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">ioHelper</span><span class="p">.</span><span class="nf">filediag</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">string</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="aviFuncs">AVI</a> FUNCTIONS</h1>
-			<hr />
-			<h1><a id="aviStartcapture">avi.startcapture</a></h1>
-			<p>
-				Begins an avi recording using the previously saved encoding
-				settings. It is saved to <code>filename</code>.
-			</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">avi</span><span class="p">.</span><span class="nf">startcapture</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
-</code></pre>
-			</div>
-			<hr />
-			<h1><a id="aviStopcapture">avi.stopcapture</a></h1>
-			<p>Stops avi recording.</p>
-			<div class="codehilite">
-				<pre><span></span><code><span class="kr">function</span> <span class="nc">avi</span><span class="p">.</span><span class="nf">stopcapture</span><span class="p">()</span>
-</code></pre>
-			</div>
-		</div>
-		<script>
-			const coll = document.getElementsByClassName("collapsible");
+</code></pre></div></div><hr/>
+<h1><a id="aviFuncs">AVI</a> FUNCTIONS</h1><div name="aviStartcapture"><hr/>
+<h1><a id="aviStartcapture">avi.startcapture</a></h1>
+<p>Begins an avi recording using the previously saved encoding settings. It is
+saved to <code>filename</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">avi</span><span class="p">.</span><span class="nf">startcapture</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+</code></pre></div></div><div name="aviStopcapture"><hr/>
+<h1><a id="aviStopcapture">avi.stopcapture</a></h1>
+<p>Stops avi recording.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">avi</span><span class="p">.</span><span class="nf">stopcapture</span><span class="p">()</span>
+</code></pre></div></div></div><script>const coll = document.getElementsByClassName("collapsible");
 
-			for (let i = 0; i < coll.length; i++) {
-				coll[i].addEventListener("click", function () {
-					this.classList.toggle("active");
-					const content = this.nextElementSibling;
-					if (content.style.maxHeight) {
-						content.style.maxHeight = null;
-					} else {
-						content.style.maxHeight = content.scrollHeight + "px";
-					}
-				});
-			}
-		</script>
-	</body>
-</html>
+for (let i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function () {
+		this.classList.toggle("active");
+		const content = this.nextElementSibling;
+		if (content.style.maxHeight) {
+			content.style.maxHeight = null;
+		} else {
+			content.style.maxHeight = content.scrollHeight + "px";
+		}
+	});
+}
+
+async function highlightFunc(anchorId) {
+	/* Add 'highlight' class to element, which
+	causes it to briefly become highlighted */
+	let curFunc = document.getElementsByName(anchorId)[0];
+	curFunc.classList.add('highlight');
+	// Wait for fade to end
+	await new Promise(r => setTimeout(r, 1510));
+	/* Remove 'highlight' class from element, so that it can be
+	added back again if the function link is clicked again */ 
+	curFunc.classList.remove('highlight');
+}</script></body></html>

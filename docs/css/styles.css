@@ -35,6 +35,10 @@ body {
 	margin-bottom: 20px;
 }
 
+.sidebar button {
+	color: inherit;
+}
+
 .sidebar a {
 	color: #bababa;
 	text-decoration: none;
@@ -108,4 +112,30 @@ pre {
 .docBody {
 	margin-left: clamp(320px, 15%, 400px);
 	text-align: left;
+}
+
+/* Make function definitions briefly highlight
+when accessed through a sidebar link, to draw
+users' attention to their on-screen location */
+
+@keyframes fade {
+    from { background-color: #8f0000/*#6a0c0c*/; }
+    to { background-color: #101010; }
+}                                                                                                                                                                                                                                  
+
+@-webkit-keyframes fade {
+    from { background-color: #8f0000/*#6a0c0c*/; }
+    to { background-color: #101010; }
+}
+
+.highlight {
+	animation:fade 1500ms 1;
+	-webkit-animation:fade 1500ms 1;
+}
+
+/* This is here so that code blocks will
+also be included in the highlighting */
+.highlight .codehilite {
+	animation:fade 1500ms 1;
+	-webkit-animation:fade 1500ms 1;
 }
