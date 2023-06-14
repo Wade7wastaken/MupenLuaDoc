@@ -399,26 +399,26 @@ function memory.writesize(address, size, data) end
 --#region
 
 ---Draws a filled in rectangle at the specified coordinates and color.
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
 ---@param red number d2d colors range from 0.0 to 1.0
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_rectangle(top, left, bottom, right, red, green, blue, alpha) end
+function wgui.d2d_fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws the border of a rectangle at the specified coordinates and color.
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
 ---@param red number d2d colors range from 0.0 to 1.0
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_rectangle(top, left, bottom, right, red, green, blue, alpha) end
+function wgui.d2d_draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws a filled in ellipse at the specified coordinates and color.
 ---@param x integer
@@ -455,10 +455,10 @@ function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws the text `text` at the specified coordinates, color, font, and
 ---alignment.
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
 ---@param red number d2d colors range from 0.0 to 1.0
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
@@ -466,18 +466,19 @@ function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param text string
 ---@param fontname string
 ---@param fontsize number
+---@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic
 ---@param horizalign integer
 ---@param vertalign integer
-function wgui.d2d_draw_text(top, left, bottom, right, red, green, blue, alpha, text, fontname, fontsize, horizalign, vertalign) end
+function wgui.d2d_draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname, fontsize, fontstyle, horizalign, vertalign) end
 
 ---Specifies a rectangle to which all subsequent drawing operations are clipped.
 ---This clip is put onto a stack. It can then be popped off the stack with
 ---`wgui.d2d_pop_clip`.
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
-function wgui.d2d_push_clip(top, left, bottom, right) end
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+function wgui.d2d_push_clip(x1, y1, x2, y2) end
 
 ---Pops the most recent clip off the clip stack.
 function wgui.d2d_pop_clip() end
@@ -491,31 +492,31 @@ function wgui.d2d_get_text_size(text, fontname, fontsize) end
 
 ---Draws a filled in rounded rectangle at the specified coordinates, color and
 ---radius
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
 ---@param red number d2d colors range from 0.0 to 1.0
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.d2d_fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of a rounded rectangle at the specified coordinates, color
 ---and radius
----@param top integer
----@param left integer
----@param bottom integer
----@param right integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
 ---@param red number d2d colors range from 0.0 to 1.0
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_rounded_rectangle(top, left, bottom, right, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.d2d_draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws a polygon at the specified coordinates and color
 ---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
