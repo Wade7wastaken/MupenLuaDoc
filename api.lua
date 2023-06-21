@@ -348,37 +348,44 @@ function memory.readdouble(address) end
 ---@nodiscard
 ---@param address integer
 ---@param size 1|2|4|8|-1|-2|-4|-8
+---@return nil
 function memory.readsize(address, size) end
 
 ---Writes an unsigned byte to memory at `address`.
 ---@param address integer
 ---@param data integer
+---@return nil
 function memory.writebyte(address, data) end
 
 ---Writes an unsigned word (2 bytes) to memory at `address`.
 ---@param address integer
 ---@param data integer
+---@return nil
 function memory.writeword(address, data) end
 
 ---Writes an unsigned dword (4 bytes) to memory at `address`.
 ---@param address integer
 ---@param data integer
+---@return nil
 function memory.writedword(address, data) end
 
 ---Writes an unsigned qword consisting of a table with the upper and lower 4
 ---bytes to memory at `address`.
 ---@param address integer
 ---@param data qword
+---@return nil
 function memory.writeqword(address, data) end
 
 ---Writes a float to memory at `address`.
 ---@param address integer
 ---@param data number
+---@return nil
 function memory.writefloat(address, data) end
 
 ---Writes a double to memory at `address`.
 ---@param address integer
 ---@param data number
+---@return nil
 function memory.writedouble(address, data) end
 
 ---Writes `size` bytes to memory at `address`. The memory is treated as signed
@@ -386,6 +393,7 @@ function memory.writedouble(address, data) end
 ---@param address integer
 ---@param size 1|2|4|8|-1|-2|-4|-8
 ---@param data integer|qword
+---@return nil
 function memory.writesize(address, size, data) end
 
 --#endregion
@@ -403,6 +411,7 @@ function memory.writesize(address, size, data) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws the border of a rectangle at the specified coordinates and color.
@@ -414,6 +423,7 @@ function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws a filled in ellipse at the specified coordinates and color.
@@ -425,6 +435,7 @@ function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of an ellipse at the specified coordinates and color.
@@ -436,6 +447,7 @@ function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
@@ -448,6 +460,7 @@ function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
 ---@param stroke_width number
+---@return nil
 function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, stroke_width) end
 
 ---Draws the text `text` at the specified coordinates, color, font, and
@@ -466,6 +479,7 @@ function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, stroke_width) e
 ---@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic
 ---@param horizalign integer
 ---@param vertalign integer
+---@return nil
 function wgui.draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname, fontsize, fontstyle, horizalign, vertalign) end
 
 ---Returns the width and height of the specified text.
@@ -482,9 +496,11 @@ function wgui.get_text_size(text, fontname, fontsize) end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
+---@return nil
 function wgui.push_clip(x1, y1, x2, y2) end
 
 ---Pops the most recent clip off the clip stack.
+---@return nil
 function wgui.pop_clip() end
 
 ---Draws a filled in rounded rectangle at the specified coordinates, color and
@@ -499,6 +515,7 @@ function wgui.pop_clip() end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of a rounded rectangle at the specified coordinates, color
@@ -513,16 +530,19 @@ function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, gree
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
+---@return nil
 function wgui.draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Loads an image file from `path` which you can then access through
 ---`identifier`.
 ---@param path string
 ---@param identifier string
+---@return nil
 function wgui.load_image(path, identifier) end
 
 ---Frees the image at `identifier`.
 ---@param identifier string
+---@return nil
 function wgui.free_image(identifier) end
 
 ---Draws an image by taking the pixels in the source rectangle of the image, and
@@ -536,6 +556,7 @@ function wgui.free_image(identifier) end
 ---@param srcx2 integer
 ---@param srcy2 integer
 ---@param identifier string
+---@return nil
 function wgui.draw_image(destx1, desty2, destx2, desty1, srcx1, srcy1, srcx2, srcy2, identifier) end
 
 ---Returns the width and height of the image at `identifier`.
@@ -550,6 +571,7 @@ function wgui.get_image_info(identifier) end
 ---@param red integer GDI+ colors range from 0 to 255
 ---@param green integer GDI+ colors range from 0 to 255
 ---@param blue integer GDI+ colors range from 0 to 255
+---@return nil
 function wgui.gdip_fillpolygona(points, alpha, red, green, blue) end
 
 ---Returns the current size of the window.
@@ -560,6 +582,7 @@ function wgui.info() end
 ---Resizes the window to `width` and `height`
 ---@param width integer
 ---@param height integer
+---@return nil
 function wgui.resize(width, height) end
 
 --#endregion
@@ -570,12 +593,14 @@ function wgui.resize(width, height) end
 
 ---Returns the state of all keyboard keys and the mouse position in a table. Ex:
 ---`input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.
+---@nodiscard
 ---@return table
 function input.get() end
 
 ---Returns the differences between `t1` and `t2`. For example, if `t1` is the
 ---inputs for this frame, and `t2` is the inputs for last frame, it would return
 ---which buttons were pressed this frame, not which buttons are active.
+---@nodiscard
 ---@param t1 table
 ---@param t2 table
 ---@return table
@@ -584,8 +609,10 @@ function input.diff(t1, t2) end
 ---Opens a window where the user can input text. If `OK` is clicked, that text
 ---is returned. If `Cancel` is clicked or the window is closed, `nil` is
 ---returned.
+---@nodiscard
 ---@param title string? The title of the text box. Defaults to "input:".
 ---@param placeholder string? The text box is filled with this string when it opens. Defaults to "".
+---@return string|nil
 function input.prompt(title, placeholder) end
 
 --#endregion
@@ -597,6 +624,7 @@ function input.prompt(title, placeholder) end
 ---Gets the currently pressed game buttons and stick direction for a given port.
 ---Note that the `y` coordinate of the stick is the opposite of what is shown on
 ---TAS Input.
+---@nodiscard
 ---@param port 1|2|3|4
 ---@return table
 function joypad.get(port) end
@@ -605,6 +633,7 @@ function joypad.get(port) end
 ---inputs, they will be set to `false` for buttons or `0` for stick coordinates
 ---@param port 1|2|3|4
 ---@param inputs table
+---@return nil
 function joypad.set(port, inputs) end
 
 ---Calls the function `f` every input frame. The function `f` receives an
@@ -632,13 +661,16 @@ function joypad.count() end
 ---Plays a movie file located at `filename`. This function sets `Read Only` to
 ---true.
 ---@param filename string
+---@return nil
 function movie.playmovie(filename) end
 
 ---Stops the currently playing movie.
+---@return nil
 function movie.stopmovie() end
 
 ---Returns the filename of the currently playing movie. It will error if no
 ---movie is playing.
+---@nodiscard
 ---@return string
 function movie.getmoviefilename() end
 
@@ -650,10 +682,12 @@ function movie.getmoviefilename() end
 
 ---Saves a savestate to `filename`.
 ---@param filename string
+---@return nil
 function savestate.savefile(filename) end
 
 ---Loads a savestate from `filename`
 ---@param filename string
+---@return nil
 function savestate.loadfile(filename) end
 
 --#endregion
@@ -663,6 +697,7 @@ function savestate.loadfile(filename) end
 --#region
 
 ---Opens a file dialouge and returns the file path of the file chosen.
+---@nodiscard
 ---@param filter string This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files
 ---@param type integer Unknown
 ---@return string
@@ -677,9 +712,11 @@ function ioHelper.filediag(filter, type) end
 ---Begins an avi recording using the previously saved encoding settings. It is
 ---saved to `filename`.
 ---@param filename string
+---@return nil
 function avi.startcapture(filename) end
 
 ---Stops avi recording.
+---@return nil
 function avi.stopcapture() end
 
 --#endregion

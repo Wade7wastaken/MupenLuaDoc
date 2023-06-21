@@ -81,6 +81,7 @@ saved to `filename`.
 
 ```lua
 function avi.startcapture(filename: string)
+  -> nil
 ```
 
 
@@ -93,6 +94,7 @@ Stops avi recording.
 
 ```lua
 function avi.stopcapture()
+  -> nil
 ```
 
 
@@ -1285,6 +1287,7 @@ returned.
 
 ```lua
 function input.prompt(title?: string, placeholder?: string)
+  -> string|nil
 ```
 
 
@@ -1684,6 +1687,7 @@ port:
 
 ```lua
 function joypad.set(port: 1|2|3|4, inputs: table)
+  -> nil
 ```
 
 
@@ -2492,6 +2496,7 @@ size:
 
 ```lua
 function memory.readsize(address: integer, size: -1|-2|-4|-8|1...(+3))
+  -> nil
 ```
 
 
@@ -2530,6 +2535,7 @@ Writes an unsigned byte to memory at `address`.
 
 ```lua
 function memory.writebyte(address: integer, data: integer)
+  -> nil
 ```
 
 
@@ -2542,6 +2548,7 @@ Writes a double to memory at `address`.
 
 ```lua
 function memory.writedouble(address: integer, data: number)
+  -> nil
 ```
 
 
@@ -2554,6 +2561,7 @@ Writes an unsigned dword (4 bytes) to memory at `address`.
 
 ```lua
 function memory.writedword(address: integer, data: integer)
+  -> nil
 ```
 
 
@@ -2566,6 +2574,7 @@ Writes a float to memory at `address`.
 
 ```lua
 function memory.writefloat(address: integer, data: number)
+  -> nil
 ```
 
 
@@ -2579,6 +2588,7 @@ bytes to memory at `address`.
 
 ```lua
 function memory.writeqword(address: integer, data: integer[])
+  -> nil
 ```
 
 
@@ -2604,6 +2614,7 @@ size:
 
 ```lua
 function memory.writesize(address: integer, size: -1|-2|-4|-8|1...(+3), data: integer|integer[])
+  -> nil
 ```
 
 
@@ -2616,6 +2627,7 @@ Writes an unsigned word (2 bytes) to memory at `address`.
 
 ```lua
 function memory.writeword(address: integer, data: integer)
+  -> nil
 ```
 
 
@@ -2668,6 +2680,7 @@ true.
 
 ```lua
 function movie.playmovie(filename: string)
+  -> nil
 ```
 
 
@@ -2680,6 +2693,7 @@ Stops the currently playing movie.
 
 ```lua
 function movie.stopmovie()
+  -> nil
 ```
 
 
@@ -3221,6 +3235,7 @@ Loads a savestate from `filename`
 
 ```lua
 function savestate.loadfile(filename: string)
+  -> nil
 ```
 
 
@@ -3233,6 +3248,7 @@ Saves a savestate to `filename`.
 
 ```lua
 function savestate.savefile(filename: string)
+  -> nil
 ```
 
 
@@ -4054,6 +4070,7 @@ Draws the border of an ellipse at the specified coordinates and color.
 
 ```lua
 function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4067,6 +4084,7 @@ drawing them to the destination rectangle on the screen.
 
 ```lua
 function wgui.draw_image(destx1: integer, desty2: integer, destx2: integer, desty1: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string)
+  -> nil
 ```
 
 
@@ -4087,6 +4105,7 @@ Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
 ```lua
 function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, stroke_width: number)
+  -> nil
 ```
 
 
@@ -4107,6 +4126,7 @@ Draws the border of a rectangle at the specified coordinates and color.
 
 ```lua
 function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4128,6 +4148,7 @@ and radius
 
 ```lua
 function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4159,6 +4180,7 @@ fontstyle:
 
 ```lua
 function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)
+  -> nil
 ```
 
 
@@ -4179,6 +4201,7 @@ Draws a filled in ellipse at the specified coordinates and color.
 
 ```lua
 function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4199,6 +4222,7 @@ Draws a filled in rectangle at the specified coordinates and color.
 
 ```lua
 function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4220,6 +4244,7 @@ radius
 
 ```lua
 function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+  -> nil
 ```
 
 
@@ -4232,6 +4257,7 @@ Frees the image at `identifier`.
 
 ```lua
 function wgui.free_image(identifier: string)
+  -> nil
 ```
 
 
@@ -4254,6 +4280,7 @@ Draws a polygon at the specified coordinates and color
 
 ```lua
 function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)
+  -> nil
 ```
 
 
@@ -4306,6 +4333,7 @@ Loads an image file from `path` which you can then access through
 
 ```lua
 function wgui.load_image(path: string, identifier: string)
+  -> nil
 ```
 
 
@@ -4318,6 +4346,7 @@ Pops the most recent clip off the clip stack.
 
 ```lua
 function wgui.pop_clip()
+  -> nil
 ```
 
 
@@ -4332,6 +4361,7 @@ This clip is put onto a stack. It can then be popped off the stack with
 
 ```lua
 function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)
+  -> nil
 ```
 
 
@@ -4344,6 +4374,7 @@ Resizes the window to `width` and `height`
 
 ```lua
 function wgui.resize(width: integer, height: integer)
+  -> nil
 ```
 
 

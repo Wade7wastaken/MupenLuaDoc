@@ -133,22 +133,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6790034,
+                            "finish": 7150034,
                             "name": "filename",
-                            "start": 6790026,
+                            "start": 7150026,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Begins an avi recording using the previously saved encoding settings. It is\nsaved to `filename`.",
-                    "finish": 6790039,
-                    "start": 6790000,
+                    "finish": 7150039,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 7150000,
                     "type": "function",
-                    "view": "function avi.startcapture(filename: string)"
+                    "view": "function avi.startcapture(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6790025,
-                "start": 6790009,
+                "finish": 7150025,
+                "start": 7150009,
                 "type": "setfield"
             }
         ],
@@ -162,14 +168,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Stops avi recording.",
-                    "finish": 6820030,
-                    "start": 6820000,
+                    "finish": 7190030,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 7190000,
                     "type": "function",
-                    "view": "function avi.stopcapture()"
+                    "view": "function avi.stopcapture()\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6820024,
-                "start": 6820009,
+                "finish": 7190024,
+                "start": 7190009,
                 "type": "setfield"
             }
         ],
@@ -2676,35 +2688,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5810022,
+                            "finish": 6060022,
                             "name": "t1",
-                            "start": 5810020,
+                            "start": 6060020,
                             "type": "local",
                             "view": "table"
                         },
                         {
-                            "finish": 5810026,
+                            "finish": 6060026,
                             "name": "t2",
-                            "start": 5810024,
+                            "start": 6060024,
                             "type": "local",
                             "view": "table"
                         }
                     ],
                     "desc": "Returns the differences between `t1` and `t2`. For example, if `t1` is the\ninputs for this frame, and `t2` is the inputs for last frame, it would return\nwhich buttons were pressed this frame, not which buttons are active.",
-                    "finish": 5810031,
+                    "finish": 6060031,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 5810000,
+                    "start": 6060000,
                     "type": "function",
                     "view": "function input.diff(t1: table, t2: table)\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5810019,
-                "start": 5810009,
+                "finish": 6060019,
+                "start": 6060009,
                 "type": "setfield"
             }
         ],
@@ -2718,20 +2730,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the state of all keyboard keys and the mouse position in a table. Ex:\n`input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.",
-                    "finish": 5730024,
+                    "finish": 5970024,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 5730000,
+                    "start": 5970000,
                     "type": "function",
                     "view": "function input.get()\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5730018,
-                "start": 5730009,
+                "finish": 5970018,
+                "start": 5970009,
                 "type": "setfield"
             }
         ],
@@ -2746,30 +2758,36 @@
                     "args": [
                         {
                             "desc": "The title of the text box. Defaults to \"input:\".",
-                            "finish": 5880027,
+                            "finish": 6150027,
                             "name": "title",
-                            "start": 5880022,
+                            "start": 6150022,
                             "type": "local",
                             "view": "string?"
                         },
                         {
                             "desc": "The text box is filled with this string when it opens. Defaults to \"\".",
-                            "finish": 5880040,
+                            "finish": 6150040,
                             "name": "placeholder",
-                            "start": 5880029,
+                            "start": 6150029,
                             "type": "local",
                             "view": "string?"
                         }
                     ],
                     "desc": "Opens a window where the user can input text. If `OK` is clicked, that text\nis returned. If `Cancel` is clicked or the window is closed, `nil` is\nreturned.\n\n@*param* `title` — The title of the text box. Defaults to \"input:\".\n\n@*param* `placeholder` — The text box is filled with this string when it opens. Defaults to \"\".",
-                    "finish": 5880045,
-                    "start": 5880000,
+                    "finish": 6150045,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "string|nil"
+                        }
+                    ],
+                    "start": 6150000,
                     "type": "function",
-                    "view": "function input.prompt(title?: string, placeholder?: string)"
+                    "view": "function input.prompt(title?: string, placeholder?: string)\n  -> string|nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5880021,
-                "start": 5880009,
+                "finish": 6150021,
+                "start": 6150009,
                 "type": "setfield"
             }
         ],
@@ -3225,36 +3243,36 @@
                     "args": [
                         {
                             "desc": "This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files",
-                            "finish": 6680033,
+                            "finish": 7030033,
                             "name": "filter",
-                            "start": 6680027,
+                            "start": 7030027,
                             "type": "local",
                             "view": "string"
                         },
                         {
                             "desc": "Unknown",
-                            "finish": 6680039,
+                            "finish": 7030039,
                             "name": "type",
-                            "start": 6680035,
+                            "start": 7030035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files\n\n@*param* `type` — Unknown",
-                    "finish": 6680044,
+                    "finish": 7030044,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "string"
                         }
                     ],
-                    "start": 6680000,
+                    "start": 7030000,
                     "type": "function",
                     "view": "function ioHelper.filediag(filter: string, type: integer)\n  -> string"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6680026,
-                "start": 6680009,
+                "finish": 7030026,
+                "start": 7030009,
                 "type": "setfield"
             }
         ],
@@ -3330,7 +3348,7 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started. Alias for\n`emu.inputcount`.\n\n@*return* `inputcount` — The number of input frames that have happened since the emulator was started.",
-                    "finish": 6230027,
+                    "finish": 6520027,
                     "returns": [
                         {
                             "desc": "The number of input frames that have happened since the emulator was started.",
@@ -3339,13 +3357,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 6230000,
+                    "start": 6520000,
                     "type": "function",
                     "view": "function joypad.count()\n  -> inputcount: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6230021,
-                "start": 6230009,
+                "finish": 6520021,
+                "start": 6520009,
                 "type": "setfield"
             }
         ],
@@ -3359,28 +3377,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6010024,
+                            "finish": 6290024,
                             "name": "port",
-                            "start": 6010020,
+                            "start": 6290020,
                             "type": "local",
                             "view": "1|2|3|4"
                         }
                     ],
                     "desc": "Gets the currently pressed game buttons and stick direction for a given port.\nNote that the `y` coordinate of the stick is the opposite of what is shown on\nTAS Input.\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
-                    "finish": 6010029,
+                    "finish": 6290029,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 6010000,
+                    "start": 6290000,
                     "type": "function",
                     "view": "function joypad.get(port: 1|2|3|4)\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6010019,
-                "start": 6010009,
+                "finish": 6290019,
+                "start": 6290009,
                 "type": "setfield"
             }
         ],
@@ -3395,36 +3413,36 @@
                     "args": [
                         {
                             "desc": "The function to be called every input frame. It receives an argument that seems to always be `0`.",
-                            "finish": 6160026,
+                            "finish": 6450026,
                             "name": "f",
-                            "start": 6160025,
+                            "start": 6450025,
                             "type": "local",
                             "view": "fun(a?: integer):nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 6160038,
+                            "finish": 6450038,
                             "name": "unregister",
-                            "start": 6160028,
+                            "start": 6450028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function. Alias for `emu.atinput`.\n\n@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 6160043,
+                    "finish": 6450043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6160000,
+                    "start": 6450000,
                     "type": "function",
                     "view": "function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6160024,
-                "start": 6160009,
+                "finish": 6450024,
+                "start": 6450009,
                 "type": "setfield"
             }
         ],
@@ -3438,29 +3456,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6070024,
+                            "finish": 6360024,
                             "name": "port",
-                            "start": 6070020,
+                            "start": 6360020,
                             "type": "local",
                             "view": "1|2|3|4"
                         },
                         {
-                            "finish": 6070032,
+                            "finish": 6360032,
                             "name": "inputs",
-                            "start": 6070026,
+                            "start": 6360026,
                             "type": "local",
                             "view": "table"
                         }
                     ],
                     "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
-                    "finish": 6070037,
-                    "start": 6070000,
+                    "finish": 6360037,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 6360000,
                     "type": "function",
-                    "view": "function joypad.set(port: 1|2|3|4, inputs: table)"
+                    "view": "function joypad.set(port: 1|2|3|4, inputs: table)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6070019,
-                "start": 6070009,
+                "finish": 6360019,
+                "start": 6360009,
                 "type": "setfield"
             }
         ],
@@ -5292,29 +5316,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3500032,
+                            "finish": 3510032,
                             "name": "address",
-                            "start": 3500025,
+                            "start": 3510025,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3500038,
+                            "finish": 3510038,
                             "name": "size",
-                            "start": 3500034,
+                            "start": 3510034,
                             "type": "local",
                             "view": "-1|-2|-4|-8|1...(+3)"
                         }
                     ],
                     "desc": "Reads `size` bytes from memory at `address` and returns them. The memory is\ntreated as signed if `size` is is negative.\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n    | -1\n    | -2\n    | -4\n    | -8\n```",
-                    "finish": 3500043,
-                    "start": 3500000,
+                    "finish": 3510043,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3510000,
                     "type": "function",
-                    "view": "function memory.readsize(address: integer, size: -1|-2|-4|-8|1...(+3))"
+                    "view": "function memory.readsize(address: integer, size: -1|-2|-4|-8|1...(+3))\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3500024,
-                "start": 3500009,
+                "finish": 3510024,
+                "start": 3510009,
                 "type": "setfield"
             }
         ],
@@ -5398,29 +5428,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3550033,
+                            "finish": 3570033,
                             "name": "address",
-                            "start": 3550026,
+                            "start": 3570026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3550039,
+                            "finish": 3570039,
                             "name": "data",
-                            "start": 3550035,
+                            "start": 3570035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Writes an unsigned byte to memory at `address`.",
-                    "finish": 3550044,
-                    "start": 3550000,
+                    "finish": 3570044,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3570000,
                     "type": "function",
-                    "view": "function memory.writebyte(address: integer, data: integer)"
+                    "view": "function memory.writebyte(address: integer, data: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3550025,
-                "start": 3550009,
+                "finish": 3570025,
+                "start": 3570009,
                 "type": "setfield"
             }
         ],
@@ -5434,29 +5470,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3810035,
+                            "finish": 3880035,
                             "name": "address",
-                            "start": 3810028,
+                            "start": 3880028,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3810041,
+                            "finish": 3880041,
                             "name": "data",
-                            "start": 3810037,
+                            "start": 3880037,
                             "type": "local",
                             "view": "number"
                         }
                     ],
                     "desc": "Writes a double to memory at `address`.",
-                    "finish": 3810046,
-                    "start": 3810000,
+                    "finish": 3880046,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3880000,
                     "type": "function",
-                    "view": "function memory.writedouble(address: integer, data: number)"
+                    "view": "function memory.writedouble(address: integer, data: number)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3810027,
-                "start": 3810009,
+                "finish": 3880027,
+                "start": 3880009,
                 "type": "setfield"
             }
         ],
@@ -5470,34 +5512,82 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3650034,
+                            "finish": 3690034,
                             "name": "address",
-                            "start": 3650027,
+                            "start": 3690027,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3650040,
+                            "finish": 3690040,
                             "name": "data",
-                            "start": 3650036,
+                            "start": 3690036,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Writes an unsigned dword (4 bytes) to memory at `address`.",
-                    "finish": 3650045,
-                    "start": 3650000,
+                    "finish": 3690045,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3690000,
                     "type": "function",
-                    "view": "function memory.writedword(address: integer, data: integer)"
+                    "view": "function memory.writedword(address: integer, data: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3650026,
-                "start": 3650009,
+                "finish": 3690026,
+                "start": 3690009,
                 "type": "setfield"
             }
         ],
         "desc": "Writes an unsigned dword (4 bytes) to memory at `address`.",
         "name": "memory.writedword",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 3820034,
+                            "name": "address",
+                            "start": 3820027,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 3820040,
+                            "name": "data",
+                            "start": 3820036,
+                            "type": "local",
+                            "view": "number"
+                        }
+                    ],
+                    "desc": "Writes a float to memory at `address`.",
+                    "finish": 3820045,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3820000,
+                    "type": "function",
+                    "view": "function memory.writefloat(address: integer, data: number)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 3820026,
+                "start": 3820009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Writes a float to memory at `address`.",
+        "name": "memory.writefloat",
         "type": "variable"
     },
     {
@@ -5517,54 +5607,24 @@
                             "name": "data",
                             "start": 3760036,
                             "type": "local",
-                            "view": "number"
-                        }
-                    ],
-                    "desc": "Writes a float to memory at `address`.",
-                    "finish": 3760045,
-                    "start": 3760000,
-                    "type": "function",
-                    "view": "function memory.writefloat(address: integer, data: number)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3760026,
-                "start": 3760009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Writes a float to memory at `address`.",
-        "name": "memory.writefloat",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 3710034,
-                            "name": "address",
-                            "start": 3710027,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 3710040,
-                            "name": "data",
-                            "start": 3710036,
-                            "type": "local",
                             "view": "integer[]"
                         }
                     ],
                     "desc": "Writes an unsigned qword consisting of a table with the upper and lower 4\nbytes to memory at `address`.",
-                    "finish": 3710045,
-                    "start": 3710000,
+                    "finish": 3760045,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3760000,
                     "type": "function",
-                    "view": "function memory.writeqword(address: integer, data: integer[])"
+                    "view": "function memory.writeqword(address: integer, data: integer[])\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3710026,
-                "start": 3710009,
+                "finish": 3760026,
+                "start": 3760009,
                 "type": "setfield"
             }
         ],
@@ -5578,36 +5638,42 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3880033,
+                            "finish": 3960033,
                             "name": "address",
-                            "start": 3880026,
+                            "start": 3960026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3880039,
+                            "finish": 3960039,
                             "name": "size",
-                            "start": 3880035,
+                            "start": 3960035,
                             "type": "local",
                             "view": "-1|-2|-4|-8|1...(+3)"
                         },
                         {
-                            "finish": 3880045,
+                            "finish": 3960045,
                             "name": "data",
-                            "start": 3880041,
+                            "start": 3960041,
                             "type": "local",
                             "view": "integer|integer[]"
                         }
                     ],
                     "desc": "Writes `size` bytes to memory at `address`. The memory is treated as signed\nif `size` is is negative.\n\n```lua\nsize:\n    | 1\n    | 2\n    | 4\n    | 8\n    | -1\n    | -2\n    | -4\n    | -8\n```",
-                    "finish": 3880050,
-                    "start": 3880000,
+                    "finish": 3960050,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3960000,
                     "type": "function",
-                    "view": "function memory.writesize(address: integer, size: -1|-2|-4|-8|1...(+3), data: integer|integer[])"
+                    "view": "function memory.writesize(address: integer, size: -1|-2|-4|-8|1...(+3), data: integer|integer[])\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3880025,
-                "start": 3880009,
+                "finish": 3960025,
+                "start": 3960009,
                 "type": "setfield"
             }
         ],
@@ -5621,29 +5687,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 3600033,
+                            "finish": 3630033,
                             "name": "address",
-                            "start": 3600026,
+                            "start": 3630026,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 3600039,
+                            "finish": 3630039,
                             "name": "data",
-                            "start": 3600035,
+                            "start": 3630035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Writes an unsigned word (2 bytes) to memory at `address`.",
-                    "finish": 3600044,
-                    "start": 3600000,
+                    "finish": 3630044,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 3630000,
                     "type": "function",
-                    "view": "function memory.writeword(address: integer, data: integer)"
+                    "view": "function memory.writeword(address: integer, data: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 3600025,
-                "start": 3600009,
+                "finish": 3630025,
+                "start": 3630009,
                 "type": "setfield"
             }
         ],
@@ -5710,20 +5782,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the filename of the currently playing movie. It will error if no\nmovie is playing.",
-                    "finish": 6420037,
+                    "finish": 6740037,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "string"
                         }
                     ],
-                    "start": 6420000,
+                    "start": 6740000,
                     "type": "function",
                     "view": "function movie.getmoviefilename()\n  -> string"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6420031,
-                "start": 6420009,
+                "finish": 6740031,
+                "start": 6740009,
                 "type": "setfield"
             }
         ],
@@ -5737,22 +5809,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6340033,
+                            "finish": 6640033,
                             "name": "filename",
-                            "start": 6340025,
+                            "start": 6640025,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Plays a movie file located at `filename`. This function sets `Read Only` to\ntrue.",
-                    "finish": 6340038,
-                    "start": 6340000,
+                    "finish": 6640038,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 6640000,
                     "type": "function",
-                    "view": "function movie.playmovie(filename: string)"
+                    "view": "function movie.playmovie(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6340024,
-                "start": 6340009,
+                "finish": 6640024,
+                "start": 6640009,
                 "type": "setfield"
             }
         ],
@@ -5766,14 +5844,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Stops the currently playing movie.",
-                    "finish": 6370030,
-                    "start": 6370000,
+                    "finish": 6680030,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 6680000,
                     "type": "function",
-                    "view": "function movie.stopmovie()"
+                    "view": "function movie.stopmovie()\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6370024,
-                "start": 6370009,
+                "finish": 6680024,
+                "start": 6680009,
                 "type": "setfield"
             }
         ],
@@ -6925,22 +7009,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6560036,
+                            "finish": 6900036,
                             "name": "filename",
-                            "start": 6560028,
+                            "start": 6900028,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Loads a savestate from `filename`",
-                    "finish": 6560041,
-                    "start": 6560000,
+                    "finish": 6900041,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 6900000,
                     "type": "function",
-                    "view": "function savestate.loadfile(filename: string)"
+                    "view": "function savestate.loadfile(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6560027,
-                "start": 6560009,
+                "finish": 6900027,
+                "start": 6900009,
                 "type": "setfield"
             }
         ],
@@ -6954,22 +7044,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6520036,
+                            "finish": 6850036,
                             "name": "filename",
-                            "start": 6520028,
+                            "start": 6850028,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Saves a savestate to `filename`.",
-                    "finish": 6520041,
-                    "start": 6520000,
+                    "finish": 6850041,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 6850000,
                     "type": "function",
-                    "view": "function savestate.savefile(filename: string)"
+                    "view": "function savestate.savefile(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6520027,
-                "start": 6520009,
+                "finish": 6850027,
+                "start": 6850009,
                 "type": "setfield"
             }
         ],
@@ -8922,6 +9018,601 @@
                 "extends": {
                     "args": [
                         {
+                            "finish": 4500028,
+                            "name": "x",
+                            "start": 4500027,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4500031,
+                            "name": "y",
+                            "start": 4500030,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4500040,
+                            "name": "radiusX",
+                            "start": 4500033,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4500049,
+                            "name": "radiusY",
+                            "start": 4500042,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4500054,
+                            "name": "red",
+                            "start": 4500051,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4500061,
+                            "name": "green",
+                            "start": 4500056,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4500067,
+                            "name": "blue",
+                            "start": 4500063,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4500074,
+                            "name": "alpha",
+                            "start": 4500069,
+                            "type": "local",
+                            "view": "number"
+                        }
+                    ],
+                    "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "finish": 4500079,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4500000,
+                    "type": "function",
+                    "view": "function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 4500026,
+                "start": 4500009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "name": "wgui.draw_ellipse",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 5590031,
+                            "name": "destx1",
+                            "start": 5590025,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590039,
+                            "name": "desty2",
+                            "start": 5590033,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590047,
+                            "name": "destx2",
+                            "start": 5590041,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590055,
+                            "name": "desty1",
+                            "start": 5590049,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590062,
+                            "name": "srcx1",
+                            "start": 5590057,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590069,
+                            "name": "srcy1",
+                            "start": 5590064,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590076,
+                            "name": "srcx2",
+                            "start": 5590071,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590083,
+                            "name": "srcy2",
+                            "start": 5590078,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5590095,
+                            "name": "identifier",
+                            "start": 5590085,
+                            "type": "local",
+                            "view": "string"
+                        }
+                    ],
+                    "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.",
+                    "finish": 5590100,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5590000,
+                    "type": "function",
+                    "view": "function wgui.draw_image(destx1: integer, desty2: integer, destx2: integer, desty1: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 5590024,
+                "start": 5590009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.",
+        "name": "wgui.draw_image",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 4630026,
+                            "name": "x1",
+                            "start": 4630024,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4630030,
+                            "name": "y1",
+                            "start": 4630028,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4630034,
+                            "name": "x2",
+                            "start": 4630032,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4630038,
+                            "name": "y2",
+                            "start": 4630036,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4630043,
+                            "name": "red",
+                            "start": 4630040,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4630050,
+                            "name": "green",
+                            "start": 4630045,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4630056,
+                            "name": "blue",
+                            "start": 4630052,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4630063,
+                            "name": "alpha",
+                            "start": 4630058,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "finish": 4630077,
+                            "name": "stroke_width",
+                            "start": 4630065,
+                            "type": "local",
+                            "view": "number"
+                        }
+                    ],
+                    "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "finish": 4630082,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4630000,
+                    "type": "function",
+                    "view": "function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, stroke_width: number)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 4630023,
+                "start": 4630009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "name": "wgui.draw_line",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 4260031,
+                            "name": "x1",
+                            "start": 4260029,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4260035,
+                            "name": "y1",
+                            "start": 4260033,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4260039,
+                            "name": "x2",
+                            "start": 4260037,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4260043,
+                            "name": "y2",
+                            "start": 4260041,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4260048,
+                            "name": "red",
+                            "start": 4260045,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4260055,
+                            "name": "green",
+                            "start": 4260050,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4260061,
+                            "name": "blue",
+                            "start": 4260057,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4260068,
+                            "name": "alpha",
+                            "start": 4260063,
+                            "type": "local",
+                            "view": "number"
+                        }
+                    ],
+                    "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "finish": 4260073,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4260000,
+                    "type": "function",
+                    "view": "function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 4260028,
+                "start": 4260009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "name": "wgui.draw_rectangle",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 5330039,
+                            "name": "x1",
+                            "start": 5330037,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5330043,
+                            "name": "y1",
+                            "start": 5330041,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5330047,
+                            "name": "x2",
+                            "start": 5330045,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5330051,
+                            "name": "y2",
+                            "start": 5330049,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 5330060,
+                            "name": "radiusX",
+                            "start": 5330053,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "finish": 5330069,
+                            "name": "radiusY",
+                            "start": 5330062,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 5330074,
+                            "name": "red",
+                            "start": 5330071,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 5330081,
+                            "name": "green",
+                            "start": 5330076,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 5330087,
+                            "name": "blue",
+                            "start": 5330083,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 5330094,
+                            "name": "alpha",
+                            "start": 5330089,
+                            "type": "local",
+                            "view": "number"
+                        }
+                    ],
+                    "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "finish": 5330099,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5330000,
+                    "type": "function",
+                    "view": "function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 5330036,
+                "start": 5330009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "name": "wgui.draw_rounded_rectangle",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 4820026,
+                            "name": "x1",
+                            "start": 4820024,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4820030,
+                            "name": "y1",
+                            "start": 4820028,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4820034,
+                            "name": "x2",
+                            "start": 4820032,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4820038,
+                            "name": "y2",
+                            "start": 4820036,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4820043,
+                            "name": "red",
+                            "start": 4820040,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4820050,
+                            "name": "green",
+                            "start": 4820045,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4820056,
+                            "name": "blue",
+                            "start": 4820052,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "finish": 4820063,
+                            "name": "alpha",
+                            "start": 4820058,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "finish": 4820069,
+                            "name": "text",
+                            "start": 4820065,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "finish": 4820079,
+                            "name": "fontname",
+                            "start": 4820071,
+                            "type": "local",
+                            "view": "string"
+                        },
+                        {
+                            "finish": 4820089,
+                            "name": "fontsize",
+                            "start": 4820081,
+                            "type": "local",
+                            "view": "number"
+                        },
+                        {
+                            "desc": "0: normal, 1: bold, 2: italic, 3: bold + italic",
+                            "finish": 4820100,
+                            "name": "fontstyle",
+                            "start": 4820091,
+                            "type": "local",
+                            "view": "0|1|2|3"
+                        },
+                        {
+                            "finish": 4820112,
+                            "name": "horizalign",
+                            "start": 4820102,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 4820123,
+                            "name": "vertalign",
+                            "start": 4820114,
+                            "type": "local",
+                            "view": "integer"
+                        }
+                    ],
+                    "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
+                    "finish": 4820128,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4820000,
+                    "type": "function",
+                    "view": "function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)\n  -> nil"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 4820023,
+                "start": 4820009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
+        "name": "wgui.draw_text",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
                             "finish": 4380028,
                             "name": "x",
                             "start": 4380027,
@@ -8982,574 +9673,21 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
                     "finish": 4380079,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
                     "start": 4380000,
                     "type": "function",
-                    "view": "function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)"
+                    "view": "function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
                 "finish": 4380026,
                 "start": 4380009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-        "name": "wgui.draw_ellipse",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 5380031,
-                            "name": "destx1",
-                            "start": 5380025,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380039,
-                            "name": "desty2",
-                            "start": 5380033,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380047,
-                            "name": "destx2",
-                            "start": 5380041,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380055,
-                            "name": "desty1",
-                            "start": 5380049,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380062,
-                            "name": "srcx1",
-                            "start": 5380057,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380069,
-                            "name": "srcy1",
-                            "start": 5380064,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380076,
-                            "name": "srcx2",
-                            "start": 5380071,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380083,
-                            "name": "srcy2",
-                            "start": 5380078,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5380095,
-                            "name": "identifier",
-                            "start": 5380085,
-                            "type": "local",
-                            "view": "string"
-                        }
-                    ],
-                    "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.",
-                    "finish": 5380100,
-                    "start": 5380000,
-                    "type": "function",
-                    "view": "function wgui.draw_image(destx1: integer, desty2: integer, destx2: integer, desty1: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5380024,
-                "start": 5380009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.",
-        "name": "wgui.draw_image",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 4500026,
-                            "name": "x1",
-                            "start": 4500024,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4500030,
-                            "name": "y1",
-                            "start": 4500028,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4500034,
-                            "name": "x2",
-                            "start": 4500032,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4500038,
-                            "name": "y2",
-                            "start": 4500036,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4500043,
-                            "name": "red",
-                            "start": 4500040,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4500050,
-                            "name": "green",
-                            "start": 4500045,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4500056,
-                            "name": "blue",
-                            "start": 4500052,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4500063,
-                            "name": "alpha",
-                            "start": 4500058,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "finish": 4500077,
-                            "name": "stroke_width",
-                            "start": 4500065,
-                            "type": "local",
-                            "view": "number"
-                        }
-                    ],
-                    "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 4500082,
-                    "start": 4500000,
-                    "type": "function",
-                    "view": "function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, stroke_width: number)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4500023,
-                "start": 4500009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-        "name": "wgui.draw_line",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 4160031,
-                            "name": "x1",
-                            "start": 4160029,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4160035,
-                            "name": "y1",
-                            "start": 4160033,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4160039,
-                            "name": "x2",
-                            "start": 4160037,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4160043,
-                            "name": "y2",
-                            "start": 4160041,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4160048,
-                            "name": "red",
-                            "start": 4160045,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4160055,
-                            "name": "green",
-                            "start": 4160050,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4160061,
-                            "name": "blue",
-                            "start": 4160057,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4160068,
-                            "name": "alpha",
-                            "start": 4160063,
-                            "type": "local",
-                            "view": "number"
-                        }
-                    ],
-                    "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 4160073,
-                    "start": 4160000,
-                    "type": "function",
-                    "view": "function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4160028,
-                "start": 4160009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-        "name": "wgui.draw_rectangle",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 5150039,
-                            "name": "x1",
-                            "start": 5150037,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5150043,
-                            "name": "y1",
-                            "start": 5150041,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5150047,
-                            "name": "x2",
-                            "start": 5150045,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5150051,
-                            "name": "y2",
-                            "start": 5150049,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 5150060,
-                            "name": "radiusX",
-                            "start": 5150053,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "finish": 5150069,
-                            "name": "radiusY",
-                            "start": 5150062,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5150074,
-                            "name": "red",
-                            "start": 5150071,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5150081,
-                            "name": "green",
-                            "start": 5150076,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5150087,
-                            "name": "blue",
-                            "start": 5150083,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5150094,
-                            "name": "alpha",
-                            "start": 5150089,
-                            "type": "local",
-                            "view": "number"
-                        }
-                    ],
-                    "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 5150099,
-                    "start": 5150000,
-                    "type": "function",
-                    "view": "function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5150036,
-                "start": 5150009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-        "name": "wgui.draw_rounded_rectangle",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 4680026,
-                            "name": "x1",
-                            "start": 4680024,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4680030,
-                            "name": "y1",
-                            "start": 4680028,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4680034,
-                            "name": "x2",
-                            "start": 4680032,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4680038,
-                            "name": "y2",
-                            "start": 4680036,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4680043,
-                            "name": "red",
-                            "start": 4680040,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4680050,
-                            "name": "green",
-                            "start": 4680045,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4680056,
-                            "name": "blue",
-                            "start": 4680052,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4680063,
-                            "name": "alpha",
-                            "start": 4680058,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "finish": 4680069,
-                            "name": "text",
-                            "start": 4680065,
-                            "type": "local",
-                            "view": "string"
-                        },
-                        {
-                            "finish": 4680079,
-                            "name": "fontname",
-                            "start": 4680071,
-                            "type": "local",
-                            "view": "string"
-                        },
-                        {
-                            "finish": 4680089,
-                            "name": "fontsize",
-                            "start": 4680081,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "0: normal, 1: bold, 2: italic, 3: bold + italic",
-                            "finish": 4680100,
-                            "name": "fontstyle",
-                            "start": 4680091,
-                            "type": "local",
-                            "view": "0|1|2|3"
-                        },
-                        {
-                            "finish": 4680112,
-                            "name": "horizalign",
-                            "start": 4680102,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4680123,
-                            "name": "vertalign",
-                            "start": 4680114,
-                            "type": "local",
-                            "view": "integer"
-                        }
-                    ],
-                    "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
-                    "finish": 4680128,
-                    "start": 4680000,
-                    "type": "function",
-                    "view": "function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4680023,
-                "start": 4680009,
-                "type": "setfield"
-            }
-        ],
-        "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
-        "name": "wgui.draw_text",
-        "type": "variable"
-    },
-    {
-        "defines": [
-            {
-                "extends": {
-                    "args": [
-                        {
-                            "finish": 4270028,
-                            "name": "x",
-                            "start": 4270027,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4270031,
-                            "name": "y",
-                            "start": 4270030,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4270040,
-                            "name": "radiusX",
-                            "start": 4270033,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "finish": 4270049,
-                            "name": "radiusY",
-                            "start": 4270042,
-                            "type": "local",
-                            "view": "integer"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4270054,
-                            "name": "red",
-                            "start": 4270051,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4270061,
-                            "name": "green",
-                            "start": 4270056,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4270067,
-                            "name": "blue",
-                            "start": 4270063,
-                            "type": "local",
-                            "view": "number"
-                        },
-                        {
-                            "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4270074,
-                            "name": "alpha",
-                            "start": 4270069,
-                            "type": "local",
-                            "view": "number"
-                        }
-                    ],
-                    "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 4270079,
-                    "start": 4270000,
-                    "type": "function",
-                    "view": "function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)"
-                },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4270026,
-                "start": 4270009,
                 "type": "setfield"
             }
         ],
@@ -9563,75 +9701,81 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 4050031,
+                            "finish": 4140031,
                             "name": "x1",
-                            "start": 4050029,
+                            "start": 4140029,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4050035,
+                            "finish": 4140035,
                             "name": "y1",
-                            "start": 4050033,
+                            "start": 4140033,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4050039,
+                            "finish": 4140039,
                             "name": "x2",
-                            "start": 4050037,
+                            "start": 4140037,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4050043,
+                            "finish": 4140043,
                             "name": "y2",
-                            "start": 4050041,
+                            "start": 4140041,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4050048,
+                            "finish": 4140048,
                             "name": "red",
-                            "start": 4050045,
+                            "start": 4140045,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4050055,
+                            "finish": 4140055,
                             "name": "green",
-                            "start": 4050050,
+                            "start": 4140050,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4050061,
+                            "finish": 4140061,
                             "name": "blue",
-                            "start": 4050057,
+                            "start": 4140057,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 4050068,
+                            "finish": 4140068,
                             "name": "alpha",
-                            "start": 4050063,
+                            "start": 4140063,
                             "type": "local",
                             "view": "number"
                         }
                     ],
                     "desc": "Draws a filled in rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 4050073,
-                    "start": 4050000,
+                    "finish": 4140073,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4140000,
                     "type": "function",
-                    "view": "function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)"
+                    "view": "function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4050028,
-                "start": 4050009,
+                "finish": 4140028,
+                "start": 4140009,
                 "type": "setfield"
             }
         ],
@@ -9645,89 +9789,95 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5010039,
+                            "finish": 5180039,
                             "name": "x1",
-                            "start": 5010037,
+                            "start": 5180037,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5010043,
+                            "finish": 5180043,
                             "name": "y1",
-                            "start": 5010041,
+                            "start": 5180041,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5010047,
+                            "finish": 5180047,
                             "name": "x2",
-                            "start": 5010045,
+                            "start": 5180045,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5010051,
+                            "finish": 5180051,
                             "name": "y2",
-                            "start": 5010049,
+                            "start": 5180049,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5010060,
+                            "finish": 5180060,
                             "name": "radiusX",
-                            "start": 5010053,
+                            "start": 5180053,
                             "type": "local",
                             "view": "number"
                         },
                         {
-                            "finish": 5010069,
+                            "finish": 5180069,
                             "name": "radiusY",
-                            "start": 5010062,
+                            "start": 5180062,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5010074,
+                            "finish": 5180074,
                             "name": "red",
-                            "start": 5010071,
+                            "start": 5180071,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5010081,
+                            "finish": 5180081,
                             "name": "green",
-                            "start": 5010076,
+                            "start": 5180076,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5010087,
+                            "finish": 5180087,
                             "name": "blue",
-                            "start": 5010083,
+                            "start": 5180083,
                             "type": "local",
                             "view": "number"
                         },
                         {
                             "desc": "d2d colors range from 0.0 to 1.0",
-                            "finish": 5010094,
+                            "finish": 5180094,
                             "name": "alpha",
-                            "start": 5010089,
+                            "start": 5180089,
                             "type": "local",
                             "view": "number"
                         }
                     ],
                     "desc": "Draws a filled in rounded rectangle at the specified coordinates, color and\nradius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
-                    "finish": 5010099,
-                    "start": 5010000,
+                    "finish": 5180099,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5180000,
                     "type": "function",
-                    "view": "function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)"
+                    "view": "function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5010036,
-                "start": 5010009,
+                "finish": 5180036,
+                "start": 5180009,
                 "type": "setfield"
             }
         ],
@@ -9741,22 +9891,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5250035,
+                            "finish": 5450035,
                             "name": "identifier",
-                            "start": 5250025,
+                            "start": 5450025,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Frees the image at `identifier`.",
-                    "finish": 5250040,
-                    "start": 5250000,
+                    "finish": 5450040,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5450000,
                     "type": "function",
-                    "view": "function wgui.free_image(identifier: string)"
+                    "view": "function wgui.free_image(identifier: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5250024,
-                "start": 5250009,
+                "finish": 5450024,
+                "start": 5450009,
                 "type": "setfield"
             }
         ],
@@ -9771,54 +9927,60 @@
                     "args": [
                         {
                             "desc": "Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.",
-                            "finish": 5520038,
+                            "finish": 5740038,
                             "name": "points",
-                            "start": 5520032,
+                            "start": 5740032,
                             "type": "local",
                             "view": "integer[][]"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5520045,
+                            "finish": 5740045,
                             "name": "alpha",
-                            "start": 5520040,
+                            "start": 5740040,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5520050,
+                            "finish": 5740050,
                             "name": "red",
-                            "start": 5520047,
+                            "start": 5740047,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5520057,
+                            "finish": 5740057,
                             "name": "green",
-                            "start": 5520052,
+                            "start": 5740052,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5520063,
+                            "finish": 5740063,
                             "name": "blue",
-                            "start": 5520059,
+                            "start": 5740059,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Draws a polygon at the specified coordinates and color\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255\n\n@*param* `red` — GDI+ colors range from 0 to 255\n\n@*param* `green` — GDI+ colors range from 0 to 255\n\n@*param* `blue` — GDI+ colors range from 0 to 255",
-                    "finish": 5520068,
-                    "start": 5520000,
+                    "finish": 5740068,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5740000,
                     "type": "function",
-                    "view": "function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)"
+                    "view": "function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5520031,
-                "start": 5520009,
+                "finish": 5740031,
+                "start": 5740009,
                 "type": "setfield"
             }
         ],
@@ -9832,28 +9994,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5440039,
+                            "finish": 5650039,
                             "name": "identifier",
-                            "start": 5440029,
+                            "start": 5650029,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Returns the width and height of the image at `identifier`.",
-                    "finish": 5440044,
+                    "finish": 5650044,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "{ width: integer, height: integer }"
                         }
                     ],
-                    "start": 5440000,
+                    "start": 5650000,
                     "type": "function",
                     "view": "function wgui.get_image_info(identifier: string)\n  -> { width: integer, height: integer }"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5440028,
-                "start": 5440009,
+                "finish": 5650028,
+                "start": 5650009,
                 "type": "setfield"
             }
         ],
@@ -9867,42 +10029,42 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 4750032,
+                            "finish": 4890032,
                             "name": "text",
-                            "start": 4750028,
+                            "start": 4890028,
                             "type": "local",
                             "view": "string"
                         },
                         {
-                            "finish": 4750042,
+                            "finish": 4890042,
                             "name": "fontname",
-                            "start": 4750034,
+                            "start": 4890034,
                             "type": "local",
                             "view": "string"
                         },
                         {
-                            "finish": 4750052,
+                            "finish": 4890052,
                             "name": "fontsize",
-                            "start": 4750044,
+                            "start": 4890044,
                             "type": "local",
                             "view": "number"
                         }
                     ],
                     "desc": "Returns the width and height of the specified text.",
-                    "finish": 4750057,
+                    "finish": 4890057,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "{ width: integer, height: integer }"
                         }
                     ],
-                    "start": 4750000,
+                    "start": 4890000,
                     "type": "function",
                     "view": "function wgui.get_text_size(text: string, fontname: string, fontsize: number)\n  -> { width: integer, height: integer }"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4750027,
-                "start": 4750009,
+                "finish": 4890027,
+                "start": 4890009,
                 "type": "setfield"
             }
         ],
@@ -9916,20 +10078,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the current size of the window.",
-                    "finish": 5570024,
+                    "finish": 5790024,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "{ width: integer, height: integer }"
                         }
                     ],
-                    "start": 5570000,
+                    "start": 5790000,
                     "type": "function",
                     "view": "function wgui.info()\n  -> { width: integer, height: integer }"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5570018,
-                "start": 5570009,
+                "finish": 5790018,
+                "start": 5790009,
                 "type": "setfield"
             }
         ],
@@ -9943,29 +10105,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5210029,
+                            "finish": 5400029,
                             "name": "path",
-                            "start": 5210025,
+                            "start": 5400025,
                             "type": "local",
                             "view": "string"
                         },
                         {
-                            "finish": 5210041,
+                            "finish": 5400041,
                             "name": "identifier",
-                            "start": 5210031,
+                            "start": 5400031,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Loads an image file from `path` which you can then access through\n`identifier`.",
-                    "finish": 5210046,
-                    "start": 5210000,
+                    "finish": 5400046,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5400000,
                     "type": "function",
-                    "view": "function wgui.load_image(path: string, identifier: string)"
+                    "view": "function wgui.load_image(path: string, identifier: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5210024,
-                "start": 5210009,
+                "finish": 5400024,
+                "start": 5400009,
                 "type": "setfield"
             }
         ],
@@ -9979,14 +10147,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Pops the most recent clip off the clip stack.",
-                    "finish": 4870028,
-                    "start": 4870000,
+                    "finish": 5030028,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5030000,
                     "type": "function",
-                    "view": "function wgui.pop_clip()"
+                    "view": "function wgui.pop_clip()\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4870022,
-                "start": 4870009,
+                "finish": 5030022,
+                "start": 5030009,
                 "type": "setfield"
             }
         ],
@@ -10000,43 +10174,49 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 4840026,
+                            "finish": 4990026,
                             "name": "x1",
-                            "start": 4840024,
+                            "start": 4990024,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4840030,
+                            "finish": 4990030,
                             "name": "y1",
-                            "start": 4840028,
+                            "start": 4990028,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4840034,
+                            "finish": 4990034,
                             "name": "x2",
-                            "start": 4840032,
+                            "start": 4990032,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 4840038,
+                            "finish": 4990038,
                             "name": "y2",
-                            "start": 4840036,
+                            "start": 4990036,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Specifies a rectangle to which all subsequent drawing operations are clipped.\nThis clip is put onto a stack. It can then be popped off the stack with\n`wgui.d2d_pop_clip`.",
-                    "finish": 4840043,
-                    "start": 4840000,
+                    "finish": 4990043,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 4990000,
                     "type": "function",
-                    "view": "function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)"
+                    "view": "function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 4840023,
-                "start": 4840009,
+                "finish": 4990023,
+                "start": 4990009,
                 "type": "setfield"
             }
         ],
@@ -10050,29 +10230,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5620026,
+                            "finish": 5850026,
                             "name": "width",
-                            "start": 5620021,
+                            "start": 5850021,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5620034,
+                            "finish": 5850034,
                             "name": "height",
-                            "start": 5620028,
+                            "start": 5850028,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Resizes the window to `width` and `height`",
-                    "finish": 5620039,
-                    "start": 5620000,
+                    "finish": 5850039,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "nil"
+                        }
+                    ],
+                    "start": 5850000,
                     "type": "function",
-                    "view": "function wgui.resize(width: integer, height: integer)"
+                    "view": "function wgui.resize(width: integer, height: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5620020,
-                "start": 5620009,
+                "finish": 5850020,
+                "start": 5850009,
                 "type": "setfield"
             }
         ],
