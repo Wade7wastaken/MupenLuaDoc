@@ -867,13 +867,13 @@ The message data is given to the function in 4 parameters. If `unregister`
 is set to true, the function `f` will no longer be called when this event
 occurs, but it will error if you never registered the function.
 
-@*param* `f` — The function to be called when a window message is received.
+@*param* `f` — The function to be called when a window message is received. a: wnd, b: msg, c: wParam, d: lParam.
 
 @*param* `unregister` — If true, then unregister the function `f`.
 
 
 ```lua
-function emu.atwindowmessage(f: fun(a: any, b: any, c: any, d: any):nil, unregister?: boolean)
+function emu.atwindowmessage(f: fun(a: integer, b: integer, c: integer, d: integer):nil, unregister?: boolean)
   -> nil
 ```
 
@@ -898,8 +898,8 @@ function emu.console(message: string)
 
 # emu.debugview
 
-Prints `message` to the debug console. If you are not debugging mupen with
-Visual Studio, this function will do nothing.
+Prints `message` to the debug console. If you are not debugging with Visual
+Studio, this function will do nothing.
 
 @*param* `message` — The string to print to the debug console.
 
@@ -992,7 +992,7 @@ function emu.getsystemmetrics(param: integer)
 
 Returns the current mupen version. If `type` is 0 or less, it
 will return the full version name (Mupen 64 0.0.0). If `type`
-is 1 or more, it will return the version number (0.0.0).
+is 1 or more, it will return only the version number (0.0.0).
 
 @*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).
 
@@ -1065,6 +1065,7 @@ Pauses or unpauses the emulator.
 
 ```lua
 function emu.pause(pause: boolean)
+  -> nil
 ```
 
 
@@ -1090,9 +1091,9 @@ function emu.samplecount()
 
 # emu.screenshot
 
-Takes a screenshot and saves it to the directory `dir`
+Takes a screenshot and saves it to the directory `dir`.
 
-@*param* `dir` — The directory to save the screenshot to
+@*param* `dir` — The directory to save the screenshot to.
 
 
 ```lua
@@ -2298,7 +2299,7 @@ table
 # memory.doubletoint
 
 Reinterprets the bits of a 8 byte integer `n` as a double and returns it.
-This does not convert from an int to a float, but reinterprets the memory
+This does not convert from an int to a float, but reinterprets the memory.
 
 
 ```lua
@@ -2312,7 +2313,7 @@ function memory.doubletoint(n: integer[])
 # memory.floattoint
 
 Reinterprets the bits of a float `n` as a 4 byte integer and returns it. This
- does not convert from an int to a float, but reinterprets the memory
+ does not convert from an int to a float, but reinterprets the memory.
 
 
 ```lua
@@ -2326,7 +2327,7 @@ function memory.floattoint(n: number)
 # memory.inttodouble
 
 Reinterprets the bits of an 8 byte integer `n` as a double and returns it.
-This does not convert from an int to a double, but reinterprets the memory
+This does not convert from an int to a double, but reinterprets the memory.
 
 
 ```lua
@@ -2340,7 +2341,7 @@ function memory.inttodouble(n: integer[])
 # memory.inttofloat
 
 Reinterprets the bits of a 4 byte integer `n` as a float and returns it. This
- does not convert from an int to a float, but reinterprets the memory
+ does not convert from an int to a float, but reinterprets the memory.
 
 
 ```lua
@@ -3104,6 +3105,7 @@ function print(...any)
 
 ```lua
 function print(data: any)
+  -> nil
 ```
 
 
@@ -3288,7 +3290,7 @@ To change the metatable of other types from Lua code, you must use the debug lib
 
 
 ```lua
-function setmetatable(table: table, metatable?: table)
+function setmetatable(table: table, metatable?: table|metatable)
   -> table
 ```
 
@@ -3302,6 +3304,7 @@ Stops script execution
 
 ```lua
 function stop()
+  -> nil
 ```
 
 
@@ -4036,7 +4039,7 @@ table
 
 ---
 
-# wgui.d2d_draw_ellipse
+# wgui.draw_ellipse
 
 Draws the border of an ellipse at the specified coordinates and color.
 
@@ -4050,13 +4053,26 @@ Draws the border of an ellipse at the specified coordinates and color.
 
 
 ```lua
-function wgui.d2d_draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_draw_line
+# wgui.draw_image
+
+Draws an image by taking the pixels in the source rectangle of the image, and
+drawing them to the destination rectangle on the screen.
+
+
+```lua
+function wgui.draw_image(destx1: integer, desty2: integer, destx2: integer, desty1: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string)
+```
+
+
+---
+
+# wgui.draw_line
 
 Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
@@ -4070,13 +4086,13 @@ Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
 
 ```lua
-function wgui.d2d_draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, stroke_width: number)
 ```
 
 
 ---
 
-# wgui.d2d_draw_rectangle
+# wgui.draw_rectangle
 
 Draws the border of a rectangle at the specified coordinates and color.
 
@@ -4090,13 +4106,13 @@ Draws the border of a rectangle at the specified coordinates and color.
 
 
 ```lua
-function wgui.d2d_draw_rectangle(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_draw_rounded_rectangle
+# wgui.draw_rounded_rectangle
 
 Draws the border of a rounded rectangle at the specified coordinates, color
 and radius
@@ -4111,13 +4127,13 @@ and radius
 
 
 ```lua
-function wgui.d2d_draw_rounded_rectangle(top: integer, left: integer, bottom: integer, right: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_draw_text
+# wgui.draw_text
 
 Draws the text `text` at the specified coordinates, color, font, and
 alignment.
@@ -4130,15 +4146,25 @@ alignment.
 
 @*param* `alpha` — d2d colors range from 0.0 to 1.0
 
+@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic
 
 ```lua
-function wgui.d2d_draw_text(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, horizalign: integer, vertalign: integer)
+fontstyle:
+    | 0
+    | 1
+    | 2
+    | 3
+```
+
+
+```lua
+function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)
 ```
 
 
 ---
 
-# wgui.d2d_fill_ellipse
+# wgui.fill_ellipse
 
 Draws a filled in ellipse at the specified coordinates and color.
 
@@ -4152,13 +4178,13 @@ Draws a filled in ellipse at the specified coordinates and color.
 
 
 ```lua
-function wgui.d2d_fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_fill_rectangle
+# wgui.fill_rectangle
 
 Draws a filled in rectangle at the specified coordinates and color.
 
@@ -4172,13 +4198,13 @@ Draws a filled in rectangle at the specified coordinates and color.
 
 
 ```lua
-function wgui.d2d_fill_rectangle(top: integer, left: integer, bottom: integer, right: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_fill_rounded_rectangle
+# wgui.fill_rounded_rectangle
 
 Draws a filled in rounded rectangle at the specified coordinates, color and
 radius
@@ -4193,93 +4219,25 @@ radius
 
 
 ```lua
-function wgui.d2d_fill_rounded_rectangle(top: integer, left: integer, bottom: integer, right: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
 ```
 
 
 ---
 
-# wgui.d2d_get_text_size
+# wgui.free_image
 
-Returns the width and height of the specified text.
+Frees the image at `identifier`.
 
 
 ```lua
-function wgui.d2d_get_text_size(text: string, fontname: string, fontsize: number)
-  -> { width: integer, height: integer }
+function wgui.free_image(identifier: string)
 ```
 
 
 ---
 
-# wgui.d2d_pop_clip
-
-Pops the most recent clip off the clip stack.
-
-
-```lua
-function wgui.d2d_pop_clip()
-```
-
-
----
-
-# wgui.d2d_push_clip
-
-Specifies a rectangle to which all subsequent drawing operations are clipped.
-This clip is put onto a stack. It can then be popped off the stack with
-`wgui.d2d_pop_clip`.
-
-
-```lua
-function wgui.d2d_push_clip(top: integer, left: integer, bottom: integer, right: integer)
-```
-
-
----
-
-# wgui.deleteimage
-
-Deletes one or more images from the image pool.
-
-@*param* `identifier` — If `identifier` is 0, all images are deleted. If not, only the image at that index is deleted.
-
-
-```lua
-function wgui.deleteimage(identifier: integer)
-```
-
-
----
-
-# wgui.drawimage
-
-Draws the image at `identifier` at the specified coordinates
-
-
-```lua
-function wgui.drawimage(identifier: integer, x: integer, y: integer)
-```
-
-
-```lua
-function wgui.drawimage(identifier: integer, x: integer, y: integer, scale: number)
-```
-
-
-```lua
-function wgui.drawimage(identifier: integer, x: integer, y: integer, width: integer, height: integer)
-```
-
-
-```lua
-function wgui.drawimage(identifier: integer, x: integer, y: integer, width: integer, height: integer, srcx: integer, srcy: integer, srcwidth: integer, srcheight: integer, rotate: number)
-```
-
-
----
-
-# wgui.fillpolygona
+# wgui.gdip_fillpolygona
 
 Draws a polygon at the specified coordinates and color
 
@@ -4295,19 +4253,32 @@ Draws a polygon at the specified coordinates and color
 
 
 ```lua
-function wgui.fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)
+function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)
 ```
 
 
 ---
 
-# wgui.getimageinfo
+# wgui.get_image_info
 
 Returns the width and height of the image at `identifier`.
 
 
 ```lua
-function wgui.getimageinfo(identifier: integer)
+function wgui.get_image_info(identifier: string)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# wgui.get_text_size
+
+Returns the width and height of the specified text.
+
+
+```lua
+function wgui.get_text_size(text: string, fontname: string, fontsize: number)
   -> { width: integer, height: integer }
 ```
 
@@ -4327,39 +4298,40 @@ function wgui.info()
 
 ---
 
-# wgui.loadimage
+# wgui.load_image
 
-Loads an image file into the image pool and returns the identifier.
+Loads an image file from `path` which you can then access through
+`identifier`.
 
 
 ```lua
-function wgui.loadimage(path: string)
+function wgui.load_image(path: string, identifier: string)
 ```
 
 
 ---
 
-# wgui.loadscreen
+# wgui.pop_clip
 
-Loads the current screen into the image pool and returns the identifier.
+Pops the most recent clip off the clip stack.
 
 
 ```lua
-function wgui.loadscreen()
-  -> integer
+function wgui.pop_clip()
 ```
 
 
 ---
 
-# wgui.loadscreenreset
+# wgui.push_clip
 
-Reinitializes `wgui.loadscreen`. This function should only be used when
-conditions have changed, such as if the resolution changes.
+Specifies a rectangle to which all subsequent drawing operations are clipped.
+This clip is put onto a stack. It can then be popped off the stack with
+`wgui.d2d_pop_clip`.
 
 
 ```lua
-function wgui.loadscreenreset()
+function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)
 ```
 
 

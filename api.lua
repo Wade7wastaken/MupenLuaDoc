@@ -25,9 +25,11 @@ avi = {}
 
 ---Prints a value to the lua console
 ---@param data any The data to print to the console
+---@return nil
 function print(data) end
 
 ---Stops script execution
+---@return nil
 function stop() end
 
 --#endregion
@@ -43,8 +45,8 @@ function stop() end
 ---@return nil
 function emu.console(message) end
 
----Prints `message` to the debug console. If you are not debugging mupen with
----Visual Studio, this function will do nothing.
+---Prints `message` to the debug console. If you are not debugging with Visual
+---Studio, this function will do nothing.
 ---@deprecated This function has no use to the end user.
 ---@param message string The string to print to the debug console.
 ---@return nil
@@ -95,7 +97,7 @@ function emu.atstop(f, unregister) end
 ---The message data is given to the function in 4 parameters. If `unregister`
 ---is set to true, the function `f` will no longer be called when this event
 ---occurs, but it will error if you never registered the function.
----@param f fun(a, b, c, d): nil The function to be called when a window message is received.
+---@param f fun(a: integer, b: integer, c: integer, d: integer): nil The function to be called when a window message is received. a: wnd, b: msg, c: wParam, d: lParam.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atwindowmessage(f, unregister) end
@@ -172,7 +174,7 @@ function emu.inputcount() end
 
 ---Returns the current mupen version. If `type` is 0 or less, it
 ---will return the full version name (Mupen 64 0.0.0). If `type`
----is 1 or more, it will return the version number (0.0.0).
+---is 1 or more, it will return only the version number (0.0.0).
 ---@nodiscard
 ---@param type 0|1 Whether to get the full version (less that 0) or the short version (more than 1).
 ---@return string version The mupen version
@@ -180,6 +182,7 @@ function emu.getversion(type) end
 
 ---Pauses or unpauses the emulator.
 ---@param pause boolean True pauses the emulator and false resumes it.
+---@return nil
 function emu.pause(pause) end
 
 ---Returns `true` if the emulator is paused and `false` if it is not.
@@ -232,8 +235,8 @@ function emu.getsystemmetrics(param) end
 ---@return boolean focused
 function emu.ismainwindowinforeground() end
 
----Takes a screenshot and saves it to the directory `dir`
----@param dir string The directory to save the screenshot to
+---Takes a screenshot and saves it to the directory `dir`.
+---@param dir string The directory to save the screenshot to.
 ---@return nil
 function emu.screenshot(dir) end
 
@@ -244,28 +247,28 @@ function emu.screenshot(dir) end
 --#region
 
 ---Reinterprets the bits of a 4 byte integer `n` as a float and returns it. This
---- does not convert from an int to a float, but reinterprets the memory
+--- does not convert from an int to a float, but reinterprets the memory.
 ---@nodiscard
 ---@param n integer
 ---@return number
 function memory.inttofloat(n) end
 
 ---Reinterprets the bits of an 8 byte integer `n` as a double and returns it.
----This does not convert from an int to a double, but reinterprets the memory
+---This does not convert from an int to a double, but reinterprets the memory.
 ---@nodiscard
 ---@param n qword
 ---@return number
 function memory.inttodouble(n) end
 
 ---Reinterprets the bits of a float `n` as a 4 byte integer and returns it. This
---- does not convert from an int to a float, but reinterprets the memory
+--- does not convert from an int to a float, but reinterprets the memory.
 ---@nodiscard
 ---@param n number
 ---@return integer
 function memory.floattoint(n) end
 
 ---Reinterprets the bits of a 8 byte integer `n` as a double and returns it.
----This does not convert from an int to a float, but reinterprets the memory
+---This does not convert from an int to a float, but reinterprets the memory.
 ---@nodiscard
 ---@param n qword
 ---@return number
@@ -348,45 +351,38 @@ function memory.readdouble(address) end
 function memory.readsize(address, size) end
 
 ---Writes an unsigned byte to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data integer
 function memory.writebyte(address, data) end
 
 ---Writes an unsigned word (2 bytes) to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data integer
 function memory.writeword(address, data) end
 
 ---Writes an unsigned dword (4 bytes) to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data integer
 function memory.writedword(address, data) end
 
 ---Writes an unsigned qword consisting of a table with the upper and lower 4
 ---bytes to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data qword
 function memory.writeqword(address, data) end
 
 ---Writes a float to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data number
 function memory.writefloat(address, data) end
 
 ---Writes a double to memory at `address`.
----@nodiscard
 ---@param address integer
 ---@param data number
 function memory.writedouble(address, data) end
 
 ---Writes `size` bytes to memory at `address`. The memory is treated as signed
 ---if `size` is is negative.
----@nodiscard
 ---@param address integer
 ---@param size 1|2|4|8|-1|-2|-4|-8
 ---@param data integer|qword
@@ -407,7 +403,7 @@ function memory.writesize(address, size, data) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
+function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws the border of a rectangle at the specified coordinates and color.
 ---@param x1 integer
@@ -418,7 +414,7 @@ function wgui.d2d_fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
+function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
 ---Draws a filled in ellipse at the specified coordinates and color.
 ---@param x integer
@@ -429,7 +425,7 @@ function wgui.d2d_draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of an ellipse at the specified coordinates and color.
 ---@param x integer
@@ -440,7 +436,7 @@ function wgui.d2d_fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) 
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 ---@param x1 integer
@@ -451,7 +447,8 @@ function wgui.d2d_draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) 
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
+---@param stroke_width number
+function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, stroke_width) end
 
 ---Draws the text `text` at the specified coordinates, color, font, and
 ---alignment.
@@ -469,7 +466,14 @@ function wgui.d2d_draw_line(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic
 ---@param horizalign integer
 ---@param vertalign integer
-function wgui.d2d_draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname, fontsize, fontstyle, horizalign, vertalign) end
+function wgui.draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname, fontsize, fontstyle, horizalign, vertalign) end
+
+---Returns the width and height of the specified text.
+---@param text string
+---@param fontname string
+---@param fontsize number
+---@return {width: integer, height: integer}
+function wgui.get_text_size(text, fontname, fontsize) end
 
 ---Specifies a rectangle to which all subsequent drawing operations are clipped.
 ---This clip is put onto a stack. It can then be popped off the stack with
@@ -478,17 +482,10 @@ function wgui.d2d_draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontn
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
-function wgui.d2d_push_clip(x1, y1, x2, y2) end
+function wgui.push_clip(x1, y1, x2, y2) end
 
 ---Pops the most recent clip off the clip stack.
-function wgui.d2d_pop_clip() end
-
----Returns the width and height of the specified text.
----@param text string
----@param fontname string
----@param fontsize number
----@return {width: integer, height: integer}
-function wgui.d2d_get_text_size(text, fontname, fontsize) end
+function wgui.pop_clip() end
 
 ---Draws a filled in rounded rectangle at the specified coordinates, color and
 ---radius
@@ -502,7 +499,7 @@ function wgui.d2d_get_text_size(text, fontname, fontsize) end
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of a rounded rectangle at the specified coordinates, color
 ---and radius
@@ -516,7 +513,36 @@ function wgui.d2d_fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, 
 ---@param green number d2d colors range from 0.0 to 1.0
 ---@param blue number d2d colors range from 0.0 to 1.0
 ---@param alpha number d2d colors range from 0.0 to 1.0
-function wgui.d2d_draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
+function wgui.draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
+
+---Loads an image file from `path` which you can then access through
+---`identifier`.
+---@param path string
+---@param identifier string
+function wgui.load_image(path, identifier) end
+
+---Frees the image at `identifier`.
+---@param identifier string
+function wgui.free_image(identifier) end
+
+---Draws an image by taking the pixels in the source rectangle of the image, and
+---drawing them to the destination rectangle on the screen.
+---@param destx1 integer
+---@param desty1 integer
+---@param destx2 integer
+---@param desty2 integer
+---@param srcx1 integer
+---@param srcy1 integer
+---@param srcx2 integer
+---@param srcy2 integer
+---@param identifier string
+function wgui.draw_image(destx1, desty2, destx2, desty1, srcx1, srcy1, srcx2, srcy2, identifier) end
+
+---Returns the width and height of the image at `identifier`.
+---@nodiscard
+---@param identifier string
+---@return {width: integer, height: integer}
+function wgui.get_image_info(identifier) end
 
 ---Draws a polygon at the specified coordinates and color
 ---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
@@ -524,69 +550,7 @@ function wgui.d2d_draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, 
 ---@param red integer GDI+ colors range from 0 to 255
 ---@param green integer GDI+ colors range from 0 to 255
 ---@param blue integer GDI+ colors range from 0 to 255
-function wgui.fillpolygona(points, alpha, red, green, blue) end
-
----Loads an image file into the image pool and returns the identifier.
----@nodiscard
----@param path string
-function wgui.loadimage(path) end
-
----Deletes one or more images from the image pool.
----@param identifier integer If `identifier` is 0, all images are deleted. If not, only the image at that index is deleted.
-function wgui.deleteimage(identifier) end
-
----Draws the image at `identifier` at the specified coordinates
----@param identifier integer
----@param x integer
----@param y integer
-function wgui.drawimage(identifier, x, y) end
-
----Draws the image at `identifier` at the specified coordinates and scale
----@param identifier integer
----@param x integer
----@param y integer
----@param scale number
-function wgui.drawimage(identifier, x, y, scale) end
-
----Draws the image at `identifier` at the specified coordinates. The image is
----stretched to the specified width and height.
----@param identifier integer
----@param x integer
----@param y integer
----@param width integer
----@param height integer
-function wgui.drawimage(identifier, x, y, width, height) end
-
----Draws the image at `identifier` at the specified coordinates. Only a section
----of the source image is drawn, specified by `srcx`, `srcy`, `srcwidth`, and
----`srcheight`. That section is then stretched to match `width` and `height`,
----placed at `(x, y)`, then rotated by `rotate` degrees.
----@param identifier integer
----@param x integer
----@param y integer
----@param width integer
----@param height integer
----@param srcx integer
----@param srcy integer
----@param srcwidth integer
----@param srcheight integer
----@param rotate number
-function wgui.drawimage(identifier, x, y, width, height, srcx, srcy, srcwidth, srcheight, rotate) end
-
----Loads the current screen into the image pool and returns the identifier.
----@nodiscard
----@return integer
-function wgui.loadscreen() end
-
----Reinitializes `wgui.loadscreen`. This function should only be used when
----conditions have changed, such as if the resolution changes.
-function wgui.loadscreenreset() end
-
----Returns the width and height of the image at `identifier`.
----@nodiscard
----@param identifier integer
----@return {width: integer, height: integer}
-function wgui.getimageinfo(identifier) end
+function wgui.gdip_fillpolygona(points, alpha, red, green, blue) end
 
 ---Returns the current size of the window.
 ---@nodiscard

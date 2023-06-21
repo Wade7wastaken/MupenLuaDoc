@@ -65,37 +65,6 @@ bool maximumSpeedMode;
 bool gdiPlusInitialized = false;
 ULONG_PTR gdiPlusToken;
 
-// LoadScreen variables
-HDC hwindowDC, hsrcDC;
-SWindowInfo windowSize{};
-HBITMAP hbitmap;
-bool LoadScreenInitialized = false;
-
-// Deletes all the variables used in LoadScreen (avoid memory leaks)
-void LoadScreenDelete() {
-	ReleaseDC(mainHWND, hwindowDC);
-	DeleteDC(hsrcDC);
-
-	LoadScreenInitialized = false;
-}
-
-// Initializes everything needed for LoadScreen
-void LoadScreenInit() {
-	if (LoadScreenInitialized) LoadScreenDelete();
-
-	hwindowDC = GetDC(mainHWND);// Create a handle to the main window Device Context
-	hsrcDC = CreateCompatibleDC(hwindowDC);// Create a DC to copy the screen to
-
-	CalculateWindowDimensions(mainHWND, windowSize);
-	windowSize.height -= 1; // ¯\_(ツ)_/¯
-	printf("LoadScreen Size: %d x %d\n", windowSize.width, windowSize.height);
-
-	// create an hbitmap
-	hbitmap = CreateCompatibleBitmap(hwindowDC, windowSize.width, windowSize.height);
-
-	LoadScreenInitialized = true;
-}
-
 #define DEBUG_GETLASTERROR 0//if(GetLastError()){ShowInfo("Line:%d GetLastError:%d",__LINE__,GetLastError());SetLastError(0);}
 
 ReassociatingFileDialog fdOpenLuaScript; // internal picker
@@ -113,7 +82,6 @@ namespace LuaEngine {
 
 
 	std::map<HWND, LuaEnvironment*> hwnd_lua_map;
-	std::vector<Gdiplus::Bitmap*> imagePool;
 
 	struct AddrBreakFunc {
 		lua_State* lua;
@@ -161,6 +129,7 @@ namespace LuaEngine {
 	ID2D1DCRenderTarget* d2d_render_target;
 	IDWriteFactory* dw_factory;
 	std::unordered_map<uint32_t, ID2D1SolidColorBrush*> d2d_brush_cache;
+	std::unordered_map<std::string, ID2D1Bitmap*> d2d_bitmap_cache;
 	//improved debug print from stackoverflow, now shows function info
 #ifdef _DEBUG
 	static void stackDump(lua_State* L) {
@@ -260,7 +229,6 @@ namespace LuaEngine {
 
 			ASSERT(!isrunning());
 			hMutex = CreateMutex(0, 0, 0);
-			LoadScreenInit();
 			newLuaState();
 			auto status = runFile(path);
 			if (isrunning()) {
@@ -278,11 +246,6 @@ namespace LuaEngine {
 			stopping = true;
 			invoke_callbacks_with_key(AtStop, REG_ATSTOP);
 			deleteLuaState();
-			for (auto x : imagePool) {
-				delete x;
-			}
-			imagePool.clear();
-			LoadScreenDelete();
 			SetButtonState(ownWnd, false);
 			ShowInfo("Lua stop");
 		}
@@ -632,8 +595,12 @@ namespace LuaEngine {
 		for (auto const& [key, val] : d2d_brush_cache) {
 			val->Release();
 		}
-
 		d2d_brush_cache.clear();
+
+		for (auto const& [key, val] : d2d_bitmap_cache) {
+			val->Release();
+		}
+		d2d_bitmap_cache.clear();
 
 		ReleaseDC(mainHWND, lua_dc);
 		lua_dc = NULL;
@@ -1241,36 +1208,11 @@ namespace LuaEngine {
 	T LoadRDRAMSafe(unsigned long addr) {
 		return *((T*)(rdramb + ((ToAddr<T>(addr) & AddrMask))));
 	}
-	// I don't think these are required, but I'm keeping them here just in case
-	/*
-	template<>
-	ULONGLONG LoadRDRAMSafe(unsigned long addr) {
-		return ((ULONGLONG)(*(ULONG*)(rdramb + (addr & AddrMask))) << 32) |
-			((*(ULONG*)(rdramb + (addr & AddrMask) + 4)));
-	}
-	template<>
-	LONGLONG LoadRDRAMSafe(unsigned long addr) {
-		return ((LONGLONG)(*(ULONG*)(rdramb + (addr & AddrMask))) << 32) |
-			((*(ULONG*)(rdramb + (addr & AddrMask) + 4)));
-	}
-	*/
+
 	template<typename T>
 	void StoreRDRAMSafe(unsigned long addr, T value) {
 		*((T*)(rdramb + ((ToAddr<T>(addr) & AddrMask)))) = value;
 	}
-	// Same with these
-	/*
-	template<>
-	void StoreRDRAMSafe(unsigned long addr, ULONGLONG value) {
-		*((unsigned long*)(rdramb + (addr & AddrMask))) = value >> 32;
-		*((unsigned long*)(rdramb + (addr & AddrMask) + 4)) = value & 0xFFFFFFFF;
-	}
-	template<>
-	void StoreRDRAMSafe(unsigned long addr, LONGLONG value) {
-		*((unsigned long*)(rdramb + (addr & AddrMask))) = value >> 32;
-		*((unsigned long*)(rdramb + (addr & AddrMask) + 4)) = value & 0xFFFFFFFF;
-	}
-	*/
 
 	// Read functions
 
@@ -1741,170 +1683,9 @@ namespace LuaEngine {
 		return 1;
 	}
 
-	int LuaLoadImage(lua_State* L) {
-		const char* path = luaL_checkstring(L, 1);
-		int output_size = MultiByteToWideChar(CP_ACP, 0, path, -1, NULL, 0);
-		wchar_t* pathw = (wchar_t*)malloc(output_size * sizeof(wchar_t));
-		int size = MultiByteToWideChar(CP_ACP, 0, path, -1, pathw, output_size);
-
-		printf("LoadImage: %ws\n", pathw);
-		Gdiplus::Bitmap* img = new Gdiplus::Bitmap(pathw);
-		free(pathw);
-
-		if (img->GetLastStatus()) {
-			luaL_error(L, "Couldn't find image '%s'", path);
-			return 0;
-		}
-		imagePool.push_back(img);
-		lua_pushinteger(L, imagePool.size()); //return the identifier (index+1)
-		return 1;
-	}
-
-	int DeleteImage(lua_State* L) { // Clears one or all images from imagePool
-		unsigned int clearIndex = luaL_checkinteger(L, 1);
-		if (clearIndex == 0) { // If clearIndex is 0, clear all images
-			printf("Deleting all images\n");
-			for (auto x : imagePool) {
-				delete x;
-			}
-			imagePool.clear();
-		} else { // If clear index is not 0, clear 1 image
-			if (clearIndex <= imagePool.size()) {
-				printf("Deleting image index %d (%d in lua)\n", clearIndex - 1, clearIndex);
-				delete imagePool[clearIndex - 1];
-				imagePool.erase(imagePool.begin() + clearIndex - 1);
-			} else { // Error if the image doesn't exist
-				luaL_error(L, "Argument #1: Invalid image index");
-				return 0;
-			}
-		}
-		return 0;
-	}
-
-	int DrawImage(lua_State* L) {
-		unsigned int imgIndex = luaL_checkinteger(L, 1) - 1; // because lua
-
-		// Error if the image doesn't exist
-		if (imgIndex > imagePool.size() - 1) {
-			luaL_error(L, "Argument #1: Invalid image index");
-			return 0;
-		}
-
-		// Gets the number of arguments
-		unsigned int args = lua_gettop(L);
-
-		Gdiplus::Graphics gfx(lua_dc);
-		Gdiplus::Bitmap* img = imagePool[imgIndex];
-
-		// Original DrawImage
-		if (args == 3) {
-			int x = luaL_checknumber(L, 2);
-			int y = luaL_checknumber(L, 3);
-
-			gfx.DrawImage(img, x, y);// Gdiplus::Image *image, int x, int y
-			return 0;
-		} else if (args == 4) {
-			int x = luaL_checknumber(L, 2);
-			int y = luaL_checknumber(L, 3);
-			float scale = luaL_checknumber(L, 4);
-			if (scale == 0) return 0;
-
-			// Create a Rect at x and y and scale the image's width and height
-			Gdiplus::Rect dest(x, y, img->GetWidth() * scale, img->GetHeight() * scale);
-
-			gfx.DrawImage(img, dest);// Gdiplus::Image *image, const Gdiplus::Rect &rect
-			return 0;
-		}
-		// In original DrawImage
-		else if (args == 5) {
-			int x = luaL_checknumber(L, 2);
-			int y = luaL_checknumber(L, 3);
-			int w = luaL_checknumber(L, 4);
-			int h = luaL_checknumber(L, 5);
-			if (w == 0 or h == 0) return 0;
-
-			Gdiplus::Rect dest(x, y, w, h);
-
-			gfx.DrawImage(img, dest);// Gdiplus::Image *image, const Gdiplus::Rect &rect
-			return 0;
-		} else if (args == 10) {
-			int x = luaL_checknumber(L, 2);
-			int y = luaL_checknumber(L, 3);
-			int w = luaL_checknumber(L, 4);
-			int h = luaL_checknumber(L, 5);
-			int srcx = luaL_checknumber(L, 6);
-			int srcy = luaL_checknumber(L, 7);
-			int srcw = luaL_checknumber(L, 8);
-			int srch = luaL_checknumber(L, 9);
-			float rotate = luaL_checknumber(L, 10);
-			if (w == 0 or h == 0 or srcw == 0 or srch == 0) return 0;
-			bool shouldrotate = ((int)rotate % 360) != 0; // Only rotate if the angle isn't a multiple of 360 Modulo only works with int
-
-			Gdiplus::Rect dest(x, y, w, h);
-
-			// Rotate
-			if (shouldrotate) {
-				Gdiplus::PointF center(x + (w / 2), y + (h / 2));// The center of dest
-				Gdiplus::Matrix matrix;
-				matrix.RotateAt(rotate, center);// rotate "rotate" number of degrees around "center"
-				gfx.SetTransform(&matrix);
-			}
-
-			gfx.DrawImage(img, dest, srcx, srcy, srcw, srch, Gdiplus::UnitPixel);// Gdiplus::Image *image, const Gdiplus::Rect &destRect, int srcx, int srcy, int srcheight, Gdiplus::srcUnit
-
-			if (shouldrotate) gfx.ResetTransform();
-			return 0;
-		}
-		luaL_error(L, "Incorrect number of arguments");
-		return 0;
-	}
-
 	int Screenshot(lua_State* L) {
 		CaptureScreen((char*)luaL_checkstring(L, 1));
 		return 0;
-	}
-
-	int LoadScreen(lua_State* L) {
-		if (!LoadScreenInitialized) {
-			luaL_error(L, "LoadScreen not initialized! Something has gone wrong.");
-			return 0;
-		}
-		// set the selected object of hsrcDC to hbwindow
-		SelectObject(hsrcDC, hbitmap);
-		// copy from the window device context to the bitmap device context
-		BitBlt(hsrcDC, 0, 0, windowSize.width, windowSize.height, hwindowDC, 0, 0, SRCCOPY);
-
-		Gdiplus::Bitmap* out = new Gdiplus::Bitmap(hbitmap, nullptr);
-
-		imagePool.push_back(out);
-
-		lua_pushinteger(L, imagePool.size());
-
-		return 1;
-	}
-
-	int LoadScreenReset(lua_State* L) {
-		LoadScreenInit();
-		return 0;
-	}
-
-	int GetImageInfo(lua_State* L) {
-		unsigned int imgIndex = luaL_checkinteger(L, 1) - 1;
-
-		if (imgIndex > imagePool.size() - 1) {
-			luaL_error(L, "Argument #1: Invalid image index");
-			return 0;
-		}
-
-		Gdiplus::Bitmap* img = imagePool[imgIndex];
-
-		lua_newtable(L);
-		lua_pushinteger(L, img->GetWidth());
-		lua_setfield(L, -2, "width");
-		lua_pushinteger(L, img->GetHeight());
-		lua_setfield(L, -2, "height");
-
-		return 1;
 	}
 
 	//1st arg is table of points
@@ -1982,7 +1763,7 @@ namespace LuaEngine {
 	}
 
 	ID2D1SolidColorBrush* d2d_get_cached_brush(D2D1::ColorF color) {
-		auto key = get_hash(color);
+		uint32_t key = get_hash(color);
 
 		if (!d2d_brush_cache.contains(key)) {
 			printf("Creating ID2D1SolidColorBrush (%f, %f, %f, %f) = %d\n", color.r, color.g, color.b, color.a, key);
@@ -1996,82 +1777,42 @@ namespace LuaEngine {
 		}
 
 		return d2d_brush_cache[key];
-
 	}
 
-	int LuaD2DFillRoundedRectangle(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
+#define D2D_GET_RECT(L, idx) D2D1::RectF( \
+	luaL_checknumber(L, idx), \
+	luaL_checknumber(L, idx + 1), \
+	luaL_checknumber(L, idx + 2), \
+	luaL_checknumber(L, idx + 3) \
+)
 
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
+#define D2D_GET_COLOR(L, idx) D2D1::ColorF( \
+	luaL_checknumber(L, idx), \
+	luaL_checknumber(L, idx + 1), \
+	luaL_checknumber(L, idx + 2), \
+	luaL_checknumber(L, idx + 3) \
+)
 
-		D2D1_ROUNDED_RECT rounded_rectangle = D2D1::RoundedRect(
-			rectangle,
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6)
-		);
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8),
-			luaL_checknumber(L, 9),
-			luaL_checknumber(L, 10)
-		);
+#define D2D_GET_POINT(L, idx) D2D1_POINT_2F{ \
+	.x = (float)luaL_checknumber(L, idx), \
+	.y = (float)luaL_checknumber(L, idx + 1) \
+}
 
-		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
+#define D2D_GET_ELLIPSE(L, idx) D2D1_ELLIPSE{ \
+	.point = D2D_GET_POINT(L, idx), \
+	.radiusX = (float)luaL_checknumber(L, idx + 2), \
+	.radiusY = (float)luaL_checknumber(L, idx + 3) \
+}
 
-		d2d_render_target->FillRoundedRectangle(&rounded_rectangle, brush);
-
-		return 0;
-	}
-
-	int LuaD2DDrawRoundedRectangle(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
-
-		D2D1_ROUNDED_RECT rounded_rectangle = D2D1::RoundedRect(
-			rectangle,
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6)
-		);
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8),
-			luaL_checknumber(L, 9),
-			luaL_checknumber(L, 10)
-		);
-
-		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
-
-		d2d_render_target->DrawRoundedRectangle(&rounded_rectangle, brush, luaL_checknumber(L, 11));
-
-		return 0;
-	}
+#define D2D_GET_ROUNDED_RECT(L, idx) D2D1_ROUNDED_RECT( \
+	D2D_GET_RECT(L, idx), \
+	luaL_checknumber(L, idx + 5), \
+	luaL_checknumber(L, idx + 6) \
+)
 
 	int LuaD2DFillRectangle(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
+		D2D1_RECT_F rectangle = D2D_GET_RECT(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
 
@@ -2081,20 +1822,9 @@ namespace LuaEngine {
 	}
 
 	int LuaD2DDrawRectangle(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
+		D2D1_RECT_F rectangle = D2D_GET_RECT(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
 
 		d2d_render_target->DrawRectangle(&rectangle, brush, luaL_checknumber(L, 9));
@@ -2103,23 +1833,8 @@ namespace LuaEngine {
 	}
 
 	int LuaD2DFillEllipse(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_ELLIPSE ellipse = {
-			.point = {
-				.x = (float)luaL_checknumber(L, 1),
-				.y = (float)luaL_checknumber(L, 2),
-		},
-		.radiusX = (float)luaL_checknumber(L, 3),
-		.radiusY = (float)luaL_checknumber(L, 4),
-		};
-
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
+		D2D1_ELLIPSE ellipse = D2D_GET_ELLIPSE(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
 
@@ -2129,26 +1844,10 @@ namespace LuaEngine {
 	}
 
 	int LuaD2DDrawEllipse(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_ELLIPSE ellipse = {
-			.point = {
-				.x = (float)luaL_checknumber(L, 1),
-				.y = (float)luaL_checknumber(L, 2),
-		},
-		.radiusX = (float)luaL_checknumber(L, 3),
-		.radiusY = (float)luaL_checknumber(L, 4),
-		};
-
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
+		D2D1_ELLIPSE ellipse = D2D_GET_ELLIPSE(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
-
 
 		d2d_render_target->DrawEllipse(&ellipse, brush);
 
@@ -2156,26 +1855,11 @@ namespace LuaEngine {
 	}
 
 	int LuaD2DDrawLine(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_POINT_2F point_a = {
-			.x = (float)luaL_checknumber(L, 1),
-			.y = (float)luaL_checknumber(L, 2),
-		};
-		D2D1_POINT_2F point_b = {
-			.x = (float)luaL_checknumber(L, 3),
-			.y = (float)luaL_checknumber(L, 4),
-		};
-
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
+		D2D1_POINT_2F point_a = D2D_GET_POINT(L, 1);
+		D2D1_POINT_2F point_b = D2D_GET_POINT(L, 3);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
-
 
 		d2d_render_target->DrawLine(point_a, point_b, brush, luaL_checknumber(L, 9));
 
@@ -2183,30 +1867,25 @@ namespace LuaEngine {
 	}
 
 	int LuaD2DDrawText(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
-
-		auto color = D2D1::ColorF(
-			luaL_checknumber(L, 5),
-			luaL_checknumber(L, 6),
-			luaL_checknumber(L, 7),
-			luaL_checknumber(L, 8)
-		);
+		D2D1_RECT_F rectangle = D2D_GET_RECT(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 5);
 
 		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
 
-		auto text = std::string(luaL_checkstring(L, 9));
-		auto font_name = std::string(luaL_checkstring(L, 10));
-		auto font_size = luaL_checknumber(L, 11);
-		auto horizontal_alignment = luaL_checkinteger(L, 12);
-		auto vertical_alignment = luaL_checkinteger(L, 13);
-		auto wide_text = widen(text);
+		std::wstring text = widen(std::string(luaL_checkstring(L, 9)));
+		std::string font_name(luaL_checkstring(L, 10));
+		float font_size = luaL_checknumber(L, 11);
+		int font_opts = luaL_checkinteger(L, 12);
+		int horizontal_alignment = luaL_checkinteger(L, 13);
+		int vertical_alignment = luaL_checkinteger(L, 14);
+
+		// Checks if a given bit is set
+	#define CHECK_BIT(var, offset) (var >> offset) & 1
+
+		enum DWRITE_FONT_WEIGHT font_weight = CHECK_BIT(font_opts, 0) ? DWRITE_FONT_WEIGHT_BOLD : DWRITE_FONT_WEIGHT_NORMAL;
+		enum DWRITE_FONT_STYLE font_style = CHECK_BIT(font_opts, 1) ? DWRITE_FONT_STYLE_ITALIC : DWRITE_FONT_STYLE_NORMAL;
+
+	#undef CHECK_BIT
 
 		// FIXME: use DrawTextLayout
 		// i just whipped this up quickly for testing
@@ -2216,8 +1895,8 @@ namespace LuaEngine {
 		dw_factory->CreateTextFormat(
 			widen(font_name).c_str(),
 			NULL,
-			DWRITE_FONT_WEIGHT_NORMAL,
-			DWRITE_FONT_STYLE_NORMAL,
+			font_weight,
+			font_style,
 			DWRITE_FONT_STRETCH_NORMAL,
 			font_size,
 			L"",
@@ -2229,7 +1908,7 @@ namespace LuaEngine {
 
 		IDWriteTextLayout* text_layout;
 
-		dw_factory->CreateTextLayout(wide_text.c_str(), wide_text.length(), text_format, rectangle.right - rectangle.left, rectangle.bottom - rectangle.top, &text_layout);
+		dw_factory->CreateTextLayout(text.c_str(), text.length(), text_format, rectangle.right - rectangle.left, rectangle.bottom - rectangle.top, &text_layout);
 
 
 		d2d_render_target->DrawTextLayout({
@@ -2243,38 +1922,12 @@ namespace LuaEngine {
 		return 0;
 	}
 
-	int LuaD2DPushClip(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		D2D1_RECT_F rectangle = D2D1::RectF(
-			luaL_checknumber(L, 1),
-			luaL_checknumber(L, 2),
-			luaL_checknumber(L, 3),
-			luaL_checknumber(L, 4)
-		);
-
-		d2d_render_target->PushAxisAlignedClip(
-			rectangle,
-			D2D1_ANTIALIAS_MODE_PER_PRIMITIVE
-		);
-
-		return 0;
-	}
-
-	int LuaD2DPopClip(lua_State* L) {
-		LuaEnvironment* lua = GetLuaClass(L);
-
-		d2d_render_target->PopAxisAlignedClip();
-
-		return 0;
-	}
-
 	int LuaD2DGetTextSize(lua_State* L) {
 		LuaEnvironment* lua = GetLuaClass(L);
 
-		auto text = widen(std::string(luaL_checkstring(L, 1)));
-		auto font_name = std::string(luaL_checkstring(L, 2));
-		auto font_size = luaL_checknumber(L, 3);
+		std::wstring text = widen(std::string(luaL_checkstring(L, 1)));
+		std::string font_name = std::string(luaL_checkstring(L, 2));
+		float font_size = luaL_checknumber(L, 3);
 
 		IDWriteTextFormat* text_format;
 
@@ -2307,6 +1960,142 @@ namespace LuaEngine {
 
 		return 1;
 	}
+
+	int LuaD2DPushClip(lua_State* L) {
+		D2D1_RECT_F rectangle = D2D_GET_RECT(L, 1);
+
+		d2d_render_target->PushAxisAlignedClip(
+			rectangle,
+			D2D1_ANTIALIAS_MODE_PER_PRIMITIVE
+		);
+
+		return 0;
+	}
+
+	int LuaD2DPopClip(lua_State* L) {
+		d2d_render_target->PopAxisAlignedClip();
+
+		return 0;
+	}
+
+	int LuaD2DFillRoundedRectangle(lua_State* L) {
+		D2D1_ROUNDED_RECT rounded_rectangle = D2D_GET_ROUNDED_RECT(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 7);
+
+		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
+
+		d2d_render_target->FillRoundedRectangle(&rounded_rectangle, brush);
+
+		return 0;
+	}
+
+	int LuaD2DDrawRoundedRectangle(lua_State* L) {
+		D2D1_ROUNDED_RECT rounded_rectangle = D2D_GET_ROUNDED_RECT(L, 1);
+		D2D1::ColorF color = D2D_GET_COLOR(L, 7);
+
+		ID2D1SolidColorBrush* brush = d2d_get_cached_brush(color);
+
+		d2d_render_target->DrawRoundedRectangle(&rounded_rectangle, brush, luaL_checknumber(L, 11));
+
+		return 0;
+	}
+
+	int LuaD2DLoadImage(lua_State* L) {
+		std::string path(luaL_checkstring(L, 1));
+		std::string identifier(luaL_checkstring(L, 2));
+
+		IWICImagingFactory* pIWICFactory = NULL;
+		IWICBitmapDecoder* pDecoder = NULL;
+		IWICBitmapFrameDecode* pSource = NULL;
+		IWICFormatConverter* pConverter = NULL;
+		ID2D1Bitmap* bmp = NULL;
+
+		CoCreateInstance(
+			CLSID_WICImagingFactory,
+			NULL,
+			CLSCTX_INPROC_SERVER,
+			IID_PPV_ARGS(&pIWICFactory)
+		);
+
+		HRESULT hr = pIWICFactory->CreateDecoderFromFilename(
+			widen(path).c_str(),
+			NULL,
+			GENERIC_READ,
+			WICDecodeMetadataCacheOnLoad,
+			&pDecoder
+		);
+
+		if (!SUCCEEDED(hr)) {
+			printf("D2D image fail HRESULT %d\n", hr);
+			pIWICFactory->Release();
+			return 0;
+		}
+
+		pIWICFactory->CreateFormatConverter(&pConverter);
+		pDecoder->GetFrame(0, &pSource);
+		pConverter->Initialize(
+			pSource,
+			GUID_WICPixelFormat32bppPBGRA,
+			WICBitmapDitherTypeNone,
+			NULL,
+			0.0f,
+			WICBitmapPaletteTypeMedianCut
+		);
+
+		d2d_render_target->CreateBitmapFromWicBitmap(
+			pConverter,
+			NULL,
+			&bmp
+		);
+
+		pIWICFactory->Release();
+		pDecoder->Release();
+		pSource->Release();
+		pConverter->Release();
+
+		d2d_bitmap_cache[identifier] = bmp;
+
+		return 0;
+	}
+
+	int LuaD2DFreeImage(lua_State* L) {
+		std::string identifier(luaL_checkstring(L, 1));
+		d2d_bitmap_cache[identifier]->Release();
+		d2d_bitmap_cache.erase(identifier);
+		return 0;
+	}
+
+	int LuaD2DDrawImage(lua_State* L) {
+		D2D1_RECT_F destination_rectangle = D2D_GET_RECT(L, 1);
+		D2D1_RECT_F source_rectangle = D2D_GET_RECT(L, 5);
+
+		d2d_render_target->DrawBitmap(
+			d2d_bitmap_cache[std::string(luaL_checkstring(L, 9))],
+			destination_rectangle,
+			luaL_checknumber(L, 10),
+			(D2D1_BITMAP_INTERPOLATION_MODE)luaL_checknumber(L, 11),
+			source_rectangle
+		);
+
+		return 0;
+	}
+
+	int LuaD2DGetImageInfo(lua_State* L) {
+		std::string identifier(luaL_checkstring(L, 1));
+		D2D1_SIZE_U size = d2d_bitmap_cache[identifier]->GetPixelSize();
+		lua_newtable(L);
+		lua_pushinteger(L, size.width);
+		lua_setfield(L, -2, "width");
+		lua_pushinteger(L, size.height);
+		lua_setfield(L, -2, "height");
+		return 1;
+	}
+
+#undef D2D_GET_RECT
+#undef D2D_GET_COLOR
+#undef D2D_GET_POINT
+#undef D2D_GET_ELLIPS
+#undef D2D_GET_ROUNDED_RECT
 
 	int GetGUIInfo(lua_State* L) {
 		lua_newtable(L);
@@ -3176,26 +2965,24 @@ namespace LuaEngine {
 		//	rectangle, ellipse, rounded rectangle, polygon, line
 		// 
 		// text, images, clipping
-		{"d2d_fill_rectangle", LuaD2DFillRectangle},
-		{"d2d_draw_rectangle", LuaD2DDrawRectangle},
-		{"d2d_fill_ellipse", LuaD2DFillEllipse},
-		{"d2d_draw_ellipse", LuaD2DDrawEllipse},
-		{"d2d_draw_line", LuaD2DDrawLine},
-		{"d2d_draw_text", LuaD2DDrawText},
-		{"d2d_push_clip", LuaD2DPushClip},
-		{"d2d_pop_clip", LuaD2DPopClip},
-		{"d2d_get_text_size", LuaD2DGetTextSize},
-		{"d2d_fill_rounded_rectangle", LuaD2DFillRoundedRectangle},
-		{"d2d_draw_rounded_rectangle", LuaD2DDrawRoundedRectangle},
+		{"fill_rectangle", LuaD2DFillRectangle},
+		{"draw_rectangle", LuaD2DDrawRectangle},
+		{"fill_ellipse", LuaD2DFillEllipse},
+		{"draw_ellipse", LuaD2DDrawEllipse},
+		{"draw_line", LuaD2DDrawLine},
+		{"draw_text", LuaD2DDrawText},
+		{"get_text_size", LuaD2DGetTextSize},
+		{"push_clip", LuaD2DPushClip},
+		{"pop_clip", LuaD2DPopClip},
+		{"fill_rounded_rectangle", LuaD2DFillRoundedRectangle},
+		{"draw_rounded_rectangle", LuaD2DDrawRoundedRectangle},
+		{"load_image", LuaD2DLoadImage},
+		{"free_image", LuaD2DFreeImage},
+		{"draw_image", LuaD2DDrawImage},
+		{"get_image_info", LuaD2DGetImageInfo},
 
 		// GDIPlus-backed functions
-		{"fillpolygona", FillPolygonAlpha},
-		{"loadimage", LuaLoadImage},
-		{"deleteimage", DeleteImage},
-		{"drawimage", DrawImage},
-		{"loadscreen", LoadScreen},
-		{"loadscreenreset", LoadScreenReset},
-		{"getimageinfo", GetImageInfo},
+		{"gdip_fillpolygona", FillPolygonAlpha},
 
 		{"info", GetGUIInfo},
 		{"resize", ResizeWindow},

@@ -83,15 +83,16 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
             # only process the definition if it is one we want
             if file_name.endswith(api_filename_ending):
 
-                if not "." in variable_name:
-                    variable_name = f"global.{variable_name}"
-
-                if not variable_name in functions:
-                    functions[variable_name] = []
-
                 extends = definition["extends"]
                 variable_type = extends["type"]
                 if variable_type == "function":
+
+                    if not "." in variable_name:
+                        variable_name = f"global.{variable_name}"
+
+                    if not variable_name in functions:
+                        functions[variable_name] = []
+
                     functions[variable_name].append({
                         "desc": extends["desc"],
                         "view": extends["view"]
@@ -147,6 +148,8 @@ def main():
     cpp_functions = read_funcs_from_cpp_file()
     lua_functions = read_funcs_from_json_file()
 
+    used_lua_functions = []
+
     # loop over function types (emu, wgui)
     for func_type in cpp_functions:
         segments.write(
@@ -194,6 +197,7 @@ def main():
                     segments.write(generate_function_html(
                         func_type, func_name, display_name, desc, view))
                     segments.write('</div>')
+                used_lua_functions.append(fullname)
             else:
                 print(f"{fullname} failed")
                 desc = "?"
@@ -205,6 +209,11 @@ def main():
                 segments.write('</div>')
 
     segments.write("</div>")  # closed div.docBody
+
+    # make sure every lua function was used
+    for key in lua_functions.keys():
+        if not key in used_lua_functions:
+            print(f"failed: {key}")
 
     # add javascript
     with open("script/index.js", "rt") as file:
