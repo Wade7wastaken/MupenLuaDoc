@@ -557,7 +557,7 @@ function wgui.free_image(identifier) end
 ---@param srcy2 integer
 ---@param identifier string
 ---@return nil
-function wgui.draw_image(destx1, desty2, destx2, desty1, srcx1, srcy1, srcx2, srcy2, identifier) end
+function wgui.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, srcy2, identifier) end
 
 ---Returns the width and height of the image at `identifier`.
 ---@nodiscard
