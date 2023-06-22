@@ -4069,7 +4069,7 @@ Draws the border of an ellipse at the specified coordinates and color.
 
 
 ```lua
-function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
   -> nil
 ```
 
@@ -4081,9 +4081,11 @@ function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: in
 Draws an image by taking the pixels in the source rectangle of the image, and
 drawing them to the destination rectangle on the screen.
 
+@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use
+
 
 ```lua
-function wgui.draw_image(destx1: integer, desty2: integer, destx2: integer, desty1: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string)
+function wgui.draw_image(destx1: integer, desty1: integer, destx2: integer, desty2: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string, opacity: number, interpolationMode: integer)
   -> nil
 ```
 
@@ -4104,7 +4106,7 @@ Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
 
 ```lua
-function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, stroke_width: number)
+function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
   -> nil
 ```
 
@@ -4125,7 +4127,7 @@ Draws the border of a rectangle at the specified coordinates and color.
 
 
 ```lua
-function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
   -> nil
 ```
 
@@ -4147,7 +4149,7 @@ and radius
 
 
 ```lua
-function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
+function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number, thickness: number)
   -> nil
 ```
 
@@ -4305,7 +4307,7 @@ Returns the width and height of the specified text.
 
 
 ```lua
-function wgui.get_text_size(text: string, fontname: string, fontsize: number)
+function wgui.get_text_size(text: string, fontname: string, fontsize: number, max_width: number, max_height: number)
   -> { width: integer, height: integer }
 ```
 
