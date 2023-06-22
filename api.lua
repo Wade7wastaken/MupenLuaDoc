@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.3.1
+-- version 1.1.3.2
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -488,8 +488,10 @@ function wgui.draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname,
 ---@param text string
 ---@param fontname string
 ---@param fontsize number
+---@param max_width number
+---@param max_height number
 ---@return {width: integer, height: integer}
-function wgui.get_text_size(text, fontname, fontsize) end
+function wgui.get_text_size(text, fontname, fontsize, max_width, max_height) end
 
 ---Specifies a rectangle to which all subsequent drawing operations are clipped.
 ---This clip is put onto a stack. It can then be popped off the stack with
