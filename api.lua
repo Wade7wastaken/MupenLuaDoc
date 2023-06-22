@@ -1,5 +1,7 @@
 ---@meta
 
+-- version 1.1.3.1
+
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
 
