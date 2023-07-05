@@ -133,28 +133,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 7240034,
+                            "finish": 7480034,
                             "name": "filename",
-                            "start": 7240026,
+                            "start": 7480026,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Begins an avi recording using the previously saved encoding settings. It is\nsaved to `filename`.",
-                    "finish": 7240039,
+                    "finish": 7480039,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 7240000,
+                    "start": 7480000,
                     "type": "function",
                     "view": "function avi.startcapture(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 7240025,
-                "start": 7240009,
+                "finish": 7480025,
+                "start": 7480009,
                 "type": "setfield"
             }
         ],
@@ -168,20 +168,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Stops avi recording.",
-                    "finish": 7280030,
+                    "finish": 7520030,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 7280000,
+                    "start": 7520000,
                     "type": "function",
                     "view": "function avi.stopcapture()\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 7280024,
-                "start": 7280009,
+                "finish": 7520024,
+                "start": 7520009,
                 "type": "setfield"
             }
         ],
@@ -2688,35 +2688,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6150022,
+                            "finish": 6250022,
                             "name": "t1",
-                            "start": 6150020,
+                            "start": 6250020,
                             "type": "local",
                             "view": "table"
                         },
                         {
-                            "finish": 6150026,
+                            "finish": 6250026,
                             "name": "t2",
-                            "start": 6150024,
+                            "start": 6250024,
                             "type": "local",
                             "view": "table"
                         }
                     ],
                     "desc": "Returns the differences between `t1` and `t2`. For example, if `t1` is the\ninputs for this frame, and `t2` is the inputs for last frame, it would return\nwhich buttons were pressed this frame, not which buttons are active.",
-                    "finish": 6150031,
+                    "finish": 6250031,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 6150000,
+                    "start": 6250000,
                     "type": "function",
                     "view": "function input.diff(t1: table, t2: table)\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6150019,
-                "start": 6150009,
+                "finish": 6250019,
+                "start": 6250009,
                 "type": "setfield"
             }
         ],
@@ -2730,20 +2730,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the state of all keyboard keys and the mouse position in a table. Ex:\n`input.get() -> {xmouse=297, ymouse=120, A=true, B=true}`.",
-                    "finish": 6060024,
+                    "finish": 6160024,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 6060000,
+                    "start": 6160000,
                     "type": "function",
                     "view": "function input.get()\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6060018,
-                "start": 6060009,
+                "finish": 6160018,
+                "start": 6160009,
                 "type": "setfield"
             }
         ],
@@ -2757,37 +2757,114 @@
                 "extends": {
                     "args": [
                         {
+                            "finish": 6400036,
+                            "name": "key",
+                            "start": 6400033,
+                            "type": "local",
+                            "view": "integer"
+                        }
+                    ],
+                    "desc": "Gets the name of a key",
+                    "finish": 6400041,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "string"
+                        }
+                    ],
+                    "start": 6400000,
+                    "type": "function",
+                    "view": "function input.get_key_name_text(key: integer)\n  -> string"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 6400032,
+                "start": 6400009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Gets the name of a key",
+        "name": "input.get_key_name_text",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 6480038,
+                            "name": "code",
+                            "start": 6480034,
+                            "type": "local",
+                            "view": "integer"
+                        },
+                        {
+                            "finish": 6480048,
+                            "name": "map_type",
+                            "start": 6480040,
+                            "type": "local",
+                            "view": "integer"
+                        }
+                    ],
+                    "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)",
+                    "finish": 6480053,
+                    "returns": [
+                        {
+                            "type": "function.return",
+                            "view": "integer"
+                        }
+                    ],
+                    "start": 6480000,
+                    "type": "function",
+                    "view": "function input.map_virtual_key_ex(code: integer, map_type: integer)\n  -> integer"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 6480033,
+                "start": 6480009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)",
+        "name": "input.map_virtual_key_ex",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
                             "desc": "The title of the text box. Defaults to \"input:\".",
-                            "finish": 6240027,
+                            "finish": 6340027,
                             "name": "title",
-                            "start": 6240022,
+                            "start": 6340022,
                             "type": "local",
                             "view": "string?"
                         },
                         {
                             "desc": "The text box is filled with this string when it opens. Defaults to \"\".",
-                            "finish": 6240040,
+                            "finish": 6340040,
                             "name": "placeholder",
-                            "start": 6240029,
+                            "start": 6340029,
                             "type": "local",
                             "view": "string?"
                         }
                     ],
                     "desc": "Opens a window where the user can input text. If `OK` is clicked, that text\nis returned. If `Cancel` is clicked or the window is closed, `nil` is\nreturned.\n\n@*param* `title` — The title of the text box. Defaults to \"input:\".\n\n@*param* `placeholder` — The text box is filled with this string when it opens. Defaults to \"\".",
-                    "finish": 6240045,
+                    "finish": 6340045,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "string|nil"
                         }
                     ],
-                    "start": 6240000,
+                    "start": 6340000,
                     "type": "function",
                     "view": "function input.prompt(title?: string, placeholder?: string)\n  -> string|nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6240021,
-                "start": 6240009,
+                "finish": 6340021,
+                "start": 6340009,
                 "type": "setfield"
             }
         ],
@@ -3243,36 +3320,36 @@
                     "args": [
                         {
                             "desc": "This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files",
-                            "finish": 7120033,
+                            "finish": 7360033,
                             "name": "filter",
-                            "start": 7120027,
+                            "start": 7360027,
                             "type": "local",
                             "view": "string"
                         },
                         {
                             "desc": "Unknown",
-                            "finish": 7120039,
+                            "finish": 7360039,
                             "name": "type",
-                            "start": 7120035,
+                            "start": 7360035,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files\n\n@*param* `type` — Unknown",
-                    "finish": 7120044,
+                    "finish": 7360044,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "string"
                         }
                     ],
-                    "start": 7120000,
+                    "start": 7360000,
                     "type": "function",
                     "view": "function ioHelper.filediag(filter: string, type: integer)\n  -> string"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 7120026,
-                "start": 7120009,
+                "finish": 7360026,
+                "start": 7360009,
                 "type": "setfield"
             }
         ],
@@ -3348,7 +3425,7 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the number of input frames that have happened since the emulator was\nstarted. It does not reset when a movie is started. Alias for\n`emu.inputcount`.\n\n@*return* `inputcount` — The number of input frames that have happened since the emulator was started.",
-                    "finish": 6610027,
+                    "finish": 6850027,
                     "returns": [
                         {
                             "desc": "The number of input frames that have happened since the emulator was started.",
@@ -3357,13 +3434,13 @@
                             "view": "integer"
                         }
                     ],
-                    "start": 6610000,
+                    "start": 6850000,
                     "type": "function",
                     "view": "function joypad.count()\n  -> inputcount: integer"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6610021,
-                "start": 6610009,
+                "finish": 6850021,
+                "start": 6850009,
                 "type": "setfield"
             }
         ],
@@ -3377,28 +3454,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6380024,
+                            "finish": 6620024,
                             "name": "port",
-                            "start": 6380020,
+                            "start": 6620020,
                             "type": "local",
                             "view": "1|2|3|4"
                         }
                     ],
                     "desc": "Gets the currently pressed game buttons and stick direction for a given port.\nNote that the `y` coordinate of the stick is the opposite of what is shown on\nTAS Input.\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
-                    "finish": 6380029,
+                    "finish": 6620029,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "table"
                         }
                     ],
-                    "start": 6380000,
+                    "start": 6620000,
                     "type": "function",
                     "view": "function joypad.get(port: 1|2|3|4)\n  -> table"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6380019,
-                "start": 6380009,
+                "finish": 6620019,
+                "start": 6620009,
                 "type": "setfield"
             }
         ],
@@ -3413,36 +3490,36 @@
                     "args": [
                         {
                             "desc": "The function to be called every input frame. It receives an argument that seems to always be `0`.",
-                            "finish": 6540026,
+                            "finish": 6780026,
                             "name": "f",
-                            "start": 6540025,
+                            "start": 6780025,
                             "type": "local",
                             "view": "fun(a?: integer):nil"
                         },
                         {
                             "desc": "If true, then unregister the function `f`.",
-                            "finish": 6540038,
+                            "finish": 6780038,
                             "name": "unregister",
-                            "start": 6540028,
+                            "start": 6780028,
                             "type": "local",
                             "view": "boolean?"
                         }
                     ],
                     "desc": "Calls the function `f` every input frame. The function `f` receives an\nargument that seems to always be `0`. If `unregister` is set to true, the\nfunction `f` will no longer be called when this event occurs, but it will\nerror if you never registered the function. Alias for `emu.atinput`.\n\n@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
-                    "finish": 6540043,
+                    "finish": 6780043,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6540000,
+                    "start": 6780000,
                     "type": "function",
                     "view": "function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6540024,
-                "start": 6540009,
+                "finish": 6780024,
+                "start": 6780009,
                 "type": "setfield"
             }
         ],
@@ -3456,35 +3533,35 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6450024,
+                            "finish": 6690024,
                             "name": "port",
-                            "start": 6450020,
+                            "start": 6690020,
                             "type": "local",
                             "view": "1|2|3|4"
                         },
                         {
-                            "finish": 6450032,
+                            "finish": 6690032,
                             "name": "inputs",
-                            "start": 6450026,
+                            "start": 6690026,
                             "type": "local",
                             "view": "table"
                         }
                     ],
                     "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
-                    "finish": 6450037,
+                    "finish": 6690037,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6450000,
+                    "start": 6690000,
                     "type": "function",
                     "view": "function joypad.set(port: 1|2|3|4, inputs: table)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6450019,
-                "start": 6450009,
+                "finish": 6690019,
+                "start": 6690009,
                 "type": "setfield"
             }
         ],
@@ -5782,20 +5859,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the filename of the currently playing movie. It will error if no\nmovie is playing.",
-                    "finish": 6830037,
+                    "finish": 7070037,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "string"
                         }
                     ],
-                    "start": 6830000,
+                    "start": 7070000,
                     "type": "function",
                     "view": "function movie.getmoviefilename()\n  -> string"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6830031,
-                "start": 6830009,
+                "finish": 7070031,
+                "start": 7070009,
                 "type": "setfield"
             }
         ],
@@ -5809,28 +5886,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6730033,
+                            "finish": 6970033,
                             "name": "filename",
-                            "start": 6730025,
+                            "start": 6970025,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Plays a movie file located at `filename`. This function sets `Read Only` to\ntrue.",
-                    "finish": 6730038,
+                    "finish": 6970038,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6730000,
+                    "start": 6970000,
                     "type": "function",
                     "view": "function movie.playmovie(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6730024,
-                "start": 6730009,
+                "finish": 6970024,
+                "start": 6970009,
                 "type": "setfield"
             }
         ],
@@ -5844,20 +5921,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Stops the currently playing movie.",
-                    "finish": 6770030,
+                    "finish": 7010030,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6770000,
+                    "start": 7010000,
                     "type": "function",
                     "view": "function movie.stopmovie()\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6770024,
-                "start": 6770009,
+                "finish": 7010024,
+                "start": 7010009,
                 "type": "setfield"
             }
         ],
@@ -7009,28 +7086,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6990036,
+                            "finish": 7230036,
                             "name": "filename",
-                            "start": 6990028,
+                            "start": 7230028,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Loads a savestate from `filename`",
-                    "finish": 6990041,
+                    "finish": 7230041,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6990000,
+                    "start": 7230000,
                     "type": "function",
                     "view": "function savestate.loadfile(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6990027,
-                "start": 6990009,
+                "finish": 7230027,
+                "start": 7230009,
                 "type": "setfield"
             }
         ],
@@ -7044,28 +7121,28 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 6940036,
+                            "finish": 7180036,
                             "name": "filename",
-                            "start": 6940028,
+                            "start": 7180028,
                             "type": "local",
                             "view": "string"
                         }
                     ],
                     "desc": "Saves a savestate to `filename`.",
-                    "finish": 6940041,
+                    "finish": 7180041,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 6940000,
+                    "start": 7180000,
                     "type": "function",
                     "view": "function savestate.savefile(filename: string)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 6940027,
-                "start": 6940009,
+                "finish": 7180027,
+                "start": 7180009,
                 "type": "setfield"
             }
         ],
@@ -9963,60 +10040,60 @@
                     "args": [
                         {
                             "desc": "Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.",
-                            "finish": 5830038,
+                            "finish": 5930038,
                             "name": "points",
-                            "start": 5830032,
+                            "start": 5930032,
                             "type": "local",
                             "view": "integer[][]"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5830045,
+                            "finish": 5930045,
                             "name": "alpha",
-                            "start": 5830040,
+                            "start": 5930040,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5830050,
+                            "finish": 5930050,
                             "name": "red",
-                            "start": 5830047,
+                            "start": 5930047,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5830057,
+                            "finish": 5930057,
                             "name": "green",
-                            "start": 5830052,
+                            "start": 5930052,
                             "type": "local",
                             "view": "integer"
                         },
                         {
                             "desc": "GDI+ colors range from 0 to 255",
-                            "finish": 5830063,
+                            "finish": 5930063,
                             "name": "blue",
-                            "start": 5830059,
+                            "start": 5930059,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Draws a polygon at the specified coordinates and color\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255\n\n@*param* `red` — GDI+ colors range from 0 to 255\n\n@*param* `green` — GDI+ colors range from 0 to 255\n\n@*param* `blue` — GDI+ colors range from 0 to 255",
-                    "finish": 5830068,
+                    "finish": 5930068,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5830000,
+                    "start": 5930000,
                     "type": "function",
                     "view": "function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5830031,
-                "start": 5830009,
+                "finish": 5930031,
+                "start": 5930009,
                 "type": "setfield"
             }
         ],
@@ -10128,20 +10205,20 @@
                 "extends": {
                     "args": [],
                     "desc": "Returns the current size of the window.",
-                    "finish": 5880024,
+                    "finish": 5980024,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "{ width: integer, height: integer }"
                         }
                     ],
-                    "start": 5880000,
+                    "start": 5980000,
                     "type": "function",
                     "view": "function wgui.info()\n  -> { width: integer, height: integer }"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5880018,
-                "start": 5880009,
+                "finish": 5980018,
+                "start": 5980009,
                 "type": "setfield"
             }
         ],
@@ -10280,40 +10357,98 @@
                 "extends": {
                     "args": [
                         {
-                            "finish": 5940026,
+                            "finish": 6040026,
                             "name": "width",
-                            "start": 5940021,
+                            "start": 6040021,
                             "type": "local",
                             "view": "integer"
                         },
                         {
-                            "finish": 5940034,
+                            "finish": 6040034,
                             "name": "height",
-                            "start": 5940028,
+                            "start": 6040028,
                             "type": "local",
                             "view": "integer"
                         }
                     ],
                     "desc": "Resizes the window to `width` and `height`",
-                    "finish": 5940039,
+                    "finish": 6040039,
                     "returns": [
                         {
                             "type": "function.return",
                             "view": "nil"
                         }
                     ],
-                    "start": 5940000,
+                    "start": 6040000,
                     "type": "function",
                     "view": "function wgui.resize(width: integer, height: integer)\n  -> nil"
                 },
                 "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
-                "finish": 5940020,
-                "start": 5940009,
+                "finish": 6040020,
+                "start": 6040009,
                 "type": "setfield"
             }
         ],
         "desc": "Resizes the window to `width` and `height`",
         "name": "wgui.resize",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 5840037,
+                            "name": "mode",
+                            "start": 5840033,
+                            "type": "local",
+                            "view": "0|1|4294967295"
+                        }
+                    ],
+                    "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
+                    "finish": 5840042,
+                    "start": 5840000,
+                    "type": "function",
+                    "view": "function wgui.set_antialias_mode(mode: 0|1|4294967295)"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 5840032,
+                "start": 5840009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
+        "name": "wgui.set_antialias_mode",
+        "type": "variable"
+    },
+    {
+        "defines": [
+            {
+                "extends": {
+                    "args": [
+                        {
+                            "finish": 5790042,
+                            "name": "mode",
+                            "start": 5790038,
+                            "type": "local",
+                            "view": "0|1|2|3|4294967295"
+                        }
+                    ],
+                    "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
+                    "finish": 5790047,
+                    "start": 5790000,
+                    "type": "function",
+                    "view": "function wgui.set_text_antialias_mode(mode: 0|1|2|3|4294967295)"
+                },
+                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "finish": 5790037,
+                "start": 5790009,
+                "type": "setfield"
+            }
+        ],
+        "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
+        "name": "wgui.set_text_antialias_mode",
         "type": "variable"
     },
     {

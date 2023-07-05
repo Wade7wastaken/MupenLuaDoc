@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.3.3
+-- version 1.1.3.4
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -574,6 +574,16 @@ function wgui.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, sr
 ---@return {width: integer, height: integer}
 function wgui.get_image_info(identifier) end
 
+---Sets the text antialiasing mode. More info
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)
+---@param mode 0|1|2|3|4294967295
+function wgui.set_text_antialias_mode(mode) end
+
+---Sets the antialiasing mode. More info
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)
+---@param mode 0|1|4294967295
+function wgui.set_antialias_mode(mode) end
+
 ---Draws a polygon at the specified coordinates and color
 ---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
 ---@param alpha integer GDI+ colors range from 0 to 255
@@ -623,6 +633,20 @@ function input.diff(t1, t2) end
 ---@param placeholder string? The text box is filled with this string when it opens. Defaults to "".
 ---@return string|nil
 function input.prompt(title, placeholder) end
+
+---Gets the name of a key
+---@nodiscard
+---@param key integer
+---@return string
+function input.get_key_name_text(key) end
+
+---Translates a virtual-key code into a scan code. More info
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)
+---@nodiscard
+---@param code integer
+---@param map_type integer
+---@return integer
+function input.map_virtual_key_ex(code, map_type) end
 
 --#endregion
 

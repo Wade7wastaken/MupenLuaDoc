@@ -1274,6 +1274,33 @@ function input.get()
 
 ---
 
+# input.get_key_name_text
+
+Gets the name of a key
+
+
+```lua
+function input.get_key_name_text(key: integer)
+  -> string
+```
+
+
+---
+
+# input.map_virtual_key_ex
+
+Translates a virtual-key code into a scan code. More info
+[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)
+
+
+```lua
+function input.map_virtual_key_ex(code: integer, map_type: integer)
+  -> integer
+```
+
+
+---
+
 # input.prompt
 
 Opens a window where the user can input text. If `OK` is clicked, that text
@@ -4377,6 +4404,48 @@ Resizes the window to `width` and `height`
 ```lua
 function wgui.resize(width: integer, height: integer)
   -> nil
+```
+
+
+---
+
+# wgui.set_antialias_mode
+
+Sets the antialiasing mode. More info
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)
+
+```lua
+mode:
+    | 0
+    | 1
+    | 4294967295
+```
+
+
+```lua
+function wgui.set_antialias_mode(mode: 0|1|4294967295)
+```
+
+
+---
+
+# wgui.set_text_antialias_mode
+
+Sets the text antialiasing mode. More info
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)
+
+```lua
+mode:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4294967295
+```
+
+
+```lua
+function wgui.set_text_antialias_mode(mode: 0|1|2|3|4294967295)
 ```
 
 

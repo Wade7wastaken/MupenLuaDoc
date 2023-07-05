@@ -588,6 +588,22 @@
 						WGUI.GET_IMAGE_INFO
 					</button>
 				</a>
+				<a href="#wguiSet_text_antialias_mode">
+					<button
+						class="funcListItem"
+						onclick="highlightFunc('wguiSet_text_antialias_mode')"
+					>
+						WGUI.SET_TEXT_ANTIALIAS_MODE
+					</button>
+				</a>
+				<a href="#wguiSet_antialias_mode">
+					<button
+						class="funcListItem"
+						onclick="highlightFunc('wguiSet_antialias_mode')"
+					>
+						WGUI.SET_ANTIALIAS_MODE
+					</button>
+				</a>
 				<a href="#wguiGdip_fillpolygona">
 					<button
 						class="funcListItem"
@@ -639,6 +655,22 @@
 						onclick="highlightFunc('inputPrompt')"
 					>
 						INPUT.PROMPT
+					</button>
+				</a>
+				<a href="#inputGet_key_name_text">
+					<button
+						class="funcListItem"
+						onclick="highlightFunc('inputGet_key_name_text')"
+					>
+						INPUT.GET_KEY_NAME_TEXT
+					</button>
+				</a>
+				<a href="#inputMap_virtual_key_ex">
+					<button
+						class="funcListItem"
+						onclick="highlightFunc('inputMap_virtual_key_ex')"
+					>
+						INPUT.MAP_VIRTUAL_KEY_EX
 					</button>
 				</a>
 			</div>
@@ -2048,6 +2080,58 @@
 </code></pre>
 				</div>
 			</div>
+			<div name="wguiSet_text_antialias_mode">
+				<hr />
+				<h1>
+					<a id="wguiSet_text_antialias_mode"
+						>wgui.set_text_antialias_mode</a
+					>
+				</h1>
+				<p>
+					Sets the text antialiasing mode. More info
+					<a
+						href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode"
+						>here</a
+					>
+				</p>
+				<div class="codehilite">
+					<pre><span></span><code><span class="n">mode</span><span class="p">:</span>
+    <span class="o">|</span> <span class="mi">0</span>
+    <span class="o">|</span> <span class="mi">1</span>
+    <span class="o">|</span> <span class="mi">2</span>
+    <span class="o">|</span> <span class="mi">3</span>
+    <span class="o">|</span> <span class="mi">4294967295</span>
+</code></pre>
+				</div>
+				<div class="codehilite">
+					<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">set_text_antialias_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="mi">4294967295</span><span class="p">)</span>
+</code></pre>
+				</div>
+			</div>
+			<div name="wguiSet_antialias_mode">
+				<hr />
+				<h1>
+					<a id="wguiSet_antialias_mode">wgui.set_antialias_mode</a>
+				</h1>
+				<p>
+					Sets the antialiasing mode. More info
+					<a
+						href="https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode"
+						>here</a
+					>
+				</p>
+				<div class="codehilite">
+					<pre><span></span><code><span class="n">mode</span><span class="p">:</span>
+    <span class="o">|</span> <span class="mi">0</span>
+    <span class="o">|</span> <span class="mi">1</span>
+    <span class="o">|</span> <span class="mi">4294967295</span>
+</code></pre>
+				</div>
+				<div class="codehilite">
+					<pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">set_antialias_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="o">|</span><span class="mi">4294967295</span><span class="p">)</span>
+</code></pre>
+				</div>
+			</div>
 			<div name="wguiGdip_fillpolygona">
 				<hr />
 				<h1>
@@ -2159,6 +2243,36 @@
 				<div class="codehilite">
 					<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">prompt</span><span class="p">(</span><span class="n">title</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">placeholder</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">string</span><span class="o">|</span><span class="kc">nil</span>
+</code></pre>
+				</div>
+			</div>
+			<div name="inputGet_key_name_text">
+				<hr />
+				<h1>
+					<a id="inputGet_key_name_text">input.get_key_name_text</a>
+				</h1>
+				<p>Gets the name of a key</p>
+				<div class="codehilite">
+					<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">get_key_name_text</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">string</span>
+</code></pre>
+				</div>
+			</div>
+			<div name="inputMap_virtual_key_ex">
+				<hr />
+				<h1>
+					<a id="inputMap_virtual_key_ex">input.map_virtual_key_ex</a>
+				</h1>
+				<p>
+					Translates a virtual-key code into a scan code. More info
+					<a
+						href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa"
+						>here</a
+					>
+				</p>
+				<div class="codehilite">
+					<pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">map_virtual_key_ex</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">map_type</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span>
 </code></pre>
 				</div>
 			</div>
