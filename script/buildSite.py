@@ -1,13 +1,15 @@
-import markdown
-from markdown.extensions.codehilite import CodeHiliteExtension
-from markdown.extensions.fenced_code import FencedCodeExtension
 import json
 import re
+
+import markdown
+import minify_html
+from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions.fenced_code import FencedCodeExtension
 from bs4 import BeautifulSoup as bs
 
-# RUN "pip install -r requirements.txt" BEFORE RUNNING THIS SCRIPT
-# This script assumes the working directory is the base git directory (not /script)
-# It is recommended that you run this with VS Code instead of the command line
+# RUN "pip install -r requirements.txt" BEFORE RUNNING THIS SCRIPT. This script
+# assumes the working directory is the base git directory (not /script). It is
+# recommended that you run this with VS Code instead of the command line
 
 # Command to generate pygments.css (run inside the css folder):
 # pygmentize -S pastie -f html -a .codehilite > pygments.css
@@ -15,15 +17,18 @@ from bs4 import BeautifulSoup as bs
 # TODO:
 
 
-class Segments:
+class StringAccumulator:
     def __init__(self):
         self.segments: list[str] = []
 
-    def write(self, string: str):
-        self.segments.append(string)
+    def write(self, string: str | list[str]):
+        if type(string) == list:
+            self.segments.append(*string)
+        else:
+            self.segments.append(string)
 
-    def retrieve(self) -> str:
-        return "".join(self.segments)
+    def retrieve(self, separator: str = "") -> str:
+        return separator.join(self.segments)
 
 
 def parse_markdown(str: str) -> str:
@@ -43,11 +48,10 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
         func_type = ''
         for line in file:
             # Start at first line of Lua emu func arrays
-            # this would have to be changed to include global functions
-            if line == '	const luaL_Reg globalFuncs[] = {\n':
+            if "const luaL_Reg globalFuncs[] = {" in line:
                 in_function_region = True
             # Stop at end of namespace
-            if line == '}	//namespace\n':
+            if "}	//namespace" in line:
                 break
             if in_function_region:
                 # If we're iterating over a function name line...
@@ -71,6 +75,7 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
 
     with open("export/doc.json", "rt") as f:
         data = json.loads(f.read())
+
     # data is an array with all the variables
     for variable in data:
         # store the name of the variable
@@ -120,9 +125,9 @@ def generate_function_html(func_type, func_name, display_name, desc, view):
 def main():
     skipped_functions = ["printx", "tostringex"]
 
-    segments = Segments()
+    accumulator = StringAccumulator()
 
-    segments.write("""
+    accumulator.write("""
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -152,13 +157,13 @@ def main():
 
     # loop over function types (emu, wgui)
     for func_type in cpp_functions:
-        segments.write(
+        accumulator.write(
             f'''
             <div class="collapsible">
                 <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
             </div>
             ''')
-        segments.write('<div class="funcList">')
+        accumulator.write('<div class="funcList">')
         for func_name in cpp_functions[func_type]:
             if func_name in skipped_functions:
                 continue
@@ -166,21 +171,21 @@ def main():
             display_name = func_name.upper(
             ) if func_type == "global" else f"{func_type.upper()}.{func_name.upper()}"
 
-            segments.write(
+            accumulator.write(
                 f'''
                 <a href="#{func_type}{func_name.capitalize()}">
                     <button class="funcListItem" onclick="highlightFunc('{func_type}{func_name.capitalize()}')">{display_name}</button>
                 </a>
                 ''')
-        segments.write('</div>')  # closes div.funcList
-    segments.write('</div>')  # closes div.sidebar
+        accumulator.write('</div>')  # closes div.funcList
+    accumulator.write('</div>')  # closes div.sidebar
 
-    segments.write('<div class="docBody">')
+    accumulator.write('<div class="docBody">')
     for func_type in cpp_functions:
         # create the section header
 
-        segments.write(parse_markdown(
-            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'))
+        accumulator.write(parse_markdown(
+            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a>FUNCTIONS'))
 
         for func_name in cpp_functions[func_type]:
             if func_name in skipped_functions:
@@ -192,23 +197,23 @@ def main():
                 for var in lua_data:
                     desc = var["desc"]
                     view = var["view"]
-                    segments.write(
-                        f'<div name={func_type}{func_name.capitalize()}>')
-                    segments.write(generate_function_html(
+                    accumulator.write(
+                        f'<div name="{func_type}{func_name.capitalize()}">')
+                    accumulator.write(generate_function_html(
                         func_type, func_name, display_name, desc, view))
-                    segments.write('</div>')
+                    accumulator.write('</div>')
                 used_lua_functions.append(fullname)
             else:
                 print(f"{fullname} failed")
                 desc = "?"
                 view = "?"
-                segments.write(
+                accumulator.write(
                     f'<div name={func_type}{func_name.capitalize()}>')
-                segments.write(generate_function_html(
+                accumulator.write(generate_function_html(
                     func_type, func_name, display_name, desc, view))
-                segments.write('</div>')
+                accumulator.write('</div>')
 
-    segments.write("</div>")  # closed div.docBody
+    accumulator.write("</div>")  # closed div.docBody
 
     # make sure every lua function was used
     for key in lua_functions.keys():
@@ -217,11 +222,21 @@ def main():
 
     # add javascript
     with open("script/index.js", "rt") as file:
-        segments.write(f"<script>{file.read()}</script>")
+        accumulator.write(f"<script>{file.read()}</script>")
+
+    accumulator.write("</body></html>")
+
+    content = str(bs(accumulator.retrieve("\n"), "html.parser"))
 
     with open("docs/index.html", "w+") as file:
-        # run the html through beautiful soup to validate it and clean it up
-        file.write(str(bs(segments.retrieve(), "html.parser")))
+        file.write(minify_html.minify(accumulator.retrieve(), keep_html_and_head_opening_tags=True,
+                                      minify_js=True, do_not_minify_doctype=True,
+                                      ensure_spec_compliant_unquoted_attribute_values=True,
+                                      keep_closing_tags=True, minify_css=True,
+                                      remove_processing_instructions=True))
+
+    with open("docs/index-no-min.html", "w+") as file:
+        file.write(accumulator.retrieve("\n"))
 
 
 if __name__ == "__main__":

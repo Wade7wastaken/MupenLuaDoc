@@ -1,1 +1,2 @@
 To export documentation, right click on any lua file open and select "Lua: Export Document ...", then navigate to this folder and save the documentation. It will overwrite the previously saved documentation.
+You can also run build_documentation.bat in the same directory as the lua file you want to generate documentation for.

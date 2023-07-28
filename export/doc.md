@@ -790,7 +790,7 @@ Calls the function `f` when the script is stopped. If `unregister` is set to
 true, the function `f` will no longer be called when this event occurs, but
 it will error if you never registered the function.
 
-@*param* `f` — The function to be called when the script is stopped
+@*param* `f` — The function to be called when the script is stopped.
 
 @*param* `unregister` — If true, then unregister the function `f`.
 
@@ -992,13 +992,13 @@ function emu.getsystemmetrics(param: integer)
 
 # emu.getversion
 
-Returns the current mupen version. If `type` is 0 or less, it
-will return the full version name (Mupen 64 0.0.0). If `type`
-is 1 or more, it will return only the version number (0.0.0).
+Returns the current mupen version. If `type` is 0, it will return the full
+version name (Mupen 64 0.0.0). If `type` is 1, it will return only the
+version number (0.0.0).
 
-@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).
+@*param* `type` — Whether to get the full version (`0`) or the short version (`1`).
 
-@*return* `version` — The mupen version
+@*return* `version` — The Mupen version.
 
 ```lua
 type:
@@ -1290,7 +1290,7 @@ function input.get_key_name_text(key: integer)
 # input.map_virtual_key_ex
 
 Translates a virtual-key code into a scan code. More info
-[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)
+[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).
 
 
 ```lua
@@ -1592,9 +1592,9 @@ table
 
 Opens a file dialouge and returns the file path of the file chosen.
 
-@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files
+@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.
 
-@*param* `type` — Unknown
+@*param* `type` — Unknown.
 
 
 ```lua
@@ -1701,7 +1701,7 @@ function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)
 # joypad.set
 
 Sets the current joypad to `inputs`. If you do not specify one or more
-inputs, they will be set to `false` for buttons or `0` for stick coordinates
+inputs, they will be set to `false` for buttons or `0` for stick coordinates.
 
 ```lua
 port:
@@ -3131,12 +3131,9 @@ function pcall(f: fun(...any):...unknown, arg1?: any, ...any)
 
 # print
 
+Prints a value to the lua console.
 
-Receives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [tostring](http://www.lua.org/manual/5.4/manual.html#pdf-tostring).
-The function print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [string.format](http://www.lua.org/manual/5.4/manual.html#pdf-string.format) and [io.write](http://www.lua.org/manual/5.4/manual.html#pdf-io.write).
-
-
-[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-print)
+@*param* `data` — The data to print to the console.
 
 
 ```lua
@@ -3342,7 +3339,7 @@ function setmetatable(table: table, metatable?: table|metatable)
 
 # stop
 
-Stops script execution
+Stops script execution.
 
 
 ```lua
@@ -3433,8 +3430,8 @@ Looks for the first match of `pattern` (see [§6.4.1](http://www.lua.org/manual/
 
 ```lua
 function string.find(s: string|number, pattern: string|number, init?: integer, plain?: boolean)
-  -> start: integer
-  2. end: integer
+  -> start: integer|nil
+  2. end: integer|nil
   3. ...any
 ```
 
@@ -4086,13 +4083,13 @@ table
 
 Draws the border of an ellipse at the specified coordinates and color.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4108,7 +4105,7 @@ function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: in
 Draws an image by taking the pixels in the source rectangle of the image, and
 drawing them to the destination rectangle on the screen.
 
-@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use
+@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use.
 
 
 ```lua
@@ -4123,13 +4120,13 @@ function wgui.draw_image(destx1: integer, desty1: integer, destx2: integer, dest
 
 Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4144,13 +4141,13 @@ function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red:
 
 Draws the border of a rectangle at the specified coordinates and color.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4164,15 +4161,15 @@ function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer,
 # wgui.draw_rounded_rectangle
 
 Draws the border of a rounded rectangle at the specified coordinates, color
-and radius
+and radius.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4188,15 +4185,15 @@ function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: 
 Draws the text `text` at the specified coordinates, color, font, and
 alignment.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
-@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic
+@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic.
 
 ```lua
 fontstyle:
@@ -4219,13 +4216,13 @@ function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red:
 
 Draws a filled in ellipse at the specified coordinates and color.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4240,13 +4237,13 @@ function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: in
 
 Draws a filled in rectangle at the specified coordinates and color.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4260,15 +4257,15 @@ function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer,
 # wgui.fill_rounded_rectangle
 
 Draws a filled in rounded rectangle at the specified coordinates, color and
-radius
+radius.
 
-@*param* `red` — d2d colors range from 0.0 to 1.0
+@*param* `red` — d2d colors range from 0.0 to 1.0.
 
-@*param* `green` — d2d colors range from 0.0 to 1.0
+@*param* `green` — d2d colors range from 0.0 to 1.0.
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0
+@*param* `blue` — d2d colors range from 0.0 to 1.0.
 
-@*param* `alpha` — d2d colors range from 0.0 to 1.0
+@*param* `alpha` — d2d colors range from 0.0 to 1.0.
 
 
 ```lua
@@ -4294,17 +4291,17 @@ function wgui.free_image(identifier: string)
 
 # wgui.gdip_fillpolygona
 
-Draws a polygon at the specified coordinates and color
+Draws a polygon at the specified coordinates and color.
 
 @*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
 
-@*param* `alpha` — GDI+ colors range from 0 to 255
+@*param* `alpha` — GDI+ colors range from 0 to 255.
 
-@*param* `red` — GDI+ colors range from 0 to 255
+@*param* `red` — GDI+ colors range from 0 to 255.
 
-@*param* `green` — GDI+ colors range from 0 to 255
+@*param* `green` — GDI+ colors range from 0 to 255.
 
-@*param* `blue` — GDI+ colors range from 0 to 255
+@*param* `blue` — GDI+ colors range from 0 to 255.
 
 
 ```lua
@@ -4412,7 +4409,7 @@ function wgui.resize(width: integer, height: integer)
 # wgui.set_antialias_mode
 
 Sets the antialiasing mode. More info
-[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).
 
 ```lua
 mode:
@@ -4432,7 +4429,7 @@ function wgui.set_antialias_mode(mode: 0|1|4294967295)
 # wgui.set_text_antialias_mode
 
 Sets the text antialiasing mode. More info
-[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).
 
 ```lua
 mode:

@@ -8,7 +8,7 @@
                     "type": "table",
                     "view": "_G"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 680002,
                 "start": 680000,
                 "type": "setglobal"
@@ -27,7 +27,7 @@
                     "type": "string",
                     "view": "string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 3970008,
                 "start": 3970000,
                 "type": "setglobal"
@@ -46,7 +46,7 @@
                     "type": "table",
                     "view": "string[]"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 80003,
                 "start": 80000,
                 "type": "setglobal"
@@ -99,7 +99,7 @@
                     "type": "function",
                     "view": "function assert(v?: <T>, message?: any, ...any)\n  -> <T>\n  2. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 200015,
                 "start": 200009,
                 "type": "setglobal"
@@ -118,7 +118,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 190003,
                 "start": 190000,
                 "type": "setglobal"
@@ -152,7 +152,7 @@
                     "type": "function",
                     "view": "function avi.startcapture(filename: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7480025,
                 "start": 7480009,
                 "type": "setfield"
@@ -179,7 +179,7 @@
                     "type": "function",
                     "view": "function avi.stopcapture()\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7520024,
                 "start": 7520009,
                 "type": "setfield"
@@ -220,7 +220,7 @@
                     "type": "function",
                     "view": "function collectgarbage(opt?: \"collect\"|\"count\"|\"generational\"|\"incremental\"|\"isrunning\"...(+3), ...any)\n  -> any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 390023,
                 "start": 390009,
                 "type": "setglobal"
@@ -239,7 +239,7 @@
                     "type": "table",
                     "view": "coroutinelib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 80009,
                 "start": 80000,
                 "type": "setglobal"
@@ -280,7 +280,7 @@
                     "type": "function",
                     "view": "function coroutine.close(co: thread)\n  -> noerror: boolean\n  2. errorobject: any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 390024,
                 "start": 390009,
                 "type": "setfield"
@@ -315,7 +315,7 @@
                     "type": "function",
                     "view": "function coroutine.create(f: fun(...any):...unknown)\n  -> thread"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 180025,
                 "start": 180009,
                 "type": "setfield"
@@ -350,7 +350,7 @@
                     "type": "function",
                     "view": "function coroutine.isyieldable(co?: thread)\n  -> boolean"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 280030,
                 "start": 280009,
                 "type": "setfield"
@@ -404,7 +404,7 @@
                     "type": "function",
                     "view": "function coroutine.resume(co: thread, val1?: any, ...any)\n  -> success: boolean\n  2. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 500025,
                 "start": 500009,
                 "type": "setfield"
@@ -437,7 +437,7 @@
                     "type": "function",
                     "view": "function coroutine.running()\n  -> running: thread\n  2. ismain: boolean"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 600026,
                 "start": 600009,
                 "type": "setfield"
@@ -472,7 +472,7 @@
                     "type": "function",
                     "view": "function coroutine.status(co: thread)\n  -> \"dead\"|\"normal\"|\"running\"|\"suspended\""
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 740025,
                 "start": 740009,
                 "type": "setfield"
@@ -507,7 +507,7 @@
                     "type": "function",
                     "view": "function coroutine.wrap(f: fun(...any):...unknown)\n  -> fun(...any):...unknown"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 840023,
                 "start": 840009,
                 "type": "setfield"
@@ -542,7 +542,7 @@
                     "type": "function",
                     "view": "(async) function coroutine.yield(...any)\n  -> ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua",
                 "finish": 930024,
                 "start": 930009,
                 "type": "setfield"
@@ -561,7 +561,7 @@
                     "type": "table",
                     "view": "debuglib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 80005,
                 "start": 80000,
                 "type": "setglobal"
@@ -582,7 +582,7 @@
                     "type": "function",
                     "view": "function debug.debug()"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 330020,
                 "start": 330009,
                 "type": "setfield"
@@ -617,7 +617,7 @@
                     "type": "function",
                     "view": "function debug.getfenv(o: any)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 440022,
                 "start": 440009,
                 "type": "setfield"
@@ -663,7 +663,7 @@
                     "type": "function",
                     "view": "function debug.gethook(co?: thread)\n  -> hook: function\n  2. mask: string\n  3. count: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 560022,
                 "start": 560009,
                 "type": "setfield"
@@ -712,7 +712,7 @@
                     "type": "function",
                     "view": "function debug.getinfo(thread: thread, f: integer|fun(...any):...unknown, what?: string|\"L\"|\"S\"|\"f\"|\"l\"...(+4))\n  -> debuginfo"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 790022,
                 "start": 790009,
                 "type": "setfield"
@@ -767,7 +767,7 @@
                     "type": "function",
                     "view": "function debug.getlocal(thread: thread, f: integer|fun(...any):...unknown, index: integer)\n  -> name: string\n  2. value: any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 930023,
                 "start": 930009,
                 "type": "setfield"
@@ -803,7 +803,7 @@
                     "type": "function",
                     "view": "function debug.getmetatable(object: any)\n  -> metatable: table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1030027,
                 "start": 1030009,
                 "type": "setfield"
@@ -830,7 +830,7 @@
                     "type": "function",
                     "view": "function debug.getregistry()\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1120026,
                 "start": 1120009,
                 "type": "setfield"
@@ -878,7 +878,7 @@
                     "type": "function",
                     "view": "function debug.getupvalue(f: fun(...any):...unknown, up: integer)\n  -> name: string\n  2. value: any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1240025,
                 "start": 1240009,
                 "type": "setfield"
@@ -924,7 +924,7 @@
                     "type": "function",
                     "view": "function debug.getuservalue(u: userdata, n?: integer)\n  -> any\n  2. boolean"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1390027,
                 "start": 1390009,
                 "type": "setfield"
@@ -959,7 +959,7 @@
                     "type": "function",
                     "view": "function debug.setcstacklimit(limit: integer)\n  -> boolean|integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1540029,
                 "start": 1540009,
                 "type": "setfield"
@@ -1002,7 +1002,7 @@
                     "type": "function",
                     "view": "function debug.setfenv(object: <T>, env: table)\n  -> object: <T>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1660022,
                 "start": 1660009,
                 "type": "setfield"
@@ -1052,7 +1052,7 @@
                     "type": "function",
                     "view": "function debug.sethook(thread: thread, hook: fun(...any):...unknown, mask: string|\"c\"|\"l\"|\"r\", count?: integer)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1850022,
                 "start": 1850009,
                 "type": "setfield"
@@ -1109,7 +1109,7 @@
                     "type": "function",
                     "view": "function debug.setlocal(thread: thread, level: integer, index: integer, value: any)\n  -> name: string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 1980023,
                 "start": 1980009,
                 "type": "setfield"
@@ -1152,7 +1152,7 @@
                     "type": "function",
                     "view": "function debug.setmetatable(value: <T>, meta?: table)\n  -> value: <T>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2090027,
                 "start": 2090009,
                 "type": "setfield"
@@ -1202,7 +1202,7 @@
                     "type": "function",
                     "view": "function debug.setupvalue(f: fun(...any):...unknown, up: integer, value: any)\n  -> name: string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2200025,
                 "start": 2200009,
                 "type": "setfield"
@@ -1252,7 +1252,7 @@
                     "type": "function",
                     "view": "function debug.setuservalue(udata: userdata, value: any, n?: integer)\n  -> udata: userdata"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2340027,
                 "start": 2340009,
                 "type": "setfield"
@@ -1302,7 +1302,7 @@
                     "type": "function",
                     "view": "function debug.traceback(thread: thread, message?: any, level?: integer)\n  -> message: string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2470024,
                 "start": 2470009,
                 "type": "setfield"
@@ -1345,7 +1345,7 @@
                     "type": "function",
                     "view": "function debug.upvalueid(f: fun(...any):...unknown, n: integer)\n  -> id: lightuserdata"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2590024,
                 "start": 2590009,
                 "type": "setfield"
@@ -1395,7 +1395,7 @@
                     "type": "function",
                     "view": "function debug.upvaluejoin(f1: fun(...any):...unknown, n1: integer, f2: fun(...any):...unknown, n2: integer)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/debug.lua",
                 "finish": 2710026,
                 "start": 2710009,
                 "type": "setfield"
@@ -1431,7 +1431,7 @@
                     "type": "function",
                     "view": "function dofile(filename?: string)\n  -> ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 480015,
                 "start": 480009,
                 "type": "setglobal"
@@ -1450,7 +1450,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 100003,
                 "start": 100000,
                 "type": "setglobal"
@@ -1493,7 +1493,7 @@
                     "type": "function",
                     "view": "function emu.atinput(f: fun(a?: integer):nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 870020,
                 "start": 870009,
                 "type": "setfield"
@@ -1537,7 +1537,7 @@
                     "type": "function",
                     "view": "function emu.atinterval(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1120023,
                 "start": 1120009,
                 "type": "setfield"
@@ -1581,7 +1581,7 @@
                     "type": "function",
                     "view": "function emu.atloadstate(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1360024,
                 "start": 1360009,
                 "type": "setfield"
@@ -1625,7 +1625,7 @@
                     "type": "function",
                     "view": "function emu.atplaymovie(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1200024,
                 "start": 1200009,
                 "type": "setfield"
@@ -1669,7 +1669,7 @@
                     "type": "function",
                     "view": "function emu.atreset(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1520020,
                 "start": 1520009,
                 "type": "setfield"
@@ -1713,7 +1713,7 @@
                     "type": "function",
                     "view": "function emu.atsavestate(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1440024,
                 "start": 1440009,
                 "type": "setfield"
@@ -1729,7 +1729,7 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "The function to be called when the script is stopped",
+                            "desc": "The function to be called when the script is stopped.",
                             "finish": 950021,
                             "name": "f",
                             "start": 950020,
@@ -1745,7 +1745,7 @@
                             "view": "boolean?"
                         }
                     ],
-                    "desc": "Calls the function `f` when the script is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the script is stopped\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+                    "desc": "Calls the function `f` when the script is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the script is stopped.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
                     "finish": 950038,
                     "returns": [
                         {
@@ -1757,13 +1757,13 @@
                     "type": "function",
                     "view": "function emu.atstop(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 950019,
                 "start": 950009,
                 "type": "setfield"
             }
         ],
-        "desc": "Calls the function `f` when the script is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the script is stopped\n\n@*param* `unregister` — If true, then unregister the function `f`.",
+        "desc": "Calls the function `f` when the script is stopped. If `unregister` is set to\ntrue, the function `f` will no longer be called when this event occurs, but\nit will error if you never registered the function.\n\n@*param* `f` — The function to be called when the script is stopped.\n\n@*param* `unregister` — If true, then unregister the function `f`.",
         "name": "emu.atstop",
         "type": "variable"
     },
@@ -1801,7 +1801,7 @@
                     "type": "function",
                     "view": "function emu.atstopmovie(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1280024,
                 "start": 1280009,
                 "type": "setfield"
@@ -1845,7 +1845,7 @@
                     "type": "function",
                     "view": "function emu.atupdatescreen(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 780027,
                 "start": 780009,
                 "type": "setfield"
@@ -1889,7 +1889,7 @@
                     "type": "function",
                     "view": "function emu.atvi(f: fun():nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 700017,
                 "start": 700009,
                 "type": "setfield"
@@ -1933,7 +1933,7 @@
                     "type": "function",
                     "view": "function emu.atwindowmessage(f: fun(a: integer, b: integer, c: integer, d: integer):nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1040028,
                 "start": 1040009,
                 "type": "setfield"
@@ -1969,7 +1969,7 @@
                     "type": "function",
                     "view": "function emu.console(message: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 470020,
                 "start": 470009,
                 "type": "setfield"
@@ -2005,7 +2005,7 @@
                     "type": "function",
                     "view": "function emu.debugview(message: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 540022,
                 "start": 540009,
                 "type": "setfield"
@@ -2034,7 +2034,7 @@
                     "type": "function",
                     "view": "function emu.framecount()\n  -> framecount: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1600023,
                 "start": 1600009,
                 "type": "setfield"
@@ -2069,7 +2069,7 @@
                     "type": "function",
                     "view": "function emu.getaddress(address: string)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2180023,
                 "start": 2180009,
                 "type": "setfield"
@@ -2098,7 +2098,7 @@
                     "type": "function",
                     "view": "function emu.getpause()\n  -> emu_paused: boolean"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1920021,
                 "start": 1920009,
                 "type": "setfield"
@@ -2127,7 +2127,7 @@
                     "type": "function",
                     "view": "function emu.getspeed()\n  -> speed_limit: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1970021,
                 "start": 1970009,
                 "type": "setfield"
@@ -2163,7 +2163,7 @@
                     "type": "function",
                     "view": "function emu.getsystemmetrics(param: integer)\n  -> metric: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2320029,
                 "start": 2320009,
                 "type": "setfield"
@@ -2179,7 +2179,7 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "Whether to get the full version (less that 0) or the short version (more than 1).",
+                            "desc": "Whether to get the full version (`0`) or the short version (`1`).",
                             "finish": 1820028,
                             "name": "type",
                             "start": 1820024,
@@ -2187,11 +2187,11 @@
                             "view": "0|1"
                         }
                     ],
-                    "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return only the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
+                    "desc": "Returns the current mupen version. If `type` is 0, it will return the full\nversion name (Mupen 64 0.0.0). If `type` is 1, it will return only the\nversion number (0.0.0).\n\n@*param* `type` — Whether to get the full version (`0`) or the short version (`1`).\n\n@*return* `version` — The Mupen version.\n\n```lua\ntype:\n    | 0\n    | 1\n```",
                     "finish": 1820033,
                     "returns": [
                         {
-                            "desc": "The mupen version",
+                            "desc": "The Mupen version.",
                             "name": "version",
                             "type": "function.return",
                             "view": "string"
@@ -2201,13 +2201,13 @@
                     "type": "function",
                     "view": "function emu.getversion(type: 0|1)\n  -> version: string"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1820023,
                 "start": 1820009,
                 "type": "setfield"
             }
         ],
-        "desc": "Returns the current mupen version. If `type` is 0 or less, it\nwill return the full version name (Mupen 64 0.0.0). If `type`\nis 1 or more, it will return only the version number (0.0.0).\n\n@*param* `type` — Whether to get the full version (less that 0) or the short version (more than 1).\n\n@*return* `version` — The mupen version\n\n```lua\ntype:\n    | 0\n    | 1\n```",
+        "desc": "Returns the current mupen version. If `type` is 0, it will return the full\nversion name (Mupen 64 0.0.0). If `type` is 1, it will return only the\nversion number (0.0.0).\n\n@*param* `type` — Whether to get the full version (`0`) or the short version (`1`).\n\n@*return* `version` — The Mupen version.\n\n```lua\ntype:\n    | 0\n    | 1\n```",
         "name": "emu.getversion",
         "type": "variable"
     },
@@ -2230,7 +2230,7 @@
                     "type": "function",
                     "view": "function emu.inputcount()\n  -> inputcount: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1740023,
                 "start": 1740009,
                 "type": "setfield"
@@ -2258,7 +2258,7 @@
                     "type": "function",
                     "view": "function emu.ismainwindowinforeground()\n  -> focused: boolean"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2370037,
                 "start": 2370009,
                 "type": "setfield"
@@ -2286,7 +2286,7 @@
                     "type": "function",
                     "view": "function emu.isreadonly()\n  -> read_only: boolean"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2240023,
                 "start": 2240009,
                 "type": "setfield"
@@ -2322,7 +2322,7 @@
                     "type": "function",
                     "view": "function emu.pause(pause: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1870018,
                 "start": 1870009,
                 "type": "setfield"
@@ -2351,7 +2351,7 @@
                     "type": "function",
                     "view": "function emu.samplecount()\n  -> samplecount: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 1680024,
                 "start": 1680009,
                 "type": "setfield"
@@ -2387,7 +2387,7 @@
                     "type": "function",
                     "view": "function emu.screenshot(dir: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2420023,
                 "start": 2420009,
                 "type": "setfield"
@@ -2422,7 +2422,7 @@
                     "type": "function",
                     "view": "function emu.setgfx(mode: 0|1)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2120019,
                 "start": 2120009,
                 "type": "setfield"
@@ -2458,7 +2458,7 @@
                     "type": "function",
                     "view": "function emu.speed(speed_limit: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2020018,
                 "start": 2020009,
                 "type": "setfield"
@@ -2493,7 +2493,7 @@
                     "type": "function",
                     "view": "function emu.speedmode(mode: \"maximum\"|\"normal\")\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2070022,
                 "start": 2070009,
                 "type": "setfield"
@@ -2529,7 +2529,7 @@
                     "type": "function",
                     "view": "function emu.statusbar(message: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 600022,
                 "start": 600009,
                 "type": "setfield"
@@ -2565,7 +2565,7 @@
                     "type": "function",
                     "view": "function error(message: any, level?: integer)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 600014,
                 "start": 600009,
                 "type": "setglobal"
@@ -2600,7 +2600,7 @@
                     "type": "function",
                     "view": "function getfenv(f?: integer|fun(...any):...unknown)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 790016,
                 "start": 790009,
                 "type": "setglobal"
@@ -2636,7 +2636,7 @@
                     "type": "function",
                     "view": "function getmetatable(object: any)\n  -> metatable: table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 890021,
                 "start": 890009,
                 "type": "setglobal"
@@ -2655,7 +2655,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 120003,
                 "start": 120000,
                 "type": "setglobal"
@@ -2673,7 +2673,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 140005,
                 "start": 140000,
                 "type": "setglobal"
@@ -2714,7 +2714,7 @@
                     "type": "function",
                     "view": "function input.diff(t1: table, t2: table)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6250019,
                 "start": 6250009,
                 "type": "setfield"
@@ -2741,7 +2741,7 @@
                     "type": "function",
                     "view": "function input.get()\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6160018,
                 "start": 6160009,
                 "type": "setfield"
@@ -2776,7 +2776,7 @@
                     "type": "function",
                     "view": "function input.get_key_name_text(key: integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6400032,
                 "start": 6400009,
                 "type": "setfield"
@@ -2806,7 +2806,7 @@
                             "view": "integer"
                         }
                     ],
-                    "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)",
+                    "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).",
                     "finish": 6480053,
                     "returns": [
                         {
@@ -2818,13 +2818,13 @@
                     "type": "function",
                     "view": "function input.map_virtual_key_ex(code: integer, map_type: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6480033,
                 "start": 6480009,
                 "type": "setfield"
             }
         ],
-        "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)",
+        "desc": "Translates a virtual-key code into a scan code. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).",
         "name": "input.map_virtual_key_ex",
         "type": "variable"
     },
@@ -2862,7 +2862,7 @@
                     "type": "function",
                     "view": "function input.prompt(title?: string, placeholder?: string)\n  -> string|nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6340021,
                 "start": 6340009,
                 "type": "setfield"
@@ -2881,7 +2881,7 @@
                     "type": "table",
                     "view": "iolib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 260002,
                 "start": 260000,
                 "type": "setglobal"
@@ -2928,7 +2928,7 @@
                     "type": "function",
                     "view": "function io.close(file?: file*)\n  -> suc: boolean?\n  2. exitcode: (\"exit\"|\"signal\")?\n  3. code: integer?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 510017,
                 "start": 510009,
                 "type": "setfield"
@@ -2949,7 +2949,7 @@
                     "type": "function",
                     "view": "function io.flush()"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 580017,
                 "start": 580009,
                 "type": "setfield"
@@ -2979,7 +2979,7 @@
                     "type": "function",
                     "view": "function io.input(file: string|file*)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 670017,
                 "start": 670009,
                 "type": "setfield"
@@ -3020,7 +3020,7 @@
                     "type": "function",
                     "view": "function io.lines(filename?: string, ...string|integer|\"L\"|\"a\"|\"l\"...(+1))\n  -> fun():any, ...unknown"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 830017,
                 "start": 830009,
                 "type": "setfield"
@@ -3067,7 +3067,7 @@
                     "type": "function",
                     "view": "function io.open(filename: string, mode?: \"a\"|\"a+\"|\"a+b\"|\"ab\"|\"r\"...(+7))\n  -> file*?\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 950016,
                 "start": 950009,
                 "type": "setfield"
@@ -3097,7 +3097,7 @@
                     "type": "function",
                     "view": "function io.output(file: string|file*)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1040018,
                 "start": 1040009,
                 "type": "setfield"
@@ -3144,7 +3144,7 @@
                     "type": "function",
                     "view": "function io.popen(prog: string, mode?: \"r\"|\"w\")\n  -> file*?\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1190017,
                 "start": 1190009,
                 "type": "setfield"
@@ -3183,7 +3183,7 @@
                     "type": "function",
                     "view": "function io.read(...string|integer|\"L\"|\"a\"|\"l\"...(+1))\n  -> any\n  2. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1300016,
                 "start": 1300009,
                 "type": "setfield"
@@ -3210,7 +3210,7 @@
                     "type": "function",
                     "view": "function io.tmpfile()\n  -> file*"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1390019,
                 "start": 1390009,
                 "type": "setfield"
@@ -3246,7 +3246,7 @@
                     "type": "function",
                     "view": "function io.type(file: file*)\n  -> \"closed file\"|\"file\"|`nil`"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1540016,
                 "start": 1540009,
                 "type": "setfield"
@@ -3285,7 +3285,7 @@
                     "type": "function",
                     "view": "function io.write(...any)\n  -> file*\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/io.lua",
                 "finish": 1630017,
                 "start": 1630009,
                 "type": "setfield"
@@ -3304,7 +3304,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 180008,
                 "start": 180000,
                 "type": "setglobal"
@@ -3319,7 +3319,7 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files",
+                            "desc": "This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.",
                             "finish": 7360033,
                             "name": "filter",
                             "start": 7360027,
@@ -3327,7 +3327,7 @@
                             "view": "string"
                         },
                         {
-                            "desc": "Unknown",
+                            "desc": "Unknown.",
                             "finish": 7360039,
                             "name": "type",
                             "start": 7360035,
@@ -3335,7 +3335,7 @@
                             "view": "integer"
                         }
                     ],
-                    "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files\n\n@*param* `type` — Unknown",
+                    "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.\n\n@*param* `type` — Unknown.",
                     "finish": 7360044,
                     "returns": [
                         {
@@ -3347,13 +3347,13 @@
                     "type": "function",
                     "view": "function ioHelper.filediag(filter: string, type: integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7360026,
                 "start": 7360009,
                 "type": "setfield"
             }
         ],
-        "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files\n\n@*param* `type` — Unknown",
+        "desc": "Opens a file dialouge and returns the file path of the file chosen.\n\n@*param* `filter` — This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.\n\n@*param* `type` — Unknown.",
         "name": "ioHelper.filediag",
         "type": "variable"
     },
@@ -3391,7 +3391,7 @@
                     "type": "function",
                     "view": "function ipairs(t: <T:table>)\n  -> fun(table: <V>[], i?: integer):integer, <V>\n  2. <T:table>\n  3. i: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1060015,
                 "start": 1060009,
                 "type": "setglobal"
@@ -3410,7 +3410,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 150006,
                 "start": 150000,
                 "type": "setglobal"
@@ -3438,7 +3438,7 @@
                     "type": "function",
                     "view": "function joypad.count()\n  -> inputcount: integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6850021,
                 "start": 6850009,
                 "type": "setfield"
@@ -3473,7 +3473,7 @@
                     "type": "function",
                     "view": "function joypad.get(port: 1|2|3|4)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6620019,
                 "start": 6620009,
                 "type": "setfield"
@@ -3517,7 +3517,7 @@
                     "type": "function",
                     "view": "function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6780024,
                 "start": 6780009,
                 "type": "setfield"
@@ -3547,7 +3547,7 @@
                             "view": "table"
                         }
                     ],
-                    "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
+                    "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates.\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
                     "finish": 6690037,
                     "returns": [
                         {
@@ -3559,13 +3559,13 @@
                     "type": "function",
                     "view": "function joypad.set(port: 1|2|3|4, inputs: table)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6690019,
                 "start": 6690009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
+        "desc": "Sets the current joypad to `inputs`. If you do not specify one or more\ninputs, they will be set to `false` for buttons or `0` for stick coordinates.\n\n```lua\nport:\n    | 1\n    | 2\n    | 3\n    | 4\n```",
         "name": "joypad.set",
         "type": "variable"
     },
@@ -3620,7 +3620,7 @@
                     "type": "function",
                     "view": "function load(chunk: string|function, chunkname?: string, mode?: \"b\"|\"bt\"|\"t\", env?: table)\n  -> function?\n  2. error_message: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1280013,
                 "start": 1280009,
                 "type": "setglobal"
@@ -3674,7 +3674,7 @@
                     "type": "function",
                     "view": "function loadfile(filename?: string, mode?: \"b\"|\"bt\"|\"t\", env?: table)\n  -> function?\n  2. error_message: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1410017,
                 "start": 1410009,
                 "type": "setglobal"
@@ -3721,7 +3721,7 @@
                     "type": "function",
                     "view": "function loadstring(text: string, chunkname?: string)\n  -> function?\n  2. error_message: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1540019,
                 "start": 1540009,
                 "type": "setglobal"
@@ -3740,7 +3740,7 @@
                     "type": "table",
                     "view": "mathlib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 320004,
                 "start": 320000,
                 "type": "setglobal"
@@ -3775,7 +3775,7 @@
                     "type": "function",
                     "view": "function math.abs(x: <Number:number>)\n  -> <Number:number>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 430017,
                 "start": 430009,
                 "type": "setfield"
@@ -3810,7 +3810,7 @@
                     "type": "function",
                     "view": "function math.acos(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 530018,
                 "start": 530009,
                 "type": "setfield"
@@ -3845,7 +3845,7 @@
                     "type": "function",
                     "view": "function math.asin(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 630018,
                 "start": 630009,
                 "type": "setfield"
@@ -3887,7 +3887,7 @@
                     "type": "function",
                     "view": "function math.atan(y: number, x?: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 740018,
                 "start": 740009,
                 "type": "setfield"
@@ -3929,7 +3929,7 @@
                     "type": "function",
                     "view": "function math.atan2(y: number, x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 860019,
                 "start": 860009,
                 "type": "setfield"
@@ -3964,7 +3964,7 @@
                     "type": "function",
                     "view": "function math.ceil(x: number)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 960018,
                 "start": 960009,
                 "type": "setfield"
@@ -3999,7 +3999,7 @@
                     "type": "function",
                     "view": "function math.cos(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1060017,
                 "start": 1060009,
                 "type": "setfield"
@@ -4034,7 +4034,7 @@
                     "type": "function",
                     "view": "function math.cosh(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1170018,
                 "start": 1170009,
                 "type": "setfield"
@@ -4069,7 +4069,7 @@
                     "type": "function",
                     "view": "function math.deg(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1270017,
                 "start": 1270009,
                 "type": "setfield"
@@ -4104,7 +4104,7 @@
                     "type": "function",
                     "view": "function math.exp(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1370017,
                 "start": 1370009,
                 "type": "setfield"
@@ -4139,7 +4139,7 @@
                     "type": "function",
                     "view": "function math.floor(x: number)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1470019,
                 "start": 1470009,
                 "type": "setfield"
@@ -4181,7 +4181,7 @@
                     "type": "function",
                     "view": "function math.fmod(x: number, y: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1580018,
                 "start": 1580009,
                 "type": "setfield"
@@ -4222,7 +4222,7 @@
                     "type": "function",
                     "view": "function math.frexp(x: number)\n  -> m: number\n  2. e: number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1700019,
                 "start": 1700009,
                 "type": "setfield"
@@ -4264,7 +4264,7 @@
                     "type": "function",
                     "view": "function math.ldexp(m: number, e: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1820019,
                 "start": 1820009,
                 "type": "setfield"
@@ -4306,7 +4306,7 @@
                     "type": "function",
                     "view": "function math.log(x: number, base?: integer)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 1930017,
                 "start": 1930009,
                 "type": "setfield"
@@ -4341,7 +4341,7 @@
                     "type": "function",
                     "view": "function math.log10(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2040019,
                 "start": 2040009,
                 "type": "setfield"
@@ -4382,7 +4382,7 @@
                     "type": "function",
                     "view": "function math.max(x: <Number:number>, ...<Number:number>)\n  -> <Number:number>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2160017,
                 "start": 2160009,
                 "type": "setfield"
@@ -4423,7 +4423,7 @@
                     "type": "function",
                     "view": "function math.min(x: <Number:number>, ...<Number:number>)\n  -> <Number:number>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2280017,
                 "start": 2280009,
                 "type": "setfield"
@@ -4462,7 +4462,7 @@
                     "type": "function",
                     "view": "function math.modf(x: number)\n  -> integer\n  2. number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2390018,
                 "start": 2390009,
                 "type": "setfield"
@@ -4504,7 +4504,7 @@
                     "type": "function",
                     "view": "function math.pow(x: number, y: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2510017,
                 "start": 2510009,
                 "type": "setfield"
@@ -4539,7 +4539,7 @@
                     "type": "function",
                     "view": "function math.rad(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2610017,
                 "start": 2610009,
                 "type": "setfield"
@@ -4581,7 +4581,7 @@
                     "type": "function",
                     "view": "function math.random(m: integer, n: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2770020,
                 "start": 2770009,
                 "type": "setfield"
@@ -4617,7 +4617,7 @@
                     "type": "function",
                     "view": "function math.randomseed(x?: integer, y?: integer)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2890024,
                 "start": 2890009,
                 "type": "setfield"
@@ -4652,7 +4652,7 @@
                     "type": "function",
                     "view": "function math.sin(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 2990017,
                 "start": 2990009,
                 "type": "setfield"
@@ -4687,7 +4687,7 @@
                     "type": "function",
                     "view": "function math.sinh(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3100018,
                 "start": 3100009,
                 "type": "setfield"
@@ -4722,7 +4722,7 @@
                     "type": "function",
                     "view": "function math.sqrt(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3200018,
                 "start": 3200009,
                 "type": "setfield"
@@ -4757,7 +4757,7 @@
                     "type": "function",
                     "view": "function math.tan(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3300017,
                 "start": 3300009,
                 "type": "setfield"
@@ -4792,7 +4792,7 @@
                     "type": "function",
                     "view": "function math.tanh(x: number)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3410018,
                 "start": 3410009,
                 "type": "setfield"
@@ -4827,7 +4827,7 @@
                     "type": "function",
                     "view": "function math.tointeger(x: any)\n  -> integer?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3520023,
                 "start": 3520009,
                 "type": "setfield"
@@ -4862,7 +4862,7 @@
                     "type": "function",
                     "view": "function math.type(x: any)\n  -> \"float\"|\"integer\"|'nil'"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3650018,
                 "start": 3650009,
                 "type": "setfield"
@@ -4904,7 +4904,7 @@
                     "type": "function",
                     "view": "function math.ult(m: integer, n: integer)\n  -> boolean"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/math.lua",
                 "finish": 3760017,
                 "start": 3760009,
                 "type": "setfield"
@@ -4923,7 +4923,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 110006,
                 "start": 110000,
                 "type": "setglobal"
@@ -4957,7 +4957,7 @@
                     "type": "function",
                     "view": "function memory.doubletoint(n: integer[])\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2760027,
                 "start": 2760009,
                 "type": "setfield"
@@ -4992,7 +4992,7 @@
                     "type": "function",
                     "view": "function memory.floattoint(n: number)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2690026,
                 "start": 2690009,
                 "type": "setfield"
@@ -5027,7 +5027,7 @@
                     "type": "function",
                     "view": "function memory.inttodouble(n: integer[])\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2620027,
                 "start": 2620009,
                 "type": "setfield"
@@ -5062,7 +5062,7 @@
                     "type": "function",
                     "view": "function memory.inttofloat(n: integer)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2550026,
                 "start": 2550009,
                 "type": "setfield"
@@ -5097,7 +5097,7 @@
                     "type": "function",
                     "view": "function memory.qwordtonumber(n: integer[])\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2830029,
                 "start": 2830009,
                 "type": "setfield"
@@ -5132,7 +5132,7 @@
                     "type": "function",
                     "view": "function memory.readbyte(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2950024,
                 "start": 2950009,
                 "type": "setfield"
@@ -5167,7 +5167,7 @@
                     "type": "function",
                     "view": "function memory.readbytesigned(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 2890030,
                 "start": 2890009,
                 "type": "setfield"
@@ -5202,7 +5202,7 @@
                     "type": "function",
                     "view": "function memory.readdouble(address: integer)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3450026,
                 "start": 3450009,
                 "type": "setfield"
@@ -5237,7 +5237,7 @@
                     "type": "function",
                     "view": "function memory.readdword(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3190025,
                 "start": 3190009,
                 "type": "setfield"
@@ -5272,7 +5272,7 @@
                     "type": "function",
                     "view": "function memory.readdwordsigned(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3130031,
                 "start": 3130009,
                 "type": "setfield"
@@ -5307,7 +5307,7 @@
                     "type": "function",
                     "view": "function memory.readfloat(address: integer)\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3390025,
                 "start": 3390009,
                 "type": "setfield"
@@ -5342,7 +5342,7 @@
                     "type": "function",
                     "view": "function memory.readqword(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3330025,
                 "start": 3330009,
                 "type": "setfield"
@@ -5377,7 +5377,7 @@
                     "type": "function",
                     "view": "function memory.readqwordsigned(address: integer)\n  -> integer[]"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3260031,
                 "start": 3260009,
                 "type": "setfield"
@@ -5419,7 +5419,7 @@
                     "type": "function",
                     "view": "function memory.readsize(address: integer, size: -1|-2|-4|-8|1...(+3))\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3530024,
                 "start": 3530009,
                 "type": "setfield"
@@ -5454,7 +5454,7 @@
                     "type": "function",
                     "view": "function memory.readword(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3070024,
                 "start": 3070009,
                 "type": "setfield"
@@ -5489,7 +5489,7 @@
                     "type": "function",
                     "view": "function memory.readwordsigned(address: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3010030,
                 "start": 3010009,
                 "type": "setfield"
@@ -5531,7 +5531,7 @@
                     "type": "function",
                     "view": "function memory.writebyte(address: integer, data: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3590025,
                 "start": 3590009,
                 "type": "setfield"
@@ -5573,7 +5573,7 @@
                     "type": "function",
                     "view": "function memory.writedouble(address: integer, data: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3900027,
                 "start": 3900009,
                 "type": "setfield"
@@ -5615,7 +5615,7 @@
                     "type": "function",
                     "view": "function memory.writedword(address: integer, data: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3710026,
                 "start": 3710009,
                 "type": "setfield"
@@ -5657,7 +5657,7 @@
                     "type": "function",
                     "view": "function memory.writefloat(address: integer, data: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3840026,
                 "start": 3840009,
                 "type": "setfield"
@@ -5699,7 +5699,7 @@
                     "type": "function",
                     "view": "function memory.writeqword(address: integer, data: integer[])\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3780026,
                 "start": 3780009,
                 "type": "setfield"
@@ -5748,7 +5748,7 @@
                     "type": "function",
                     "view": "function memory.writesize(address: integer, size: -1|-2|-4|-8|1...(+3), data: integer|integer[])\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3980025,
                 "start": 3980009,
                 "type": "setfield"
@@ -5790,7 +5790,7 @@
                     "type": "function",
                     "view": "function memory.writeword(address: integer, data: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 3650025,
                 "start": 3650009,
                 "type": "setfield"
@@ -5825,7 +5825,7 @@
                     "type": "function",
                     "view": "function module(name: string, ...any)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1690015,
                 "start": 1690009,
                 "type": "setglobal"
@@ -5844,7 +5844,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 160005,
                 "start": 160000,
                 "type": "setglobal"
@@ -5870,7 +5870,7 @@
                     "type": "function",
                     "view": "function movie.getmoviefilename()\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7070031,
                 "start": 7070009,
                 "type": "setfield"
@@ -5905,7 +5905,7 @@
                     "type": "function",
                     "view": "function movie.playmovie(filename: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6970024,
                 "start": 6970009,
                 "type": "setfield"
@@ -5932,7 +5932,7 @@
                     "type": "function",
                     "view": "function movie.stopmovie()\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7010024,
                 "start": 7010009,
                 "type": "setfield"
@@ -5966,7 +5966,7 @@
                     "type": "function",
                     "view": "function newproxy(proxy: boolean|table|userdata)\n  -> userdata"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1600017,
                 "start": 1600009,
                 "type": "setglobal"
@@ -6011,7 +6011,7 @@
                     "type": "function",
                     "view": "function next(table: table<<K>, <V>>, index?: <K>)\n  -> <K>?\n  2. <V>?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 1870013,
                 "start": 1870009,
                 "type": "setglobal"
@@ -6030,7 +6030,7 @@
                     "type": "table",
                     "view": "oslib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 80002,
                 "start": 80000,
                 "type": "setglobal"
@@ -6057,7 +6057,7 @@
                     "type": "function",
                     "view": "function os.clock()\n  -> number"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 170017,
                 "start": 170009,
                 "type": "setfield"
@@ -6099,7 +6099,7 @@
                     "type": "function",
                     "view": "function os.date(format?: string, time?: integer)\n  -> string|osdate"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 840016,
                 "start": 840009,
                 "type": "setfield"
@@ -6141,7 +6141,7 @@
                     "type": "function",
                     "view": "function os.difftime(t2: integer, t1: integer)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 950020,
                 "start": 950009,
                 "type": "setfield"
@@ -6187,7 +6187,7 @@
                     "type": "function",
                     "view": "function os.execute(command?: string)\n  -> suc: boolean?\n  2. exitcode: (\"exit\"|\"signal\")?\n  3. code: integer?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1060019,
                 "start": 1060009,
                 "type": "setfield"
@@ -6223,7 +6223,7 @@
                     "type": "function",
                     "view": "function os.exit(code?: boolean|integer, close?: boolean)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1150016,
                 "start": 1150009,
                 "type": "setfield"
@@ -6258,7 +6258,7 @@
                     "type": "function",
                     "view": "function os.getenv(varname: string)\n  -> string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1250018,
                 "start": 1250009,
                 "type": "setfield"
@@ -6299,7 +6299,7 @@
                     "type": "function",
                     "view": "function os.remove(filename: string)\n  -> suc: boolean\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1350018,
                 "start": 1350009,
                 "type": "setfield"
@@ -6347,7 +6347,7 @@
                     "type": "function",
                     "view": "function os.rename(oldname: string, newname: string)\n  -> suc: boolean\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1460018,
                 "start": 1460009,
                 "type": "setfield"
@@ -6390,7 +6390,7 @@
                     "type": "function",
                     "view": "function os.setlocale(locale: string|nil, category?: \"all\"|\"collate\"|\"ctype\"|\"monetary\"|\"numeric\"...(+1))\n  -> localecategory: string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1640021,
                 "start": 1640009,
                 "type": "setfield"
@@ -6425,7 +6425,7 @@
                     "type": "function",
                     "view": "function os.time(date?: osdate)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1740016,
                 "start": 1740009,
                 "type": "setfield"
@@ -6452,7 +6452,7 @@
                     "type": "function",
                     "view": "function os.tmpname()\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/os.lua",
                 "finish": 1830019,
                 "start": 1830009,
                 "type": "setfield"
@@ -6471,7 +6471,7 @@
                     "type": "table",
                     "view": "packagelib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 420007,
                 "start": 420000,
                 "type": "setglobal"
@@ -6490,7 +6490,7 @@
                     "type": "string",
                     "view": "string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 490014,
                 "start": 490000,
                 "type": "setfield"
@@ -6509,7 +6509,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 620015,
                 "start": 620000,
                 "type": "setfield"
@@ -6551,7 +6551,7 @@
                     "type": "function",
                     "view": "function package.loadlib(libname: string, funcname: string)\n  -> any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 720024,
                 "start": 720009,
                 "type": "setfield"
@@ -6570,7 +6570,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 800017,
                 "start": 800000,
                 "type": "setfield"
@@ -6632,7 +6632,7 @@
                     "type": "function",
                     "view": "function package.searchpath(name: string, path: string, sep?: string, rep?: string)\n  -> filename: string?\n  2. errmsg: string?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 950027,
                 "start": 950009,
                 "type": "setfield"
@@ -6661,7 +6661,7 @@
                     "type": "function",
                     "view": "function package.seeall(module: table)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 1040023,
                 "start": 1040009,
                 "type": "setfield"
@@ -6700,7 +6700,7 @@
                     "type": "function",
                     "view": "function pairs(t: <T:table>)\n  -> fun(table: table<<K>, <V>>, index?: <K>):<K>, <V>\n  2. <T:table>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2070014,
                 "start": 2070009,
                 "type": "setglobal"
@@ -6759,7 +6759,7 @@
                     "type": "function",
                     "view": "function pcall(f: fun(...any):...unknown, arg1?: any, ...any)\n  -> success: boolean\n  2. result: any\n  3. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2200014,
                 "start": 2200009,
                 "type": "setglobal"
@@ -6787,7 +6787,7 @@
                     "type": "function",
                     "view": "function print(...any)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2290014,
                 "start": 2290009,
                 "type": "setglobal"
@@ -6796,7 +6796,7 @@
                 "extends": {
                     "args": [
                         {
-                            "desc": "The data to print to the console",
+                            "desc": "The data to print to the console.",
                             "finish": 300019,
                             "name": "data",
                             "start": 300015,
@@ -6804,7 +6804,7 @@
                             "view": "any"
                         }
                     ],
-                    "desc": "Prints a value to the lua console\n\n@*param* `data` — The data to print to the console",
+                    "desc": "Prints a value to the lua console.\n\n@*param* `data` — The data to print to the console.",
                     "finish": 300024,
                     "returns": [
                         {
@@ -6816,13 +6816,13 @@
                     "type": "function",
                     "view": "function print(data: any)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 300014,
                 "start": 300009,
                 "type": "setglobal"
             }
         ],
-        "desc": "\nReceives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [tostring](http://www.lua.org/manual/5.4/manual.html#pdf-tostring).\nThe function print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [string.format](http://www.lua.org/manual/5.4/manual.html#pdf-string.format) and [io.write](http://www.lua.org/manual/5.4/manual.html#pdf-io.write).\n\n\n[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-print)",
+        "desc": "Prints a value to the lua console.\n\n@*param* `data` — The data to print to the console.",
         "name": "print",
         "type": "variable"
     },
@@ -6843,7 +6843,7 @@
                     ],
                     "view": "integer[]"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 210025,
                 "start": 210010,
                 "type": "doc.alias"
@@ -6885,7 +6885,7 @@
                     "type": "function",
                     "view": "function rawequal(v1: any, v2: any)\n  -> boolean"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2400017,
                 "start": 2400009,
                 "type": "setglobal"
@@ -6927,7 +6927,7 @@
                     "type": "function",
                     "view": "function rawget(table: table, index: any)\n  -> any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2510015,
                 "start": 2510009,
                 "type": "setglobal"
@@ -6963,7 +6963,7 @@
                     "type": "function",
                     "view": "function rawlen(v: string|table)\n  -> len: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2610015,
                 "start": 2610009,
                 "type": "setglobal"
@@ -7012,7 +7012,7 @@
                     "type": "function",
                     "view": "function rawset(table: table, index: any, value: any)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2740015,
                 "start": 2740009,
                 "type": "setglobal"
@@ -7052,7 +7052,7 @@
                     "type": "function",
                     "view": "function require(modname: string)\n  -> unknown\n  2. loaderdata: unknown"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/package.lua",
                 "finish": 100016,
                 "start": 100009,
                 "type": "setglobal"
@@ -7071,7 +7071,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 170009,
                 "start": 170000,
                 "type": "setglobal"
@@ -7105,7 +7105,7 @@
                     "type": "function",
                     "view": "function savestate.loadfile(filename: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7230027,
                 "start": 7230009,
                 "type": "setfield"
@@ -7140,7 +7140,7 @@
                     "type": "function",
                     "view": "function savestate.savefile(filename: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 7180027,
                 "start": 7180009,
                 "type": "setfield"
@@ -7181,7 +7181,7 @@
                     "type": "function",
                     "view": "function select(index: integer|\"#\", ...any)\n  -> any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2840015,
                 "start": 2840009,
                 "type": "setglobal"
@@ -7223,7 +7223,7 @@
                     "type": "function",
                     "view": "function setfenv(f: fun(...any):...integer|unknown, table: table)\n  -> function"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 2950016,
                 "start": 2950009,
                 "type": "setglobal"
@@ -7265,7 +7265,7 @@
                     "type": "function",
                     "view": "function setmetatable(table: table, metatable?: table|metatable)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 3400021,
                 "start": 3400009,
                 "type": "setglobal"
@@ -7280,7 +7280,7 @@
             {
                 "extends": {
                     "args": [],
-                    "desc": "Stops script execution",
+                    "desc": "Stops script execution.",
                     "finish": 340019,
                     "returns": [
                         {
@@ -7292,13 +7292,13 @@
                     "type": "function",
                     "view": "function stop()\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 340013,
                 "start": 340009,
                 "type": "setglobal"
             }
         ],
-        "desc": "Stops script execution",
+        "desc": "Stops script execution.",
         "name": "stop",
         "type": "variable"
     },
@@ -7311,7 +7311,7 @@
                     "type": "table",
                     "view": "stringlib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 80006,
                 "start": 80000,
                 "type": "setglobal"
@@ -7361,7 +7361,7 @@
                     "type": "function",
                     "view": "function string.byte(s: string|number, i?: integer, j?: integer)\n  -> ...integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 200020,
                 "start": 200009,
                 "type": "setfield"
@@ -7402,7 +7402,7 @@
                     "type": "function",
                     "view": "function string.char(byte: integer, ...integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 310020,
                 "start": 310009,
                 "type": "setfield"
@@ -7444,7 +7444,7 @@
                     "type": "function",
                     "view": "function string.dump(f: fun(...any):...unknown, strip?: boolean)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 420020,
                 "start": 420009,
                 "type": "setfield"
@@ -7494,12 +7494,12 @@
                         {
                             "name": "start",
                             "type": "function.return",
-                            "view": "integer"
+                            "view": "integer|nil"
                         },
                         {
                             "name": "end",
                             "type": "function.return",
-                            "view": "integer"
+                            "view": "integer|nil"
                         },
                         {
                             "desc": "captured",
@@ -7510,9 +7510,9 @@
                     ],
                     "start": 570000,
                     "type": "function",
-                    "view": "function string.find(s: string|number, pattern: string|number, init?: integer, plain?: boolean)\n  -> start: integer\n  2. end: integer\n  3. ...any"
+                    "view": "function string.find(s: string|number, pattern: string|number, init?: integer, plain?: boolean)\n  -> start: integer|nil\n  2. end: integer|nil\n  3. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 570020,
                 "start": 570009,
                 "type": "setfield"
@@ -7553,7 +7553,7 @@
                     "type": "function",
                     "view": "function string.format(s: string|number, ...any)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 680022,
                 "start": 680009,
                 "type": "setfield"
@@ -7602,7 +7602,7 @@
                     "type": "function",
                     "view": "function string.gmatch(s: string|number, pattern: string|number, init?: integer)\n  -> fun():string, ...unknown"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 890022,
                 "start": 890009,
                 "type": "setfield"
@@ -7663,7 +7663,7 @@
                     "type": "function",
                     "view": "function string.gsub(s: string|number, pattern: string|number, repl: string|number|function|table, n?: integer)\n  -> string\n  2. count: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1030020,
                 "start": 1030009,
                 "type": "setfield"
@@ -7698,7 +7698,7 @@
                     "type": "function",
                     "view": "function string.len(s: string|number)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1130019,
                 "start": 1130009,
                 "type": "setfield"
@@ -7733,7 +7733,7 @@
                     "type": "function",
                     "view": "function string.lower(s: string|number)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1230021,
                 "start": 1230009,
                 "type": "setfield"
@@ -7783,7 +7783,7 @@
                     "type": "function",
                     "view": "function string.match(s: string|number, pattern: string|number, init?: integer)\n  -> ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1350021,
                 "start": 1350009,
                 "type": "setfield"
@@ -7839,7 +7839,7 @@
                     "type": "function",
                     "view": "function string.pack(fmt: string, v1: string|number, v2: any, ...string|number)\n  -> binary: string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1480020,
                 "start": 1480009,
                 "type": "setfield"
@@ -7874,7 +7874,7 @@
                     "type": "function",
                     "view": "function string.packsize(fmt: string)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1590024,
                 "start": 1590009,
                 "type": "setfield"
@@ -7923,7 +7923,7 @@
                     "type": "function",
                     "view": "function string.rep(s: string|number, n: integer, sep?: string|number)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1710019,
                 "start": 1710009,
                 "type": "setfield"
@@ -7958,7 +7958,7 @@
                     "type": "function",
                     "view": "function string.reverse(s: string|number)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1810023,
                 "start": 1810009,
                 "type": "setfield"
@@ -8007,7 +8007,7 @@
                     "type": "function",
                     "view": "function string.sub(s: string|number, i: integer, j?: integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 1930019,
                 "start": 1930009,
                 "type": "setfield"
@@ -8062,7 +8062,7 @@
                     "type": "function",
                     "view": "function string.unpack(fmt: string, s: string, pos?: integer)\n  -> ...any\n  2. offset: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 2070022,
                 "start": 2070009,
                 "type": "setfield"
@@ -8097,7 +8097,7 @@
                     "type": "function",
                     "view": "function string.upper(s: string|number)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/string.lua",
                 "finish": 2170021,
                 "start": 2170009,
                 "type": "setfield"
@@ -8116,7 +8116,7 @@
                     "type": "table",
                     "view": "tablelib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 80005,
                 "start": 80000,
                 "type": "setglobal"
@@ -8172,7 +8172,7 @@
                     "type": "function",
                     "view": "function table.concat(list: table, sep?: string, i?: integer, j?: integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 210021,
                 "start": 210009,
                 "type": "setfield"
@@ -8214,7 +8214,7 @@
                     "type": "function",
                     "view": "function table.foreach(list: any, callback: fun(key: string, value: any):<T>|nil)\n  -> <T>|nil"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 1250022,
                 "start": 1250009,
                 "type": "setfield"
@@ -8256,7 +8256,7 @@
                     "type": "function",
                     "view": "function table.foreachi(list: any, callback: fun(key: string, value: any):<T>|nil)\n  -> <T>|nil"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 1380023,
                 "start": 1380009,
                 "type": "setfield"
@@ -8291,7 +8291,7 @@
                     "type": "function",
                     "view": "function table.getn(list: <T>[])\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 1510019,
                 "start": 1510009,
                 "type": "setfield"
@@ -8334,7 +8334,7 @@
                     "type": "function",
                     "view": "function table.insert(list: table, pos: integer, value: any)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 320021,
                 "start": 320009,
                 "type": "setfield"
@@ -8369,7 +8369,7 @@
                     "type": "function",
                     "view": "function table.maxn(table: table)\n  -> integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 430019,
                 "start": 430009,
                 "type": "setfield"
@@ -8433,7 +8433,7 @@
                     "type": "function",
                     "view": "function table.move(a1: table, f: integer, e: integer, t: integer, a2?: table)\n  -> a2: table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 630019,
                 "start": 630009,
                 "type": "setfield"
@@ -8467,7 +8467,7 @@
                     "type": "function",
                     "view": "function table.pack(...any)\n  -> table"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 730019,
                 "start": 730009,
                 "type": "setfield"
@@ -8509,7 +8509,7 @@
                     "type": "function",
                     "view": "function table.remove(list: table, pos?: integer)\n  -> any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 830021,
                 "start": 830009,
                 "type": "setfield"
@@ -8545,7 +8545,7 @@
                     "type": "function",
                     "view": "function table.sort(list: <T>[], comp?: fun(a: <T>, b: <T>):boolean)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 930019,
                 "start": 930009,
                 "type": "setfield"
@@ -8595,7 +8595,7 @@
                     "type": "function",
                     "view": "function table.unpack(list: <T>[], i?: integer, j?: integer)\n  -> ...<T>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/table.lua",
                 "finish": 1120021,
                 "start": 1120009,
                 "type": "setfield"
@@ -8630,7 +8630,7 @@
                     "type": "function",
                     "view": "function tonumber(e: any)\n  -> number?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 3540017,
                 "start": 3540009,
                 "type": "setglobal"
@@ -8665,7 +8665,7 @@
                     "type": "function",
                     "view": "function tostring(v: any)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 3690017,
                 "start": 3690009,
                 "type": "setglobal"
@@ -8701,7 +8701,7 @@
                     "type": "function",
                     "view": "function type(v: any)\n  -> type: \"boolean\"|\"function\"|\"nil\"|\"number\"|\"string\"...(+3)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 3900013,
                 "start": 3900009,
                 "type": "setglobal"
@@ -8751,7 +8751,7 @@
                     "type": "function",
                     "view": "function unpack(list: <T>[], i?: integer, j?: integer)\n  -> ...<T>"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 4370015,
                 "start": 4370009,
                 "type": "setglobal"
@@ -8770,7 +8770,7 @@
                     "type": "table",
                     "view": "utf8lib"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 150004,
                 "start": 150000,
                 "type": "setglobal"
@@ -8811,7 +8811,7 @@
                     "type": "function",
                     "view": "function utf8.char(code: integer, ...integer)\n  -> string"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 260018,
                 "start": 260009,
                 "type": "setfield"
@@ -8873,7 +8873,7 @@
                     "type": "function",
                     "view": "function utf8.codepoint(s: string, i?: integer, j?: integer, lax?: boolean)\n  -> code: integer\n  2. ...integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 570023,
                 "start": 570009,
                 "type": "setfield"
@@ -8915,7 +8915,7 @@
                     "type": "function",
                     "view": "function utf8.codes(s: string, lax?: boolean)\n  -> fun(s: string, p: integer):integer, integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 430019,
                 "start": 430009,
                 "type": "setfield"
@@ -8976,7 +8976,7 @@
                     "type": "function",
                     "view": "function utf8.len(s: string, i?: integer, j?: integer, lax?: boolean)\n  -> integer?\n  2. errpos: integer?"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 710017,
                 "start": 710009,
                 "type": "setfield"
@@ -9026,7 +9026,7 @@
                     "type": "function",
                     "view": "function utf8.offset(s: string, n: integer, i?: integer)\n  -> p: integer"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua",
                 "finish": 830020,
                 "start": 830009,
                 "type": "setfield"
@@ -9061,7 +9061,7 @@
                     "type": "function",
                     "view": "function warn(message: string, ...any)"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 4060013,
                 "start": 4060009,
                 "type": "setglobal"
@@ -9080,7 +9080,7 @@
                     "type": "table",
                     "view": "table"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 130004,
                 "start": 130000,
                 "type": "setglobal"
@@ -9123,7 +9123,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4540054,
                             "name": "red",
                             "start": 4540051,
@@ -9131,7 +9131,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4540061,
                             "name": "green",
                             "start": 4540056,
@@ -9139,7 +9139,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4540067,
                             "name": "blue",
                             "start": 4540063,
@@ -9147,7 +9147,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4540074,
                             "name": "alpha",
                             "start": 4540069,
@@ -9162,7 +9162,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 4540090,
                     "returns": [
                         {
@@ -9174,13 +9174,13 @@
                     "type": "function",
                     "view": "function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number, thickness: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4540026,
                 "start": 4540009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws the border of an ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.draw_ellipse",
         "type": "variable"
     },
@@ -9260,7 +9260,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "0: nearest neighbor, 1: linear, -1: don't use",
+                            "desc": "0: nearest neighbor, 1: linear, -1: don't use.",
                             "finish": 5680123,
                             "name": "interpolationMode",
                             "start": 5680106,
@@ -9268,7 +9268,7 @@
                             "view": "integer"
                         }
                     ],
-                    "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.\n\n@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use",
+                    "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.\n\n@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use.",
                     "finish": 5680128,
                     "returns": [
                         {
@@ -9280,13 +9280,13 @@
                     "type": "function",
                     "view": "function wgui.draw_image(destx1: integer, desty1: integer, destx2: integer, desty2: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string, opacity: number, interpolationMode: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5680024,
                 "start": 5680009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.\n\n@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use",
+        "desc": "Draws an image by taking the pixels in the source rectangle of the image, and\ndrawing them to the destination rectangle on the screen.\n\n@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use.",
         "name": "wgui.draw_image",
         "type": "variable"
     },
@@ -9324,7 +9324,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4670043,
                             "name": "red",
                             "start": 4670040,
@@ -9332,7 +9332,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4670050,
                             "name": "green",
                             "start": 4670045,
@@ -9340,7 +9340,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4670056,
                             "name": "blue",
                             "start": 4670052,
@@ -9348,7 +9348,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4670063,
                             "name": "alpha",
                             "start": 4670058,
@@ -9363,7 +9363,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 4670079,
                     "returns": [
                         {
@@ -9375,13 +9375,13 @@
                     "type": "function",
                     "view": "function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4670023,
                 "start": 4670009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.draw_line",
         "type": "variable"
     },
@@ -9419,7 +9419,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4290048,
                             "name": "red",
                             "start": 4290045,
@@ -9427,7 +9427,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4290055,
                             "name": "green",
                             "start": 4290050,
@@ -9435,7 +9435,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4290061,
                             "name": "blue",
                             "start": 4290057,
@@ -9443,7 +9443,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4290068,
                             "name": "alpha",
                             "start": 4290063,
@@ -9458,7 +9458,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 4290084,
                     "returns": [
                         {
@@ -9470,13 +9470,13 @@
                     "type": "function",
                     "view": "function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4290028,
                 "start": 4290009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws the border of a rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.draw_rectangle",
         "type": "variable"
     },
@@ -9528,7 +9528,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5400074,
                             "name": "red",
                             "start": 5400071,
@@ -9536,7 +9536,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5400081,
                             "name": "green",
                             "start": 5400076,
@@ -9544,7 +9544,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5400087,
                             "name": "blue",
                             "start": 5400083,
@@ -9552,7 +9552,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5400094,
                             "name": "alpha",
                             "start": 5400089,
@@ -9567,7 +9567,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 5400110,
                     "returns": [
                         {
@@ -9579,13 +9579,13 @@
                     "type": "function",
                     "view": "function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number, thickness: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5400036,
                 "start": 5400009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws the border of a rounded rectangle at the specified coordinates, color\nand radius.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.draw_rounded_rectangle",
         "type": "variable"
     },
@@ -9623,7 +9623,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4860043,
                             "name": "red",
                             "start": 4860040,
@@ -9631,7 +9631,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4860050,
                             "name": "green",
                             "start": 4860045,
@@ -9639,7 +9639,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4860056,
                             "name": "blue",
                             "start": 4860052,
@@ -9647,7 +9647,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4860063,
                             "name": "alpha",
                             "start": 4860058,
@@ -9676,7 +9676,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "0: normal, 1: bold, 2: italic, 3: bold + italic",
+                            "desc": "0: normal, 1: bold, 2: italic, 3: bold + italic.",
                             "finish": 4860100,
                             "name": "fontstyle",
                             "start": 4860091,
@@ -9698,7 +9698,7 @@
                             "view": "integer"
                         }
                     ],
-                    "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
+                    "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic.\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
                     "finish": 4860128,
                     "returns": [
                         {
@@ -9710,13 +9710,13 @@
                     "type": "function",
                     "view": "function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4860023,
                 "start": 4860009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
+        "desc": "Draws the text `text` at the specified coordinates, color, font, and\nalignment.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.\n\n@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic.\n\n```lua\nfontstyle:\n    | 0\n    | 1\n    | 2\n    | 3\n```",
         "name": "wgui.draw_text",
         "type": "variable"
     },
@@ -9754,7 +9754,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4410054,
                             "name": "red",
                             "start": 4410051,
@@ -9762,7 +9762,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4410061,
                             "name": "green",
                             "start": 4410056,
@@ -9770,7 +9770,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4410067,
                             "name": "blue",
                             "start": 4410063,
@@ -9778,7 +9778,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4410074,
                             "name": "alpha",
                             "start": 4410069,
@@ -9786,7 +9786,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 4410079,
                     "returns": [
                         {
@@ -9798,13 +9798,13 @@
                     "type": "function",
                     "view": "function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4410026,
                 "start": 4410009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws a filled in ellipse at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.fill_ellipse",
         "type": "variable"
     },
@@ -9842,7 +9842,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4160048,
                             "name": "red",
                             "start": 4160045,
@@ -9850,7 +9850,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4160055,
                             "name": "green",
                             "start": 4160050,
@@ -9858,7 +9858,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4160061,
                             "name": "blue",
                             "start": 4160057,
@@ -9866,7 +9866,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 4160068,
                             "name": "alpha",
                             "start": 4160063,
@@ -9874,7 +9874,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws a filled in rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws a filled in rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 4160073,
                     "returns": [
                         {
@@ -9886,13 +9886,13 @@
                     "type": "function",
                     "view": "function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4160028,
                 "start": 4160009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws a filled in rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws a filled in rectangle at the specified coordinates and color.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.fill_rectangle",
         "type": "variable"
     },
@@ -9944,7 +9944,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5240074,
                             "name": "red",
                             "start": 5240071,
@@ -9952,7 +9952,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5240081,
                             "name": "green",
                             "start": 5240076,
@@ -9960,7 +9960,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5240087,
                             "name": "blue",
                             "start": 5240083,
@@ -9968,7 +9968,7 @@
                             "view": "number"
                         },
                         {
-                            "desc": "d2d colors range from 0.0 to 1.0",
+                            "desc": "d2d colors range from 0.0 to 1.0.",
                             "finish": 5240094,
                             "name": "alpha",
                             "start": 5240089,
@@ -9976,7 +9976,7 @@
                             "view": "number"
                         }
                     ],
-                    "desc": "Draws a filled in rounded rectangle at the specified coordinates, color and\nradius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+                    "desc": "Draws a filled in rounded rectangle at the specified coordinates, color and\nradius.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
                     "finish": 5240099,
                     "returns": [
                         {
@@ -9988,13 +9988,13 @@
                     "type": "function",
                     "view": "function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5240036,
                 "start": 5240009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws a filled in rounded rectangle at the specified coordinates, color and\nradius\n\n@*param* `red` — d2d colors range from 0.0 to 1.0\n\n@*param* `green` — d2d colors range from 0.0 to 1.0\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0",
+        "desc": "Draws a filled in rounded rectangle at the specified coordinates, color and\nradius.\n\n@*param* `red` — d2d colors range from 0.0 to 1.0.\n\n@*param* `green` — d2d colors range from 0.0 to 1.0.\n\n@*param* `blue` — d2d colors range from 0.0 to 1.0.\n\n@*param* `alpha` — d2d colors range from 0.0 to 1.0.",
         "name": "wgui.fill_rounded_rectangle",
         "type": "variable"
     },
@@ -10023,7 +10023,7 @@
                     "type": "function",
                     "view": "function wgui.free_image(identifier: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5520024,
                 "start": 5520009,
                 "type": "setfield"
@@ -10047,7 +10047,7 @@
                             "view": "integer[][]"
                         },
                         {
-                            "desc": "GDI+ colors range from 0 to 255",
+                            "desc": "GDI+ colors range from 0 to 255.",
                             "finish": 5930045,
                             "name": "alpha",
                             "start": 5930040,
@@ -10055,7 +10055,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "GDI+ colors range from 0 to 255",
+                            "desc": "GDI+ colors range from 0 to 255.",
                             "finish": 5930050,
                             "name": "red",
                             "start": 5930047,
@@ -10063,7 +10063,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "GDI+ colors range from 0 to 255",
+                            "desc": "GDI+ colors range from 0 to 255.",
                             "finish": 5930057,
                             "name": "green",
                             "start": 5930052,
@@ -10071,7 +10071,7 @@
                             "view": "integer"
                         },
                         {
-                            "desc": "GDI+ colors range from 0 to 255",
+                            "desc": "GDI+ colors range from 0 to 255.",
                             "finish": 5930063,
                             "name": "blue",
                             "start": 5930059,
@@ -10079,7 +10079,7 @@
                             "view": "integer"
                         }
                     ],
-                    "desc": "Draws a polygon at the specified coordinates and color\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255\n\n@*param* `red` — GDI+ colors range from 0 to 255\n\n@*param* `green` — GDI+ colors range from 0 to 255\n\n@*param* `blue` — GDI+ colors range from 0 to 255",
+                    "desc": "Draws a polygon at the specified coordinates and color.\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255.\n\n@*param* `red` — GDI+ colors range from 0 to 255.\n\n@*param* `green` — GDI+ colors range from 0 to 255.\n\n@*param* `blue` — GDI+ colors range from 0 to 255.",
                     "finish": 5930068,
                     "returns": [
                         {
@@ -10091,13 +10091,13 @@
                     "type": "function",
                     "view": "function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5930031,
                 "start": 5930009,
                 "type": "setfield"
             }
         ],
-        "desc": "Draws a polygon at the specified coordinates and color\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255\n\n@*param* `red` — GDI+ colors range from 0 to 255\n\n@*param* `green` — GDI+ colors range from 0 to 255\n\n@*param* `blue` — GDI+ colors range from 0 to 255",
+        "desc": "Draws a polygon at the specified coordinates and color.\n\n@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.\n\n@*param* `alpha` — GDI+ colors range from 0 to 255.\n\n@*param* `red` — GDI+ colors range from 0 to 255.\n\n@*param* `green` — GDI+ colors range from 0 to 255.\n\n@*param* `blue` — GDI+ colors range from 0 to 255.",
         "name": "wgui.gdip_fillpolygona",
         "type": "variable"
     },
@@ -10126,7 +10126,7 @@
                     "type": "function",
                     "view": "function wgui.get_image_info(identifier: string)\n  -> { width: integer, height: integer }"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5740028,
                 "start": 5740009,
                 "type": "setfield"
@@ -10189,7 +10189,7 @@
                     "type": "function",
                     "view": "function wgui.get_text_size(text: string, fontname: string, fontsize: number, max_width: number, max_height: number)\n  -> { width: integer, height: integer }"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 4950027,
                 "start": 4950009,
                 "type": "setfield"
@@ -10216,7 +10216,7 @@
                     "type": "function",
                     "view": "function wgui.info()\n  -> { width: integer, height: integer }"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5980018,
                 "start": 5980009,
                 "type": "setfield"
@@ -10258,7 +10258,7 @@
                     "type": "function",
                     "view": "function wgui.load_image(path: string, identifier: string)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5470024,
                 "start": 5470009,
                 "type": "setfield"
@@ -10285,7 +10285,7 @@
                     "type": "function",
                     "view": "function wgui.pop_clip()\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5090022,
                 "start": 5090009,
                 "type": "setfield"
@@ -10341,7 +10341,7 @@
                     "type": "function",
                     "view": "function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5050023,
                 "start": 5050009,
                 "type": "setfield"
@@ -10383,7 +10383,7 @@
                     "type": "function",
                     "view": "function wgui.resize(width: integer, height: integer)\n  -> nil"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 6040020,
                 "start": 6040009,
                 "type": "setfield"
@@ -10406,19 +10406,19 @@
                             "view": "0|1|4294967295"
                         }
                     ],
-                    "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
+                    "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
                     "finish": 5840042,
                     "start": 5840000,
                     "type": "function",
                     "view": "function wgui.set_antialias_mode(mode: 0|1|4294967295)"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5840032,
                 "start": 5840009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
+        "desc": "Sets the antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).\n\n```lua\nmode:\n    | 0\n    | 1\n    | 4294967295\n```",
         "name": "wgui.set_antialias_mode",
         "type": "variable"
     },
@@ -10435,19 +10435,19 @@
                             "view": "0|1|2|3|4294967295"
                         }
                     ],
-                    "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
+                    "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
                     "finish": 5790047,
                     "start": 5790000,
                     "type": "function",
                     "view": "function wgui.set_text_antialias_mode(mode: 0|1|2|3|4294967295)"
                 },
-                "file": "file:///c%3A/Users/david/OneDrive/Desktop/Code/MupenLuaDoc/api.lua",
+                "file": "file:///c%3A/Users/david/Code/MupenLuaDoc/api.lua",
                 "finish": 5790037,
                 "start": 5790009,
                 "type": "setfield"
             }
         ],
-        "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
+        "desc": "Sets the text antialiasing mode. More info\n[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).\n\n```lua\nmode:\n    | 0\n    | 1\n    | 2\n    | 3\n    | 4294967295\n```",
         "name": "wgui.set_text_antialias_mode",
         "type": "variable"
     },
@@ -10507,7 +10507,7 @@
                     "type": "function",
                     "view": "function xpcall(f: fun(...any):...unknown, msgh: function, arg1?: any, ...any)\n  -> success: boolean\n  2. result: any\n  3. ...any"
                 },
-                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.22-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
+                "file": "file:///c%3A/Users/david/.vscode/extensions/sumneko.lua-3.6.24-win32-x64/server/meta/Lua%205.4%20en-us%20utf8/basic.lua",
                 "finish": 4190015,
                 "start": 4190009,
                 "type": "setglobal"

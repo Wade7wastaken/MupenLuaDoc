@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.3.4
+-- version 1.1.3.5
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -25,12 +25,12 @@ avi = {}
 -- Global Functions
 --#region
 
----Prints a value to the lua console
----@param data any The data to print to the console
+---Prints a value to the lua console.
+---@param data any The data to print to the console.
 ---@return nil
 function print(data) end
 
----Stops script execution
+---Stops script execution.
 ---@return nil
 function stop() end
 
@@ -90,7 +90,7 @@ function emu.atinput(f, unregister) end
 ---Calls the function `f` when the script is stopped. If `unregister` is set to
 ---true, the function `f` will no longer be called when this event occurs, but
 ---it will error if you never registered the function.
----@param f fun(): nil The function to be called when the script is stopped
+---@param f fun(): nil The function to be called when the script is stopped.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atstop(f, unregister) end
@@ -174,12 +174,12 @@ function emu.samplecount() end
 ---@return integer inputcount The number of input frames that have happened since the emulator was started.
 function emu.inputcount() end
 
----Returns the current mupen version. If `type` is 0 or less, it
----will return the full version name (Mupen 64 0.0.0). If `type`
----is 1 or more, it will return only the version number (0.0.0).
+---Returns the current mupen version. If `type` is 0, it will return the full
+---version name (Mupen 64 0.0.0). If `type` is 1, it will return only the
+---version number (0.0.0).
 ---@nodiscard
----@param type 0|1 Whether to get the full version (less that 0) or the short version (more than 1).
----@return string version The mupen version
+---@param type 0|1 Whether to get the full version (`0`) or the short version (`1`).
+---@return string version The Mupen version.
 function emu.getversion(type) end
 
 ---Pauses or unpauses the emulator.
@@ -409,10 +409,10 @@ function memory.writesize(address, size, data) end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@return nil
 function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 
@@ -421,10 +421,10 @@ function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
 ---@return nil
 function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
@@ -434,10 +434,10 @@ function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha, thickness)
 ---@param y integer
 ---@param radiusX integer
 ---@param radiusY integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@return nil
 function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 
@@ -446,10 +446,10 @@ function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
 ---@param y integer
 ---@param radiusX integer
 ---@param radiusY integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
 ---@return nil
 function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha, thickness) end
@@ -459,10 +459,10 @@ function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha, thic
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
 ---@return nil
 function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
@@ -473,14 +473,14 @@ function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param text string
 ---@param fontname string
 ---@param fontsize number
----@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic
+---@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic.
 ---@param horizalign integer
 ---@param vertalign integer
 ---@return nil
@@ -510,32 +510,32 @@ function wgui.push_clip(x1, y1, x2, y2) end
 function wgui.pop_clip() end
 
 ---Draws a filled in rounded rectangle at the specified coordinates, color and
----radius
+---radius.
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@return nil
 function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
 
 ---Draws the border of a rounded rectangle at the specified coordinates, color
----and radius
+---and radius.
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
----@param red number d2d colors range from 0.0 to 1.0
----@param green number d2d colors range from 0.0 to 1.0
----@param blue number d2d colors range from 0.0 to 1.0
----@param alpha number d2d colors range from 0.0 to 1.0
+---@param red number d2d colors range from 0.0 to 1.0.
+---@param green number d2d colors range from 0.0 to 1.0.
+---@param blue number d2d colors range from 0.0 to 1.0.
+---@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
 ---@return nil
 function wgui.draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha, thickness) end
@@ -564,7 +564,7 @@ function wgui.free_image(identifier) end
 ---@param srcy2 integer
 ---@param identifier string
 ---@param opacity number
----@param interpolationMode integer 0: nearest neighbor, 1: linear, -1: don't use
+---@param interpolationMode integer 0: nearest neighbor, 1: linear, -1: don't use.
 ---@return nil
 function wgui.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, srcy2, identifier, opacity, interpolationMode) end
 
@@ -575,21 +575,21 @@ function wgui.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, sr
 function wgui.get_image_info(identifier) end
 
 ---Sets the text antialiasing mode. More info
----[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode)
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).
 ---@param mode 0|1|2|3|4294967295
 function wgui.set_text_antialias_mode(mode) end
 
 ---Sets the antialiasing mode. More info
----[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode)
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).
 ---@param mode 0|1|4294967295
 function wgui.set_antialias_mode(mode) end
 
----Draws a polygon at the specified coordinates and color
+---Draws a polygon at the specified coordinates and color.
 ---@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
----@param alpha integer GDI+ colors range from 0 to 255
----@param red integer GDI+ colors range from 0 to 255
----@param green integer GDI+ colors range from 0 to 255
----@param blue integer GDI+ colors range from 0 to 255
+---@param alpha integer GDI+ colors range from 0 to 255.
+---@param red integer GDI+ colors range from 0 to 255.
+---@param green integer GDI+ colors range from 0 to 255.
+---@param blue integer GDI+ colors range from 0 to 255.
 ---@return nil
 function wgui.gdip_fillpolygona(points, alpha, red, green, blue) end
 
@@ -641,7 +641,7 @@ function input.prompt(title, placeholder) end
 function input.get_key_name_text(key) end
 
 ---Translates a virtual-key code into a scan code. More info
----[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa)
+---[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).
 ---@nodiscard
 ---@param code integer
 ---@param map_type integer
@@ -663,7 +663,7 @@ function input.map_virtual_key_ex(code, map_type) end
 function joypad.get(port) end
 
 ---Sets the current joypad to `inputs`. If you do not specify one or more
----inputs, they will be set to `false` for buttons or `0` for stick coordinates
+---inputs, they will be set to `false` for buttons or `0` for stick coordinates.
 ---@param port 1|2|3|4
 ---@param inputs table
 ---@return nil
@@ -731,8 +731,8 @@ function savestate.loadfile(filename) end
 
 ---Opens a file dialouge and returns the file path of the file chosen.
 ---@nodiscard
----@param filter string This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files
----@param type integer Unknown
+---@param filter string This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.
+---@param type integer Unknown.
 ---@return string
 function ioHelper.filediag(filter, type) end
 
