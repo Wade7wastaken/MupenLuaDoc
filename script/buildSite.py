@@ -5,7 +5,6 @@ import markdown
 import minify_html
 from markdown.extensions.codehilite import CodeHiliteExtension
 from markdown.extensions.fenced_code import FencedCodeExtension
-from bs4 import BeautifulSoup as bs
 
 # RUN "pip install -r requirements.txt" BEFORE RUNNING THIS SCRIPT. This script
 # assumes the working directory is the base git directory (not /script). It is
@@ -37,7 +36,7 @@ def parse_markdown(str: str) -> str:
 
 def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
-        r'const luaL_Reg (?P<func_type>[A-Za-z]+)Funcs\[\]')
+        r'const luaL_Reg (?P<func_type>[A-Za-z0-9]+)Funcs\[\]')
     func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9_]+)",.*\}')
 
     func_list_dict = {}
@@ -46,12 +45,13 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
         # if we're far enough into the file to start caring
         in_function_region = False
         func_type = ''
-        for line in file:
+        for l in file:
+            line = l.strip()
             # Start at first line of Lua emu func arrays
             if "const luaL_Reg globalFuncs[] = {" in line:
                 in_function_region = True
-            # Stop at end of namespace
-            if "}	//namespace" in line:
+            # Stop at end of functions
+            if "void AtUpdateScreenLuaCallback()" in line:
                 break
             if in_function_region:
                 # If we're iterating over a function name line...
@@ -123,7 +123,7 @@ def generate_function_html(func_type, func_name, display_name, desc, view):
 
 
 def main():
-    skipped_functions = ["printx", "tostringex"]
+    skipped_functions = ["printx", "tostringex", "setgfx"]
 
     accumulator = StringAccumulator()
 
@@ -226,8 +226,6 @@ def main():
 
     accumulator.write("</body></html>")
 
-    content = str(bs(accumulator.retrieve("\n"), "html.parser"))
-
     with open("docs/index.html", "w+") as file:
         file.write(minify_html.minify(accumulator.retrieve(), keep_html_and_head_opening_tags=True,
                                       minify_js=True, do_not_minify_doctype=True,
@@ -236,7 +234,7 @@ def main():
                                       remove_processing_instructions=True))
 
     with open("docs/index-no-min.html", "w+") as file:
-        file.write(accumulator.retrieve("\n"))
+        file.write(accumulator.retrieve())
 
 
 if __name__ == "__main__":

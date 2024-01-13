@@ -1,17 +1,17 @@
 ---@meta
 
--- version 1.1.3.5
+-- version 1.1.7.0
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
 
--- Additional documentation can be found here:
+-- Additional (and slightly outdated) documentation can be found here:
 -- https://docs.google.com/document/d/1SWd-oAFBKsGmwUs0qGiOrk3zfX9wYHhi3x5aKPQS_o0
 
 emu = {}
 memory = {}
-gui = {}
 wgui = {}
+d2d = {}
 input = {}
 joypad = {}
 movie = {}
@@ -46,13 +46,6 @@ function stop() end
 ---@param message string The string to print to the console.
 ---@return nil
 function emu.console(message) end
-
----Prints `message` to the debug console. If you are not debugging with Visual
----Studio, this function will do nothing.
----@deprecated This function has no use to the end user.
----@param message string The string to print to the debug console.
----@return nil
-function emu.debugview(message) end
 
 ---Displays the text `message` in the status bar on the bottom while replacing
 ---any other text. The message will only display until the next frame.
@@ -207,22 +200,32 @@ function emu.speed(speed_limit) end
 ---@return nil
 function emu.speedmode(mode) end
 
----?
----@param mode 0|1
----@return nil
-function emu.setgfx(mode) end
+---@alias addresses "rdram"
+---|"rdram_register"
+---|"MI_register"
+---|"pi_register"
+---|"sp_register"
+---|"rsp_register"
+---|"si_register"
+---|"vi_register"
+---|"ri_register"
+---|"ai_register"
+---|"dpc_register"
+---|"dps_register"
+---|"SP_DMEM"
+---|"PIF_RAM"
 
----?
+---Gets the address of an internal mupen variable. For example, "rdram" is the
+---same as mupen's ram start
 ---@nodiscard
----@param address string
+---@param address addresses
 ---@return integer
 function emu.getaddress(address) end
 
----Returns true if the currently playing movie is read only and false if it is
----not.
----@nodiscard
----@return boolean read_only
-function emu.isreadonly() end
+---Takes a screenshot and saves it to the directory `dir`.
+---@param dir string The directory to save the screenshot to.
+---@return nil
+function emu.screenshot(dir) end
 
 ---Gets a system metric using the windows
 ---[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
@@ -237,10 +240,10 @@ function emu.getsystemmetrics(param) end
 ---@return boolean focused
 function emu.ismainwindowinforeground() end
 
----Takes a screenshot and saves it to the directory `dir`.
----@param dir string The directory to save the screenshot to.
+---Played the sound file at `file_path`
+---@param file_path string
 ---@return nil
-function emu.screenshot(dir) end
+function emu.play_sound(file_path) end
 
 --#endregion
 
@@ -404,68 +407,273 @@ function memory.writesize(address, size, data) end
 -- wgui functions
 --#region
 
+-- colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+---@alias color
+---| string
+---| "white"
+---| "black"
+---| "clear"
+---| "gray"
+---| "red"
+---| "orange"
+---| "yellow"
+---| "chartreuse"
+---| "green"
+---| "teal"
+---| "cyan"
+---| "blue"
+---| "purple"
+
+---Sets the current GDI brush color to `color`
+---@param color color
+function wgui.setbrush(color) end
+
+---GDI: Sets the current GDI pen color to `color`
+---@param color color
+function wgui.setpen(color) end
+
+---GDI: Sets the current GDI text color to `color`
+---@param color color
+function wgui.setcolor(color) end
+
+---GDI: Sets the current GDI background color to `color`
+---@param color color
+function wgui.setbk(color) end
+
+---Sets the font, font size, and font style
+---@param size integer? The size of the font. Defaults to 0 if not given
+---@param font string? The name of the font from the operating system. Dafaults to "MS Gothic" if not given
+---@param style string? Each character in this string sets one style of the font, applied in chronological order. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiased. Defaults to "" if not given
+function wgui.setfont(size, font, style) end
+
+---GDI: Displays text in one line with the current GDI background color and GDI text color
+---@deprecated Use `wgui.drawtext` instead
+---@param x integer
+---@param y integer
+---@param text string
+function wgui.text(x, y, text) end
+
+---GDI: Draws text in a rectangle (more documentation soon)
+---@param text string
+---@param rect table
+---@param format string?
+function wgui.drawtext(text, rect, format) end
+
+---Uses an alternate function for drawing text
+---@param text string
+---@param format integer
+---@param left integer
+---@param top integer
+---@param right integer
+---@param bottom integer
+function wgui.drawtextalt(text, format, left, top, right, bottom) end
+
+---Gets the width and height of the given text
+---@param text string
+---@return {width: integer, height: integer}
+function wgui.gettextextent(text) end
+
+---GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a 1 pixel border of the GDI pen color.
+---@deprecated Use `wgui.fillrect` or `wgui.fillrecta` instead
+---@param left integer
+---@param top integer
+---@param right integer
+---@param bottom integer
+---@param rounded_width integer? The width of the ellipse used to draw the rounded corners. (currently don't seem to be working)
+---@param rounded_height integer? The height of the ellipse used to draw the rounded corners.
+function wgui.rect(left, top, right, bottom, rounded_width, rounded_height) end
+
+---Draws a rectangle at the specified coordinates with the specified color
+---@param left integer
+---@param top integer
+---@param right integer
+---@param bottom integer
+---@param red integer
+---@param green integer
+---@param blue integer
+function wgui.fillrect(left, top, right, bottom, red, green, blue) end
+
+---GDIPlus: Draws a rectangle at the specified coordinates, size and color
+---@param x integer
+---@param y integer
+---@param w integer
+---@param h integer
+---@param color color|string Color names are currently broken
+function wgui.fillrecta(x, y, w, h, color) end
+
+---GDIPlus: Draws an ellipse at the specified coordinates, size, and color
+---@param x integer
+---@param y integer
+---@param w integer
+---@param h integer
+---@param color color|string Color names are currently broken
+function wgui.fillellipsea(x, y, w, h, color) end
+
+---Draws a filled in polygon using the points in `points`
+---@param points table Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
+---@param color color|string Color names are currently broken
+function wgui.fillpolygona(points, color) end
+
+---Loads an image file from `path` and returns the identifier of that image
+---@param path string
+---@return integer
+function wgui.loadimage(path) end
+
+---Clears one of all images
+---@param idx integer The identifier of the image to clear. If it is 0, clear all iamges
+function wgui.deleteimage(idx) end
+
+---Draws the image at index `idx` at the specified coordinates
+---@param idx integer
+---@param x integer
+---@param y integer
+function wgui.drawimage(idx, x, y) end
+
+---Draws the image at index `idx` at the specified coordinates and scale
+---@param idx integer
+---@param x integer
+---@param y integer
+---@param s number
+function wgui.drawimage(idx, x, y, s) end
+
+---Draws the image at index `idx` at the specified coordinates and size
+---@param idx integer
+---@param x integer
+---@param y integer
+---@param w integer
+---@param h integer
+function wgui.drawimage(idx, x, y, w, h) end
+
+---Draws the image at index `idx` at the specified coordinates, size, and rotation, using a part of the source image given by the `src` parameters
+---@param idx integer
+---@param x integer
+---@param y integer
+---@param w integer
+---@param h integer
+---@param srcx integer
+---@param srcy integer
+---@param srcw integer
+---@param srch integer
+---@param rotate number
+function wgui.drawimage(idx, x, y, w, h, srcx, srcy, srcw, srch, rotate) end
+
+---Captures the current screen and saves it as an image
+---@return integer The identifier of the saved image
+function wgui.loadscreen() end
+
+---Re-initializes loadscreen
+function wgui.loadscreenreset() end
+
+---Returns the width and height of the image at `idx`
+---@param idx integer
+---@return {width: integer, height: integer}
+function wgui.getimageinfo(idx) end
+
+---Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+---@param left integer
+---@param top integer
+---@param right integer
+---@param bottom integer
+function wgui.ellipse(left, top, right, bottom) end
+
+---Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+---@param points table
+function wgui.polygon(points) end
+
+---Draws a line from `(x1, y1)` to `(x2, y2)`
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+function wgui.line(x1, y1, x2, y2) end
+
+---Returns the current width and height of the mupen window in a table
+---@return {width: integer, height: integer}
+function wgui.info() end
+
+---Resizes the mupen window to `w` x `h`
+---@param w integer
+---@param h integer
+function wgui.resize(w, h) end
+
+---Sets a rectangle bounding box such that you cannot draw outside of it.
+---@param x integer
+---@param y integer
+---@param w integer
+---@param h integer
+function wgui.setclip(x, y, w, h) end
+
+---Resets the clip
+function wgui.resetclip() end
+
+--#endregion
+
+
+-- d2d functions
+--#region
+
+---@alias brush integer
+
+---Creates a brush from a color and returns it. D2D colors range from 0 to 1
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@return brush
+function d2d.create_brush(r, g, b, a) end
+
+---Frees a brush. It is a good practice to free all brushes after you are done
+---using them
+---@param brush brush
+function d2d.free_brush(brush) end
+
 ---Draws a filled in rectangle at the specified coordinates and color.
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
+---@param brush brush
 ---@return nil
-function wgui.fill_rectangle(x1, y1, x2, y2, red, green, blue, alpha) end
+function d2d.fill_rectangle(x1, y1, x2, y2, brush) end
 
 ---Draws the border of a rectangle at the specified coordinates and color.
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
+---@param brush brush
 ---@return nil
-function wgui.draw_rectangle(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
+function d2d.draw_rectangle(x1, y1, x2, y2, thickness, brush) end
 
 ---Draws a filled in ellipse at the specified coordinates and color.
 ---@param x integer
 ---@param y integer
 ---@param radiusX integer
 ---@param radiusY integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
+---@param brush brush
 ---@return nil
-function wgui.fill_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha) end
+function d2d.fill_ellipse(x, y, radiusX, radiusY, brush) end
 
 ---Draws the border of an ellipse at the specified coordinates and color.
 ---@param x integer
 ---@param y integer
 ---@param radiusX integer
 ---@param radiusY integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
+---@param brush brush
 ---@return nil
-function wgui.draw_ellipse(x, y, radiusX, radiusY, red, green, blue, alpha, thickness) end
+function d2d.draw_ellipse(x, y, radiusX, radiusY, thickness, brush) end
 
 ---Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
 ---@param x1 integer
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
+---@param brush brush
 ---@return nil
-function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
+function d2d.draw_line(x1, y1, x2, y2, thickness, brush) end
 
 ---Draws the text `text` at the specified coordinates, color, font, and
 ---alignment.
@@ -473,18 +681,17 @@ function wgui.draw_line(x1, y1, x2, y2, red, green, blue, alpha, thickness) end
 ---@param y1 integer
 ---@param x2 integer
 ---@param y2 integer
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param text string
 ---@param fontname string
 ---@param fontsize number
+---@param fontweight number
 ---@param fontstyle 0|1|2|3 0: normal, 1: bold, 2: italic, 3: bold + italic.
 ---@param horizalign integer
 ---@param vertalign integer
+---@param options integer
+---@param brush brush pass 0 if you don't know what you're doing
 ---@return nil
-function wgui.draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname, fontsize, fontstyle, horizalign, vertalign) end
+function d2d.draw_text(x1, y1, x2, y2, text, fontname, fontsize, fontweight, fontstyle, horizalign, vertalign, options, brush) end
 
 ---Returns the width and height of the specified text.
 ---@param text string
@@ -493,7 +700,7 @@ function wgui.draw_text(x1, y1, x2, y2, red, green, blue, alpha, text, fontname,
 ---@param max_width number
 ---@param max_height number
 ---@return {width: integer, height: integer}
-function wgui.get_text_size(text, fontname, fontsize, max_width, max_height) end
+function d2d.get_text_size(text, fontname, fontsize, max_width, max_height) end
 
 ---Specifies a rectangle to which all subsequent drawing operations are clipped.
 ---This clip is put onto a stack. It can then be popped off the stack with
@@ -503,11 +710,11 @@ function wgui.get_text_size(text, fontname, fontsize, max_width, max_height) end
 ---@param x2 integer
 ---@param y2 integer
 ---@return nil
-function wgui.push_clip(x1, y1, x2, y2) end
+function d2d.push_clip(x1, y1, x2, y2) end
 
 ---Pops the most recent clip off the clip stack.
 ---@return nil
-function wgui.pop_clip() end
+function d2d.pop_clip() end
 
 ---Draws a filled in rounded rectangle at the specified coordinates, color and
 ---radius.
@@ -517,12 +724,9 @@ function wgui.pop_clip() end
 ---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
+---@param brush brush
 ---@return nil
-function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha) end
+function d2d.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, brush) end
 
 ---Draws the border of a rounded rectangle at the specified coordinates, color
 ---and radius.
@@ -532,25 +736,21 @@ function wgui.fill_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, gree
 ---@param y2 integer
 ---@param radiusX number
 ---@param radiusY number
----@param red number d2d colors range from 0.0 to 1.0.
----@param green number d2d colors range from 0.0 to 1.0.
----@param blue number d2d colors range from 0.0 to 1.0.
----@param alpha number d2d colors range from 0.0 to 1.0.
 ---@param thickness number
+---@param brush brush
 ---@return nil
-function wgui.draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, red, green, blue, alpha, thickness) end
+function d2d.draw_rounded_rectangle(x1, y1, x2, y2, radiusX, radiusY, thickness, brush) end
 
 ---Loads an image file from `path` which you can then access through
 ---`identifier`.
 ---@param path string
----@param identifier string
----@return nil
-function wgui.load_image(path, identifier) end
+---@return integer
+function d2d.load_image(path) end
 
 ---Frees the image at `identifier`.
----@param identifier string
+---@param identifier number
 ---@return nil
-function wgui.free_image(identifier) end
+function d2d.free_image(identifier) end
 
 ---Draws an image by taking the pixels in the source rectangle of the image, and
 ---drawing them to the destination rectangle on the screen.
@@ -562,47 +762,34 @@ function wgui.free_image(identifier) end
 ---@param srcy1 integer
 ---@param srcx2 integer
 ---@param srcy2 integer
----@param identifier string
 ---@param opacity number
----@param interpolationMode integer 0: nearest neighbor, 1: linear, -1: don't use.
+---@param interpolation integer 0: nearest neighbor, 1: linear, -1: don't use.
+---@param identifier number
 ---@return nil
-function wgui.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, srcy2, identifier, opacity, interpolationMode) end
+function d2d.draw_image(destx1, desty1, destx2, desty2, srcx1, srcy1, srcx2, srcy2, opacity, interpolation, identifier) end
 
 ---Returns the width and height of the image at `identifier`.
 ---@nodiscard
----@param identifier string
+---@param identifier number
 ---@return {width: integer, height: integer}
-function wgui.get_image_info(identifier) end
+function d2d.get_image_info(identifier) end
 
 ---Sets the text antialiasing mode. More info
 ---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).
 ---@param mode 0|1|2|3|4294967295
-function wgui.set_text_antialias_mode(mode) end
+function d2d.set_text_antialias_mode(mode) end
 
 ---Sets the antialiasing mode. More info
 ---[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).
 ---@param mode 0|1|4294967295
-function wgui.set_antialias_mode(mode) end
+function d2d.set_antialias_mode(mode) end
 
----Draws a polygon at the specified coordinates and color.
----@param points integer[][] Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
----@param alpha integer GDI+ colors range from 0 to 255.
----@param red integer GDI+ colors range from 0 to 255.
----@param green integer GDI+ colors range from 0 to 255.
----@param blue integer GDI+ colors range from 0 to 255.
----@return nil
-function wgui.gdip_fillpolygona(points, alpha, red, green, blue) end
-
----Returns the current size of the window.
----@nodiscard
----@return {width: integer, height: integer}
-function wgui.info() end
-
----Resizes the window to `width` and `height`
+---Draws to an image and returns its identifier
 ---@param width integer
 ---@param height integer
----@return nil
-function wgui.resize(width, height) end
+---@param callback fun()
+---@return number
+function d2d.draw_to_image(width, height, callback) end
 
 --#endregion
 
@@ -669,15 +856,6 @@ function joypad.get(port) end
 ---@return nil
 function joypad.set(port, inputs) end
 
----Calls the function `f` every input frame. The function `f` receives an
----argument that seems to always be `0`. If `unregister` is set to true, the
----function `f` will no longer be called when this event occurs, but it will
----error if you never registered the function. Alias for `emu.atinput`.
----@param f fun(a: integer?): nil The function to be called every input frame. It receives an argument that seems to always be `0`.
----@param unregister boolean? If true, then unregister the function `f`.
----@return nil
-function joypad.register(f, unregister) end
-
 ---Returns the number of input frames that have happened since the emulator was
 ---started. It does not reset when a movie is started. Alias for
 ---`emu.inputcount`.
@@ -706,6 +884,10 @@ function movie.stopmovie() end
 ---@nodiscard
 ---@return string
 function movie.getmoviefilename() end
+
+---Returns true if the currently playing movie is read only
+---@return boolean
+function movie.isreadonly() end
 
 --#endregion
 

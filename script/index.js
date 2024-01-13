@@ -1,21 +1,18 @@
 const coll = document.getElementsByClassName("collapsible");
 
-for (let i = 0; i < coll.length; i++) {
-	coll[i].addEventListener("click", function () {
+for (const elem of coll) {
+	elem.addEventListener("click", function () {
 		this.classList.toggle("active");
 		const content = this.nextElementSibling;
-		if (content.style.maxHeight) {
-			content.style.maxHeight = null;
-		} else {
-			content.style.maxHeight = content.scrollHeight + "px";
-		}
+		if (content.style.maxHeight) content.style.maxHeight = null;
+		else content.style.maxHeight = content.scrollHeight + "px";
 	});
 }
 
 async function highlightFunc(anchorId) {
 	/* Add 'highlight' class to element, which
 	causes it to briefly become highlighted */
-	let curFunc = document.getElementsByName(anchorId)[0];
+	const curFunc = document.getElementsByName(anchorId)[0];
 	curFunc.classList.add("highlight");
 	// Wait for fade to end
 	await new Promise((r) => setTimeout(r, 1510));

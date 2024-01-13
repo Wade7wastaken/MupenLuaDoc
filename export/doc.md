@@ -30,6 +30,34 @@ string
 
 ---
 
+# addresses
+
+```lua
+addresses:
+    | "rdram"
+    | "rdram_register"
+    | "MI_register"
+    | "pi_register"
+    | "sp_register"
+    | "rsp_register"
+    | "si_register"
+    | "vi_register"
+    | "ri_register"
+    | "ai_register"
+    | "dpc_register"
+    | "dps_register"
+    | "SP_DMEM"
+    | "PIF_RAM"
+```
+
+
+```lua
+"MI_register"|"PIF_RAM"|"SP_DMEM"|"ai_register"|"dpc_register"...(+9)
+```
+
+
+---
+
 # arg
 
 
@@ -100,6 +128,16 @@ function avi.stopcapture()
 
 ---
 
+# brush
+
+
+```lua
+integer
+```
+
+
+---
+
 # collectgarbage
 
 
@@ -124,6 +162,34 @@ opt:
 ```lua
 function collectgarbage(opt?: "collect"|"count"|"generational"|"incremental"|"isrunning"...(+3), ...any)
   -> any
+```
+
+
+---
+
+# color
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+string|"black"|"blue"|"chartreuse"|"clear"...(+9)
 ```
 
 
@@ -280,6 +346,313 @@ Suspends the execution of the calling coroutine.
 ```lua
 (async) function coroutine.yield(...any)
   -> ...any
+```
+
+
+---
+
+# d2d
+
+
+```lua
+table
+```
+
+
+---
+
+# d2d.create_brush
+
+Creates a brush from a color and returns it. D2D colors range from 0 to 1
+
+
+```lua
+function d2d.create_brush(r: number, g: number, b: number, a: number)
+  -> integer
+```
+
+
+---
+
+# d2d.draw_ellipse
+
+Draws the border of an ellipse at the specified coordinates and color.
+
+
+```lua
+function d2d.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, thickness: number, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_image
+
+Draws an image by taking the pixels in the source rectangle of the image, and
+drawing them to the destination rectangle on the screen.
+
+@*param* `interpolation` — 0: nearest neighbor, 1: linear, -1: don't use.
+
+
+```lua
+function d2d.draw_image(destx1: integer, desty1: integer, destx2: integer, desty2: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, opacity: number, interpolation: integer, identifier: number)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_line
+
+Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
+
+
+```lua
+function d2d.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, thickness: number, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_rectangle
+
+Draws the border of a rectangle at the specified coordinates and color.
+
+
+```lua
+function d2d.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, thickness: number, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_rounded_rectangle
+
+Draws the border of a rounded rectangle at the specified coordinates, color
+and radius.
+
+
+```lua
+function d2d.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, thickness: number, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_text
+
+Draws the text `text` at the specified coordinates, color, font, and
+alignment.
+
+@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic.
+
+@*param* `brush` — pass 0 if you don't know what you're doing
+
+```lua
+fontstyle:
+    | 0
+    | 1
+    | 2
+    | 3
+```
+
+
+```lua
+function d2d.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, text: string, fontname: string, fontsize: number, fontweight: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer, options: integer, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.draw_to_image
+
+Draws to an image and returns its identifier
+
+
+```lua
+function d2d.draw_to_image(width: integer, height: integer, callback: fun())
+  -> number
+```
+
+
+---
+
+# d2d.fill_ellipse
+
+Draws a filled in ellipse at the specified coordinates and color.
+
+
+```lua
+function d2d.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.fill_rectangle
+
+Draws a filled in rectangle at the specified coordinates and color.
+
+
+```lua
+function d2d.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.fill_rounded_rectangle
+
+Draws a filled in rounded rectangle at the specified coordinates, color and
+radius.
+
+
+```lua
+function d2d.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, brush: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.free_brush
+
+Frees a brush. It is a good practice to free all brushes after you are done
+using them
+
+
+```lua
+function d2d.free_brush(brush: integer)
+```
+
+
+---
+
+# d2d.free_image
+
+Frees the image at `identifier`.
+
+
+```lua
+function d2d.free_image(identifier: number)
+  -> nil
+```
+
+
+---
+
+# d2d.get_image_info
+
+Returns the width and height of the image at `identifier`.
+
+
+```lua
+function d2d.get_image_info(identifier: number)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# d2d.get_text_size
+
+Returns the width and height of the specified text.
+
+
+```lua
+function d2d.get_text_size(text: string, fontname: string, fontsize: number, max_width: number, max_height: number)
+  -> { width: integer, height: integer }
+```
+
+
+---
+
+# d2d.load_image
+
+Loads an image file from `path` which you can then access through
+`identifier`.
+
+
+```lua
+function d2d.load_image(path: string)
+  -> integer
+```
+
+
+---
+
+# d2d.pop_clip
+
+Pops the most recent clip off the clip stack.
+
+
+```lua
+function d2d.pop_clip()
+  -> nil
+```
+
+
+---
+
+# d2d.push_clip
+
+Specifies a rectangle to which all subsequent drawing operations are clipped.
+This clip is put onto a stack. It can then be popped off the stack with
+`wgui.d2d_pop_clip`.
+
+
+```lua
+function d2d.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)
+  -> nil
+```
+
+
+---
+
+# d2d.set_antialias_mode
+
+Sets the antialiasing mode. More info
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).
+
+```lua
+mode:
+    | 0
+    | 1
+    | 4294967295
+```
+
+
+```lua
+function d2d.set_antialias_mode(mode: 0|1|4294967295)
+```
+
+
+---
+
+# d2d.set_text_antialias_mode
+
+Sets the text antialiasing mode. More info
+[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).
+
+```lua
+mode:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4294967295
+```
+
+
+```lua
+function d2d.set_text_antialias_mode(mode: 0|1|2|3|4294967295)
 ```
 
 
@@ -898,22 +1271,6 @@ function emu.console(message: string)
 
 ---
 
-# emu.debugview
-
-Prints `message` to the debug console. If you are not debugging with Visual
-Studio, this function will do nothing.
-
-@*param* `message` — The string to print to the debug console.
-
-
-```lua
-function emu.debugview(message: string)
-  -> nil
-```
-
-
----
-
 # emu.framecount
 
 Returns the number of VIs since the last movie was played. This should match
@@ -934,11 +1291,30 @@ function emu.framecount()
 
 # emu.getaddress
 
-?
+Gets the address of an internal mupen variable. For example, "rdram" is the
+same as mupen's ram start
+
+```lua
+address:
+    | "rdram"
+    | "rdram_register"
+    | "MI_register"
+    | "pi_register"
+    | "sp_register"
+    | "rsp_register"
+    | "si_register"
+    | "vi_register"
+    | "ri_register"
+    | "ai_register"
+    | "dpc_register"
+    | "dps_register"
+    | "SP_DMEM"
+    | "PIF_RAM"
+```
 
 
 ```lua
-function emu.getaddress(address: string)
+function emu.getaddress(address: "MI_register"|"PIF_RAM"|"SP_DMEM"|"ai_register"|"dpc_register"...(+9))
   -> integer
 ```
 
@@ -1044,20 +1420,6 @@ function emu.ismainwindowinforeground()
 
 ---
 
-# emu.isreadonly
-
-Returns true if the currently playing movie is read only and false if it is
-not.
-
-
-```lua
-function emu.isreadonly()
-  -> read_only: boolean
-```
-
-
----
-
 # emu.pause
 
 Pauses or unpauses the emulator.
@@ -1067,6 +1429,19 @@ Pauses or unpauses the emulator.
 
 ```lua
 function emu.pause(pause: boolean)
+  -> nil
+```
+
+
+---
+
+# emu.play_sound
+
+Played the sound file at `file_path`
+
+
+```lua
+function emu.play_sound(file_path: string)
   -> nil
 ```
 
@@ -1100,25 +1475,6 @@ Takes a screenshot and saves it to the directory `dir`.
 
 ```lua
 function emu.screenshot(dir: string)
-  -> nil
-```
-
-
----
-
-# emu.setgfx
-
-?
-
-```lua
-mode:
-    | 0
-    | 1
-```
-
-
-```lua
-function emu.setgfx(mode: 0|1)
   -> nil
 ```
 
@@ -1220,16 +1576,6 @@ If object does not have a metatable, returns nil. Otherwise, if the object's met
 ```lua
 function getmetatable(object: any)
   -> metatable: table
-```
-
-
----
-
-# gui
-
-
-```lua
-table
 ```
 
 
@@ -1673,26 +2019,6 @@ port:
 ```lua
 function joypad.get(port: 1|2|3|4)
   -> table
-```
-
-
----
-
-# joypad.register
-
-Calls the function `f` every input frame. The function `f` receives an
-argument that seems to always be `0`. If `unregister` is set to true, the
-function `f` will no longer be called when this event occurs, but it will
-error if you never registered the function. Alias for `emu.atinput`.
-
-@*param* `f` — The function to be called every input frame. It receives an argument that seems to always be `0`.
-
-@*param* `unregister` — If true, then unregister the function `f`.
-
-
-```lua
-function joypad.register(f: fun(a?: integer):nil, unregister?: boolean)
-  -> nil
 ```
 
 
@@ -2264,7 +2590,7 @@ function math.tanh(x: number)
 # math.tointeger
 
 
-If the value `x` is convertible to an integer, returns that integer.
+Miss locale <math.tointeger>
 
 [View documents](http://www.lua.org/manual/5.4/manual.html#pdf-math.tointeger)
 
@@ -2280,7 +2606,7 @@ function math.tointeger(x: any)
 # math.type
 
 
-Returns `"integer"` if `x` is an integer, `"float"` if it is a float, or `nil` if `x` is not a number.
+Miss locale <math.type>
 
 [View documents](http://www.lua.org/manual/5.4/manual.html#pdf-math.type)
 
@@ -2304,7 +2630,7 @@ function math.type(x: any)
 # math.ult
 
 
-Returns `true` if and only if `m` is below `n` when they are compared as unsigned integers.
+Miss locale <math.ult>
 
 [View documents](http://www.lua.org/manual/5.4/manual.html#pdf-math.ult)
 
@@ -2699,6 +3025,19 @@ function movie.getmoviefilename()
 
 ---
 
+# movie.isreadonly
+
+Returns true if the currently playing movie is read only
+
+
+```lua
+function movie.isreadonly()
+  -> boolean
+```
+
+
+---
+
 # movie.playmovie
 
 Plays a movie file located at `filename`. This function sets `Read Only` to
@@ -2949,7 +3288,7 @@ Returns the current time when called without arguments, or a time representing t
 
 
 ```lua
-function os.time(date?: osdate)
+function os.time(date?: osdateparam)
   -> integer
 ```
 
@@ -3131,9 +3470,12 @@ function pcall(f: fun(...any):...unknown, arg1?: any, ...any)
 
 # print
 
-Prints a value to the lua console.
 
-@*param* `data` — The data to print to the console.
+Receives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [tostring](http://www.lua.org/manual/5.4/manual.html#pdf-tostring).
+The function print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [string.format](http://www.lua.org/manual/5.4/manual.html#pdf-string.format) and [io.write](http://www.lua.org/manual/5.4/manual.html#pdf-io.write).
+
+
+[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-print)
 
 
 ```lua
@@ -3554,7 +3896,7 @@ Returns a binary string containing the values `v1`, `v2`, etc. packed (that is, 
 
 
 ```lua
-function string.pack(fmt: string, v1: string|number, v2: any, ...string|number)
+function string.pack(fmt: string, v1: string|number, v2?: string|number, ...string|number)
   -> binary: string
 ```
 
@@ -4079,259 +4421,213 @@ table
 
 ---
 
-# wgui.draw_ellipse
+# wgui.deleteimage
 
-Draws the border of an ellipse at the specified coordinates and color.
+Clears one of all images
 
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+@*param* `idx` — The identifier of the image to clear. If it is 0, clear all iamges
 
 
 ```lua
-function wgui.draw_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
-  -> nil
+function wgui.deleteimage(idx: integer)
 ```
 
 
 ---
 
-# wgui.draw_image
+# wgui.drawimage
 
-Draws an image by taking the pixels in the source rectangle of the image, and
-drawing them to the destination rectangle on the screen.
-
-@*param* `interpolationMode` — 0: nearest neighbor, 1: linear, -1: don't use.
+Draws the image at index `idx` at the specified coordinates
 
 
 ```lua
-function wgui.draw_image(destx1: integer, desty1: integer, destx2: integer, desty2: integer, srcx1: integer, srcy1: integer, srcx2: integer, srcy2: integer, identifier: string, opacity: number, interpolationMode: integer)
-  -> nil
+function wgui.drawimage(idx: integer, x: integer, y: integer)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, s: number)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer)
+```
+
+
+```lua
+function wgui.drawimage(idx: integer, x: integer, y: integer, w: integer, h: integer, srcx: integer, srcy: integer, srcw: integer, srch: integer, rotate: number)
 ```
 
 
 ---
 
-# wgui.draw_line
+# wgui.drawtext
 
-Draws a line from `(x1, y1)` to `(x2, y2)` in the specified color.
-
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+GDI: Draws text in a rectangle (more documentation soon)
 
 
 ```lua
-function wgui.draw_line(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
-  -> nil
+function wgui.drawtext(text: string, rect: table, format?: string)
 ```
 
 
 ---
 
-# wgui.draw_rectangle
+# wgui.drawtextalt
 
-Draws the border of a rectangle at the specified coordinates and color.
-
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+Uses an alternate function for drawing text
 
 
 ```lua
-function wgui.draw_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, thickness: number)
-  -> nil
+function wgui.drawtextalt(text: string, format: integer, left: integer, top: integer, right: integer, bottom: integer)
 ```
 
 
 ---
 
-# wgui.draw_rounded_rectangle
+# wgui.ellipse
 
-Draws the border of a rounded rectangle at the specified coordinates, color
-and radius.
-
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
 
 
 ```lua
-function wgui.draw_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number, thickness: number)
-  -> nil
+function wgui.ellipse(left: integer, top: integer, right: integer, bottom: integer)
 ```
 
 
 ---
 
-# wgui.draw_text
+# wgui.fillellipsea
 
-Draws the text `text` at the specified coordinates, color, font, and
-alignment.
+GDIPlus: Draws an ellipse at the specified coordinates, size, and color
 
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
-
-@*param* `fontstyle` — 0: normal, 1: bold, 2: italic, 3: bold + italic.
+@*param* `color` — Color names are currently broken
 
 ```lua
-fontstyle:
-    | 0
-    | 1
-    | 2
-    | 3
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
 ```
 
 
 ```lua
-function wgui.draw_text(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number, text: string, fontname: string, fontsize: number, fontstyle: 0|1|2|3, horizalign: integer, vertalign: integer)
-  -> nil
-```
-
-
----
-
-# wgui.fill_ellipse
-
-Draws a filled in ellipse at the specified coordinates and color.
-
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
-
-
-```lua
-function wgui.fill_ellipse(x: integer, y: integer, radiusX: integer, radiusY: integer, red: number, green: number, blue: number, alpha: number)
-  -> nil
+function wgui.fillellipsea(x: integer, y: integer, w: integer, h: integer, color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
 ```
 
 
 ---
 
-# wgui.fill_rectangle
+# wgui.fillpolygona
 
-Draws a filled in rectangle at the specified coordinates and color.
+Draws a filled in polygon using the points in `points`
 
-@*param* `red` — d2d colors range from 0.0 to 1.0.
+@*param* `points` — Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
 
-@*param* `green` — d2d colors range from 0.0 to 1.0.
+@*param* `color` — Color names are currently broken
 
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
 
 
 ```lua
-function wgui.fill_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, red: number, green: number, blue: number, alpha: number)
-  -> nil
+function wgui.fillpolygona(points: table, color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
 ```
 
 
 ---
 
-# wgui.fill_rounded_rectangle
+# wgui.fillrect
 
-Draws a filled in rounded rectangle at the specified coordinates, color and
-radius.
-
-@*param* `red` — d2d colors range from 0.0 to 1.0.
-
-@*param* `green` — d2d colors range from 0.0 to 1.0.
-
-@*param* `blue` — d2d colors range from 0.0 to 1.0.
-
-@*param* `alpha` — d2d colors range from 0.0 to 1.0.
+Draws a rectangle at the specified coordinates with the specified color
 
 
 ```lua
-function wgui.fill_rounded_rectangle(x1: integer, y1: integer, x2: integer, y2: integer, radiusX: number, radiusY: number, red: number, green: number, blue: number, alpha: number)
-  -> nil
+function wgui.fillrect(left: integer, top: integer, right: integer, bottom: integer, red: integer, green: integer, blue: integer)
 ```
 
 
 ---
 
-# wgui.free_image
+# wgui.fillrecta
 
-Frees the image at `identifier`.
+GDIPlus: Draws a rectangle at the specified coordinates, size and color
+
+@*param* `color` — Color names are currently broken
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
 
 
 ```lua
-function wgui.free_image(identifier: string)
-  -> nil
+function wgui.fillrecta(x: integer, y: integer, w: integer, h: integer, color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
 ```
 
 
 ---
 
-# wgui.gdip_fillpolygona
+# wgui.getimageinfo
 
-Draws a polygon at the specified coordinates and color.
-
-@*param* `points` — Double array of points. For example, `{{0, 0}, {1, 0}, {0, 1}}` will draw a triangle.
-
-@*param* `alpha` — GDI+ colors range from 0 to 255.
-
-@*param* `red` — GDI+ colors range from 0 to 255.
-
-@*param* `green` — GDI+ colors range from 0 to 255.
-
-@*param* `blue` — GDI+ colors range from 0 to 255.
+Returns the width and height of the image at `idx`
 
 
 ```lua
-function wgui.gdip_fillpolygona(points: integer[][], alpha: integer, red: integer, green: integer, blue: integer)
-  -> nil
-```
-
-
----
-
-# wgui.get_image_info
-
-Returns the width and height of the image at `identifier`.
-
-
-```lua
-function wgui.get_image_info(identifier: string)
+function wgui.getimageinfo(idx: integer)
   -> { width: integer, height: integer }
 ```
 
 
 ---
 
-# wgui.get_text_size
+# wgui.gettextextent
 
-Returns the width and height of the specified text.
+Gets the width and height of the given text
 
 
 ```lua
-function wgui.get_text_size(text: string, fontname: string, fontsize: number, max_width: number, max_height: number)
+function wgui.gettextextent(text: string)
   -> { width: integer, height: integer }
 ```
 
@@ -4340,7 +4636,7 @@ function wgui.get_text_size(text: string, fontname: string, fontsize: number, ma
 
 # wgui.info
 
-Returns the current size of the window.
+Returns the current width and height of the mupen window in a table
 
 
 ```lua
@@ -4351,43 +4647,93 @@ function wgui.info()
 
 ---
 
-# wgui.load_image
+# wgui.line
 
-Loads an image file from `path` which you can then access through
-`identifier`.
+Draws a line from `(x1, y1)` to `(x2, y2)`
 
 
 ```lua
-function wgui.load_image(path: string, identifier: string)
-  -> nil
+function wgui.line(x1: integer, y1: integer, x2: integer, y2: integer)
 ```
 
 
 ---
 
-# wgui.pop_clip
+# wgui.loadimage
 
-Pops the most recent clip off the clip stack.
+Loads an image file from `path` and returns the identifier of that image
 
 
 ```lua
-function wgui.pop_clip()
-  -> nil
+function wgui.loadimage(path: string)
+  -> integer
 ```
 
 
 ---
 
-# wgui.push_clip
+# wgui.loadscreen
 
-Specifies a rectangle to which all subsequent drawing operations are clipped.
-This clip is put onto a stack. It can then be popped off the stack with
-`wgui.d2d_pop_clip`.
+Captures the current screen and saves it as an image
+
+@*return* `The` — identifier of the saved image
 
 
 ```lua
-function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)
-  -> nil
+function wgui.loadscreen()
+  -> The: integer
+```
+
+
+---
+
+# wgui.loadscreenreset
+
+Re-initializes loadscreen
+
+
+```lua
+function wgui.loadscreenreset()
+```
+
+
+---
+
+# wgui.polygon
+
+Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+
+
+```lua
+function wgui.polygon(points: table)
+```
+
+
+---
+
+# wgui.rect
+
+GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a 1 pixel border of the GDI pen color.
+
+@*param* `rounded_width` — The width of the ellipse used to draw the rounded corners. (currently don't seem to be working)
+
+@*param* `rounded_height` — The height of the ellipse used to draw the rounded corners.
+
+
+```lua
+function wgui.rect(left: integer, top: integer, right: integer, bottom: integer, rounded_width?: integer, rounded_height?: integer)
+```
+
+
+---
+
+# wgui.resetclip
+
+Resets the clip
+
+
+```lua
+function wgui.resetclip()
 ```
 
 
@@ -4395,54 +4741,173 @@ function wgui.push_clip(x1: integer, y1: integer, x2: integer, y2: integer)
 
 # wgui.resize
 
-Resizes the window to `width` and `height`
+Resizes the mupen window to `w` x `h`
 
 
 ```lua
-function wgui.resize(width: integer, height: integer)
-  -> nil
+function wgui.resize(w: integer, h: integer)
 ```
 
 
 ---
 
-# wgui.set_antialias_mode
+# wgui.setbk
 
-Sets the antialiasing mode. More info
-[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_antialias_mode).
+GDI: Sets the current GDI background color to `color`
 
 ```lua
-mode:
-    | 0
-    | 1
-    | 4294967295
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
 ```
 
 
 ```lua
-function wgui.set_antialias_mode(mode: 0|1|4294967295)
+function wgui.setbk(color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
 ```
 
 
 ---
 
-# wgui.set_text_antialias_mode
+# wgui.setbrush
 
-Sets the text antialiasing mode. More info
-[here](https://learn.microsoft.com/en-us/windows/win32/api/d2d1/ne-d2d1-d2d1_text_antialias_mode).
+Sets the current GDI brush color to `color`
 
 ```lua
-mode:
-    | 0
-    | 1
-    | 2
-    | 3
-    | 4294967295
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
 ```
 
 
 ```lua
-function wgui.set_text_antialias_mode(mode: 0|1|2|3|4294967295)
+function wgui.setbrush(color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
+```
+
+
+---
+
+# wgui.setclip
+
+Sets a rectangle bounding box such that you cannot draw outside of it.
+
+
+```lua
+function wgui.setclip(x: integer, y: integer, w: integer, h: integer)
+```
+
+
+---
+
+# wgui.setcolor
+
+GDI: Sets the current GDI text color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setcolor(color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
+```
+
+
+---
+
+# wgui.setfont
+
+Sets the font, font size, and font style
+
+@*param* `size` — The size of the font. Defaults to 0 if not given
+
+@*param* `font` — The name of the font from the operating system. Dafaults to "MS Gothic" if not given
+
+@*param* `style` — Each character in this string sets one style of the font, applied in chronological order. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiased. Defaults to "" if not given
+
+
+```lua
+function wgui.setfont(size?: integer, font?: string, style?: string)
+```
+
+
+---
+
+# wgui.setpen
+
+GDI: Sets the current GDI pen color to `color`
+
+```lua
+--  colors can be any of these or "#RGB", "#RGBA", "#RRGGBB", or "#RRGGBBA"
+color:
+    | "white"
+    | "black"
+    | "clear"
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "chartreuse"
+    | "green"
+    | "teal"
+    | "cyan"
+    | "blue"
+    | "purple"
+```
+
+
+```lua
+function wgui.setpen(color: string|"black"|"blue"|"chartreuse"|"clear"...(+9))
+```
+
+
+---
+
+# wgui.text
+
+GDI: Displays text in one line with the current GDI background color and GDI text color
+
+
+```lua
+function wgui.text(x: integer, y: integer, text: string)
 ```
 
 
