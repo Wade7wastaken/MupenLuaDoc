@@ -554,6 +554,34 @@
 <p>@<em>param</em> <code>data</code> — The data to print to the console.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">any</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div>
+
+<h4>Example:</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- prints numbers</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">0.42</span><span class="p">)</span>
+
+<span class="c1">-- prints booleans</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+
+<span class="c1">-- prints nil</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+
+<span class="c1">-- prints strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a string&quot;</span><span class="p">)</span>
+
+<span class="c1">-- prints tables</span>
+<span class="nb">print</span><span class="p">({</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">deeply</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">nested</span> <span class="o">=</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+
+<span class="c1">-- prints multiple strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;another string&quot;</span><span class="p">)</span>
 </code></pre></div></div><div name="globalStop"><hr />
 <h1><a id="globalStop">stop</a></h1>
 <p>Stops script execution.</p>

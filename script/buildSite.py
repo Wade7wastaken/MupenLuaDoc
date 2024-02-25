@@ -109,7 +109,16 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     return functions
 
 
-def generate_function_html(func_type, func_name, display_name, desc, view):
+def generate_function_html(func_type, func_name, display_name, desc, view, example):
+    if example == "":
+        example_markdown = ""
+    else:
+        example_markdown = f'''
+#### Example:
+```lua
+{example}
+```
+'''
     return parse_markdown(f'''
 ---
 
@@ -122,6 +131,7 @@ def generate_function_html(func_type, func_name, display_name, desc, view):
 {view}
 ```
 
+{example_markdown}
 
 ''')
 
@@ -201,10 +211,18 @@ def main():
                 for var in lua_data:
                     desc = var["desc"]
                     view = var["view"]
+                    example = ""
+                    example_filename = f"examples/{func_type}.{func_name}.lua"
+                    try:
+                        with open(example_filename, "rt") as f:
+                            example = f.read()
+                    except:
+                        print(f"couldn't find example file {example_filename}")
+                        pass
                     accumulator.write(
                         f'<div name="{func_type}{func_name.capitalize()}">')
                     accumulator.write(generate_function_html(
-                        func_type, func_name, display_name, desc, view))
+                        func_type, func_name, display_name, desc, view, example))
                     accumulator.write('</div>')
                 used_lua_functions.append(fullname)
             else:
@@ -214,7 +232,7 @@ def main():
                 accumulator.write(
                     f'<div name={func_type}{func_name.capitalize()}>')
                 accumulator.write(generate_function_html(
-                    func_type, func_name, display_name, desc, view))
+                    func_type, func_name, display_name, desc, view, ""))
                 accumulator.write('</div>')
 
     accumulator.write("</div>")  # closed div.docBody
