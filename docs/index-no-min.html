@@ -52,6 +52,10 @@
                     <button class="funcListItem" onclick="highlightFunc('emuAtupdatescreen')">EMU.ATUPDATESCREEN</button>
                 </a>
                 
+                <a href="#emuAtdrawd2d">
+                    <button class="funcListItem" onclick="highlightFunc('emuAtdrawd2d')">EMU.ATDRAWD2D</button>
+                </a>
+                
                 <a href="#emuAtinput">
                     <button class="funcListItem" onclick="highlightFunc('emuAtinput')">EMU.ATINPUT</button>
                 </a>
@@ -114,6 +118,14 @@
                 
                 <a href="#emuGetspeed">
                     <button class="funcListItem" onclick="highlightFunc('emuGetspeed')">EMU.GETSPEED</button>
+                </a>
+                
+                <a href="#emuGet_ff">
+                    <button class="funcListItem" onclick="highlightFunc('emuGet_ff')">EMU.GET_FF</button>
+                </a>
+                
+                <a href="#emuSet_ff">
+                    <button class="funcListItem" onclick="highlightFunc('emuSet_ff')">EMU.SET_FF</button>
                 </a>
                 
                 <a href="#emuSpeed">
@@ -364,6 +376,10 @@
                     <button class="funcListItem" onclick="highlightFunc('d2dFree_brush')">D2D.FREE_BRUSH</button>
                 </a>
                 
+                <a href="#d2dClear">
+                    <button class="funcListItem" onclick="highlightFunc('d2dClear')">D2D.CLEAR</button>
+                </a>
+                
                 <a href="#d2dFill_rectangle">
                     <button class="funcListItem" onclick="highlightFunc('d2dFill_rectangle')">D2D.FILL_RECTANGLE</button>
                 </a>
@@ -480,20 +496,24 @@
                 <a href="#movieFuncs">MOVIE FUNCTIONS</a>
             </div>
             <div class="funcList">
-                <a href="#moviePlaymovie">
-                    <button class="funcListItem" onclick="highlightFunc('moviePlaymovie')">MOVIE.PLAYMOVIE</button>
+                <a href="#moviePlay">
+                    <button class="funcListItem" onclick="highlightFunc('moviePlay')">MOVIE.PLAY</button>
                 </a>
                 
-                <a href="#movieStopmovie">
-                    <button class="funcListItem" onclick="highlightFunc('movieStopmovie')">MOVIE.STOPMOVIE</button>
+                <a href="#movieStop">
+                    <button class="funcListItem" onclick="highlightFunc('movieStop')">MOVIE.STOP</button>
                 </a>
                 
-                <a href="#movieGetmoviefilename">
-                    <button class="funcListItem" onclick="highlightFunc('movieGetmoviefilename')">MOVIE.GETMOVIEFILENAME</button>
+                <a href="#movieGet_filename">
+                    <button class="funcListItem" onclick="highlightFunc('movieGet_filename')">MOVIE.GET_FILENAME</button>
                 </a>
                 
-                <a href="#movieIsreadonly">
-                    <button class="funcListItem" onclick="highlightFunc('movieIsreadonly')">MOVIE.ISREADONLY</button>
+                <a href="#movieGet_readonly">
+                    <button class="funcListItem" onclick="highlightFunc('movieGet_readonly')">MOVIE.GET_READONLY</button>
+                </a>
+                
+                <a href="#movieSet_readonly">
+                    <button class="funcListItem" onclick="highlightFunc('movieSet_readonly')">MOVIE.SET_READONLY</button>
                 </a>
                 </div>
             <div class="collapsible">
@@ -543,16 +563,17 @@
 <h1><a id="emuFuncs">EMU</a>FUNCTIONS</h1><div name="emuConsole"><hr />
 <h1><a id="emuConsole">emu.console</a></h1>
 <p>Displays the text <code>message</code> in the console. Similar to <code>print</code>, but only
-accepts strings. Because of this, <code>print</code> should be used instead.</p>
+accepts strings or numbers. Also, <code>emu.console</code> does not insert a newline
+character. Because of this, <code>print</code> should be used instead.</p>
 <p>@<em>param</em> <code>message</code> — The string to print to the console.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><div name="emuStatusbar"><hr />
 <h1><a id="emuStatusbar">emu.statusbar</a></h1>
 <p>Displays the text <code>message</code> in the status bar on the bottom while replacing
 any other text. The message will only display until the next frame.</p>
 <p>@<em>param</em> <code>message</code> — The string to display on the status bar.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><div name="emuAtvi"><hr />
 <h1><a id="emuAtvi">emu.atvi</a></h1>
@@ -567,12 +588,24 @@ error if you never registered the function.</p>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><div name="emuAtupdatescreen"><hr />
 <h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
-<p>Similar to <code>emu.atvi</code>, except that it is called after. If <code>unregister</code> is set
-to true, the function <code>f</code> will no longer be called when this event occurs,
-but it will error if you never registered the function.</p>
+<p>Similar to <code>emu.atvi</code>, but for drawing commands. ONLY GDI AND GDI+ COMMANDS
+WILL WORK HERE. If <code>unregister</code> is set to true, the function <code>f</code> will no
+longer be called when this event occurs, but it will error if you never
+registered the function.</p>
 <p>@<em>param</em> <code>f</code> — The function to be called after every VI frame.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atupdatescreen</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div></div><div name="emuAtdrawd2d"><hr />
+<h1><a id="emuAtdrawd2d">emu.atdrawd2d</a></h1>
+<p>Similar to <code>emu.atvi</code>, but for all drawing commands. GDI and GDI+ commands
+will still work here, but it is recommended to put those in
+<code>emu.atupdatescreen</code> If <code>unregister</code> is set to true, the function <code>f</code> will no
+longer be called when this event occurs, but it will error if you never
+registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called after every VI frame.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atdrawd2d</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><div name="emuAtinput"><hr />
 <h1><a id="emuAtinput">emu.atinput</a></h1>
@@ -660,18 +693,17 @@ it will error if you never registered the function.</p>
 </code></pre></div></div><div name="emuFramecount"><hr />
 <h1><a id="emuFramecount">emu.framecount</a></h1>
 <p>Returns the number of VIs since the last movie was played. This should match
-the statusbar (assuming you have <code>0-index statusbar</code> off). If no movie has
-been played, it returns the number of VIs since the emulator was started, not
-reset.</p>
+the statusbar. If no movie has been played, it returns the number of VIs
+since the emulator was started, not reset.</p>
 <p>@<em>return</em> <code>framecount</code> — The number of VIs since the last movie was played.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">framecount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">framecount</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div></div><div name="emuSamplecount"><hr />
 <h1><a id="emuSamplecount">emu.samplecount</a></h1>
 <p>Returns the number of input frames since the last movie was played. This
-should match the statusbar (assuming you have <code>0-index statusbar</code> off). If no
-movie is playing, it will return the last value when a movie was playing. If
-no movie has been played yet, it will return <code>-1</code>.</p>
+should match the statusbar. If no movie is playing, it will return the last
+value when a movie was playing. If no movie has been played yet, it will
+return <code>-1</code>.</p>
 <p>@<em>return</em> <code>samplecount</code> — The number of input frames since the last movie was played.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">samplecount</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">samplecount</span><span class="p">:</span> <span class="n">integer</span>
@@ -714,6 +746,15 @@ version number (0.0.0).</p>
 <p>@<em>return</em> <code>speed_limit</code> — The current speed limit of the emulator.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getspeed</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">speed_limit</span><span class="p">:</span> <span class="n">integer</span>
+</code></pre></div></div><div name="emuGet_ff"><hr />
+<h1><a id="emuGet_ff">emu.get_ff</a></h1>
+<p>Gets whether fast forward is active</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">get_ff</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div><div name="emuSet_ff"><hr />
+<h1><a id="emuSet_ff">emu.set_ff</a></h1>
+<p>Sets whether fast forward is active</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">set_ff</span><span class="p">(</span><span class="n">fast_forward</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
 </code></pre></div></div><div name="emuSpeed"><hr />
 <h1><a id="emuSpeed">emu.speed</a></h1>
 <p>Sets the speed limit of the emulator.</p>
@@ -966,7 +1007,7 @@ if <code>size</code> is is negative.</p>
     <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setpen</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="s2">&quot;black&quot;</span><span class="o">|</span><span class="s2">&quot;blue&quot;</span><span class="o">|</span><span class="s2">&quot;chartreuse&quot;</span><span class="o">|</span><span class="s2">&quot;clear&quot;</span><span class="p">...(</span><span class="o">+</span><span class="mi">9</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setpen</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="s2">&quot;black&quot;</span><span class="o">|</span><span class="s2">&quot;blue&quot;</span><span class="o">|</span><span class="s2">&quot;chartreuse&quot;</span><span class="o">|</span><span class="s2">&quot;clear&quot;</span><span class="p">...(</span><span class="o">+</span><span class="mi">9</span><span class="p">),</span> <span class="n">width</span><span class="err">?</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiSetcolor"><hr />
 <h1><a id="wguiSetcolor">wgui.setcolor</a></h1>
 <p>GDI: Sets the current GDI text color to <code>color</code></p>
@@ -1018,34 +1059,40 @@ if <code>size</code> is is negative.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">setfont</span><span class="p">(</span><span class="n">size</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">font</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">style</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiText"><hr />
 <h1><a id="wguiText">wgui.text</a></h1>
-<p>GDI: Displays text in one line with the current GDI background color and GDI text color</p>
+<p>GDI: Displays text in one line with the current GDI background color and GDI
+text color</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiDrawtext"><hr />
 <h1><a id="wguiDrawtext">wgui.drawtext</a></h1>
-<p>GDI: Draws text in a rectangle (more documentation soon)</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawtext</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">rect</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">format</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<p>GDI: Draws text in the specified rectangle and with the specified format.</p>
+<p>@<em>param</em> <code>text</code> — The text to be drawn.</p>
+<p>@<em>param</em> <code>rect</code> — The rectangle in which to draw the text.</p>
+<p>@<em>param</em> <code>format</code> — The format of the text. Applied in order stated. "l" aligns the text to the left (applied by default). "r" aligns the text to the right. "t" aligns text to the right (applied by default). "b" aligns text to the bottom. "c" horizontally aligns text. "v" vertically aligns the text. "e" adds ellipses if a line cannof fit all text. "s" forces text to be displayed on a single line.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawtext</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">rect</span><span class="p">:</span> <span class="p">{</span> <span class="n">l</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span><span class="o">|</span><span class="p">{</span> <span class="n">l</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">integer</span> <span class="p">},</span> <span class="n">format</span><span class="err">?</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiDrawtextalt"><hr />
 <h1><a id="wguiDrawtextalt">wgui.drawtextalt</a></h1>
-<p>Uses an alternate function for drawing text</p>
+<p>Uses an alternate function for drawing text.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">drawtextalt</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">format</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiGettextextent"><hr />
 <h1><a id="wguiGettextextent">wgui.gettextextent</a></h1>
-<p>Gets the width and height of the given text</p>
+<p>Gets the width and height of the given text.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">gettextextent</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
 </code></pre></div></div><div name="wguiRect"><hr />
 <h1><a id="wguiRect">wgui.rect</a></h1>
-<p>GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a 1 pixel border of the GDI pen color.</p>
-<p>@<em>param</em> <code>rounded_width</code> — The width of the ellipse used to draw the rounded corners. (currently don't seem to be working)</p>
+<p>GDI: Draws a rectangle at the specified coordinates with the current GDI
+background color and a border of the GDI pen color. Only use this function if
+you need rounded corners, otherwise, use <code>wgui.fillrecta</code>.</p>
+<p>@<em>param</em> <code>rounded_width</code> — The width of the ellipse used to draw the rounded corners.</p>
 <p>@<em>param</em> <code>rounded_height</code> — The height of the ellipse used to draw the rounded corners.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">rect</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">rounded_width</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">rounded_height</span><span class="err">?</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiFillrect"><hr />
 <h1><a id="wguiFillrect">wgui.fillrect</a></h1>
-<p>Draws a rectangle at the specified coordinates with the specified color</p>
+<p>Draws a rectangle at the specified coordinates with the specified color.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">fillrect</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">red</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">green</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">blue</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiFillrecta"><hr />
 <h1><a id="wguiFillrecta">wgui.fillrecta</a></h1>
-<p>GDIPlus: Draws a rectangle at the specified coordinates, size and color</p>
+<p>GDIPlus: Draws a rectangle at the specified coordinates, size and color.</p>
 <p>@<em>param</em> <code>color</code> — Color names are currently broken</p>
 <div class="codehilite"><pre><span></span><code><span class="c1">--  colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;, &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
 <span class="n">color</span><span class="p">:</span>
@@ -1109,7 +1156,7 @@ if <code>size</code> is is negative.</p>
     <span class="o">|</span> <span class="s2">&quot;purple&quot;</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">fillpolygona</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="s2">&quot;black&quot;</span><span class="o">|</span><span class="s2">&quot;blue&quot;</span><span class="o">|</span><span class="s2">&quot;chartreuse&quot;</span><span class="o">|</span><span class="s2">&quot;clear&quot;</span><span class="p">...(</span><span class="o">+</span><span class="mi">9</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">fillpolygona</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">integer</span><span class="p">[][],</span> <span class="n">color</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="s2">&quot;black&quot;</span><span class="o">|</span><span class="s2">&quot;blue&quot;</span><span class="o">|</span><span class="s2">&quot;chartreuse&quot;</span><span class="o">|</span><span class="s2">&quot;clear&quot;</span><span class="p">...(</span><span class="o">+</span><span class="mi">9</span><span class="p">))</span>
 </code></pre></div></div><div name="wguiLoadimage"><hr />
 <h1><a id="wguiLoadimage">wgui.loadimage</a></h1>
 <p>Loads an image file from <code>path</code> and returns the identifier of that image</p>
@@ -1153,12 +1200,14 @@ if <code>size</code> is is negative.</p>
   <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span> <span class="p">}</span>
 </code></pre></div></div><div name="wguiEllipse"><hr />
 <h1><a id="wguiEllipse">wgui.ellipse</a></h1>
-<p>Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color</p>
+<p>Draws an ellipse at the specified coordinates and size. Uses the GDI brush
+color for the background and a border of the GDI pen color</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">ellipse</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">bottom</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiPolygon"><hr />
 <h1><a id="wguiPolygon">wgui.polygon</a></h1>
-<p>Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">polygon</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+<p>Draws a polygon with the given points. Uses the GDI brush color for the
+background and a border of the GDI pen color</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">polygon</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">integer</span><span class="p">[][])</span>
 </code></pre></div></div><div name="wguiLine"><hr />
 <h1><a id="wguiLine">wgui.line</a></h1>
 <p>Draws a line from <code>(x1, y1)</code> to <code>(x2, y2)</code></p>
@@ -1191,6 +1240,11 @@ if <code>size</code> is is negative.</p>
 <p>Frees a brush. It is a good practice to free all brushes after you are done
 using them</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">d2d</span><span class="p">.</span><span class="nf">free_brush</span><span class="p">(</span><span class="n">brush</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="d2dClear"><hr />
+<h1><a id="d2dClear">d2d.clear</a></h1>
+<p>Sets clear behavior. If this function is never called, the screen will not be
+cleared. If it is called, the screen will be cleared with the specified color</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">d2d</span><span class="p">.</span><span class="nf">clear</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
 </code></pre></div></div><div name="d2dFill_rectangle"><hr />
 <h1><a id="d2dFill_rectangle">d2d.fill_rectangle</a></h1>
 <p>Draws a filled in rectangle at the specified coordinates and color.</p>
@@ -1383,28 +1437,32 @@ started. It does not reset when a movie is started. Alias for
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div></div><hr />
-<h1><a id="movieFuncs">MOVIE</a>FUNCTIONS</h1><div name="moviePlaymovie"><hr />
-<h1><a id="moviePlaymovie">movie.playmovie</a></h1>
+<h1><a id="movieFuncs">MOVIE</a>FUNCTIONS</h1><div name="moviePlay"><hr />
+<h1><a id="moviePlay">movie.play</a></h1>
 <p>Plays a movie file located at <code>filename</code>. This function sets <code>Read Only</code> to
 true.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">playmovie</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div></div><div name="movieStopmovie"><hr />
-<h1><a id="movieStopmovie">movie.stopmovie</a></h1>
+</code></pre></div></div><div name="movieStop"><hr />
+<h1><a id="movieStop">movie.stop</a></h1>
 <p>Stops the currently playing movie.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">stopmovie</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
-</code></pre></div></div><div name="movieGetmoviefilename"><hr />
-<h1><a id="movieGetmoviefilename">movie.getmoviefilename</a></h1>
+</code></pre></div></div><div name="movieGet_filename"><hr />
+<h1><a id="movieGet_filename">movie.get_filename</a></h1>
 <p>Returns the filename of the currently playing movie. It will error if no
 movie is playing.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">getmoviefilename</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">get_filename</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">string</span>
-</code></pre></div></div><div name="movieIsreadonly"><hr />
-<h1><a id="movieIsreadonly">movie.isreadonly</a></h1>
+</code></pre></div></div><div name="movieGet_readonly"><hr />
+<h1><a id="movieGet_readonly">movie.get_readonly</a></h1>
 <p>Returns true if the currently playing movie is read only</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">isreadonly</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">get_readonly</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div><div name="movieSet_readonly"><hr />
+<h1><a id="movieSet_readonly">movie.set_readonly</a></h1>
+<p>Set's the currently movie's readonly state to <code>readonly</code></p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">set_readonly</span><span class="p">(</span><span class="n">readonly</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
 </code></pre></div></div><hr />
 <h1><a id="savestateFuncs">SAVESTATE</a>FUNCTIONS</h1><div name="savestateSavefile"><hr />
 <h1><a id="savestateSavefile">savestate.savefile</a></h1>

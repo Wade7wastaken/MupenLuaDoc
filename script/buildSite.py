@@ -34,6 +34,7 @@ def parse_markdown(str: str) -> str:
     return markdown.markdown(str, extensions=[CodeHiliteExtension(), FencedCodeExtension()])
 
 
+# {"global": ["print", "stop"]}
 def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
         r'const luaL_Reg (?P<func_type>[A-Za-z0-9]+)Funcs\[\]')
@@ -41,23 +42,26 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
 
     func_list_dict = {}
 
-    with open('LuaConsole.cpp', 'r', encoding='utf-8') as file:
+    # TODO: add error if file doesn't exist and remind to init submodule
+    with open('mupen64-rr-lua-/lua/LuaConsole.cpp', 'r', encoding='utf-8') as file:
         # if we're far enough into the file to start caring
         in_function_region = False
         func_type = ''
         for l in file:
             line = l.strip()
             # Start at first line of Lua emu func arrays
-            if "const luaL_Reg globalFuncs[] = {" in line:
+            if "// begin lua funcs" in line:
                 in_function_region = True
+                continue
             # Stop at end of functions
-            if "void AtUpdateScreenLuaCallback()" in line:
+            if "// end lua funcs" in line:
                 break
             if in_function_region:
                 # If we're iterating over a function name line...
                 if '{"' in line and 'NULL' not in line:
                     func_name = func_name_pattern.search(
                         line).group('func_name')
+                    # func_list_dict[func_type] should already exist
                     func_list_dict[func_type].append(func_name)
                 # If we're iterating over a function list line...
                 elif '[' in line:
@@ -204,7 +208,7 @@ def main():
                     accumulator.write('</div>')
                 used_lua_functions.append(fullname)
             else:
-                print(f"{fullname} failed")
+                print(f"c++ function {fullname} wasn't in lua functions")
                 desc = "?"
                 view = "?"
                 accumulator.write(
@@ -218,7 +222,7 @@ def main():
     # make sure every lua function was used
     for key in lua_functions.keys():
         if not key in used_lua_functions:
-            print(f"failed: {key}")
+            print(f"lua function wasn't used: {key}")
 
     # add javascript
     with open("script/index.js", "rt") as file:

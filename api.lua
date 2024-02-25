@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.7.1
+-- version 1.1.7.2
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -70,13 +70,24 @@ function emu.statusbar(message) end
 ---@return nil
 function emu.atvi(f, unregister) end
 
----Similar to `emu.atvi`, except that it is called after. If `unregister` is set
----to true, the function `f` will no longer be called when this event occurs,
----but it will error if you never registered the function.
+---Similar to `emu.atvi`, but for drawing commands. ONLY GDI AND GDI+ COMMANDS
+---WILL WORK HERE. If `unregister` is set to true, the function `f` will no
+---longer be called when this event occurs, but it will error if you never
+---registered the function.
 ---@param f fun(): nil The function to be called after every VI frame.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
 function emu.atupdatescreen(f, unregister) end
+
+---Similar to `emu.atvi`, but for all drawing commands. GDI and GDI+ commands
+---will still work here, but it is recommended to put those in
+---`emu.atupdatescreen` If `unregister` is set to true, the function `f` will no
+---longer be called when this event occurs, but it will error if you never
+---registered the function.
+---@param f fun(): nil The function to be called after every VI frame.
+---@param unregister boolean? If true, then unregister the function `f`.
+---@return nil
+function emu.atdrawd2d(f, unregister) end
 
 ---Calls the function `f` every input frame. The function `f` receives an
 ---argument that seems to always be `0`. If `unregister` is set to true, the
@@ -195,6 +206,14 @@ function emu.getpause() end
 ---@nodiscard
 ---@return integer speed_limit The current speed limit of the emulator.
 function emu.getspeed() end
+
+---Gets whether fast forward is active
+---@return boolean
+function emu.get_ff() end
+
+---Sets whether fast forward is active
+---@param fast_forward boolean
+function emu.set_ff(fast_forward) end
 
 ---Sets the speed limit of the emulator.
 ---@param speed_limit integer The new speed limit of the emulator.
@@ -640,6 +659,14 @@ function d2d.create_brush(r, g, b, a) end
 ---@param brush brush
 function d2d.free_brush(brush) end
 
+---Sets clear behavior. If this function is never called, the screen will not be
+---cleared. If it is called, the screen will be cleared with the specified color
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+function d2d.clear(r, g, b, a) end
+
 ---Draws a filled in rectangle at the specified coordinates and color.
 ---@param x1 integer
 ---@param y1 integer
@@ -886,21 +913,25 @@ function joypad.count() end
 ---true.
 ---@param filename string
 ---@return nil
-function movie.playmovie(filename) end
+function movie.play(filename) end
 
 ---Stops the currently playing movie.
 ---@return nil
-function movie.stopmovie() end
+function movie.stop() end
 
 ---Returns the filename of the currently playing movie. It will error if no
 ---movie is playing.
 ---@nodiscard
 ---@return string
-function movie.getmoviefilename() end
+function movie.get_filename() end
 
 ---Returns true if the currently playing movie is read only
 ---@return boolean
-function movie.isreadonly() end
+function movie.get_readonly() end
+
+---Set's the currently movie's readonly state to `readonly`
+---@param readonly boolean
+function movie.set_readonly(readonly) end
 
 --#endregion
 

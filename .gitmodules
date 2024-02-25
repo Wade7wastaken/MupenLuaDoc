@@ -1,0 +1,3 @@
+[submodule "mupen64-rr-lua-"]
+	path = mupen64-rr-lua-
+	url = https://github.com/mkdasher/mupen64-rr-lua-.git
