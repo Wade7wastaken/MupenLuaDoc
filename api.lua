@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.7.0
+-- version 1.1.7.1
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -22,6 +22,12 @@ avi = {}
 ---@alias qword integer[] A representation of an 8 byte integer (quad word) as
 ---two 4 byte integers.
 
+---@alias tostringusable string|number The `lua_tostring` c function converts
+---numbers to strings, so numbers are acceptable to pass into some functions
+---that use that function.
+
+---@alias getrect {l: integer, t: integer, r: integer, b: integer}|{l: integer, t: integer, w: integer, h: integer}
+
 -- Global Functions
 --#region
 
@@ -41,15 +47,16 @@ function stop() end
 --#region
 
 ---Displays the text `message` in the console. Similar to `print`, but only
----accepts strings. Because of this, `print` should be used instead.
+---accepts strings or numbers. Also, `emu.console` does not insert a newline
+---character. Because of this, `print` should be used instead.
 ---@deprecated Use `print` instead.
----@param message string The string to print to the console.
+---@param message tostringusable The string to print to the console.
 ---@return nil
 function emu.console(message) end
 
 ---Displays the text `message` in the status bar on the bottom while replacing
 ---any other text. The message will only display until the next frame.
----@param message string The string to display on the status bar.
+---@param message tostringusable The string to display on the status bar.
 ---@return nil
 function emu.statusbar(message) end
 
@@ -146,17 +153,16 @@ function emu.atsavestate(f, unregister) end
 function emu.atreset(f, unregister) end
 
 ---Returns the number of VIs since the last movie was played. This should match
----the statusbar (assuming you have `0-index statusbar` off). If no movie has
----been played, it returns the number of VIs since the emulator was started, not
----reset.
+---the statusbar. If no movie has been played, it returns the number of VIs
+---since the emulator was started, not reset.
 ---@nodiscard
 ---@return integer framecount The number of VIs since the last movie was played.
 function emu.framecount() end
 
 ---Returns the number of input frames since the last movie was played. This
----should match the statusbar (assuming you have `0-index statusbar` off). If no
----movie is playing, it will return the last value when a movie was playing. If
----no movie has been played yet, it will return `-1`.
+---should match the statusbar. If no movie is playing, it will return the last
+---value when a movie was playing. If no movie has been played yet, it will
+---return `-1`.
 ---@nodiscard
 ---@return integer samplecount The number of input frames since the last movie was played.
 function emu.samplecount() end
@@ -430,7 +436,8 @@ function wgui.setbrush(color) end
 
 ---GDI: Sets the current GDI pen color to `color`
 ---@param color color
-function wgui.setpen(color) end
+---@param width number?
+function wgui.setpen(color, width) end
 
 ---GDI: Sets the current GDI text color to `color`
 ---@param color color
@@ -446,20 +453,22 @@ function wgui.setbk(color) end
 ---@param style string? Each character in this string sets one style of the font, applied in chronological order. `b` sets bold, `i` sets italics, `u` sets underline, `s` sets strikethrough, and `a` sets antialiased. Defaults to "" if not given
 function wgui.setfont(size, font, style) end
 
----GDI: Displays text in one line with the current GDI background color and GDI text color
+---GDI: Displays text in one line with the current GDI background color and GDI
+---text color
 ---@deprecated Use `wgui.drawtext` instead
 ---@param x integer
 ---@param y integer
 ---@param text string
 function wgui.text(x, y, text) end
 
----GDI: Draws text in a rectangle (more documentation soon)
----@param text string
----@param rect table
----@param format string?
+---GDI: Draws text in the specified rectangle and with the specified format.
+---@param text string The text to be drawn.
+---@param rect getrect The rectangle in which to draw the text.
+---@param format string? The format of the text. Applied in order stated. "l" aligns the text to the left (applied by default). "r" aligns the text to the right. "t" aligns text to the right (applied by default). "b" aligns text to the bottom. "c" horizontally aligns text. "v" vertically aligns the text. "e" adds ellipses if a line cannof fit all text. "s" forces text to be displayed on a single line.
 function wgui.drawtext(text, rect, format) end
 
----Uses an alternate function for drawing text
+---Uses an alternate function for drawing text.
+---@deprecated Use `wgui.drawtext` unless you have a good reason.
 ---@param text string
 ---@param format integer
 ---@param left integer
@@ -468,22 +477,24 @@ function wgui.drawtext(text, rect, format) end
 ---@param bottom integer
 function wgui.drawtextalt(text, format, left, top, right, bottom) end
 
----Gets the width and height of the given text
+---Gets the width and height of the given text.
 ---@param text string
 ---@return {width: integer, height: integer}
 function wgui.gettextextent(text) end
 
----GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a 1 pixel border of the GDI pen color.
----@deprecated Use `wgui.fillrect` or `wgui.fillrecta` instead
+---GDI: Draws a rectangle at the specified coordinates with the current GDI
+---background color and a border of the GDI pen color. Only use this function if
+---you need rounded corners, otherwise, use `wgui.fillrecta`.
 ---@param left integer
 ---@param top integer
 ---@param right integer
 ---@param bottom integer
----@param rounded_width integer? The width of the ellipse used to draw the rounded corners. (currently don't seem to be working)
+---@param rounded_width integer? The width of the ellipse used to draw the rounded corners.
 ---@param rounded_height integer? The height of the ellipse used to draw the rounded corners.
 function wgui.rect(left, top, right, bottom, rounded_width, rounded_height) end
 
----Draws a rectangle at the specified coordinates with the specified color
+---Draws a rectangle at the specified coordinates with the specified color.
+---@deprecated Use `wgui.fillrecta`.
 ---@param left integer
 ---@param top integer
 ---@param right integer
@@ -493,7 +504,7 @@ function wgui.rect(left, top, right, bottom, rounded_width, rounded_height) end
 ---@param blue integer
 function wgui.fillrect(left, top, right, bottom, red, green, blue) end
 
----GDIPlus: Draws a rectangle at the specified coordinates, size and color
+---GDIPlus: Draws a rectangle at the specified coordinates, size and color.
 ---@param x integer
 ---@param y integer
 ---@param w integer
@@ -510,7 +521,7 @@ function wgui.fillrecta(x, y, w, h, color) end
 function wgui.fillellipsea(x, y, w, h, color) end
 
 ---Draws a filled in polygon using the points in `points`
----@param points table Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
+---@param points integer[][] Ex: `\{\{x1, y1\}, \{x2, y2\}, \{x3, y3\}\}`
 ---@param color color|string Color names are currently broken
 function wgui.fillpolygona(points, color) end
 
@@ -569,15 +580,17 @@ function wgui.loadscreenreset() end
 ---@return {width: integer, height: integer}
 function wgui.getimageinfo(idx) end
 
----Draws an ellipse at the specified coordinates and size. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
+---Draws an ellipse at the specified coordinates and size. Uses the GDI brush
+---color for the background and a border of the GDI pen color
 ---@param left integer
 ---@param top integer
 ---@param right integer
 ---@param bottom integer
 function wgui.ellipse(left, top, right, bottom) end
 
----Draws a polygon with the given points. Uses the GDI brush color for the background and a 1 pixel border of the GDI pen color
----@param points table
+---Draws a polygon with the given points. Uses the GDI brush color for the
+---background and a border of the GDI pen color
+---@param points integer[][]
 function wgui.polygon(points) end
 
 ---Draws a line from `(x1, y1)` to `(x2, y2)`
