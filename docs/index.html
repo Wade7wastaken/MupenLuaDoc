@@ -27,6 +27,15 @@
 <span class=nb>print</span><span class=p>(</span><span class=s2>"string"</span><span class=p>,</span> <span class=s2>"another string"</span><span class=p>)</span>
 </code></pre></div></div><div name=globalStop><hr><h1><a id=globalStop>stop</a></h1><p>Stops script execution.</p><div class=codehilite><pre><span></span><code><span class=kr>function</span> <span class=nf>stop</span><span class=p>()</span>
   <span class=o>-></span> <span class=kc>nil</span>
+</code></pre></div><h4>Example:</h4><div class=codehilite><pre><span></span><code><span class=c1>-- runs constantly</span>
+<span class=n>emu</span><span class=p>.</span><span class=n>atinterval</span><span class=p>(</span><span class=kr>function</span><span class=p>()</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>"Script is running!"</span><span class=p>)</span>
+    <span class=c1>-- when the S key is pressed</span>
+    <span class=kr>if</span> <span class=n>input</span><span class=p>.</span><span class=n>get</span><span class=p>().</span><span class=n>S</span> <span class=kr>then</span>
+        <span class=c1>-- stop the script</span>
+        <span class=n>stop</span><span class=p>()</span>
+    <span class=kr>end</span>
+<span class=kr>end</span><span class=p>)</span>
 </code></pre></div></div><hr><h1><a id=emuFuncs>EMU</a>FUNCTIONS</h1><div name=emuConsole><hr><h1><a id=emuConsole>emu.console</a></h1><p>Displays the text <code>message</code> in the console. Similar to <code>print</code>, but only accepts strings or numbers. Also, <code>emu.console</code> does not insert a newline character. Because of this, <code>print</code> should be used instead.</p><p>@<em>param</em> <code>message</code> — The string to print to the console.</p><div class=codehilite><pre><span></span><code><span class=kr>function</span> <span class=nc>emu</span><span class=p>.</span><span class=nf>console</span><span class=p>(</span><span class=n>message</span><span class=p>:</span> <span class=n>string</span><span class=o>|</span><span class=n>number</span><span class=p>)</span>
   <span class=o>-></span> <span class=kc>nil</span>
 </code></pre></div></div><div name=emuStatusbar><hr><h1><a id=emuStatusbar>emu.statusbar</a></h1><p>Displays the text <code>message</code> in the status bar on the bottom while replacing any other text. The message will only display until the next frame.</p><p>@<em>param</em> <code>message</code> — The string to display on the status bar.</p><div class=codehilite><pre><span></span><code><span class=kr>function</span> <span class=nc>emu</span><span class=p>.</span><span class=nf>statusbar</span><span class=p>(</span><span class=n>message</span><span class=p>:</span> <span class=n>string</span><span class=o>|</span><span class=n>number</span><span class=p>)</span>

@@ -212,7 +212,7 @@ def main():
                     desc = var["desc"]
                     view = var["view"]
                     example = ""
-                    example_filename = f"examples/{func_type}.{func_name}.lua"
+                    example_filename = f"examples/{func_type}/{func_name}.lua"
                     try:
                         with open(example_filename, "rt") as f:
                             example = f.read()

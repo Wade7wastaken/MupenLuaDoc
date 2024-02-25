@@ -44,5 +44,7 @@
 	"C_Cpp.dimInactiveRegions": false,
 	"editor.rulers": [80],
 	"cSpell.words": ["savestate"],
-	"isort.check": true
+	"isort.check": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4
 }
