@@ -199,7 +199,7 @@ def main():
         # create the section header
 
         accumulator.write(parse_markdown(
-            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a>FUNCTIONS'))
+            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'))
 
         for func_name in cpp_functions[func_type]:
             if func_name in skipped_functions:
