@@ -14,6 +14,7 @@ from markdown.extensions.fenced_code import FencedCodeExtension
 # pygmentize -S pastie -f html -a .codehilite > pygments.css
 
 # TODO:
+# - use a proper templating engine instead of string accumulation
 
 
 class StringAccumulator:
@@ -42,34 +43,35 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
 
     func_list_dict = {}
 
-    # TODO: add error if file doesn't exist and remind to init submodule
-    with open('mupen64-rr-lua-/lua/LuaConsole.cpp', 'r', encoding='utf-8') as file:
-        # if we're far enough into the file to start caring
-        in_function_region = False
-        func_type = ''
-        for l in file:
-            line = l.strip()
-            # Start at first line of Lua emu func arrays
-            if "// begin lua funcs" in line:
-                in_function_region = True
-                continue
-            # Stop at end of functions
-            if "// end lua funcs" in line:
-                break
-            if in_function_region:
-                # If we're iterating over a function name line...
-                if '{"' in line and 'NULL' not in line:
-                    func_name = func_name_pattern.search(
-                        line).group('func_name')
-                    # func_list_dict[func_type] should already exist
-                    func_list_dict[func_type].append(func_name)
-                # If we're iterating over a function list line...
-                elif '[' in line:
-                    func_type = func_type_pattern.search(
-                        line).group('func_type')
-                    func_list_dict[func_type] = []
+    try:
+        with open('mupen64-rr-lua-/lua/LuaConsole.cpp', 'r', encoding='utf-8') as file:
+            # if we're far enough into the file to start caring
+            in_function_region = False
+            func_type = ''
+            for l in file:
+                line = l.strip()
+                # Start at first line of Lua emu func arrays
+                if "// begin lua funcs" in line:
+                    in_function_region = True
+                    continue
+                # Stop at end of functions
+                if "// end lua funcs" in line:
+                    break
+                if in_function_region:
+                    # If we're iterating over a function name line...
+                    if '{"' in line and 'NULL' not in line:
+                        func_name = func_name_pattern.search(line).group('func_name')
+                        # func_list_dict[func_type] should already exist
+                        func_list_dict[func_type].append(func_name)
+                    # If we're iterating over a function list line...
+                    elif '[' in line:
+                        func_type = func_type_pattern.search(line).group('func_type')
+                        func_list_dict[func_type] = []
 
-    return func_list_dict
+        return func_list_dict
+    except FileNotFoundError:
+        print("Couldn't find LuaConsole.cpp. Have you initialized the submodule?")
+        exit(1)
 
 
 def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
@@ -77,8 +79,13 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     # only accept definitions from this file
     api_filename_ending = "api.lua"
 
-    with open("export/doc.json", "rt") as f:
-        data = json.loads(f.read())
+    try:
+
+        with open("export/doc.json", "rt") as f:
+            data = json.loads(f.read())
+    except FileNotFoundError:
+        print("Couldn't find doc.json. Have you exported the documentation to the correct place?")
+        exit(1)
 
     # data is an array with all the variables
     for variable in data:

@@ -148,12 +148,12 @@
                     <button class="funcListItem" onclick="highlightFunc('emuGetsystemmetrics')">EMU.GETSYSTEMMETRICS</button>
                 </a>
                 
-                <a href="#emuIsmainwindowinforeground">
-                    <button class="funcListItem" onclick="highlightFunc('emuIsmainwindowinforeground')">EMU.ISMAINWINDOWINFOREGROUND</button>
-                </a>
-                
                 <a href="#emuPlay_sound">
                     <button class="funcListItem" onclick="highlightFunc('emuPlay_sound')">EMU.PLAY_SOUND</button>
+                </a>
+                
+                <a href="#emuIsmainwindowinforeground">
+                    <button class="funcListItem" onclick="highlightFunc('emuIsmainwindowinforeground')">EMU.ISMAINWINDOWINFOREGROUND</button>
                 </a>
                 </div>
             <div class="collapsible">
@@ -548,7 +548,7 @@
                     <button class="funcListItem" onclick="highlightFunc('aviStopcapture')">AVI.STOPCAPTURE</button>
                 </a>
                 </div></div><div class="docBody"><hr />
-<h1><a id="globalFuncs">GLOBAL</a>FUNCTIONS</h1><div name="globalPrint"><hr />
+<h1><a id="globalFuncs">GLOBAL</a> FUNCTIONS</h1><div name="globalPrint"><hr />
 <h1><a id="globalPrint">print</a></h1>
 <p>Prints a value to the lua console.</p>
 <p>@<em>param</em> <code>data</code> — The data to print to the console.</p>
@@ -600,7 +600,7 @@
     <span class="kr">end</span>
 <span class="kr">end</span><span class="p">)</span>
 </code></pre></div></div><hr />
-<h1><a id="emuFuncs">EMU</a>FUNCTIONS</h1><div name="emuConsole"><hr />
+<h1><a id="emuFuncs">EMU</a> FUNCTIONS</h1><div name="emuConsole"><hr />
 <h1><a id="emuConsole">emu.console</a></h1>
 <p>Displays the text <code>message</code> in the console. Similar to <code>print</code>, but only
 accepts strings or numbers. Also, <code>emu.console</code> does not insert a newline
@@ -608,6 +608,13 @@ character. Because of this, <code>print</code> should be used instead.</p>
 <p>@<em>param</em> <code>message</code> — The string to print to the console.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">console</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div>
+
+<h4>Example:</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">---@diagnostic disable: deprecated</span>
+
+<span class="n">emu</span><span class="p">.</span><span class="n">console</span><span class="p">(</span><span class="s2">&quot;some text</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">emu</span><span class="p">.</span><span class="n">console</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div><div name="emuStatusbar"><hr />
 <h1><a id="emuStatusbar">emu.statusbar</a></h1>
 <p>Displays the text <code>message</code> in the status bar on the bottom while replacing
@@ -615,6 +622,16 @@ any other text. The message will only display until the next frame.</p>
 <p>@<em>param</em> <code>message</code> — The string to display on the status bar.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">statusbar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">number</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div>
+
+<h4>Example:</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">emu</span><span class="p">.</span><span class="n">statusbar</span><span class="p">(</span><span class="s2">&quot;a cool statusbar message&quot;</span><span class="p">)</span>
+
+<span class="n">emu</span><span class="p">.</span><span class="n">atinterval</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="kr">if</span> <span class="n">input</span><span class="p">.</span><span class="n">get</span><span class="p">().</span><span class="n">N</span> <span class="kr">then</span>
+        <span class="n">emu</span><span class="p">.</span><span class="n">statusbar</span><span class="p">(</span><span class="s2">&quot;User just pressed the N key!&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div></div><div name="emuAtvi"><hr />
 <h1><a id="emuAtvi">emu.atvi</a></h1>
 <p>Calls the function <code>f</code> every VI frame. For example, in Super Mario 64, the
@@ -626,6 +643,14 @@ error if you never registered the function.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atvi</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div>
+
+<h4>Example:</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- runs 60 times per second on Super Mario 64</span>
+<span class="n">emu</span><span class="p">.</span><span class="n">atvi</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="kd">local</span> <span class="n">vis</span> <span class="o">=</span> <span class="n">emu</span><span class="p">.</span><span class="n">framecount</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VI number &quot;</span> <span class="o">..</span> <span class="n">vis</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div></div><div name="emuAtupdatescreen"><hr />
 <h1><a id="emuAtupdatescreen">emu.atupdatescreen</a></h1>
 <p>Similar to <code>emu.atvi</code>, but for drawing commands. ONLY GDI AND GDI+ COMMANDS
@@ -636,6 +661,14 @@ registered the function.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atupdatescreen</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div>
+
+<h4>Example:</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- every screen update</span>
+<span class="n">emu</span><span class="p">.</span><span class="n">atupdatescreen</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+    <span class="c1">-- draw a 30x30 red square at (10, 10)</span>
+    <span class="n">wgui</span><span class="p">.</span><span class="n">fillrecta</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div></div><div name="emuAtdrawd2d"><hr />
 <h1><a id="emuAtdrawd2d">emu.atdrawd2d</a></h1>
 <p>Similar to <code>emu.atvi</code>, but for all drawing commands. GDI and GDI+ commands
@@ -847,18 +880,18 @@ same as mupen's ram start</p>
 function.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">getsystemmetrics</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">metric</span><span class="p">:</span> <span class="n">integer</span>
-</code></pre></div></div><div name="emuIsmainwindowinforeground"><hr />
-<h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
-<p>Returns <code>true</code> if the main mupen window is focused and false if it is not.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
-  <span class="o">-&gt;</span> <span class="n">focused</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div><div name="emuPlay_sound"><hr />
 <h1><a id="emuPlay_sound">emu.play_sound</a></h1>
 <p>Played the sound file at <code>file_path</code></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div></div><div name="emuIsmainwindowinforeground"><hr />
+<h1><a id="emuIsmainwindowinforeground">emu.ismainwindowinforeground</a></h1>
+<p>Returns <code>true</code> if the main mupen window is focused and false if it is not.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">ismainwindowinforeground</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">focused</span><span class="p">:</span> <span class="n">boolean</span>
 </code></pre></div></div><hr />
-<h1><a id="memoryFuncs">MEMORY</a>FUNCTIONS</h1><div name="memoryInttofloat"><hr />
+<h1><a id="memoryFuncs">MEMORY</a> FUNCTIONS</h1><div name="memoryInttofloat"><hr />
 <h1><a id="memoryInttofloat">memory.inttofloat</a></h1>
 <p>Reinterprets the bits of a 4 byte integer <code>n</code> as a float and returns it. This
  does not convert from an int to a float, but reinterprets the memory.</p>
@@ -1006,7 +1039,7 @@ if <code>size</code> is is negative.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">memory</span><span class="p">.</span><span class="nf">writesize</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">|-</span><span class="mi">2</span><span class="o">|-</span><span class="mi">4</span><span class="o">|-</span><span class="mi">8</span><span class="o">|</span><span class="mf">1.</span><span class="o">..</span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">),</span> <span class="n">data</span><span class="p">:</span> <span class="n">integer</span><span class="o">|</span><span class="n">integer</span><span class="p">[])</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><hr />
-<h1><a id="wguiFuncs">WGUI</a>FUNCTIONS</h1><div name="wguiSetbrush"><hr />
+<h1><a id="wguiFuncs">WGUI</a> FUNCTIONS</h1><div name="wguiSetbrush"><hr />
 <h1><a id="wguiSetbrush">wgui.setbrush</a></h1>
 <p>Sets the current GDI brush color to <code>color</code></p>
 <div class="codehilite"><pre><span></span><code><span class="c1">--  colors can be any of these or &quot;#RGB&quot;, &quot;#RGBA&quot;, &quot;#RRGGBB&quot;, or &quot;#RRGGBBA&quot;</span>
@@ -1270,7 +1303,7 @@ background and a border of the GDI pen color</p>
 <p>Resets the clip</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">wgui</span><span class="p">.</span><span class="nf">resetclip</span><span class="p">()</span>
 </code></pre></div></div><hr />
-<h1><a id="d2dFuncs">D2D</a>FUNCTIONS</h1><div name="d2dCreate_brush"><hr />
+<h1><a id="d2dFuncs">D2D</a> FUNCTIONS</h1><div name="d2dCreate_brush"><hr />
 <h1><a id="d2dCreate_brush">d2d.create_brush</a></h1>
 <p>Creates a brush from a color and returns it. D2D colors range from 0 to 1</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">d2d</span><span class="p">.</span><span class="nf">create_brush</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
@@ -1407,7 +1440,7 @@ drawing them to the destination rectangle on the screen.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">d2d</span><span class="p">.</span><span class="nf">draw_to_image</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">fun</span><span class="p">())</span>
   <span class="o">-&gt;</span> <span class="n">number</span>
 </code></pre></div></div><hr />
-<h1><a id="inputFuncs">INPUT</a>FUNCTIONS</h1><div name="inputGet"><hr />
+<h1><a id="inputFuncs">INPUT</a> FUNCTIONS</h1><div name="inputGet"><hr />
 <h1><a id="inputGet">input.get</a></h1>
 <p>Returns the state of all keyboard keys and the mouse position in a table. Ex:
 <code>input.get() -&gt; {xmouse=297, ymouse=120, A=true, B=true}</code>.</p>
@@ -1441,7 +1474,7 @@ returned.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">input</span><span class="p">.</span><span class="nf">map_virtual_key_ex</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">integer</span><span class="p">,</span> <span class="n">map_type</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">integer</span>
 </code></pre></div></div><hr />
-<h1><a id="joypadFuncs">JOYPAD</a>FUNCTIONS</h1><div name="joypadGet"><hr />
+<h1><a id="joypadFuncs">JOYPAD</a> FUNCTIONS</h1><div name="joypadGet"><hr />
 <h1><a id="joypadGet">joypad.get</a></h1>
 <p>Gets the currently pressed game buttons and stick direction for a given port.
 Note that the <code>y</code> coordinate of the stick is the opposite of what is shown on
@@ -1477,7 +1510,7 @@ started. It does not reset when a movie is started. Alias for
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">joypad</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span>
   <span class="o">-&gt;</span> <span class="n">inputcount</span><span class="p">:</span> <span class="n">integer</span>
 </code></pre></div></div><hr />
-<h1><a id="movieFuncs">MOVIE</a>FUNCTIONS</h1><div name="moviePlay"><hr />
+<h1><a id="movieFuncs">MOVIE</a> FUNCTIONS</h1><div name="moviePlay"><hr />
 <h1><a id="moviePlay">movie.play</a></h1>
 <p>Plays a movie file located at <code>filename</code>. This function sets <code>Read Only</code> to
 true.</p>
@@ -1504,7 +1537,7 @@ movie is playing.</p>
 <p>Set's the currently movie's readonly state to <code>readonly</code></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">set_readonly</span><span class="p">(</span><span class="n">readonly</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
 </code></pre></div></div><hr />
-<h1><a id="savestateFuncs">SAVESTATE</a>FUNCTIONS</h1><div name="savestateSavefile"><hr />
+<h1><a id="savestateFuncs">SAVESTATE</a> FUNCTIONS</h1><div name="savestateSavefile"><hr />
 <h1><a id="savestateSavefile">savestate.savefile</a></h1>
 <p>Saves a savestate to <code>filename</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">savefile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
@@ -1515,7 +1548,7 @@ movie is playing.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">savestate</span><span class="p">.</span><span class="nf">loadfile</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><hr />
-<h1><a id="ioHelperFuncs">IOHELPER</a>FUNCTIONS</h1><div name="ioHelperFilediag"><hr />
+<h1><a id="ioHelperFuncs">IOHELPER</a> FUNCTIONS</h1><div name="ioHelperFilediag"><hr />
 <h1><a id="ioHelperFilediag">ioHelper.filediag</a></h1>
 <p>Opens a file dialouge and returns the file path of the file chosen.</p>
 <p>@<em>param</em> <code>filter</code> — This string acts as a filter for what files can be chosen. For example <code>*.*</code> selects all files, where <code>*.txt</code> selects only text files.</p>
@@ -1523,7 +1556,7 @@ movie is playing.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">ioHelper</span><span class="p">.</span><span class="nf">filediag</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">integer</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="n">string</span>
 </code></pre></div></div><hr />
-<h1><a id="aviFuncs">AVI</a>FUNCTIONS</h1><div name="aviStartcapture"><hr />
+<h1><a id="aviFuncs">AVI</a> FUNCTIONS</h1><div name="aviStartcapture"><hr />
 <h1><a id="aviStartcapture">avi.startcapture</a></h1>
 <p>Begins an avi recording using the previously saved encoding settings. It is
 saved to <code>filename</code>.</p>
