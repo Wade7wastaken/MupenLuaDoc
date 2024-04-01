@@ -243,7 +243,6 @@ def main():
                             example = f.read()
                     except:
                         print(f"couldn't find example file {example_filename}")
-                        pass
                     accumulator.write(
                         f'<div name="{func_type}{func_name.capitalize()}">'
                     )
