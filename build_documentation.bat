@@ -11,5 +11,5 @@ for /d %%D in ("%USERPROFILE%\.vscode\extensions\sumneko.lua*") do (
 %serverpath%\bin\lua-language-server.exe --doc "%~dp0api.lua"
 
 :: copy the documentation to the export directory
-move %serverpath%\log\doc.json %~dp0export\doc.json
-move %serverpath%\log\doc.md %~dp0export\doc.md
+move "%serverpath%\log\doc.json" "%~dp0export\doc.json"
+move "%serverpath%\log\doc.md" "%~dp0export\doc.md"

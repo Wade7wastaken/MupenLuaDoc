@@ -14,6 +14,7 @@ from markdown.extensions.fenced_code import FencedCodeExtension
 # pygmentize -S pastie -f html -a .codehilite > pygments.css
 
 # TODO:
+# - use a proper templating engine instead of string accumulation
 
 
 class StringAccumulator:
@@ -31,45 +32,49 @@ class StringAccumulator:
 
 
 def parse_markdown(str: str) -> str:
-    return markdown.markdown(str, extensions=[CodeHiliteExtension(), FencedCodeExtension()])
+    return markdown.markdown(
+        str, extensions=[CodeHiliteExtension(), FencedCodeExtension()]
+    )
 
 
 # {"global": ["print", "stop"]}
 def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
-        r'const luaL_Reg (?P<func_type>[A-Za-z0-9]+)Funcs\[\]')
+        r"const luaL_Reg (?P<func_type>[A-Za-z0-9]+)Funcs\[\]"
+    )
     func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9_]+)",.*\}')
 
     func_list_dict = {}
 
-    # TODO: add error if file doesn't exist and remind to init submodule
-    with open('mupen64-rr-lua-/lua/LuaConsole.cpp', 'r', encoding='utf-8') as file:
-        # if we're far enough into the file to start caring
-        in_function_region = False
-        func_type = ''
-        for l in file:
-            line = l.strip()
-            # Start at first line of Lua emu func arrays
-            if "// begin lua funcs" in line:
-                in_function_region = True
-                continue
-            # Stop at end of functions
-            if "// end lua funcs" in line:
-                break
-            if in_function_region:
-                # If we're iterating over a function name line...
-                if '{"' in line and 'NULL' not in line:
-                    func_name = func_name_pattern.search(
-                        line).group('func_name')
-                    # func_list_dict[func_type] should already exist
-                    func_list_dict[func_type].append(func_name)
-                # If we're iterating over a function list line...
-                elif '[' in line:
-                    func_type = func_type_pattern.search(
-                        line).group('func_type')
-                    func_list_dict[func_type] = []
+    try:
+        with open("mupen64-rr-lua-/lua/LuaConsole.cpp", "r", encoding="utf-8") as file:
+            # if we're far enough into the file to start caring
+            in_function_region = False
+            func_type = ""
+            for l in file:
+                line = l.strip()
+                # Start at first line of Lua emu func arrays
+                if "// begin lua funcs" in line:
+                    in_function_region = True
+                    continue
+                # Stop at end of functions
+                if "// end lua funcs" in line:
+                    break
+                if in_function_region:
+                    # If we're iterating over a function name line...
+                    if '{"' in line and "NULL" not in line:
+                        func_name = func_name_pattern.search(line).group("func_name")
+                        # func_list_dict[func_type] should already exist
+                        func_list_dict[func_type].append(func_name)
+                    # If we're iterating over a function list line...
+                    elif "[" in line:
+                        func_type = func_type_pattern.search(line).group("func_type")
+                        func_list_dict[func_type] = []
 
-    return func_list_dict
+        return func_list_dict
+    except FileNotFoundError:
+        print("Couldn't find LuaConsole.cpp. Have you initialized the submodule?")
+        exit(1)
 
 
 def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
@@ -77,8 +82,15 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     # only accept definitions from this file
     api_filename_ending = "api.lua"
 
-    with open("export/doc.json", "rt") as f:
-        data = json.loads(f.read())
+    try:
+
+        with open("export/doc.json", "rt") as f:
+            data = json.loads(f.read())
+    except FileNotFoundError:
+        print(
+            "Couldn't find doc.json. Have you exported the documentation to the correct place?"
+        )
+        exit(1)
 
     # data is an array with all the variables
     for variable in data:
@@ -102,10 +114,9 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
                     if not variable_name in functions:
                         functions[variable_name] = []
 
-                    functions[variable_name].append({
-                        "desc": extends["desc"],
-                        "view": extends["view"]
-                    })
+                    functions[variable_name].append(
+                        {"desc": extends["desc"], "view": extends["view"]}
+                    )
     return functions
 
 
@@ -113,13 +124,14 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
     if example == "":
         example_markdown = ""
     else:
-        example_markdown = f'''
+        example_markdown = f"""
 #### Example:
 ```lua
 {example}
 ```
-'''
-    return parse_markdown(f'''
+"""
+    return parse_markdown(
+        f"""
 ---
 
 # {f'<a id="{func_type}{func_name.capitalize()}">'}{display_name}</a>
@@ -133,7 +145,8 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 
 {example_markdown}
 
-''')
+"""
+    )
 
 
 def main():
@@ -141,7 +154,8 @@ def main():
 
     accumulator = StringAccumulator()
 
-    accumulator.write("""
+    accumulator.write(
+        """
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -162,7 +176,8 @@ def main():
                     mupen64-rr-lua docs
                 </div>
             </div>
-    """)
+    """
+    )
 
     cpp_functions = read_funcs_from_cpp_file()
     lua_functions = read_funcs_from_json_file()
@@ -172,40 +187,50 @@ def main():
     # loop over function types (emu, wgui)
     for func_type in cpp_functions:
         accumulator.write(
-            f'''
+            f"""
             <div class="collapsible">
                 <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
             </div>
-            ''')
+            """
+        )
         accumulator.write('<div class="funcList">')
         for func_name in cpp_functions[func_type]:
             if func_name in skipped_functions:
                 continue
 
-            display_name = func_name.upper(
-            ) if func_type == "global" else f"{func_type.upper()}.{func_name.upper()}"
+            display_name = (
+                func_name.upper()
+                if func_type == "global"
+                else f"{func_type.upper()}.{func_name.upper()}"
+            )
 
             accumulator.write(
-                f'''
+                f"""
                 <a href="#{func_type}{func_name.capitalize()}">
                     <button class="funcListItem" onclick="highlightFunc('{func_type}{func_name.capitalize()}')">{display_name}</button>
                 </a>
-                ''')
-        accumulator.write('</div>')  # closes div.funcList
-    accumulator.write('</div>')  # closes div.sidebar
+                """
+            )
+        accumulator.write("</div>")  # closes div.funcList
+    accumulator.write("</div>")  # closes div.sidebar
 
     accumulator.write('<div class="docBody">')
     for func_type in cpp_functions:
         # create the section header
 
-        accumulator.write(parse_markdown(
-            f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a>FUNCTIONS'))
+        accumulator.write(
+            parse_markdown(
+                f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'
+            )
+        )
 
         for func_name in cpp_functions[func_type]:
             if func_name in skipped_functions:
                 continue
             fullname = f"{func_type}.{func_name}"
-            display_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
+            display_name = (
+                func_name if func_type == "global" else f"{func_type}.{func_name}"
+            )
             if fullname in lua_functions:
                 lua_data = lua_functions[fullname]
                 for var in lua_data:
@@ -220,20 +245,26 @@ def main():
                         print(f"couldn't find example file {example_filename}")
                         pass
                     accumulator.write(
-                        f'<div name="{func_type}{func_name.capitalize()}">')
-                    accumulator.write(generate_function_html(
-                        func_type, func_name, display_name, desc, view, example))
-                    accumulator.write('</div>')
+                        f'<div name="{func_type}{func_name.capitalize()}">'
+                    )
+                    accumulator.write(
+                        generate_function_html(
+                            func_type, func_name, display_name, desc, view, example
+                        )
+                    )
+                    accumulator.write("</div>")
                 used_lua_functions.append(fullname)
             else:
                 print(f"c++ function {fullname} wasn't in lua functions")
                 desc = "?"
                 view = "?"
+                accumulator.write(f"<div name={func_type}{func_name.capitalize()}>")
                 accumulator.write(
-                    f'<div name={func_type}{func_name.capitalize()}>')
-                accumulator.write(generate_function_html(
-                    func_type, func_name, display_name, desc, view, ""))
-                accumulator.write('</div>')
+                    generate_function_html(
+                        func_type, func_name, display_name, desc, view, ""
+                    )
+                )
+                accumulator.write("</div>")
 
     accumulator.write("</div>")  # closed div.docBody
 
@@ -249,11 +280,18 @@ def main():
     accumulator.write("</body></html>")
 
     with open("docs/index.html", "w+") as file:
-        file.write(minify_html.minify(accumulator.retrieve(), keep_html_and_head_opening_tags=True,
-                                      minify_js=True, do_not_minify_doctype=True,
-                                      ensure_spec_compliant_unquoted_attribute_values=True,
-                                      keep_closing_tags=True, minify_css=True,
-                                      remove_processing_instructions=True))
+        file.write(
+            minify_html.minify(
+                accumulator.retrieve(),
+                keep_html_and_head_opening_tags=True,
+                minify_js=True,
+                do_not_minify_doctype=True,
+                ensure_spec_compliant_unquoted_attribute_values=True,
+                keep_closing_tags=True,
+                minify_css=True,
+                remove_processing_instructions=True,
+            )
+        )
 
     with open("docs/index-no-min.html", "w+") as file:
         file.write(accumulator.retrieve())
