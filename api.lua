@@ -16,7 +16,7 @@ input = {}
 joypad = {}
 movie = {}
 savestate = {}
-ioHelper = {}
+iohelper = {}
 avi = {}
 
 ---@alias qword integer[] A representation of an 8 byte integer (quad word) as
@@ -952,7 +952,7 @@ function savestate.loadfile(filename) end
 --#endregion
 
 
--- ioHelper functions
+-- iohelper functions
 --#region
 
 ---Opens a file dialouge and returns the file path of the file chosen.
@@ -960,7 +960,7 @@ function savestate.loadfile(filename) end
 ---@param filter string This string acts as a filter for what files can be chosen. For example `*.*` selects all files, where `*.txt` selects only text files.
 ---@param type integer Unknown.
 ---@return string
-function ioHelper.filediag(filter, type) end
+function iohelper.filediag(filter, type) end
 
 --#endregion
 
