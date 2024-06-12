@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.7.2
+-- version 1.1.8.0
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -107,9 +107,11 @@ function emu.atinput(f, unregister) end
 function emu.atstop(f, unregister) end
 
 ---Defines a handler function that is called when a window receives a message.
----The message data is given to the function in 4 parameters. If `unregister`
----is set to true, the function `f` will no longer be called when this event
----occurs, but it will error if you never registered the function.
+---The only message that can be recieved is WM_MOUSEWHEEL for compatability.
+---All other functionality as been deprecated. The message data is given to the
+---function in 4 parameters. If `unregister` is set to true, the function `f`
+---will no longer be called when this event occurs, but it will error if you]
+---never registered the function.
 ---@param f fun(a: integer, b: integer, c: integer, d: integer): nil The function to be called when a window message is received. a: wnd, b: msg, c: wParam, d: lParam.
 ---@param unregister boolean? If true, then unregister the function `f`.
 ---@return nil
@@ -255,6 +257,7 @@ function emu.screenshot(dir) end
 ---Gets a system metric using the windows
 ---[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
 ---function.
+---@deprecated `emu.getsystemmetrics` is deprecated because of coupling to WinAPI
 ---@nodiscard
 ---@param param integer
 ---@return integer metric
@@ -869,6 +872,7 @@ function input.get_key_name_text(key) end
 
 ---Translates a virtual-key code into a scan code. More info
 ---[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).
+---@deprecated `input.map_virtual_key_ex` is deprecated because of coupling to WinAPI
 ---@nodiscard
 ---@param code integer
 ---@param map_type integer
