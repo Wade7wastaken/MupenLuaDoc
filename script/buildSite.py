@@ -106,6 +106,7 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
 
                 extends = definition["extends"]
                 variable_type = extends["type"]
+                deprecated = "deprecated" in extends and extends["deprecated"]
                 if variable_type == "function":
 
                     if not "." in variable_name:
@@ -115,12 +116,12 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
                         functions[variable_name] = []
 
                     functions[variable_name].append(
-                        {"desc": extends["desc"], "view": extends["view"]}
+                        {"desc": extends["desc"], "view": extends["view"], "deprecated": deprecated}
                     )
     return functions
 
 
-def generate_function_html(func_type, func_name, display_name, desc, view, example):
+def generate_function_html(func_type, func_name, display_name, desc, view, example, deprecated):
     if example == "":
         example_markdown = ""
     else:
@@ -130,11 +131,19 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 {example}
 ```
 """
+
+    if deprecated:
+        deprecated_markdown = '<span style="background-color: red; padding: 4px">This function is deprecated. See the api file for more details.</span>'
+    else:
+        deprecated_markdown = ""
+
     return parse_markdown(
         f"""
 ---
 
 # {f'<a id="{func_type}{func_name.capitalize()}">'}{display_name}</a>
+
+{deprecated_markdown}
 
 {desc}
 
@@ -236,6 +245,7 @@ def main():
                 for var in lua_data:
                     desc = var["desc"]
                     view = var["view"]
+                    deprecated = var["deprecated"]
                     example = ""
                     example_filename = f"examples/{func_type}/{func_name}.lua"
                     try:
@@ -248,7 +258,7 @@ def main():
                     )
                     accumulator.write(
                         generate_function_html(
-                            func_type, func_name, display_name, desc, view, example
+                            func_type, func_name, display_name, desc, view, example, deprecated
                         )
                     )
                     accumulator.write("</div>")
