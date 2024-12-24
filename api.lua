@@ -1,6 +1,6 @@
 ---@meta
 
--- version 1.1.8.0
+-- version 1.1.9.1
 
 -- This file has meta definitions for the functions implemented in mupen64.
 -- https://github.com/mkdasher/mupen64-rr-lua-/blob/master/lua/LuaConsole.cpp
@@ -165,6 +165,22 @@ function emu.atsavestate(f, unregister) end
 ---@return nil
 function emu.atreset(f, unregister) end
 
+---Calls the function `f` when seek is completed. If `unregister` is set to
+---true, the function `f` will no longer be called when this event occurs, but
+---it will error if you never registered the function.
+---@param f fun(): nil The function to be called when the seek is completed.
+---@param unregister boolean? If true, then unregister the function `f`.
+---@return nil
+function emu.atseekcompleted(f, unregister) end
+
+---If `unregister` is set to true, the function `f` will no longer be called
+---when this event occurs, but it will error if you never registered the
+---function.
+---@param f fun(): nil The function to be called.
+---@param unregister boolean? If true, then unregister the function `f`.
+---@return nil
+function emu.atwarpmodifystatuschanged(f, unregister) end
+
 ---Returns the number of VIs since the last movie was played. This should match
 ---the statusbar. If no movie has been played, it returns the number of VIs
 ---since the emulator was started, not reset.
@@ -254,24 +270,15 @@ function emu.getaddress(address) end
 ---@return nil
 function emu.screenshot(dir) end
 
----Gets a system metric using the windows
----[GetSystemMetrics](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics)
----function.
----@deprecated `emu.getsystemmetrics` is deprecated because of coupling to WinAPI
----@nodiscard
----@param param integer
----@return integer metric
-function emu.getsystemmetrics(param) end
+---Played the sound file at `file_path`
+---@param file_path string
+---@return nil
+function emu.play_sound(file_path) end
 
 ---Returns `true` if the main mupen window is focused and false if it is not.
 ---@nodiscard
 ---@return boolean focused
 function emu.ismainwindowinforeground() end
-
----Played the sound file at `file_path`
----@param file_path string
----@return nil
-function emu.play_sound(file_path) end
 
 --#endregion
 
@@ -870,15 +877,6 @@ function input.prompt(title, placeholder) end
 ---@return string
 function input.get_key_name_text(key) end
 
----Translates a virtual-key code into a scan code. More info
----[here](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexa).
----@deprecated `input.map_virtual_key_ex` is deprecated because of coupling to WinAPI
----@nodiscard
----@param code integer
----@param map_type integer
----@return integer
-function input.map_virtual_key_ex(code, map_type) end
-
 --#endregion
 
 
@@ -936,6 +934,27 @@ function movie.get_readonly() end
 ---Set's the currently movie's readonly state to `readonly`
 ---@param readonly boolean
 function movie.set_readonly(readonly) end
+
+---Begins seeking
+---@param str string
+---@param pause_at_end boolean
+---@return integer
+function movie.begin_seek(str, pause_at_end) end
+
+---Stops seeking
+function movie.stop_seek() end
+
+---Returns whether the emulator is currently seeking
+---@return boolean
+function movie.is_seeking() end
+
+---Gets info about the current seek
+---@return [integer, integer]
+function movie.get_seek_completion() end
+
+---Begins a warp modify
+---@param inputs {[string]: boolean}[]
+function movie.begin_warp_modify(inputs) end
 
 --#endregion
 

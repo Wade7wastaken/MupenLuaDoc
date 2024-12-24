@@ -92,6 +92,14 @@
                     <button class="funcListItem" onclick="highlightFunc('emuAtreset')">EMU.ATRESET</button>
                 </a>
                 
+                <a href="#emuAtseekcompleted">
+                    <button class="funcListItem" onclick="highlightFunc('emuAtseekcompleted')">EMU.ATSEEKCOMPLETED</button>
+                </a>
+                
+                <a href="#emuAtwarpmodifystatuschanged">
+                    <button class="funcListItem" onclick="highlightFunc('emuAtwarpmodifystatuschanged')">EMU.ATWARPMODIFYSTATUSCHANGED</button>
+                </a>
+                
                 <a href="#emuFramecount">
                     <button class="funcListItem" onclick="highlightFunc('emuFramecount')">EMU.FRAMECOUNT</button>
                 </a>
@@ -507,6 +515,26 @@
                 <a href="#movieSet_readonly">
                     <button class="funcListItem" onclick="highlightFunc('movieSet_readonly')">MOVIE.SET_READONLY</button>
                 </a>
+                
+                <a href="#movieBegin_seek">
+                    <button class="funcListItem" onclick="highlightFunc('movieBegin_seek')">MOVIE.BEGIN_SEEK</button>
+                </a>
+                
+                <a href="#movieStop_seek">
+                    <button class="funcListItem" onclick="highlightFunc('movieStop_seek')">MOVIE.STOP_SEEK</button>
+                </a>
+                
+                <a href="#movieIs_seeking">
+                    <button class="funcListItem" onclick="highlightFunc('movieIs_seeking')">MOVIE.IS_SEEKING</button>
+                </a>
+                
+                <a href="#movieGet_seek_completion">
+                    <button class="funcListItem" onclick="highlightFunc('movieGet_seek_completion')">MOVIE.GET_SEEK_COMPLETION</button>
+                </a>
+                
+                <a href="#movieBegin_warp_modify">
+                    <button class="funcListItem" onclick="highlightFunc('movieBegin_warp_modify')">MOVIE.BEGIN_WARP_MODIFY</button>
+                </a>
                 </div>
             <div class="collapsible">
                 <a href="#savestateFuncs">SAVESTATE FUNCTIONS</a>
@@ -773,6 +801,24 @@ it will error if you never registered the function.</p>
 <p>@<em>param</em> <code>f</code> — The function to be called when the emulator is reset.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atreset</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div></div><div name="emuAtseekcompleted"><hr />
+<h1><a id="emuAtseekcompleted">emu.atseekcompleted</a></h1>
+<p>Calls the function <code>f</code> when seek is completed. If <code>unregister</code> is set to
+true, the function <code>f</code> will no longer be called when this event occurs, but
+it will error if you never registered the function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called when the seek is completed.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atseekcompleted</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="kc">nil</span>
+</code></pre></div></div><div name="emuAtwarpmodifystatuschanged"><hr />
+<h1><a id="emuAtwarpmodifystatuschanged">emu.atwarpmodifystatuschanged</a></h1>
+<p>If <code>unregister</code> is set to true, the function <code>f</code> will no longer be called
+when this event occurs, but it will error if you never registered the
+function.</p>
+<p>@<em>param</em> <code>f</code> — The function to be called.</p>
+<p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">emu</span><span class="p">.</span><span class="nf">atwarpmodifystatuschanged</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">fun</span><span class="p">():</span><span class="kc">nil</span><span class="p">,</span> <span class="n">unregister</span><span class="err">?</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
   <span class="o">-&gt;</span> <span class="kc">nil</span>
 </code></pre></div></div><div name="emuFramecount"><hr />
 <h1><a id="emuFramecount">emu.framecount</a></h1>
@@ -1537,6 +1583,29 @@ movie is playing.</p>
 <h1><a id="movieSet_readonly">movie.set_readonly</a></h1>
 <p>Set's the currently movie's readonly state to <code>readonly</code></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">set_readonly</span><span class="p">(</span><span class="n">readonly</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+</code></pre></div></div><div name="movieBegin_seek"><hr />
+<h1><a id="movieBegin_seek">movie.begin_seek</a></h1>
+<p>Begins seeking</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">begin_seek</span><span class="p">(</span><span class="n">str</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span> <span class="n">pause_at_end</span><span class="p">:</span> <span class="n">boolean</span><span class="p">)</span>
+  <span class="o">-&gt;</span> <span class="n">integer</span>
+</code></pre></div></div><div name="movieStop_seek"><hr />
+<h1><a id="movieStop_seek">movie.stop_seek</a></h1>
+<p>Stops seeking</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">stop_seek</span><span class="p">()</span>
+</code></pre></div></div><div name="movieIs_seeking"><hr />
+<h1><a id="movieIs_seeking">movie.is_seeking</a></h1>
+<p>Returns whether the emulator is currently seeking</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">is_seeking</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="n">boolean</span>
+</code></pre></div></div><div name="movieGet_seek_completion"><hr />
+<h1><a id="movieGet_seek_completion">movie.get_seek_completion</a></h1>
+<p>Gets info about the current seek</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">get_seek_completion</span><span class="p">()</span>
+  <span class="o">-&gt;</span> <span class="p">[</span><span class="n">integer</span><span class="p">,</span> <span class="n">integer</span><span class="p">]</span>
+</code></pre></div></div><div name="movieBegin_warp_modify"><hr />
+<h1><a id="movieBegin_warp_modify">movie.begin_warp_modify</a></h1>
+<p>Begins a warp modify</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nc">movie</span><span class="p">.</span><span class="nf">begin_warp_modify</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="n">string</span><span class="p">]:</span> <span class="n">boolean</span> <span class="p">}[])</span>
 </code></pre></div></div><hr />
 <h1><a id="savestateFuncs">SAVESTATE</a> FUNCTIONS</h1><div name="savestateSavefile"><hr />
 <h1><a id="savestateSavefile">savestate.savefile</a></h1>

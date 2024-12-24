@@ -47,7 +47,7 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_list_dict = {}
 
     try:
-        with open("mupen64-rr-lua-/lua/LuaConsole.cpp", "r", encoding="utf-8") as file:
+        with open("mupen64-rr-lua-/view/lua/LuaConsole.cpp", "r", encoding="utf-8") as file:
             # if we're far enough into the file to start caring
             in_function_region = False
             func_type = ""
@@ -270,7 +270,7 @@ def main():
                 accumulator.write(f"<div name={func_type}{func_name.capitalize()}>")
                 accumulator.write(
                     generate_function_html(
-                        func_type, func_name, display_name, desc, view, ""
+                        func_type, func_name, display_name, desc, view, "", False
                     )
                 )
                 accumulator.write("</div>")
