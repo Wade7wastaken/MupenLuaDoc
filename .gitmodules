@@ -1,3 +1,3 @@
-[submodule "mupen64-rr-lua-"]
-	path = mupen64-rr-lua-
-	url = https://github.com/mkdasher/mupen64-rr-lua-.git
+[submodule "mupen64-rr-lua"]
+	path = mupen64-rr-lua
+	url = https://github.com/mupen64/mupen64-rr-lua

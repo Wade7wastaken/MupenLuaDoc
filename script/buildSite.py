@@ -37,17 +37,16 @@ def parse_markdown(str: str) -> str:
     )
 
 
-# {"global": ["print", "stop"]}
 def read_funcs_from_cpp_file() -> dict[str, list[str]]:
     func_type_pattern = re.compile(
-        r"const luaL_Reg (?P<func_type>[A-Za-z0-9]+)Funcs\[\]"
+        r"const luaL_Reg (?P<func_type>[A-Za-z0-9]+)_FUNCS\[\] = \{"
     )
     func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9_]+)",.*\}')
 
     func_list_dict = {}
 
     try:
-        with open("mupen64-rr-lua-/view/lua/LuaConsole.cpp", "r", encoding="utf-8") as file:
+        with open("mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp", "r", encoding="utf-8") as file:
             # if we're far enough into the file to start caring
             in_function_region = False
             func_type = ""
@@ -68,19 +67,19 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
                         func_list_dict[func_type].append(func_name)
                     # If we're iterating over a function list line...
                     elif "[" in line:
-                        func_type = func_type_pattern.search(line).group("func_type")
+                        func_type = func_type_pattern.search(line).group("func_type").lower()
                         func_list_dict[func_type] = []
 
         return func_list_dict
     except FileNotFoundError:
-        print("Couldn't find LuaConsole.cpp. Have you initialized the submodule?")
+        print("Couldn't find LuaRegistry.cpp. Have you initialized the submodule?")
         exit(1)
 
 
 def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     functions = {}
     # only accept definitions from this file
-    api_filename_ending = "api.lua"
+    api_filename_ending = "mupenapi.lua"
 
     try:
 
@@ -94,19 +93,24 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
 
     # data is an array with all the variables
     for variable in data:
+        if "DOC" in variable:
+            assert variable["DOC"].endswith(api_filename_ending)
+            continue
         # store the name of the variable
         variable_name = variable["name"]
         # print(variable_name)
         # each variable can have multiple definitions (print has 2, one is for mupen and one is the regular lua one)
         for definition in variable["defines"]:
-            # get the source file name for every definition
+            if not "file" in definition:
+                continue
             file_name = definition["file"]
-            # only process the definition if it is one we want
-            if file_name.endswith(api_filename_ending):
 
+            # only process the definition if it is one we want
+            if file_name == ".":
+
+                deprecated = definition["deprecated"]
                 extends = definition["extends"]
                 variable_type = extends["type"]
-                deprecated = "deprecated" in extends and extends["deprecated"]
                 if variable_type == "function":
 
                     if not "." in variable_name:
@@ -119,6 +123,19 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
                         {"desc": extends["desc"], "view": extends["view"], "deprecated": deprecated}
                     )
     return functions
+
+def find_deprecation_message(func_type, func_name):
+    api_file_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
+    with open("mupen64-rr-lua/tools/mupenapi.lua", "rt") as f:
+        lines = [line.strip() for line in f]
+    for i in range(len(lines)):
+        if lines[i].startswith(f"function {api_file_name}"):
+            for j in reversed(range(i)):
+                if lines[j].startswith("---@deprecated "):
+                    return lines[j].removeprefix("---@deprecated ").strip()
+    
+    print(f"couldn't find deprecation message for {api_file_name}")
+    exit(1)
 
 
 def generate_function_html(func_type, func_name, display_name, desc, view, example, deprecated):
@@ -133,7 +150,11 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 """
 
     if deprecated:
-        deprecated_markdown = '<span style="background-color: red; padding: 4px">This function is deprecated. See the api file for more details.</span>'
+        message = find_deprecation_message(func_type, func_name)
+        if message == "":
+            deprecated_markdown = '<span style="background-color: red; padding: 4px">This function is deprecated. See the api file for more details.</span>'
+        else:
+            deprecated_markdown = f'<span style="background-color: red; padding: 4px">This function is deprecated. {message}</span>'
     else:
         deprecated_markdown = ""
 
@@ -148,7 +169,7 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 {desc}
 
 
-```lua
+```luau
 {view}
 ```
 
@@ -159,7 +180,7 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 
 
 def main():
-    skipped_functions = ["printx", "tostringex", "setgfx"]
+    skipped_functions = []
 
     accumulator = StringAccumulator()
 
@@ -190,6 +211,8 @@ def main():
 
     cpp_functions = read_funcs_from_cpp_file()
     lua_functions = read_funcs_from_json_file()
+
+    cpp_functions["os"] = ["exit"]
 
     used_lua_functions = []
 
@@ -293,11 +316,8 @@ def main():
             minify_html.minify(
                 accumulator.retrieve(),
                 keep_html_and_head_opening_tags=True,
-                minify_js=True,
-                do_not_minify_doctype=True,
-                ensure_spec_compliant_unquoted_attribute_values=True,
-                keep_closing_tags=True,
                 minify_css=True,
+                keep_closing_tags=True,
                 remove_processing_instructions=True,
             )
         )
