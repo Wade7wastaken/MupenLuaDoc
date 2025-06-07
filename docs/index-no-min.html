@@ -1615,10 +1615,11 @@ started. It does not reset when a movie is started. Alias for
 </code></pre></div></div><hr />
 <h1><a id="movieFuncs">MOVIE</a> FUNCTIONS</h1><div name="moviePlay"><hr />
 <h1><a id="moviePlay">movie.play</a></h1>
-<p>Plays a movie file located at <code>filename</code>.
+<p>Plays a movie.
 This function sets <code>Read Only</code> to true.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">movie</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">filename</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">)</span>
-<span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
+<p>@<em>return</em> — The operation result.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">movie</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">Result</span>
 </code></pre></div></div><div name="movieStop"><hr />
 <h1><a id="movieStop">movie.stop</a></h1>
 <p>Stops the currently playing movie.</p>
