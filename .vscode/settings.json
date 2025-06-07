@@ -4,5 +4,5 @@
 	},
 	"files.encoding": "utf8",
 	"C_Cpp.dimInactiveRegions": false,
-	"python.analysis.typeCheckingMode": "basic"
+	"python.analysis.typeCheckingMode": "standard"
 }

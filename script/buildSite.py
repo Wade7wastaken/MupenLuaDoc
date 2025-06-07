@@ -1,5 +1,6 @@
 import json
 import re
+import os
 
 import markdown
 import minify_html
@@ -125,7 +126,9 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
 
         return func_list_dict
     except FileNotFoundError as e:
-        e.add_note(f"Have you initialized the mupen submodule?")
+        e.add_note(
+            f"Have you initialized the mupen submodule and are you running the script from the root directory?"
+        )
         raise
 
 
@@ -138,7 +141,9 @@ def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
         with open(path, "rt", encoding="utf-8") as f:
             lines = [line.strip() for line in f]
     except FileNotFoundError as e:
-        e.add_note(f"Have you initialized the mupen submodule?")
+        e.add_note(
+            f"Have you initialized the mupen submodule and are you running the script from the root directory?"
+        )
         raise
 
     line_nums: LineNums = {}
@@ -369,7 +374,7 @@ def add_body(
     lua_functions: JsonFuncs,
     skipped_functions: list[LuaFunc],
 ):
-    used_lua_functions = []
+    used_lua_functions: list[LuaFunc] = []
 
     html.add('<div class="docBody">')
     for module, funcs in cpp_functions.items():
@@ -431,12 +436,20 @@ def write_output(data: str):
         file.write(data)
 
 
+def ensure_working_dir():
+    cwd = os.getcwd()
+    if cwd.endswith("script"):
+        os.chdir("../")
+
+
 def main():
     # Config
     api_filepath = "mupen64-rr-lua/src/api.lua"
     cpp_filepath = "mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp"
     docs_filepath = "export/doc.json"
     skipped_functions: list[LuaFunc] = []
+
+    ensure_working_dir()
 
     cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
     lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath)
