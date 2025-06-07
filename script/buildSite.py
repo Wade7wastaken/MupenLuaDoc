@@ -70,7 +70,7 @@ def parse_markdown(str: str) -> str:
     )
 
 
-type CppFuncs = dict[str, list[str]]
+type CppFuncs = dict[str, list[LuaFunc]]
 
 
 def read_funcs_from_cpp_file(path: str) -> CppFuncs:
@@ -85,7 +85,7 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
         with open(path, "rt", encoding="utf-8") as file:
             # if we're far enough into the file to start caring
             in_function_region = False
-            func_type = ""
+            module = ""
 
             for l in file:
                 line = l.strip()
@@ -102,8 +102,16 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
                 if not in_function_region:
                     continue
 
+                # If we're iterating over a function list line...
+                if "[" in line:
+                    module_match = module_pattern.search(line)
+                    if module_match is None:
+                        raise Exception(f"Couldn't find a function name in line {line}")
+
+                    module = module_match.group("module").lower()
+                    func_list_dict[module] = []
                 # If we're iterating over a function name line...
-                if '{"' in line and "NULL" not in line:
+                elif '{"' in line and "NULL" not in line:
                     func_name_match = name_pattern.search(line)
                     if func_name_match is None:
                         raise Exception(f"Couldn't find a function name in line {line}")
@@ -112,16 +120,10 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
                     if not isinstance(func_name, str):
                         raise Exception(f"func_name wasn't a string in line {line}")
 
-                    # func_list_dict[func_type] should already exist
-                    func_list_dict[func_type].append(func_name)
-                # If we're iterating over a function list line...
-                elif "[" in line:
-                    func_type_match = module_pattern.search(line)
-                    if func_type_match is None:
-                        raise Exception(f"Couldn't find a function name in line {line}")
+                    assert module != ""
 
-                    func_type = func_type_match.group("module").lower()
-                    func_list_dict[func_type] = []
+                    # func_list_dict[func_type] should already exist
+                    func_list_dict[module].append(LuaFunc(module, func_name))
 
         return func_list_dict
     except FileNotFoundError:
@@ -332,7 +334,7 @@ def add_sidebar(
     html: StringAccumulator, cpp_functions: CppFuncs, skipped_functions: list[LuaFunc]
 ):
     # loop over function types (emu, wgui)
-    for module in cpp_functions:
+    for module, funcs in cpp_functions.items():
         html.add(
             f"""
             <div class="collapsible">
@@ -341,8 +343,7 @@ def add_sidebar(
             """
         )
         html.add('<div class="funcList">')
-        for name in cpp_functions[module]:
-            fn = LuaFunc(module, name)
+        for fn in funcs:
             if fn in skipped_functions:
                 continue
 
@@ -361,7 +362,7 @@ def add_sidebar(
 
 
 def add_function(html: StringAccumulator, fn: LuaFunc, fn_data: LuaFuncData):
-    html.add(f"<div name={fn.internal_name()}>")
+    html.add(f'<div name="{fn.internal_name()}">')
     html.add(generate_function_html(fn, fn_data))
     html.add("</div>")
 
@@ -375,7 +376,7 @@ def add_body(
     used_lua_functions = []
 
     html.add('<div class="docBody">')
-    for module in cpp_functions:
+    for module, funcs in cpp_functions.items():
         # create the section header
 
         html.add(
@@ -384,9 +385,7 @@ def add_body(
             )
         )
 
-        for name in cpp_functions[module]:
-            fn = LuaFunc(module, name)
-
+        for fn in funcs:
             if fn in skipped_functions:
                 continue
 
@@ -446,7 +445,7 @@ def main():
     cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
     lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath)
 
-    cpp_functions["os"] = ["exit"]
+    cpp_functions["os"] = [LuaFunc("os", "exit")]
 
     html = StringAccumulator()
 
