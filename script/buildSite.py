@@ -32,6 +32,7 @@ class StringAccumulator:
     def retrieve(self, separator: str = "") -> str:
         return separator.join(self.segments)
 
+
 @dataclass(unsafe_hash=True)
 class LuaFunc:
     module: str
@@ -41,17 +42,19 @@ class LuaFunc:
     # (wgui, drawtext) -> wgui.drawtext
     def display_name(self) -> str:
         return self.name if self.module == "global" else f"{self.module}.{self.name}"
-    
+
     # (global, print) -> globalPrint
     # (wgui, drawtext) -> wguiDrawtext
     def internal_name(self) -> str:
         return f"{self.module}{self.name.capitalize()}"
 
+
 def from_lua_signature(fn: str) -> LuaFunc:
-    segments = fn.split('.')
+    segments = fn.split(".")
     if len(segments) == 1:
         segments.insert(0, "global")
     return LuaFunc(*segments)
+
 
 @dataclass
 class LuaFuncData:
@@ -66,7 +69,9 @@ def parse_markdown(str: str) -> str:
         str, extensions=[CodeHiliteExtension(), FencedCodeExtension()]
     )
 
+
 type CppFuncs = dict[str, list[str]]
+
 
 def read_funcs_from_cpp_file(path: str) -> CppFuncs:
     module_pattern = re.compile(
@@ -74,7 +79,7 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
     )
     name_pattern = re.compile(r'\{"(?P<name>[A-Za-z0-9_]+)",.*\}')
 
-    func_list_dict: CppFuncs  = {}
+    func_list_dict: CppFuncs = {}
 
     try:
         with open(path, "rt", encoding="utf-8") as file:
@@ -123,8 +128,10 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
         print("Couldn't find LuaRegistry.cpp. Have you initialized the submodule?")
         exit(1)
 
+
 type LineNums = dict[int, LuaFunc]
 type DepMessages = dict[LuaFunc, str]
+
 
 def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
     try:
@@ -133,18 +140,18 @@ def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
     except FileNotFoundError:
         print("Couldn't find api file. Have you initialized the submodule?")
         exit(1)
-    
+
     line_nums: LineNums = {}
     deprecation_messages: DepMessages = {}
 
     deprecation_message = None
 
-    for (i, l) in enumerate(lines):
+    for i, l in enumerate(lines):
         if l.startswith(f"---@deprecated "):
             deprecation_message = l.removeprefix("---@deprecated ").strip()
 
         if l.startswith("function "):
-            end = l.find('(')
+            end = l.find("(")
             fn = from_lua_signature(l[9:end].strip())
 
             if deprecation_message is not None:
@@ -155,6 +162,7 @@ def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
 
     return (line_nums, deprecation_messages)
 
+
 def load_example(fn: LuaFunc) -> str | None:
     example_filename = f"examples/{fn.module}/{fn.name}.lua"
     try:
@@ -164,11 +172,13 @@ def load_example(fn: LuaFunc) -> str | None:
         # print(f"couldn't find example file {example_filename}")
         return None
 
+
 type JsonFuncs = dict[LuaFunc, list[LuaFuncData]]
+
 
 def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
     (line_nums, deprecation_messages) = read_api_file(api_filepath)
-    api_filename = api_filepath.split('/')[-1]
+    api_filename = api_filepath.split("/")[-1]
 
     functions: JsonFuncs = {}
 
@@ -213,8 +223,10 @@ def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
 
             deprecated_message = None
             if definition["deprecated"]:
-                deprecated_message = transform_links(deprecation_messages[fn], line_nums)
-            
+                deprecated_message = transform_links(
+                    deprecation_messages[fn], line_nums
+                )
+
             example = load_example(fn)
 
             if not fn in functions:
@@ -236,11 +248,13 @@ def generate_example_markdown(example: str | None):
 ```
 """
 
+
 def generate_deprecated_markdown(deprecated_message: str | None):
     if deprecated_message is None:
         return ""
 
     return f'<span style="background-color: red; padding: 4px">This function is deprecated. {deprecated_message}</span>'
+
 
 def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
     example_markdown = generate_example_markdown(fn_data.example)
@@ -268,7 +282,9 @@ def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
 
 
 def transform_links(text: str, line_nums: LineNums) -> str:
-    markdown_link_pattern = re.compile(r"\[(?P<link_text>.+)\]\(.*mupen.*\.lua\#(?P<line_num>\d+)\)")
+    markdown_link_pattern = re.compile(
+        r"\[(?P<link_text>.+)\]\(.*mupen.*\.lua\#(?P<line_num>\d+)\)"
+    )
 
     def replace(x: re.Match[str]):
         line_num = x.group("line_num")
@@ -311,7 +327,10 @@ def add_header(html: StringAccumulator):
     """
     )
 
-def add_sidebar(html: StringAccumulator, cpp_functions: CppFuncs, skipped_functions: list[LuaFunc]):
+
+def add_sidebar(
+    html: StringAccumulator, cpp_functions: CppFuncs, skipped_functions: list[LuaFunc]
+):
     # loop over function types (emu, wgui)
     for module in cpp_functions:
         html.add(
@@ -340,17 +359,19 @@ def add_sidebar(html: StringAccumulator, cpp_functions: CppFuncs, skipped_functi
         html.add("</div>")  # closes div.funcList
     html.add("</div>")  # closes div.sidebar
 
+
 def add_function(html: StringAccumulator, fn: LuaFunc, fn_data: LuaFuncData):
     html.add(f"<div name={fn.internal_name()}>")
     html.add(generate_function_html(fn, fn_data))
     html.add("</div>")
 
+
 def add_body(
-        html: StringAccumulator,
-        cpp_functions: CppFuncs,
-        lua_functions: JsonFuncs,
-        skipped_functions: list[LuaFunc],
-    ):
+    html: StringAccumulator,
+    cpp_functions: CppFuncs,
+    lua_functions: JsonFuncs,
+    skipped_functions: list[LuaFunc],
+):
     used_lua_functions = []
 
     html.add('<div class="docBody">')
@@ -388,13 +409,16 @@ def add_body(
         if not key in used_lua_functions:
             print(f"lua function wasn't used: {key}")
 
+
 def add_javascript(html: StringAccumulator):
     # add javascript
     with open("script/index.js", "rt", encoding="utf-8") as file:
         html.add(f"<script>{file.read()}</script>")
 
+
 def add_footer(html: StringAccumulator):
     html.add("</body></html>")
+
 
 def write_output(data: str):
     with open("docs/index.html", "w", encoding="utf-8") as file:
@@ -411,6 +435,7 @@ def write_output(data: str):
     with open("docs/index-no-min.html", "w", encoding="utf-8") as file:
         file.write(data)
 
+
 def main():
     # Config
     api_filepath = "mupen64-rr-lua/src/api.lua"
@@ -423,7 +448,6 @@ def main():
 
     cpp_functions["os"] = ["exit"]
 
-
     html = StringAccumulator()
 
     add_header(html)
@@ -432,6 +456,7 @@ def main():
     add_javascript(html)
     add_footer(html)
     write_output(html.retrieve())
+
 
 if __name__ == "__main__":
     main()
