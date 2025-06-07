@@ -5,6 +5,8 @@ import markdown
 import minify_html
 from markdown.extensions.codehilite import CodeHiliteExtension
 from markdown.extensions.fenced_code import FencedCodeExtension
+from dataclasses import dataclass
+
 
 # RUN "pip install -r requirements.txt" BEFORE RUNNING THIS SCRIPT. This script
 # assumes the working directory is the base git directory (not /script). It is
@@ -29,6 +31,33 @@ class StringAccumulator:
 
     def retrieve(self, separator: str = "") -> str:
         return separator.join(self.segments)
+
+@dataclass(unsafe_hash=True)
+class LuaFunc:
+    module: str
+    name: str
+
+    # (global, print) -> print
+    # (wgui, drawtext) -> wgui.drawtext
+    def display_name(self) -> str:
+        return self.name if self.module == "global" else f"{self.module}.{self.name}"
+    
+    # (global, print) -> globalPrint
+    # (wgui, drawtext) -> wguiDrawtext
+    def internal_name(self) -> str:
+        return f"{self.module}{self.name.capitalize()}"
+
+def from_lua_signature(fn: str) -> LuaFunc:
+    segments = fn.split('.')
+    if len(segments) == 1:
+        segments.insert(0, "global")
+    return LuaFunc(*segments)
+
+@dataclass
+class LuaFuncData:
+    description: str
+    view: str
+    deprecated: bool
 
 
 def parse_markdown(str: str) -> str:
@@ -87,13 +116,11 @@ def read_funcs_from_cpp_file(path: str) -> dict[str, list[str]]:
         print("Couldn't find LuaRegistry.cpp. Have you initialized the submodule?")
         exit(1)
 
-
-def read_funcs_from_json_file(path: str, api_filename: str) -> dict[str, list[dict[str, str]]]:
-    functions = {}
+def read_funcs_from_json_file(path: str, api_filename: str) -> dict[LuaFunc, list[LuaFuncData]]:
+    functions: dict[LuaFunc, list[LuaFuncData]] = {}
     # only accept definitions from this file
 
     try:
-
         with open(path, "rt") as f:
             data = json.loads(f.read())
     except FileNotFoundError:
@@ -107,9 +134,10 @@ def read_funcs_from_json_file(path: str, api_filename: str) -> dict[str, list[di
         if "DOC" in variable:
             assert variable["DOC"].endswith(api_filename)
             continue
+
         # store the name of the variable
         variable_name = variable["name"]
-        # print(variable_name)
+
         # each variable can have multiple definitions (print has 2, one is for mupen and one is the regular lua one)
         for definition in variable["defines"]:
             if not "file" in definition:
@@ -117,25 +145,24 @@ def read_funcs_from_json_file(path: str, api_filename: str) -> dict[str, list[di
             file_name = definition["file"]
 
             # only process the definition if it is one we want
-            if file_name == ".":
+            if file_name != ".":
+                continue
 
-                deprecated = definition["deprecated"]
-                extends = definition["extends"]
-                variable_type = extends["type"]
-                if variable_type == "function":
+            extends = definition["extends"]
 
-                    if not "." in variable_name:
-                        variable_name = f"global.{variable_name}"
+            if extends["type"] != "function":
+                continue
 
-                    if not variable_name in functions:
-                        functions[variable_name] = []
+            fn = from_lua_signature(variable_name)
 
-                    functions[variable_name].append(
-                        {"desc": extends["desc"], "view": extends["view"], "deprecated": deprecated}
-                    )
+            if not fn in functions:
+                functions[fn] = []
+
+            func_data = LuaFuncData(extends["desc"], extends["view"], definition["deprecated"])
+            functions[fn].append(func_data)
     return functions
 
-def read_api_file(path: str) -> tuple[dict[int, str], dict[str, str]]:
+def read_api_file(path: str) -> tuple[dict[int, LuaFunc], dict[LuaFunc, str]]:
     try:
         with open(path, "rt") as f:
             lines = [line.strip() for line in f]
@@ -143,26 +170,29 @@ def read_api_file(path: str) -> tuple[dict[int, str], dict[str, str]]:
         print("Couldn't find api file. Have you initialized the submodule?")
         exit(1)
     
-    line_nums: dict[int, str] = {}
-    deprecation_messages: dict[str, str] = {}
+    line_nums: dict[int, LuaFunc] = {}
+    deprecation_messages: dict[LuaFunc, str] = {}
 
-    deprecation_message = ""
+    deprecation_message = None
 
     for (i, l) in enumerate(lines):
         if l.startswith(f"---@deprecated "):
             deprecation_message = l.removeprefix("---@deprecated ").strip()
+
         if l.startswith("function "):
             end = l.find('(')
-            func_name = l[9:end].strip()
-            if deprecation_message != "":
-                deprecation_messages[func_name] = deprecation_message
-                deprecation_message = ""
-            line_nums[i + 1] = func_name
+            fn = from_lua_signature(l[9:end].strip())
+
+            if deprecation_message is not None:
+                deprecation_messages[fn] = deprecation_message
+                deprecation_message = None
+
+            line_nums[i + 1] = fn
 
     return (line_nums, deprecation_messages)
 
 
-def generate_function_html(func_type: str, func_name: str, display_name: str, desc: str, view: str, example: str | None, deprecated_message: str | None) -> str:
+def generate_function_html(fn: LuaFunc, desc: str, view: str, example: str | None, deprecated_message: str | None) -> str:
     if example is None:
         example_markdown = ""
     else:
@@ -182,7 +212,7 @@ def generate_function_html(func_type: str, func_name: str, display_name: str, de
         f"""
 ---
 
-# {f'<a id="{func_type}{func_name.capitalize()}">'}{display_name}</a>
+# {f'<a id="{fn.internal_name()}">'}{fn.display_name()}</a>
 
 {deprecated_markdown}
 
@@ -199,34 +229,30 @@ def generate_function_html(func_type: str, func_name: str, display_name: str, de
     )
 
 
-def handle_links(text: str, line_nums: dict[int, str]) -> str:
+def handle_links(text: str, line_nums: dict[int, LuaFunc]) -> str:
     markdown_link_pattern = re.compile(r"\[(?P<link_text>.+)\]\(.*mupenapi\.lua\#(?P<line_num>\d+)\)")
 
     def a(x: re.Match[str]):
         line_num = x.group("line_num")
         if not isinstance(line_num, str):
+            print("line num wasn't a string")
             exit(1)
         link_text = x.group("link_text")
         if not isinstance(link_text, str):
+            print("link text wasn't a string")
             exit(1)
-        full_name = line_nums[int(line_num)]
-        if "." not in full_name:
-            func_type = "global"
-            func_name = full_name
-        else:
-            [func_type, func_name] = full_name.split(".")
-        return f"[{link_text}](#{func_type}{func_name.capitalize()})"
+        fn = line_nums[int(line_num)]
+        return f"[{link_text}](#{fn.internal_name()})"
 
     return re.sub(markdown_link_pattern, a, text)
 
 
-
 def main():
     # Config
-    api_filepath = "mupen64-rr-lua/tools/mupenapi.lua"
+    api_filepath = "mupen64-rr-lua/src/api.lua"
     cpp_filepath = "mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp"
     docs_filepath = "export/doc.json"
-    skipped_functions = []
+    skipped_functions: list[LuaFunc] = []
 
     cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
     lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath.split('/')[-1])
@@ -234,9 +260,9 @@ def main():
 
     cpp_functions["os"] = ["exit"]
 
-    accumulator = StringAccumulator()
+    html = StringAccumulator()
 
-    accumulator.write(
+    html.write(
         """
     <!DOCTYPE html>
     <html lang="en">
@@ -264,94 +290,91 @@ def main():
     used_lua_functions = []
 
     # loop over function types (emu, wgui)
-    for func_type in cpp_functions:
-        accumulator.write(
+    for module in cpp_functions:
+        html.write(
             f"""
             <div class="collapsible">
-                <a href="#{func_type}Funcs">{func_type.upper()} FUNCTIONS</a>
+                <a href="#{module}Funcs">{module.upper()} FUNCTIONS</a>
             </div>
             """
         )
-        accumulator.write('<div class="funcList">')
-        for func_name in cpp_functions[func_type]:
-            if func_name in skipped_functions:
+        html.write('<div class="funcList">')
+        for name in cpp_functions[module]:
+            fn = LuaFunc(module, name)
+            if fn in skipped_functions:
                 continue
 
-            display_name = (
-                func_name.upper()
-                if func_type == "global"
-                else f"{func_type.upper()}.{func_name.upper()}"
-            )
+            internal_name = fn.internal_name()
+            display_name = fn.display_name().upper()
 
-            accumulator.write(
+            html.write(
                 f"""
-                <a href="#{func_type}{func_name.capitalize()}">
-                    <button class="funcListItem" onclick="highlightFunc('{func_type}{func_name.capitalize()}')">{display_name}</button>
+                <a href="#{internal_name}">
+                    <button class="funcListItem" onclick="highlightFunc('{internal_name}')">{display_name}</button>
                 </a>
                 """
             )
-        accumulator.write("</div>")  # closes div.funcList
-    accumulator.write("</div>")  # closes div.sidebar
+        html.write("</div>")  # closes div.funcList
+    html.write("</div>")  # closes div.sidebar
 
-    accumulator.write('<div class="docBody">')
-    for func_type in cpp_functions:
+    html.write('<div class="docBody">')
+    for module in cpp_functions:
         # create the section header
 
-        accumulator.write(
+        html.write(
             parse_markdown(
-                f'---\n# <a id="{func_type}Funcs">{func_type.upper()}</a> FUNCTIONS'
+                f'---\n# <a id="{module}Funcs">{module.upper()}</a> FUNCTIONS'
             )
         )
 
-        for func_name in cpp_functions[func_type]:
-            full_name = f"{func_type}.{func_name}"
-            display_name = (
-                func_name if func_type == "global" else f"{func_type}.{func_name}"
-            )
-            if full_name in skipped_functions:
+        for name in cpp_functions[module]:
+            fn = LuaFunc(module, name)
+
+            if fn in skipped_functions:
                 continue
-            if full_name in lua_functions:
-                lua_data = lua_functions[full_name]
+
+            if fn in lua_functions:
+                lua_data = lua_functions[fn]
                 for var in lua_data:
-                    desc = handle_links(var["desc"], line_nums)
-                    view = var["view"]
+                    description = handle_links(var.description, line_nums)
+                    view = var.view
 
                     deprecated_message = None
 
-                    if var["deprecated"]:
-                        deprecated_message = handle_links(deprecation_messages[display_name], line_nums)
+                    if var.deprecated:
+                        deprecated_message = handle_links(deprecation_messages[fn], line_nums)
 
                     example = None
-                    example_filename = f"examples/{func_type}/{func_name}.lua"
+                    example_filename = f"examples/{module}/{name}.lua"
                     try:
                         with open(example_filename, "rt") as f:
                             example = f.read()
                     except:
                         pass
                         # print(f"couldn't find example file {example_filename}")
-                    accumulator.write(
-                        f'<div name="{func_type}{func_name.capitalize()}">'
+                    html.write(
+                        f'<div name="{fn.internal_name()}">'
                     )
-                    accumulator.write(
+                    html.write(
                         generate_function_html(
-                            func_type, func_name, display_name, desc, view, example, deprecated_message
+                            fn, description, view, example, deprecated_message
                         )
                     )
-                    accumulator.write("</div>")
-                used_lua_functions.append(full_name)
+                    html.write("</div>")
+                used_lua_functions.append(fn)
             else:
-                print(f"c++ function {full_name} wasn't in lua functions")
-                desc = "?"
+                print(f"c++ function {fn.display_name()} wasn't in lua functions")
+                description = "?"
                 view = "?"
-                accumulator.write(f"<div name={func_type}{func_name.capitalize()}>")
-                accumulator.write(
+                html.write(f"<div name={fn.internal_name()}>")
+                html.write(
                     generate_function_html(
-                        func_type, func_name, display_name, desc, view, None, None
+                        fn, description, view, None, None
                     )
                 )
-                accumulator.write("</div>")
+                html.write("</div>")
 
-    accumulator.write("</div>")  # closed div.docBody
+    html.write("</div>")  # closed div.docBody
 
     # make sure every lua function was used
     for key in lua_functions.keys():
@@ -360,14 +383,14 @@ def main():
 
     # add javascript
     with open("script/index.js", "rt") as file:
-        accumulator.write(f"<script>{file.read()}</script>")
+        html.write(f"<script>{file.read()}</script>")
 
-    accumulator.write("</body></html>")
+    html.write("</body></html>")
 
     with open("docs/index.html", "w+") as file:
         file.write(
             minify_html.minify(
-                accumulator.retrieve(),
+                html.retrieve(),
                 keep_html_and_head_opening_tags=True,
                 minify_css=True,
                 keep_closing_tags=True,
@@ -376,8 +399,7 @@ def main():
         )
 
     with open("docs/index-no-min.html", "w+") as file:
-        file.write(accumulator.retrieve())
-
+        file.write(html.retrieve())
 
 if __name__ == "__main__":
     main()
