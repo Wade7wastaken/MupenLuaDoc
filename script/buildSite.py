@@ -117,8 +117,6 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
                         raise Exception(f"Couldn't find a function name in line {line}")
 
                     func_name = func_name_match.group("name")
-                    if not isinstance(func_name, str):
-                        raise Exception(f"func_name wasn't a string in line {line}")
 
                     assert module != ""
 
@@ -126,9 +124,9 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
                     func_list_dict[module].append(LuaFunc(module, func_name))
 
         return func_list_dict
-    except FileNotFoundError:
-        print("Couldn't find LuaRegistry.cpp. Have you initialized the submodule?")
-        exit(1)
+    except FileNotFoundError as e:
+        e.add_note(f"Have you initialized the mupen submodule?")
+        raise
 
 
 type LineNums = dict[int, LuaFunc]
@@ -139,9 +137,9 @@ def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
     try:
         with open(path, "rt", encoding="utf-8") as f:
             lines = [line.strip() for line in f]
-    except FileNotFoundError:
-        print("Couldn't find api file. Have you initialized the submodule?")
-        exit(1)
+    except FileNotFoundError as e:
+        e.add_note(f"Have you initialized the mupen submodule?")
+        raise
 
     line_nums: LineNums = {}
     deprecation_messages: DepMessages = {}
@@ -170,7 +168,7 @@ def load_example(fn: LuaFunc) -> str | None:
     try:
         with open(example_filename, "rt", encoding="utf-8") as f:
             return f.read()
-    except:
+    except FileNotFoundError:
         # print(f"couldn't find example file {example_filename}")
         return None
 
@@ -187,11 +185,9 @@ def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
     try:
         with open(path, "rt", encoding="utf-8") as f:
             data = json.loads(f.read())
-    except FileNotFoundError:
-        print(
-            "Couldn't find doc.json. Have you exported the documentation to the correct place?"
-        )
-        exit(1)
+    except FileNotFoundError as e:
+        e.add_note("Have you exported the documentation to the correct place?")
+        raise
 
     # data is an array with all the variables
     for variable in data:
