@@ -22,7 +22,7 @@ class StringAccumulator:
         self.segments: list[str] = []
 
     def write(self, string: str | list[str]):
-        if type(string) == list:
+        if isinstance(string, list):
             self.segments.append(*string)
         else:
             self.segments.append(string)
@@ -37,16 +37,16 @@ def parse_markdown(str: str) -> str:
     )
 
 
-def read_funcs_from_cpp_file() -> dict[str, list[str]]:
+def read_funcs_from_cpp_file(path: str) -> dict[str, list[str]]:
     func_type_pattern = re.compile(
         r"const luaL_Reg (?P<func_type>[A-Za-z0-9]+)_FUNCS\[\] = \{"
     )
     func_name_pattern = re.compile(r'\{"(?P<func_name>[A-Za-z0-9_]+)",.*\}')
 
-    func_list_dict = {}
+    func_list_dict: dict[str, list[str]] = {}
 
     try:
-        with open("mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp", "r", encoding="utf-8") as file:
+        with open(path, "r", encoding="utf-8") as file:
             # if we're far enough into the file to start caring
             in_function_region = False
             func_type = ""
@@ -59,16 +59,28 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
                 # Stop at end of functions
                 if "// end lua funcs" in line:
                     break
-                if in_function_region:
-                    # If we're iterating over a function name line...
-                    if '{"' in line and "NULL" not in line:
-                        func_name = func_name_pattern.search(line).group("func_name")
-                        # func_list_dict[func_type] should already exist
-                        func_list_dict[func_type].append(func_name)
-                    # If we're iterating over a function list line...
-                    elif "[" in line:
-                        func_type = func_type_pattern.search(line).group("func_type").lower()
-                        func_list_dict[func_type] = []
+                if not in_function_region:
+                    continue
+
+                # If we're iterating over a function name line...
+                if '{"' in line and "NULL" not in line:
+                    func_name_match = func_name_pattern.search(line)
+                    if func_name_match is None:
+                        raise Exception(f"Couldn't find a function name in line {line}")
+
+                    func_name = func_name_match.group("func_name")
+                    if not isinstance(func_name, str):
+                        raise Exception(f"func_name wasn't a string in line {line}")
+                    # func_list_dict[func_type] should already exist
+                    func_list_dict[func_type].append(func_name)
+                # If we're iterating over a function list line...
+                elif "[" in line:
+                    func_type_match = func_type_pattern.search(line)
+                    if func_type_match is None:
+                        raise Exception(f"Couldn't find a function name in line {line}")
+
+                    func_type = func_type_match.group("func_type").lower()
+                    func_list_dict[func_type] = []
 
         return func_list_dict
     except FileNotFoundError:
@@ -76,14 +88,13 @@ def read_funcs_from_cpp_file() -> dict[str, list[str]]:
         exit(1)
 
 
-def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
+def read_funcs_from_json_file(path: str, api_filename: str) -> dict[str, list[dict[str, str]]]:
     functions = {}
     # only accept definitions from this file
-    api_filename_ending = "mupenapi.lua"
 
     try:
 
-        with open("export/doc.json", "rt") as f:
+        with open(path, "rt") as f:
             data = json.loads(f.read())
     except FileNotFoundError:
         print(
@@ -94,7 +105,7 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
     # data is an array with all the variables
     for variable in data:
         if "DOC" in variable:
-            assert variable["DOC"].endswith(api_filename_ending)
+            assert variable["DOC"].endswith(api_filename)
             continue
         # store the name of the variable
         variable_name = variable["name"]
@@ -124,22 +135,35 @@ def read_funcs_from_json_file() -> dict[str, list[dict[str, str]]]:
                     )
     return functions
 
-def find_deprecation_message(func_type, func_name):
-    api_file_name = func_name if func_type == "global" else f"{func_type}.{func_name}"
-    with open("mupen64-rr-lua/tools/mupenapi.lua", "rt") as f:
-        lines = [line.strip() for line in f]
-    for i in range(len(lines)):
-        if lines[i].startswith(f"function {api_file_name}"):
-            for j in reversed(range(i)):
-                if lines[j].startswith("---@deprecated "):
-                    return lines[j].removeprefix("---@deprecated ").strip()
+def read_api_file(path: str) -> tuple[dict[int, str], dict[str, str]]:
+    try:
+        with open(path, "rt") as f:
+            lines = [line.strip() for line in f]
+    except FileNotFoundError:
+        print("Couldn't find api file. Have you initialized the submodule?")
+        exit(1)
     
-    print(f"couldn't find deprecation message for {api_file_name}")
-    exit(1)
+    line_nums: dict[int, str] = {}
+    deprecation_messages: dict[str, str] = {}
+
+    deprecation_message = ""
+
+    for (i, l) in enumerate(lines):
+        if l.startswith(f"---@deprecated "):
+            deprecation_message = l.removeprefix("---@deprecated ").strip()
+        if l.startswith("function "):
+            end = l.find('(')
+            func_name = l[9:end].strip()
+            if deprecation_message != "":
+                deprecation_messages[func_name] = deprecation_message
+                deprecation_message = ""
+            line_nums[i + 1] = func_name
+
+    return (line_nums, deprecation_messages)
 
 
-def generate_function_html(func_type, func_name, display_name, desc, view, example, deprecated):
-    if example == "":
+def generate_function_html(func_type: str, func_name: str, display_name: str, desc: str, view: str, example: str | None, deprecated_message: str | None) -> str:
+    if example is None:
         example_markdown = ""
     else:
         example_markdown = f"""
@@ -149,12 +173,8 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
 ```
 """
 
-    if deprecated:
-        message = find_deprecation_message(func_type, func_name)
-        if message == "":
-            deprecated_markdown = '<span style="background-color: red; padding: 4px">This function is deprecated. See the api file for more details.</span>'
-        else:
-            deprecated_markdown = f'<span style="background-color: red; padding: 4px">This function is deprecated. {message}</span>'
+    if deprecated_message is not None:
+        deprecated_markdown = f'<span style="background-color: red; padding: 4px">This function is deprecated. {deprecated_message}</span>'
     else:
         deprecated_markdown = ""
 
@@ -179,8 +199,40 @@ def generate_function_html(func_type, func_name, display_name, desc, view, examp
     )
 
 
+def handle_links(text: str, line_nums: dict[int, str]) -> str:
+    markdown_link_pattern = re.compile(r"\[(?P<link_text>.+)\]\(.*mupenapi\.lua\#(?P<line_num>\d+)\)")
+
+    def a(x: re.Match[str]):
+        line_num = x.group("line_num")
+        if not isinstance(line_num, str):
+            exit(1)
+        link_text = x.group("link_text")
+        if not isinstance(link_text, str):
+            exit(1)
+        full_name = line_nums[int(line_num)]
+        if "." not in full_name:
+            func_type = "global"
+            func_name = full_name
+        else:
+            [func_type, func_name] = full_name.split(".")
+        return f"[{link_text}](#{func_type}{func_name.capitalize()})"
+
+    return re.sub(markdown_link_pattern, a, text)
+
+
+
 def main():
+    # Config
+    api_filepath = "mupen64-rr-lua/tools/mupenapi.lua"
+    cpp_filepath = "mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp"
+    docs_filepath = "export/doc.json"
     skipped_functions = []
+
+    cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
+    lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath.split('/')[-1])
+    (line_nums, deprecation_messages) = read_api_file(api_filepath)
+
+    cpp_functions["os"] = ["exit"]
 
     accumulator = StringAccumulator()
 
@@ -208,11 +260,6 @@ def main():
             </div>
     """
     )
-
-    cpp_functions = read_funcs_from_cpp_file()
-    lua_functions = read_funcs_from_json_file()
-
-    cpp_functions["os"] = ["exit"]
 
     used_lua_functions = []
 
@@ -257,43 +304,49 @@ def main():
         )
 
         for func_name in cpp_functions[func_type]:
-            if func_name in skipped_functions:
-                continue
-            fullname = f"{func_type}.{func_name}"
+            full_name = f"{func_type}.{func_name}"
             display_name = (
                 func_name if func_type == "global" else f"{func_type}.{func_name}"
             )
-            if fullname in lua_functions:
-                lua_data = lua_functions[fullname]
+            if full_name in skipped_functions:
+                continue
+            if full_name in lua_functions:
+                lua_data = lua_functions[full_name]
                 for var in lua_data:
-                    desc = var["desc"]
+                    desc = handle_links(var["desc"], line_nums)
                     view = var["view"]
-                    deprecated = var["deprecated"]
-                    example = ""
+
+                    deprecated_message = None
+
+                    if var["deprecated"]:
+                        deprecated_message = handle_links(deprecation_messages[display_name], line_nums)
+
+                    example = None
                     example_filename = f"examples/{func_type}/{func_name}.lua"
                     try:
                         with open(example_filename, "rt") as f:
                             example = f.read()
                     except:
-                        print(f"couldn't find example file {example_filename}")
+                        pass
+                        # print(f"couldn't find example file {example_filename}")
                     accumulator.write(
                         f'<div name="{func_type}{func_name.capitalize()}">'
                     )
                     accumulator.write(
                         generate_function_html(
-                            func_type, func_name, display_name, desc, view, example, deprecated
+                            func_type, func_name, display_name, desc, view, example, deprecated_message
                         )
                     )
                     accumulator.write("</div>")
-                used_lua_functions.append(fullname)
+                used_lua_functions.append(full_name)
             else:
-                print(f"c++ function {fullname} wasn't in lua functions")
+                print(f"c++ function {full_name} wasn't in lua functions")
                 desc = "?"
                 view = "?"
                 accumulator.write(f"<div name={func_type}{func_name.capitalize()}>")
                 accumulator.write(
                     generate_function_html(
-                        func_type, func_name, display_name, desc, view, "", False
+                        func_type, func_name, display_name, desc, view, None, None
                     )
                 )
                 accumulator.write("</div>")

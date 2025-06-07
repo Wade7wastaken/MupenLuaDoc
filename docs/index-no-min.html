@@ -148,10 +148,6 @@
                     <button class="funcListItem" onclick="highlightFunc('emuSpeedmode')">EMU.SPEEDMODE</button>
                 </a>
                 
-                <a href="#emuSetgfx">
-                    <button class="funcListItem" onclick="highlightFunc('emuSetgfx')">EMU.SETGFX</button>
-                </a>
-                
                 <a href="#emuGetaddress">
                     <button class="funcListItem" onclick="highlightFunc('emuGetaddress')">EMU.GETADDRESS</button>
                 </a>
@@ -752,7 +748,6 @@ If <code>unregister</code> is set to true, the function <code>f</code> will no l
 <h1><a id="emuAtinput">emu.atinput</a></h1>
 <p>Calls the function <code>f</code> every input frame.
 The function <code>f</code> receives an argument that seems to always be <code>0</code>.
-Emulator execution may be running in parallel with this callback and it's therefore disallowed to call any functions that perform unsynchronized reads or writes from and to the emulator state, such as those from the memory namespace.
 If <code>unregister</code> is set to true, the function <code>f</code> will no longer be called when this event occurs, but it will error if you never registered the function.</p>
 <p>@<em>param</em> <code>f</code> — The function to be called every input frame. It receives an argument that seems to always be <code>0</code>.</p>
 <p>@<em>param</em> <code>unregister</code> — If true, then unregister the function <code>f</code>.</p>
@@ -939,8 +934,8 @@ If <code>type</code> is 1, it will return only the version number (0.0.0).</p>
 <span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
 </code></pre></div></div><div name="emuSpeedmode"><hr />
 <h1><a id="emuSpeedmode">emu.speedmode</a></h1>
-<p><span style="background-color: red; padding: 4px">This function is deprecated. Use <a href="lua://emu.emu.set_ff">emu.setff</a> instead.</span></p>
-<p>Sets the speed mode of the emulator. Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#320">emu.setff</a> instead.</p>
+<p><span style="background-color: red; padding: 4px">This function is deprecated. Use emu.setff instead.</span></p>
+<p>Sets the speed mode of the emulator. Use <a href="#emuSet_ff">emu.setff</a> instead.</p>
 <div class="codehilite"><pre><span></span><code><span class="nv">mode</span><span class="p">:</span>
 <span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">&quot;</span><span class="py">normal</span><span class="s2">&quot;</span>
 <span class="s2">    | &quot;</span><span class="nv">maximum</span><span class="s2">&quot;</span>
@@ -948,10 +943,6 @@ If <code>type</code> is 1, it will return only the version number (0.0.0).</p>
 
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">emu</span><span class="p">.</span><span class="nf">speedmode</span><span class="p">(</span><span class="nv">mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maximum&quot;</span><span class="p">|</span><span class="s2">&quot;normal&quot;</span><span class="p">)</span>
 <span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
-</code></pre></div></div><div name=emuSetgfx><hr />
-<h1><a id="emuSetgfx">emu.setgfx</a></h1>
-<p>?</p>
-<div class="codehilite"><pre><span></span><code><span class="err">?</span>
 </code></pre></div></div><div name="emuGetaddress"><hr />
 <h1><a id="emuGetaddress">emu.getaddress</a></h1>
 <p>Gets the address of an internal mupen variable.
@@ -1137,7 +1128,7 @@ The memory is treated as signed if <code>size</code> is is negative.</p>
 <span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">nil</span>
 </code></pre></div></div><div name="memoryRecompilenow"><hr />
 <h1><a id="memoryRecompilenow">memory.recompilenow</a></h1>
-<p>See <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#532">memory.recompile</a>.</p>
+<p>See <a href="#memoryRecompile">memory.recompile</a>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">memory</span><span class="p">.</span><span class="nf">recompilenow</span><span class="p">(</span><span class="nv">addr</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="memoryRecompile"><hr />
 <h1><a id="memoryRecompile">memory.recompile</a></h1>
@@ -1145,7 +1136,7 @@ The memory is treated as signed if <code>size</code> is is negative.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">memory</span><span class="p">.</span><span class="nf">recompile</span><span class="p">(</span><span class="nv">addr</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="memoryRecompilenext"><hr />
 <h1><a id="memoryRecompilenext">memory.recompilenext</a></h1>
-<p>See <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#532">memory.recompile</a>.</p>
+<p>See <a href="#memoryRecompile">memory.recompile</a>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">memory</span><span class="p">.</span><span class="nf">recompilenext</span><span class="p">(</span><span class="nv">addr</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="memoryRecompilenextall"><hr />
 <h1><a id="memoryRecompilenextall">memory.recompilenextall</a></h1>
@@ -1245,9 +1236,9 @@ The memory is treated as signed if <code>size</code> is is negative.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">setfont</span><span class="p">(</span><span class="nv">size</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">font</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">,</span><span class="w"> </span><span class="nv">style</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiText"><hr />
 <h1><a id="wguiText">wgui.text</a></h1>
-<p><span style="background-color: red; padding: 4px">This function is deprecated. Use <code>wgui.drawtext</code> instead</span></p>
+<p><span style="background-color: red; padding: 4px">This function is deprecated. Use <code>wgui.drawtext</code> instead.</span></p>
 <p>GDI: Displays text in one line with the current GDI background color and GDI text color.
-Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#601"><code>wgui.drawtext</code></a> instead.</p>
+Use <a href="#wguiDrawtext"><code>wgui.drawtext</code></a> instead.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">text</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiDrawtext"><hr />
 <h1><a id="wguiDrawtext">wgui.drawtext</a></h1>
@@ -1260,7 +1251,7 @@ Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#601"
 <h1><a id="wguiDrawtextalt">wgui.drawtextalt</a></h1>
 <p><span style="background-color: red; padding: 4px">This function is deprecated. Use <code>wgui.drawtext</code> unless you have a good reason.</span></p>
 <p>Uses an alternate function for drawing text.
-Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#601"><code>wgui.drawtext</code></a> instead.</p>
+Use <a href="#wguiDrawtext"><code>wgui.drawtext</code></a> instead.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">drawtextalt</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">,</span><span class="w"> </span><span class="nv">format</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">left</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">top</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">right</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">bottom</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiGettextextent"><hr />
 <h1><a id="wguiGettextextent">wgui.gettextextent</a></h1>
@@ -1271,7 +1262,7 @@ Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#601"
 <h1><a id="wguiRect">wgui.rect</a></h1>
 <p>GDI: Draws a rectangle at the specified coordinates with the current GDI background color and a border of the GDI pen color.
 Only use this function if you need rounded corners.
-Otherwise, use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#648"><code>wgui.fillrecta</code></a>.</p>
+Otherwise, use <a href="#wguiFillrecta"><code>wgui.fillrecta</code></a>.</p>
 <p>@<em>param</em> <code>rounded_width</code> — The width of the ellipse used to draw the rounded corners.</p>
 <p>@<em>param</em> <code>rounded_height</code> — The height of the ellipse used to draw the rounded corners.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">rect</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">top</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">right</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">bottom</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">rounded_width</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">rounded_height</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
@@ -1279,7 +1270,7 @@ Otherwise, use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupena
 <h1><a id="wguiFillrect">wgui.fillrect</a></h1>
 <p><span style="background-color: red; padding: 4px">This function is deprecated. Use <code>wgui.fillrecta</code>.</span></p>
 <p>Draws a rectangle at the specified coordinates with the specified color.
-Use <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/tools/mupenapi.lua#648"><code>wgui.fillrecta</code></a> instead.</p>
+Use <a href="#wguiFillrecta"><code>wgui.fillrecta</code></a> instead.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">fillrect</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">top</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">right</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">bottom</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">red</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">green</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">blue</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiFillrecta"><hr />
 <h1><a id="wguiFillrecta">wgui.fillrecta</a></h1>
