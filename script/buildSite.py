@@ -57,7 +57,8 @@ def from_lua_signature(fn: str) -> LuaFunc:
 class LuaFuncData:
     description: str
     view: str
-    deprecated: bool
+    deprecated_message: str | None
+    example: str | None
 
 
 def parse_markdown(str: str) -> str:
@@ -65,14 +66,15 @@ def parse_markdown(str: str) -> str:
         str, extensions=[CodeHiliteExtension(), FencedCodeExtension()]
     )
 
+type CppFuncs = dict[str, list[str]]
 
-def read_funcs_from_cpp_file(path: str) -> dict[str, list[str]]:
+def read_funcs_from_cpp_file(path: str) -> CppFuncs:
     module_pattern = re.compile(
         r"const luaL_Reg (?P<module>[A-Za-z0-9]+)_FUNCS\[\] = \{"
     )
     name_pattern = re.compile(r'\{"(?P<name>[A-Za-z0-9_]+)",.*\}')
 
-    func_list_dict: dict[str, list[str]] = {}
+    func_list_dict: CppFuncs  = {}
 
     try:
         with open(path, "rt", encoding="utf-8") as file:
@@ -121,8 +123,54 @@ def read_funcs_from_cpp_file(path: str) -> dict[str, list[str]]:
         print("Couldn't find LuaRegistry.cpp. Have you initialized the submodule?")
         exit(1)
 
-def read_funcs_from_json_file(path: str, api_filename: str) -> dict[LuaFunc, list[LuaFuncData]]:
-    functions: dict[LuaFunc, list[LuaFuncData]] = {}
+type LineNums = dict[int, LuaFunc]
+type DepMessages = dict[LuaFunc, str]
+
+def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
+    try:
+        with open(path, "rt", encoding="utf-8") as f:
+            lines = [line.strip() for line in f]
+    except FileNotFoundError:
+        print("Couldn't find api file. Have you initialized the submodule?")
+        exit(1)
+    
+    line_nums: LineNums = {}
+    deprecation_messages: DepMessages = {}
+
+    deprecation_message = None
+
+    for (i, l) in enumerate(lines):
+        if l.startswith(f"---@deprecated "):
+            deprecation_message = l.removeprefix("---@deprecated ").strip()
+
+        if l.startswith("function "):
+            end = l.find('(')
+            fn = from_lua_signature(l[9:end].strip())
+
+            if deprecation_message is not None:
+                deprecation_messages[fn] = deprecation_message
+                deprecation_message = None
+
+            line_nums[i + 1] = fn
+
+    return (line_nums, deprecation_messages)
+
+def load_example(fn: LuaFunc) -> str | None:
+    example_filename = f"examples/{fn.module}/{fn.name}.lua"
+    try:
+        with open(example_filename, "rt", encoding="utf-8") as f:
+            return f.read()
+    except:
+        # print(f"couldn't find example file {example_filename}")
+        return None
+
+type JsonFuncs = dict[LuaFunc, list[LuaFuncData]]
+
+def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
+    (line_nums, deprecation_messages) = read_api_file(api_filepath)
+    api_filename = api_filepath.split('/')[-1]
+
+    functions: JsonFuncs = {}
 
     try:
         with open(path, "rt", encoding="utf-8") as f:
@@ -160,41 +208,21 @@ def read_funcs_from_json_file(path: str, api_filename: str) -> dict[LuaFunc, lis
 
             fn = from_lua_signature(variable_name)
 
+            description = transform_links(extends["desc"], line_nums)
+            view = extends["view"]
+
+            deprecated_message = None
+            if definition["deprecated"]:
+                deprecated_message = transform_links(deprecation_messages[fn], line_nums)
+            
+            example = load_example(fn)
+
             if not fn in functions:
                 functions[fn] = []
 
-            func_data = LuaFuncData(extends["desc"], extends["view"], definition["deprecated"])
+            func_data = LuaFuncData(description, view, deprecated_message, example)
             functions[fn].append(func_data)
     return functions
-
-def read_api_file(path: str) -> tuple[dict[int, LuaFunc], dict[LuaFunc, str]]:
-    try:
-        with open(path, "rt", encoding="utf-8") as f:
-            lines = [line.strip() for line in f]
-    except FileNotFoundError:
-        print("Couldn't find api file. Have you initialized the submodule?")
-        exit(1)
-    
-    line_nums: dict[int, LuaFunc] = {}
-    deprecation_messages: dict[LuaFunc, str] = {}
-
-    deprecation_message = None
-
-    for (i, l) in enumerate(lines):
-        if l.startswith(f"---@deprecated "):
-            deprecation_message = l.removeprefix("---@deprecated ").strip()
-
-        if l.startswith("function "):
-            end = l.find('(')
-            fn = from_lua_signature(l[9:end].strip())
-
-            if deprecation_message is not None:
-                deprecation_messages[fn] = deprecation_message
-                deprecation_message = None
-
-            line_nums[i + 1] = fn
-
-    return (line_nums, deprecation_messages)
 
 
 def generate_example_markdown(example: str | None):
@@ -214,9 +242,9 @@ def generate_deprecated_markdown(deprecated_message: str | None):
 
     return f'<span style="background-color: red; padding: 4px">This function is deprecated. {deprecated_message}</span>'
 
-def generate_function_html(fn: LuaFunc, desc: str, view: str, deprecated_message: str | None, example: str | None) -> str:
-    example_markdown = generate_example_markdown(example)
-    deprecated_markdown = generate_deprecated_markdown(deprecated_message)
+def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
+    example_markdown = generate_example_markdown(fn_data.example)
+    deprecated_markdown = generate_deprecated_markdown(fn_data.deprecated_message)
 
     return parse_markdown(
         f"""
@@ -226,11 +254,11 @@ def generate_function_html(fn: LuaFunc, desc: str, view: str, deprecated_message
 
 {deprecated_markdown}
 
-{desc}
+{fn_data.description}
 
 
 ```luau
-{view}
+{fn_data.view}
 ```
 
 {example_markdown}
@@ -239,7 +267,7 @@ def generate_function_html(fn: LuaFunc, desc: str, view: str, deprecated_message
     )
 
 
-def transform_links(text: str, line_nums: dict[int, LuaFunc]) -> str:
+def transform_links(text: str, line_nums: LineNums) -> str:
     markdown_link_pattern = re.compile(r"\[(?P<link_text>.+)\]\(.*mupen.*\.lua\#(?P<line_num>\d+)\)")
 
     def replace(x: re.Match[str]):
@@ -283,7 +311,7 @@ def add_header(html: StringAccumulator):
     """
     )
 
-def add_sidebar(html: StringAccumulator, cpp_functions: dict[str, list[str]], skipped_functions: list[LuaFunc]):
+def add_sidebar(html: StringAccumulator, cpp_functions: CppFuncs, skipped_functions: list[LuaFunc]):
     # loop over function types (emu, wgui)
     for module in cpp_functions:
         html.add(
@@ -312,22 +340,16 @@ def add_sidebar(html: StringAccumulator, cpp_functions: dict[str, list[str]], sk
         html.add("</div>")  # closes div.funcList
     html.add("</div>")  # closes div.sidebar
 
-def load_example(fn: LuaFunc) -> str | None:
-    example_filename = f"examples/{fn.module}/{fn.name}.lua"
-    try:
-        with open(example_filename, "rt", encoding="utf-8") as f:
-            return f.read()
-    except:
-        # print(f"couldn't find example file {example_filename}")
-        return None
+def add_function(html: StringAccumulator, fn: LuaFunc, fn_data: LuaFuncData):
+    html.add(f"<div name={fn.internal_name()}>")
+    html.add(generate_function_html(fn, fn_data))
+    html.add("</div>")
 
 def add_body(
         html: StringAccumulator,
-        cpp_functions: dict[str, list[str]],
-        lua_functions: dict[LuaFunc, list[LuaFuncData]],
+        cpp_functions: CppFuncs,
+        lua_functions: JsonFuncs,
         skipped_functions: list[LuaFunc],
-        line_nums: dict[int, LuaFunc],
-        deprecation_messages: dict[LuaFunc, str],
     ):
     used_lua_functions = []
 
@@ -349,24 +371,14 @@ def add_body(
 
             if fn not in lua_functions:
                 print(f"c++ function {fn.display_name()} wasn't in lua functions")
-                html.add(f"<div name={fn.internal_name()}>")
-                html.add(generate_function_html(fn, "?", "?", None, None))
-                html.add("</div>")
+                fn_data = LuaFuncData("?", "?", None, None)
+
+                add_function(html, fn, fn_data)
                 continue
 
-            lua_data = lua_functions[fn]
-            for var in lua_data:
-                description = transform_links(var.description, line_nums)
+            for fn_data in lua_functions[fn]:
+                add_function(html, fn, fn_data)
 
-                deprecated_message = None
-                if var.deprecated:
-                    deprecated_message = transform_links(deprecation_messages[fn], line_nums)
-
-                example = load_example(fn)
-
-                html.add(f'<div name="{fn.internal_name()}">')
-                html.add(generate_function_html(fn, description, var.view, deprecated_message, example))
-                html.add("</div>")
             used_lua_functions.append(fn)
 
     html.add("</div>")  # closed div.docBody
@@ -407,8 +419,7 @@ def main():
     skipped_functions: list[LuaFunc] = []
 
     cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
-    lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath.split('/')[-1])
-    (line_nums, deprecation_messages) = read_api_file(api_filepath)
+    lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath)
 
     cpp_functions["os"] = ["exit"]
 
@@ -417,7 +428,7 @@ def main():
 
     add_header(html)
     add_sidebar(html, cpp_functions, skipped_functions)
-    add_body(html, cpp_functions, lua_functions, skipped_functions, line_nums, deprecation_messages)
+    add_body(html, cpp_functions, lua_functions, skipped_functions)
     add_javascript(html)
     add_footer(html)
     write_output(html.retrieve())
