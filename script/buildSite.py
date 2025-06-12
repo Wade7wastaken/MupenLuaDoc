@@ -57,12 +57,40 @@ def from_lua_signature(fn: str) -> LuaFunc:
     return LuaFunc(*segments)
 
 
+type LineNums = dict[int, LuaFunc]
+
+
+def transform_links(text: str, line_nums: LineNums) -> str:
+    markdown_link_pattern = re.compile(
+        r"\[(?P<link_text>.+)\]\(.*mupen.*\.lua\#(?P<line_num>\d+)\)"
+    )
+
+    def replace(x: re.Match[str]):
+        line_num = x.group("line_num")
+        if not isinstance(line_num, str):
+            print("line num wasn't a string")
+            exit(1)
+        link_text = x.group("link_text")
+        if not isinstance(link_text, str):
+            print("link text wasn't a string")
+            exit(1)
+        fn = line_nums[int(line_num)]
+        return f"[{link_text}](#{fn.internal_name()})"
+
+    return re.sub(markdown_link_pattern, replace, text)
+
+
 @dataclass
 class LuaFuncData:
     description: str
     view: str | None
-    deprecated_message: str | None
+    dep_message: str | None
     example: str | None
+
+    def transform_all_links(self, line_nums: LineNums):
+        self.description = transform_links(self.description, line_nums)
+        if self.dep_message is not None:
+            self.dep_message = transform_links(self.dep_message, line_nums)
 
 
 def parse_markdown(str: str) -> str:
@@ -132,11 +160,10 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
         raise
 
 
-type LineNums = dict[int, LuaFunc]
 type DepMessages = dict[LuaFunc, str]
 
 
-def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
+def read_api_file(path: str) -> DepMessages:
     try:
         with open(path, "rt", encoding="utf-8") as f:
             lines = [line.strip() for line in f]
@@ -146,26 +173,23 @@ def read_api_file(path: str) -> tuple[LineNums, DepMessages]:
         )
         raise
 
-    line_nums: LineNums = {}
-    deprecation_messages: DepMessages = {}
+    dep_messages: DepMessages = {}
 
-    deprecation_message = None
+    dep_message = None
 
-    for i, l in enumerate(lines):
+    for l in lines:
         if l.startswith(f"---@deprecated "):
-            deprecation_message = l.removeprefix("---@deprecated ").strip()
+            dep_message = l.removeprefix("---@deprecated ").strip()
 
         if l.startswith("function "):
             end = l.find("(")
             fn = from_lua_signature(l[9:end].strip())
 
-            if deprecation_message is not None:
-                deprecation_messages[fn] = deprecation_message
-                deprecation_message = None
+            if dep_message is not None:
+                dep_messages[fn] = dep_message
+                dep_message = None
 
-            line_nums[i + 1] = fn
-
-    return (line_nums, deprecation_messages)
+    return dep_messages
 
 
 def load_example(fn: LuaFunc) -> str | None:
@@ -184,9 +208,10 @@ type JsonFuncs = dict[LuaFunc, list[LuaFuncData]]
 def read_funcs_from_json_file(
     path: str, api_filepath: str, included_aliases: list[str]
 ) -> JsonFuncs:
-    (line_nums, deprecation_messages) = read_api_file(api_filepath)
+    deprecation_messages = read_api_file(api_filepath)
     api_filename = api_filepath.split("/")[-1]
 
+    line_nums: LineNums = {}
     functions: JsonFuncs = {}
 
     try:
@@ -208,6 +233,8 @@ def read_funcs_from_json_file(
 
         # each variable can have multiple definitions (print has 2, one is for mupen and one is the regular lua one)
         for definition in variable["defines"]:
+            line_num = definition["start"][0] + 1
+
             if definition["type"] == "doc.alias" and variable_name in included_aliases:
                 fn = LuaFunc("global", variable_name)
                 fn_data = LuaFuncData(definition["desc"], None, None, None)
@@ -216,7 +243,8 @@ def read_funcs_from_json_file(
                     functions[fn] = []
                 functions[fn].append(fn_data)
 
-                line_nums[definition["start"][0] + 1] = fn
+                line_nums[line_num] = fn
+                continue
 
             if not "file" in definition:
                 continue
@@ -233,14 +261,14 @@ def read_funcs_from_json_file(
 
             fn = from_lua_signature(variable_name)
 
-            description = transform_links(extends["desc"], line_nums)
+            line_nums[line_num] = fn
+
+            description = extends["desc"]
             view = extends["view"]
 
             deprecated_message = None
             if definition["deprecated"]:
-                deprecated_message = transform_links(
-                    deprecation_messages[fn], line_nums
-                )
+                deprecated_message = deprecation_messages[fn]
 
             example = load_example(fn)
 
@@ -249,6 +277,12 @@ def read_funcs_from_json_file(
 
             func_data = LuaFuncData(description, view, deprecated_message, example)
             functions[fn].append(func_data)
+
+    # we have to do this after we've seen all the line numbers
+    for funcs_data in functions.values():
+        for func_data in funcs_data:
+            func_data.transform_all_links(line_nums)
+
     return functions
 
 
@@ -282,7 +316,7 @@ def generate_view_markdown(view: str | None):
 
 def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
     example_markdown = generate_example_markdown(fn_data.example)
-    deprecated_markdown = generate_deprecated_markdown(fn_data.deprecated_message)
+    deprecated_markdown = generate_deprecated_markdown(fn_data.dep_message)
     view = generate_view_markdown(fn_data.view)
 
     return parse_markdown(
@@ -302,26 +336,6 @@ def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
 
 """
     )
-
-
-def transform_links(text: str, line_nums: LineNums) -> str:
-    markdown_link_pattern = re.compile(
-        r"\[(?P<link_text>.+)\]\(.*mupen.*\.lua\#(?P<line_num>\d+)\)"
-    )
-
-    def replace(x: re.Match[str]):
-        line_num = x.group("line_num")
-        if not isinstance(line_num, str):
-            print("line num wasn't a string")
-            exit(1)
-        link_text = x.group("link_text")
-        if not isinstance(link_text, str):
-            print("link text wasn't a string")
-            exit(1)
-        fn = line_nums[int(line_num)]
-        return f"[{link_text}](#{fn.internal_name()})"
-
-    return re.sub(markdown_link_pattern, replace, text)
 
 
 def add_header(html: StringAccumulator):
