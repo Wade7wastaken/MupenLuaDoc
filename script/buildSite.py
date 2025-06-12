@@ -60,7 +60,7 @@ def from_lua_signature(fn: str) -> LuaFunc:
 @dataclass
 class LuaFuncData:
     description: str
-    view: str
+    view: str | None
     deprecated_message: str | None
     example: str | None
 
@@ -181,7 +181,9 @@ def load_example(fn: LuaFunc) -> str | None:
 type JsonFuncs = dict[LuaFunc, list[LuaFuncData]]
 
 
-def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
+def read_funcs_from_json_file(
+    path: str, api_filepath: str, included_aliases: list[str]
+) -> JsonFuncs:
     (line_nums, deprecation_messages) = read_api_file(api_filepath)
     api_filename = api_filepath.split("/")[-1]
 
@@ -206,6 +208,16 @@ def read_funcs_from_json_file(path: str, api_filepath: str) -> JsonFuncs:
 
         # each variable can have multiple definitions (print has 2, one is for mupen and one is the regular lua one)
         for definition in variable["defines"]:
+            if definition["type"] == "doc.alias" and variable_name in included_aliases:
+                fn = LuaFunc("global", variable_name)
+                fn_data = LuaFuncData(definition["desc"], None, None, None)
+
+                if not fn in functions:
+                    functions[fn] = []
+                functions[fn].append(fn_data)
+
+                line_nums[definition["start"][0] + 1] = fn
+
             if not "file" in definition:
                 continue
             file_name = definition["file"]
@@ -259,9 +271,19 @@ def generate_deprecated_markdown(deprecated_message: str | None):
     return f'<span style="background-color: red; padding: 4px">This function is deprecated. {deprecated_message}</span>'
 
 
+def generate_view_markdown(view: str | None):
+    if view is None:
+        return ""
+
+    return f"""```luau
+{view}
+```"""
+
+
 def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
     example_markdown = generate_example_markdown(fn_data.example)
     deprecated_markdown = generate_deprecated_markdown(fn_data.deprecated_message)
+    view = generate_view_markdown(fn_data.view)
 
     return parse_markdown(
         f"""
@@ -274,9 +296,7 @@ def generate_function_html(fn: LuaFunc, fn_data: LuaFuncData) -> str:
 {fn_data.description}
 
 
-```luau
-{fn_data.view}
-```
+{view}
 
 {example_markdown}
 
@@ -373,6 +393,7 @@ def add_body(
     cpp_functions: CppFuncs,
     lua_functions: JsonFuncs,
     skipped_functions: list[LuaFunc],
+    included_aliases: list[str],
 ):
     used_lua_functions: list[LuaFunc] = []
 
@@ -401,6 +422,15 @@ def add_body(
                 add_function(html, fn, fn_data)
 
             used_lua_functions.append(fn)
+
+    if len(included_aliases) > 0:
+        html.add(parse_markdown("---\n# OTHER INFORMATION"))
+
+    # add aliases
+    for alias in included_aliases:
+        fn = LuaFunc("global", alias)
+        for fn_data in lua_functions[fn]:
+            add_function(html, fn, fn_data)
 
     html.add("</div>")  # closed div.docBody
 
@@ -448,11 +478,14 @@ def main():
     cpp_filepath = "mupen64-rr-lua/src/Views.Win32/lua/LuaRegistry.cpp"
     docs_filepath = "export/doc.json"
     skipped_functions: list[LuaFunc] = []
+    included_aliases: list[str] = []
 
     ensure_working_dir()
 
     cpp_functions = read_funcs_from_cpp_file(cpp_filepath)
-    lua_functions = read_funcs_from_json_file(docs_filepath, api_filepath)
+    lua_functions = read_funcs_from_json_file(
+        docs_filepath, api_filepath, included_aliases
+    )
 
     cpp_functions["os"] = [LuaFunc("os", "exit")]
 
@@ -460,7 +493,7 @@ def main():
 
     add_header(html)
     add_sidebar(html, cpp_functions, skipped_functions)
-    add_body(html, cpp_functions, lua_functions, skipped_functions)
+    add_body(html, cpp_functions, lua_functions, skipped_functions, included_aliases)
     add_javascript(html)
     add_footer(html)
     write_output(html.retrieve())
