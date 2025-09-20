@@ -254,6 +254,9 @@ def read_funcs_from_json_file(
             if file_name != ".":
                 continue
 
+            if not "extends" in definition:
+                continue
+
             extends = definition["extends"]
 
             if extends["type"] != "function":
