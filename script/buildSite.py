@@ -131,11 +131,10 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
 
                 module = matched.group("module").lower()
 
-                func_list_dict[module] =  [LuaFunc(module, name_match.group("name")) for name_match in name_pattern.finditer(section)]
-
-                for name_match in name_pattern.finditer(section):
-                    func = name_match.group("name")
-                    func_list_dict[module].append(LuaFunc(module, func))
+                func_list_dict[module] = [
+                    LuaFunc(module, name_match.group("name"))
+                    for name_match in name_pattern.finditer(section)
+                ]
 
         return func_list_dict
     except FileNotFoundError as e:
