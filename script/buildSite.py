@@ -106,51 +106,36 @@ def read_funcs_from_cpp_file(path: str) -> CppFuncs:
     module_pattern = re.compile(
         r"const luaL_Reg (?P<module>[A-Za-z0-9]+)_FUNCS\[\] = \{"
     )
-    name_pattern = re.compile(r'\{"(?P<name>[A-Za-z0-9_]+)",.*\}')
+    name_pattern = re.compile(r'\{"(?P<name>\w+)",[^\},]*}')
 
     func_list_dict: CppFuncs = {}
 
     try:
         with open(path, "rt", encoding="utf-8") as file:
-            # if we're far enough into the file to start caring
-            in_function_region = False
-            module = ""
+            data = file.read()
 
-            for l in file:
-                line = l.strip()
+            start = data.find("// begin lua funcs")
+            end = data.find("// end lua funcs")
 
-                # Start at first line of Lua emu func arrays
-                if "// begin lua funcs" in line:
-                    in_function_region = True
+            if start == -1 or end == -1:
+                raise Exception("Couldn't find begin or end comment")
+
+            for section in data[start:end].split(";"):
+                stripped = section.strip()
+                if stripped == "":
                     continue
 
-                # Stop at end of functions
-                if "// end lua funcs" in line:
-                    break
+                matched = module_pattern.search(stripped)
+                if matched is None:
+                    raise Exception(f"Couldn't find module name in section {section}")
 
-                if not in_function_region:
-                    continue
+                module = matched.group("module").lower()
 
-                # If we're iterating over a function list line...
-                if "[" in line:
-                    module_match = module_pattern.search(line)
-                    if module_match is None:
-                        raise Exception(f"Couldn't find a function name in line {line}")
+                func_list_dict[module] =  [LuaFunc(module, name_match.group("name")) for name_match in name_pattern.finditer(section)]
 
-                    module = module_match.group("module").lower()
-                    func_list_dict[module] = []
-                # If we're iterating over a function name line...
-                elif '{"' in line and "NULL" not in line:
-                    func_name_match = name_pattern.search(line)
-                    if func_name_match is None:
-                        raise Exception(f"Couldn't find a function name in line {line}")
-
-                    func_name = func_name_match.group("name")
-
-                    assert module != ""
-
-                    # func_list_dict[func_type] should already exist
-                    func_list_dict[module].append(LuaFunc(module, func_name))
+                for name_match in name_pattern.finditer(section):
+                    func = name_match.group("name")
+                    func_list_dict[module].append(LuaFunc(module, func))
 
         return func_list_dict
     except FileNotFoundError as e:
@@ -458,9 +443,7 @@ def add_body(
 
 
 def add_javascript(html: StringAccumulator):
-    # add javascript
-    with open("script/index.js", "rt", encoding="utf-8") as file:
-        html.add(f"<script>{file.read()}</script>")
+    html.add(f"<script src='js/index.js'></script>")
 
 
 def add_footer(html: StringAccumulator):

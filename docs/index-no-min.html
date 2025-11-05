@@ -336,6 +336,10 @@
                     <button class="funcListItem" onclick="highlightFunc('wguiDeleteimage')">WGUI.DELETEIMAGE</button>
                 </a>
                 
+                <a href="#wguiSaveimage">
+                    <button class="funcListItem" onclick="highlightFunc('wguiSaveimage')">WGUI.SAVEIMAGE</button>
+                </a>
+                
                 <a href="#wguiDrawimage">
                     <button class="funcListItem" onclick="highlightFunc('wguiDrawimage')">WGUI.DRAWIMAGE</button>
                 </a>
@@ -1429,6 +1433,12 @@ Use <a href="#wguiFillrecta"><code>wgui.fillrecta</code></a> instead.</p>
 <p>Clears one or all images.</p>
 <p>@<em>param</em> <code>idx</code> — The identifier of the image to clear. If it is 0, clear all iamges.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">deleteimage</span><span class="p">(</span><span class="nv">idx</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">)</span>
+</code></pre></div></div><div name="wguiSaveimage"><hr />
+<h1><a id="wguiSaveimage">wgui.saveimage</a></h1>
+<p>Saves an image to the specified path.</p>
+<p>@<em>param</em> <code>idx</code> — The identifier of the image to save.</p>
+<p>@<em>param</em> <code>path</code> — The path to save the image to. The file extension determines the file format.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">wgui</span><span class="p">.</span><span class="nf">saveimage</span><span class="p">(</span><span class="nv">idx</span><span class="p">:</span><span class="w"> </span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">path</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">)</span>
 </code></pre></div></div><div name="wguiDrawimage"><hr />
 <h1><a id="wguiDrawimage">wgui.drawimage</a></h1>
 <p>Draws the image at index <code>idx</code> at the specified coordinates.</p>
@@ -1851,7 +1861,7 @@ If adding the action causes another action to gain a child (e.g. there's an acti
 <span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
 </code></pre></div></div><div name="actionBegin_batch_work"><hr />
 <h1><a id="actionBegin_batch_work">action.begin_batch_work</a></h1>
-<p>Begins a batch operation. Batches all updates caused by <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1555">action.add</a>, <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1560">action.remove</a>, and <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1567">action.associate_hotkey</a> into one at the succeeding call to <a href="#actionEnd_batch_work">action.end_batch_work</a>.</p>
+<p>Begins a batch operation. Batches all updates caused by <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1560">action.add</a>, <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1565">action.remove</a>, and <a href="file:///d%3A/Lua/MupenLuaDoc/mupen64-rr-lua/src/api.lua#1572">action.associate_hotkey</a> into one at the succeeding call to <a href="#actionEnd_batch_work">action.end_batch_work</a>.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">action</span><span class="p">.</span><span class="nf">begin_batch_work</span><span class="p">()</span>
 </code></pre></div></div><div name="actionEnd_batch_work"><hr />
 <h1><a id="actionEnd_batch_work">action.end_batch_work</a></h1>
@@ -1913,7 +1923,8 @@ If adding the action causes another action to gain a child (e.g. there's an acti
 <p>Manually invokes an action by its path. If the action has an up callback, is already pressed down, and <code>up</code> is false, only the up callback will be invoked.</p>
 <p>@<em>param</em> <code>path</code> — A path.</p>
 <p>@<em>param</em> <code>up</code> — If true, the action is considered to be released, otherwise it is considered to be pressed down.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">action</span><span class="p">.</span><span class="nf">invoke</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">,</span><span class="w"> </span><span class="nv">up</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">boolean</span><span class="p">)</span>
+<p>@<em>param</em> <code>release_on_repress</code> — If true, if the action is already pressed down and <code>up</code> is false, the action will first be released before being pressed down again. If false, the action will only be pressed down. Defaults to true.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">action</span><span class="p">.</span><span class="nf">invoke</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span><span class="w"> </span><span class="nc">string</span><span class="p">,</span><span class="w"> </span><span class="nv">up</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">boolean</span><span class="p">,</span><span class="w"> </span><span class="nv">release_on_repress</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">boolean</span><span class="p">)</span>
 </code></pre></div></div><div name="actionLock_hotkeys"><hr />
 <h1><a id="actionLock_hotkeys">action.lock_hotkeys</a></h1>
 <p>Locks or unlocks action invocations from hotkeys.</p>
@@ -1970,26 +1981,4 @@ If adding the action causes another action to gain a child (e.g. there's an acti
 <p>Queues up the Mupen64 process to be stopped.</p>
 <p><strong>Script execution may continue after this function is called; make sure this behaviour is handled correctly.</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">os</span><span class="p">.</span><span class="nf">exit</span><span class="p">(</span><span class="nv">code</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">boolean</span><span class="p">|</span><span class="nc">integer</span><span class="p">,</span><span class="w"> </span><span class="nv">close</span><span class="err">?</span><span class="p">:</span><span class="w"> </span><span class="nc">boolean</span><span class="p">)</span>
-</code></pre></div></div></div><script>const coll = document.getElementsByClassName("collapsible");
-
-for (const elem of coll) {
-	elem.addEventListener("click", function () {
-		this.classList.toggle("active");
-		const content = this.nextElementSibling;
-		if (content.style.maxHeight) content.style.maxHeight = null;
-		else content.style.maxHeight = content.scrollHeight + "px";
-	});
-}
-
-async function highlightFunc(anchorId) {
-	/* Add 'highlight' class to element, which
-	causes it to briefly become highlighted */
-	const curFunc = document.getElementsByName(anchorId)[0];
-	curFunc.classList.add("highlight");
-	// Wait for fade to end
-	await new Promise((r) => setTimeout(r, 1510));
-	/* Remove 'highlight' class from element, so that it can be
-	added back again if the function link is clicked again */
-	curFunc.classList.remove("highlight");
-}
-</script></body></html>
+</code></pre></div></div></div><script src='js/index.js'></script></body></html>
